@@ -1667,6 +1667,11 @@ namespace x_lib {
   }
 
 
+  // Method that creates the partitions
+  // sio ->  the graph storage
+  // stream_in -> init_stream
+  // stream_out -> edge_stream
+
   template<typename A, typename IN, typename OUT>
   static bool do_init_stream(streamIO<A> *sio,
                              unsigned long stream_in,

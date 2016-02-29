@@ -29,6 +29,8 @@
 #include "async_direct_io.hpp"
 #include "dummy_io.hpp"
 
+
+// namespace responsible with the graph storage
 namespace slipstore {
   // Requests to slipstore service
   static const unsigned long CMD_FILL = 0;

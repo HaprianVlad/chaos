@@ -231,17 +231,26 @@ namespace algorithm {
       }
   };
 
+  // Constructor for scatter_gather
   template<typename A, typename F>
   scatter_gather<A, F>::scatter_gather() {
     BOOST_LOG_TRIVIAL(info) << "SG-DRIVER-ORIGINAL";
+
+    // init timers
     wall_clock.start();
     setup_time.start();
     heartbeat = (vm.count("heartbeat") > 0);
     measure_scatter_gather = (vm.count("measure_scatter_gather") > 0);
+
+    // read number of processors from variable maps (vm)
     unsigned long num_processors = vm["processors"].as < unsigned
     long > ();
+
+    // read number of machines from property tree (pt)
     unsigned long machines = pt_slipstore.get < unsigned
     long > ("machines.count");
+
+    // initialize processors
     per_processor_data **algo_pcpu_array = new per_processor_data *[num_processors];
     sg_pcpu::per_cpu_array = pcpu_array = new sg_pcpu *[num_processors];
     sg_pcpu::sync = new x_barrier(num_processors);
@@ -256,15 +265,23 @@ namespace algorithm {
       algo_pcpu_array[i] = A::create_per_processor_data(i, machines);
     }
     sg_pcpu::algo_pcpu_array = algo_pcpu_array;
+
+    // init graph storage on scatter_gather model
     A::preprocessing(); // Note: ordering critical with the next statement
+
+    // graph stored as an IO stream
     graph_storage = new x_lib::streamIO<scatter_gather>();
+
     /*
     sg_pcpu::scatter_filter = new
       x_lib::filter(MAX(graph_storage->get_config()->cached_partitions,
 			graph_storage->get_config()->super_partitions),
 		    num_processors);
     */
+
     sg_pcpu::bsp_phase = 0;
+
+    // init streams for reading edges and vertices
     vertex_stream = slipstore::STREAM_VERTEX_STATE;
     edge_stream = graph_storage->open_stream();
     init_stream = slipstore::STREAM_INPUT;
@@ -294,17 +311,26 @@ namespace algorithm {
       }
   };
 
+
+  // define the scatter-gather operator
   template<typename A, typename F>
   void scatter_gather<A, F>::operator()() {
+
+    // check if we need to restore from a check point
     bool restored = x_lib::load_checkpoint<scatter_gather<A, F> >
         (graph_storage, this);
+
     if (!restored) {
-      // Edge split
+      // start the edge split
       sg_pcpu::current_step = phase_edge_split;
+
+      // graph is splitted with this method
+      // init_stream = in_stream, edge_stream = out_stream
       x_lib::do_init_stream<scatter_gather<A, F>,
           edge_type_wrapper<F>,
           edge_type_wrapper<F> >
           (graph_storage, init_stream, edge_stream);
+
       if (vm.count("destroy_init") > 0) {
         graph_storage->reset_stream(init_stream, 0);
       }
@@ -313,6 +339,7 @@ namespace algorithm {
     << clock::timestamp()
     << " Completed init ";
     // Supersteps
+    // Apply scatter-gather phase until done
     bool global_stop;
     while (true) {
       graph_storage->rewind_stream(edge_stream);
