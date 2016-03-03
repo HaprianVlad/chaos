@@ -101,7 +101,7 @@ namespace x_lib {
 #ifdef PYTHON_SUPPORT
       PyObject *pBuffer;
 #endif
-
+      // init all the memory buffers we need based on configuration details, read or computed by autotuner
       memory_buffer(configuration *details,
                     unsigned long bufbytes_in)
           : bufbytes(bufbytes_in),

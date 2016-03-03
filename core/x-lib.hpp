@@ -830,23 +830,35 @@ namespace x_lib {
       }
 
       streamIO() {
+        // create new configuration struct
         config = new struct configuration();
+
+        // read in some config params
         ext_mem_shuffle = (vm.count("ext_mem_shuffle") > 0);
         sorted_order = (vm.count("sorted_order") > 0);
         centralized_order = (vm.count("centralized_order") > 0);
         ext_fanout = vm["ext_fanout"].as < unsigned
         long > ();
+
+        // does the big work for configuring things
         make_config();
+
+
+        // init the buffers
         memory_buffer::initialize_freelist(config,
                                            config->buffer_size,
                                            config->max_buffers);
         state_buffer = new memory_buffer(config,
                                          config->max_state_bufsize());
 
+
+        // init streams = the disks = some buffers where information is stored
         streams = new slipstore::io(config->max_streams,
                                     config->super_partitions,
                                     config->tiles,
                                     state_buffer->get_buffer());
+
+        // initialize the storage system
         slipstore::init(streams,
                         config->vertex_state_buffer_size / config->tiles,
                         config->super_partitions);
@@ -856,6 +868,8 @@ namespace x_lib {
         for (unsigned long i = 0; i < config->max_streams; i++) {
           ingest_buffers[i] = 0;
         }
+
+        // initialize the workers and their state arrays
         workers = new x_thread *[config->processors];
         thread_array = new boost::thread *[config->processors];
         cpu_state_array = new algorithm::per_processor_data *[config->processors];
@@ -1671,13 +1685,13 @@ namespace x_lib {
   // sio ->  the graph storage
   // stream_in -> init_stream
   // stream_out -> edge_stream
-
   template<typename A, typename IN, typename OUT>
   static bool do_init_stream(streamIO<A> *sio,
                              unsigned long stream_in,
                              unsigned long stream_out) {
     // Make sure everyone is ready
     slipstore::slipstore_server->help_handle()->reset();
+    // setup the partition map
     sio->setup_pmap(0);
     sio->state_buffer->bufsize = sio->tile_size(0, 0);
     sio->inter_machine_barrier();

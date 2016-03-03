@@ -269,7 +269,7 @@ namespace algorithm {
     // init graph storage on scatter_gather model
     A::preprocessing(); // Note: ordering critical with the next statement
 
-    // graph stored as an IO stream
+    // graph stored as an IO stream. Initialize also everything which is linked to the graph storage
     graph_storage = new x_lib::streamIO<scatter_gather>();
 
     /*
@@ -281,7 +281,7 @@ namespace algorithm {
 
     sg_pcpu::bsp_phase = 0;
 
-    // init streams for reading edges and vertices
+    // Once the graph storage is initialize we can init streams for reading edges and vertices
     vertex_stream = slipstore::STREAM_VERTEX_STATE;
     edge_stream = graph_storage->open_stream();
     init_stream = slipstore::STREAM_INPUT;
