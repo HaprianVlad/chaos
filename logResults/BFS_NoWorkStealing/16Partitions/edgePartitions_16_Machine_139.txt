@@ -1,0 +1,16 @@
+-rwx------ 1 root root 4.1G 29. Feb 17:12 /media/ssd/stream.2.0.0
+-rwx------ 1 root root 1.3G 29. Feb 17:12 /media/ssd/stream.2.1.0
+-rwx------ 1 root root 512M 29. Feb 17:12 /media/ssd/stream.2.10.0
+-rwx------ 1 root root 157M 29. Feb 17:12 /media/ssd/stream.2.11.0
+-rwx------ 1 root root 497M 29. Feb 17:12 /media/ssd/stream.2.12.0
+-rwx------ 1 root root  76M 29. Feb 17:12 /media/ssd/stream.2.13.0
+-rwx------ 1 root root 155M 29. Feb 17:12 /media/ssd/stream.2.14.0
+-rwx------ 1 root root  48M 29. Feb 17:12 /media/ssd/stream.2.15.0
+-rwx------ 1 root root 1.2G 29. Feb 17:12 /media/ssd/stream.2.2.0
+-rwx------ 1 root root 422M 29. Feb 17:12 /media/ssd/stream.2.3.0
+-rwx------ 1 root root 1.2G 29. Feb 17:12 /media/ssd/stream.2.4.0
+-rwx------ 1 root root 363M 29. Feb 17:12 /media/ssd/stream.2.5.0
+-rwx------ 1 root root 337M 29. Feb 17:12 /media/ssd/stream.2.6.0
+-rwx------ 1 root root 146M 29. Feb 17:12 /media/ssd/stream.2.7.0
+-rwx------ 1 root root 1.3G 29. Feb 17:12 /media/ssd/stream.2.8.0
+-rwx------ 1 root root 391M 29. Feb 17:12 /media/ssd/stream.2.9.0

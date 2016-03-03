@@ -1,0 +1,671 @@
+1456773982052	<INFO 7fe3545d3740> 2016-02-29 20:26:22 STARTUP
+1456773982055	<INFO 7fe3545d3740> CORE::GRAPH rmat-28-und_s8
+1456773982059	<INFO 7fe3545d3740> CORE::ALGORITHM bfs
+1456773982064	<INFO 7fe3545d3740> CORE::VERTEX_STRIPING ON
+1456773982068	<INFO 7fe3545d3740> 2016-02-29 20:26:22 Blocking memory amount 126701535232
+1456774089107	<INFO 7fe3545d3740> 2016-02-29 20:28:09 Done blocking memory
+1456774089111	<INFO 7fe3545d3740> SG-DRIVER-ORIGINAL
+1456774089114	<INFO 7fe3545d3740> CORE::CONFIG::PROCESSORS 8
+1456774089119	<INFO 7fe3545d3740> CORE::CONFIG::PHYSICAL_MEMORY 2147483648
+1456774089123	<INFO 7fe3545d3740> CORE::CONFIG::VERTICES 268435456
+1456774089127	<INFO 7fe3545d3740> CORE::CONFIG::VERTEX_SIZE 8
+1456774089131	<INFO 7fe3545d3740> CORE::CONFIG::VERTEX_BUFFER 16777216
+1456774089134	<INFO 7fe3545d3740> CORE::CONFIG::EDGES 1073741824
+1456774089138	<INFO 7fe3545d3740> CORE::CONFIG::PARTITIONS 1024
+1456774089142	<INFO 7fe3545d3740> CORE::CONFIG::FANOUT 1024
+1456774089145	<INFO 7fe3545d3740> CORE::CONFIG::SUPER_PARTITIONS 128
+1456774089149	<INFO 7fe3545d3740> CORE::CONFIG::TILES 1
+1456774089154	<INFO 7fe3545d3740> CORE::CONFIG::BUFFER_SIZE 426126336
+1456774089158	<INFO 7fe3545d3740> CORE::CONFIG::MAX_BUFFERS 4
+1456774089161	<INFO 7fe3545d3740> CORE::CONFIG::MAX_STREAMS 4
+1456774089165	<INFO 7fe3545d3740> SLIPSTREAM::EXT_MEM_SHUFFLE OFF
+1456774090898	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.0.0):No such file or directory
+1456774090902	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.1.0):No such file or directory
+1456774090906	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.2.0):No such file or directory
+1456774090909	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.3.0):No such file or directory
+1456774090913	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.4.0):No such file or directory
+1456774090918	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.5.0):No such file or directory
+1456774090921	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.6.0):No such file or directory
+1456774090926	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.7.0):No such file or directory
+1456774090929	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.8.0):No such file or directory
+1456774090933	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.9.0):No such file or directory
+1456774090937	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.10.0):No such file or directory
+1456774090942	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.11.0):No such file or directory
+1456774090946	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.12.0):No such file or directory
+1456774090950	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.13.0):No such file or directory
+1456774090954	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.14.0):No such file or directory
+1456774090958	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.15.0):No such file or directory
+1456774090962	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.16.0):No such file or directory
+1456774090966	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.17.0):No such file or directory
+1456774090970	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.18.0):No such file or directory
+1456774090973	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.19.0):No such file or directory
+1456774090977	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.20.0):No such file or directory
+1456774090981	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.21.0):No such file or directory
+1456774090983	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.22.0):No such file or directory
+1456774090986	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.23.0):No such file or directory
+1456774090989	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.24.0):No such file or directory
+1456774090992	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.25.0):No such file or directory
+1456774090995	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.26.0):No such file or directory
+1456774090998	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.27.0):No such file or directory
+1456774091001	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.28.0):No such file or directory
+1456774091005	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.29.0):No such file or directory
+1456774091008	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.30.0):No such file or directory
+1456774091012	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.31.0):No such file or directory
+1456774091015	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.32.0):No such file or directory
+1456774091018	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.33.0):No such file or directory
+1456774091021	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.34.0):No such file or directory
+1456774091024	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.35.0):No such file or directory
+1456774091027	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.36.0):No such file or directory
+1456774091030	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.37.0):No such file or directory
+1456774091033	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.38.0):No such file or directory
+1456774091036	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.39.0):No such file or directory
+1456774091039	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.40.0):No such file or directory
+1456774091042	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.41.0):No such file or directory
+1456774091045	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.42.0):No such file or directory
+1456774091048	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.43.0):No such file or directory
+1456774091051	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.44.0):No such file or directory
+1456774091054	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.45.0):No such file or directory
+1456774091057	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.46.0):No such file or directory
+1456774091060	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.47.0):No such file or directory
+1456774091063	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.48.0):No such file or directory
+1456774091066	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.49.0):No such file or directory
+1456774091069	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.50.0):No such file or directory
+1456774091072	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.51.0):No such file or directory
+1456774091075	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.52.0):No such file or directory
+1456774091078	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.53.0):No such file or directory
+1456774091080	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.54.0):No such file or directory
+1456774091083	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.55.0):No such file or directory
+1456774091086	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.56.0):No such file or directory
+1456774091088	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.57.0):No such file or directory
+1456774091091	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.58.0):No such file or directory
+1456774091094	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.59.0):No such file or directory
+1456774091097	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.60.0):No such file or directory
+1456774091099	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.61.0):No such file or directory
+1456774091102	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.62.0):No such file or directory
+1456774091105	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.63.0):No such file or directory
+1456774091108	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.64.0):No such file or directory
+1456774091111	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.65.0):No such file or directory
+1456774091113	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.66.0):No such file or directory
+1456774091116	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.67.0):No such file or directory
+1456774091118	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.68.0):No such file or directory
+1456774091121	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.69.0):No such file or directory
+1456774091124	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.70.0):No such file or directory
+1456774091126	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.71.0):No such file or directory
+1456774091130	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.72.0):No such file or directory
+1456774091132	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.73.0):No such file or directory
+1456774091135	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.74.0):No such file or directory
+1456774091137	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.75.0):No such file or directory
+1456774091140	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.76.0):No such file or directory
+1456774091142	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.77.0):No such file or directory
+1456774091146	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.78.0):No such file or directory
+1456774091149	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.79.0):No such file or directory
+1456774091152	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.80.0):No such file or directory
+1456774091154	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.81.0):No such file or directory
+1456774091157	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.82.0):No such file or directory
+1456774091159	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.83.0):No such file or directory
+1456774091162	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.84.0):No such file or directory
+1456774091164	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.85.0):No such file or directory
+1456774091167	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.86.0):No such file or directory
+1456774091169	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.87.0):No such file or directory
+1456774091172	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.88.0):No such file or directory
+1456774091174	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.89.0):No such file or directory
+1456774091177	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.90.0):No such file or directory
+1456774091179	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.91.0):No such file or directory
+1456774091182	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.92.0):No such file or directory
+1456774091184	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.93.0):No such file or directory
+1456774091186	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.94.0):No such file or directory
+1456774091189	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.95.0):No such file or directory
+1456774091191	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.96.0):No such file or directory
+1456774091194	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.97.0):No such file or directory
+1456774091196	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.98.0):No such file or directory
+1456774091199	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.99.0):No such file or directory
+1456774091201	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.100.0):No such file or directory
+1456774091204	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.101.0):No such file or directory
+1456774091206	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.102.0):No such file or directory
+1456774091209	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.103.0):No such file or directory
+1456774091211	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.104.0):No such file or directory
+1456774091213	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.105.0):No such file or directory
+1456774091216	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.106.0):No such file or directory
+1456774091218	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.107.0):No such file or directory
+1456774091220	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.108.0):No such file or directory
+1456774091223	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.109.0):No such file or directory
+1456774091225	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.110.0):No such file or directory
+1456774091227	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.111.0):No such file or directory
+1456774091230	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.112.0):No such file or directory
+1456774091232	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.113.0):No such file or directory
+1456774091234	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.114.0):No such file or directory
+1456774091237	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.115.0):No such file or directory
+1456774091239	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.116.0):No such file or directory
+1456774091241	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.117.0):No such file or directory
+1456774091244	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.118.0):No such file or directory
+1456774091246	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.119.0):No such file or directory
+1456774091249	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.120.0):No such file or directory
+1456774091251	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.121.0):No such file or directory
+1456774091253	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.122.0):No such file or directory
+1456774091256	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.123.0):No such file or directory
+1456774091258	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.124.0):No such file or directory
+1456774091260	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.125.0):No such file or directory
+1456774091263	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.126.0):No such file or directory
+1456774091265	<WARNING 7fe3545d3740> Unable to unlink file (stream.0.127.0):No such file or directory
+1456774091268	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.1.0):No such file or directory
+1456774091270	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.2.0):No such file or directory
+1456774091272	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.3.0):No such file or directory
+1456774091275	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.4.0):No such file or directory
+1456774091277	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.5.0):No such file or directory
+1456774091279	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.6.0):No such file or directory
+1456774091282	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.7.0):No such file or directory
+1456774091284	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.8.0):No such file or directory
+1456774091286	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.9.0):No such file or directory
+1456774091289	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.10.0):No such file or directory
+1456774091291	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.11.0):No such file or directory
+1456774091293	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.12.0):No such file or directory
+1456774091296	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.13.0):No such file or directory
+1456774091298	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.14.0):No such file or directory
+1456774091301	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.15.0):No such file or directory
+1456774091303	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.16.0):No such file or directory
+1456774091305	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.17.0):No such file or directory
+1456774091308	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.18.0):No such file or directory
+1456774091310	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.19.0):No such file or directory
+1456774091312	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.20.0):No such file or directory
+1456774091315	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.21.0):No such file or directory
+1456774091317	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.22.0):No such file or directory
+1456774091320	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.23.0):No such file or directory
+1456774091322	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.24.0):No such file or directory
+1456774091324	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.25.0):No such file or directory
+1456774091327	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.26.0):No such file or directory
+1456774091329	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.27.0):No such file or directory
+1456774091332	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.28.0):No such file or directory
+1456774091334	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.29.0):No such file or directory
+1456774091336	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.30.0):No such file or directory
+1456774091339	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.31.0):No such file or directory
+1456774091341	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.32.0):No such file or directory
+1456774091343	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.33.0):No such file or directory
+1456774091346	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.34.0):No such file or directory
+1456774091348	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.35.0):No such file or directory
+1456774091350	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.36.0):No such file or directory
+1456774091353	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.37.0):No such file or directory
+1456774091355	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.38.0):No such file or directory
+1456774091357	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.39.0):No such file or directory
+1456774091360	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.40.0):No such file or directory
+1456774091362	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.41.0):No such file or directory
+1456774091364	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.42.0):No such file or directory
+1456774091367	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.43.0):No such file or directory
+1456774091369	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.44.0):No such file or directory
+1456774091372	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.45.0):No such file or directory
+1456774091374	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.46.0):No such file or directory
+1456774091376	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.47.0):No such file or directory
+1456774091379	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.48.0):No such file or directory
+1456774091381	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.49.0):No such file or directory
+1456774091383	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.50.0):No such file or directory
+1456774091386	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.51.0):No such file or directory
+1456774091388	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.52.0):No such file or directory
+1456774091391	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.53.0):No such file or directory
+1456774091393	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.54.0):No such file or directory
+1456774091395	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.55.0):No such file or directory
+1456774091398	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.56.0):No such file or directory
+1456774091400	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.57.0):No such file or directory
+1456774091402	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.58.0):No such file or directory
+1456774091405	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.59.0):No such file or directory
+1456774091407	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.60.0):No such file or directory
+1456774091409	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.61.0):No such file or directory
+1456774091412	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.62.0):No such file or directory
+1456774091414	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.63.0):No such file or directory
+1456774091416	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.64.0):No such file or directory
+1456774091419	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.65.0):No such file or directory
+1456774091421	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.66.0):No such file or directory
+1456774091423	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.67.0):No such file or directory
+1456774091426	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.68.0):No such file or directory
+1456774091428	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.69.0):No such file or directory
+1456774091430	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.70.0):No such file or directory
+1456774091433	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.71.0):No such file or directory
+1456774091435	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.72.0):No such file or directory
+1456774091437	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.73.0):No such file or directory
+1456774091440	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.74.0):No such file or directory
+1456774091442	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.75.0):No such file or directory
+1456774091444	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.76.0):No such file or directory
+1456774091447	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.77.0):No such file or directory
+1456774091449	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.78.0):No such file or directory
+1456774091452	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.79.0):No such file or directory
+1456774091454	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.80.0):No such file or directory
+1456774091456	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.81.0):No such file or directory
+1456774091459	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.82.0):No such file or directory
+1456774091461	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.83.0):No such file or directory
+1456774091463	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.84.0):No such file or directory
+1456774091466	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.85.0):No such file or directory
+1456774091468	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.86.0):No such file or directory
+1456774091470	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.87.0):No such file or directory
+1456774091473	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.88.0):No such file or directory
+1456774091475	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.89.0):No such file or directory
+1456774091478	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.90.0):No such file or directory
+1456774091480	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.91.0):No such file or directory
+1456774091482	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.92.0):No such file or directory
+1456774091485	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.93.0):No such file or directory
+1456774091487	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.94.0):No such file or directory
+1456774091490	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.95.0):No such file or directory
+1456774091492	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.96.0):No such file or directory
+1456774091494	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.97.0):No such file or directory
+1456774091497	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.98.0):No such file or directory
+1456774091499	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.99.0):No such file or directory
+1456774091501	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.100.0):No such file or directory
+1456774091504	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.101.0):No such file or directory
+1456774091506	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.102.0):No such file or directory
+1456774091509	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.103.0):No such file or directory
+1456774091511	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.104.0):No such file or directory
+1456774091513	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.105.0):No such file or directory
+1456774091516	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.106.0):No such file or directory
+1456774091518	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.107.0):No such file or directory
+1456774091520	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.108.0):No such file or directory
+1456774091523	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.109.0):No such file or directory
+1456774091525	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.110.0):No such file or directory
+1456774091527	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.111.0):No such file or directory
+1456774091530	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.112.0):No such file or directory
+1456774091532	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.113.0):No such file or directory
+1456774091534	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.114.0):No such file or directory
+1456774091537	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.115.0):No such file or directory
+1456774091539	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.116.0):No such file or directory
+1456774091541	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.117.0):No such file or directory
+1456774091544	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.118.0):No such file or directory
+1456774091546	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.119.0):No such file or directory
+1456774091549	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.120.0):No such file or directory
+1456774091551	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.121.0):No such file or directory
+1456774091553	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.122.0):No such file or directory
+1456774091556	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.123.0):No such file or directory
+1456774091558	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.124.0):No such file or directory
+1456774091560	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.125.0):No such file or directory
+1456774091563	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.126.0):No such file or directory
+1456774091565	<WARNING 7fe3545d3740> Unable to unlink file (stream.1.127.0):No such file or directory
+1456774091568	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.0.0):No such file or directory
+1456774091570	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.1.0):No such file or directory
+1456774091572	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.2.0):No such file or directory
+1456774091575	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.3.0):No such file or directory
+1456774091577	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.4.0):No such file or directory
+1456774091579	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.5.0):No such file or directory
+1456774091582	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.6.0):No such file or directory
+1456774091584	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.7.0):No such file or directory
+1456774091586	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.8.0):No such file or directory
+1456774091589	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.9.0):No such file or directory
+1456774091591	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.10.0):No such file or directory
+1456774091593	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.11.0):No such file or directory
+1456774091596	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.12.0):No such file or directory
+1456774091598	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.13.0):No such file or directory
+1456774091600	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.14.0):No such file or directory
+1456774091603	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.15.0):No such file or directory
+1456774091605	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.16.0):No such file or directory
+1456774091607	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.17.0):No such file or directory
+1456774091610	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.18.0):No such file or directory
+1456774091612	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.19.0):No such file or directory
+1456774091615	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.20.0):No such file or directory
+1456774091617	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.21.0):No such file or directory
+1456774091619	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.22.0):No such file or directory
+1456774091621	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.23.0):No such file or directory
+1456774091624	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.24.0):No such file or directory
+1456774091626	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.25.0):No such file or directory
+1456774091628	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.26.0):No such file or directory
+1456774091631	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.27.0):No such file or directory
+1456774091633	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.28.0):No such file or directory
+1456774091636	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.29.0):No such file or directory
+1456774091638	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.30.0):No such file or directory
+1456774091640	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.31.0):No such file or directory
+1456774091643	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.32.0):No such file or directory
+1456774091645	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.33.0):No such file or directory
+1456774091647	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.34.0):No such file or directory
+1456774091650	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.35.0):No such file or directory
+1456774091652	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.36.0):No such file or directory
+1456774091654	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.37.0):No such file or directory
+1456774091657	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.38.0):No such file or directory
+1456774091659	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.39.0):No such file or directory
+1456774091662	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.40.0):No such file or directory
+1456774091664	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.41.0):No such file or directory
+1456774091666	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.42.0):No such file or directory
+1456774091669	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.43.0):No such file or directory
+1456774091671	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.44.0):No such file or directory
+1456774091673	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.45.0):No such file or directory
+1456774091676	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.46.0):No such file or directory
+1456774091678	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.47.0):No such file or directory
+1456774091681	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.48.0):No such file or directory
+1456774091683	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.49.0):No such file or directory
+1456774091685	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.50.0):No such file or directory
+1456774091688	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.51.0):No such file or directory
+1456774091690	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.52.0):No such file or directory
+1456774091692	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.53.0):No such file or directory
+1456774091695	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.54.0):No such file or directory
+1456774091697	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.55.0):No such file or directory
+1456774091699	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.56.0):No such file or directory
+1456774091702	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.57.0):No such file or directory
+1456774091704	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.58.0):No such file or directory
+1456774091706	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.59.0):No such file or directory
+1456774091709	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.60.0):No such file or directory
+1456774091711	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.61.0):No such file or directory
+1456774091713	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.62.0):No such file or directory
+1456774091716	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.63.0):No such file or directory
+1456774091718	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.64.0):No such file or directory
+1456774091720	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.65.0):No such file or directory
+1456774091723	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.66.0):No such file or directory
+1456774091725	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.67.0):No such file or directory
+1456774091728	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.68.0):No such file or directory
+1456774091730	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.69.0):No such file or directory
+1456774091732	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.70.0):No such file or directory
+1456774091734	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.71.0):No such file or directory
+1456774091737	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.72.0):No such file or directory
+1456774091739	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.73.0):No such file or directory
+1456774091742	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.74.0):No such file or directory
+1456774091744	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.75.0):No such file or directory
+1456774091746	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.76.0):No such file or directory
+1456774091749	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.77.0):No such file or directory
+1456774091751	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.78.0):No such file or directory
+1456774091753	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.79.0):No such file or directory
+1456774091756	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.80.0):No such file or directory
+1456774091758	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.81.0):No such file or directory
+1456774091761	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.82.0):No such file or directory
+1456774091763	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.83.0):No such file or directory
+1456774091765	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.84.0):No such file or directory
+1456774091768	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.85.0):No such file or directory
+1456774091770	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.86.0):No such file or directory
+1456774091772	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.87.0):No such file or directory
+1456774091775	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.88.0):No such file or directory
+1456774091777	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.89.0):No such file or directory
+1456774091779	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.90.0):No such file or directory
+1456774091782	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.91.0):No such file or directory
+1456774091784	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.92.0):No such file or directory
+1456774091786	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.93.0):No such file or directory
+1456774091789	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.94.0):No such file or directory
+1456774091791	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.95.0):No such file or directory
+1456774091793	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.96.0):No such file or directory
+1456774091796	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.97.0):No such file or directory
+1456774091798	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.98.0):No such file or directory
+1456774091801	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.99.0):No such file or directory
+1456774091803	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.100.0):No such file or directory
+1456774091805	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.101.0):No such file or directory
+1456774091808	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.102.0):No such file or directory
+1456774091810	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.103.0):No such file or directory
+1456774091812	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.104.0):No such file or directory
+1456774091815	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.105.0):No such file or directory
+1456774091817	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.106.0):No such file or directory
+1456774091819	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.107.0):No such file or directory
+1456774091822	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.108.0):No such file or directory
+1456774091824	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.109.0):No such file or directory
+1456774091827	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.110.0):No such file or directory
+1456774091829	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.111.0):No such file or directory
+1456774091831	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.112.0):No such file or directory
+1456774091834	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.113.0):No such file or directory
+1456774091836	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.114.0):No such file or directory
+1456774091838	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.115.0):No such file or directory
+1456774091841	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.116.0):No such file or directory
+1456774091843	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.117.0):No such file or directory
+1456774091846	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.118.0):No such file or directory
+1456774091848	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.119.0):No such file or directory
+1456774091850	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.120.0):No such file or directory
+1456774091853	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.121.0):No such file or directory
+1456774091855	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.122.0):No such file or directory
+1456774091857	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.123.0):No such file or directory
+1456774091860	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.124.0):No such file or directory
+1456774091862	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.125.0):No such file or directory
+1456774091864	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.126.0):No such file or directory
+1456774091867	<WARNING 7fe3545d3740> Unable to unlink file (stream.2.127.0):No such file or directory
+1456774091869	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.0.0):No such file or directory
+1456774091871	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.1.0):No such file or directory
+1456774091874	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.2.0):No such file or directory
+1456774091876	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.3.0):No such file or directory
+1456774091878	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.4.0):No such file or directory
+1456774091881	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.5.0):No such file or directory
+1456774091883	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.6.0):No such file or directory
+1456774091886	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.7.0):No such file or directory
+1456774091888	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.8.0):No such file or directory
+1456774091890	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.9.0):No such file or directory
+1456774091893	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.10.0):No such file or directory
+1456774091895	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.11.0):No such file or directory
+1456774091897	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.12.0):No such file or directory
+1456774091900	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.13.0):No such file or directory
+1456774091902	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.14.0):No such file or directory
+1456774091904	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.15.0):No such file or directory
+1456774091907	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.16.0):No such file or directory
+1456774091909	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.17.0):No such file or directory
+1456774091911	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.18.0):No such file or directory
+1456774091914	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.19.0):No such file or directory
+1456774091916	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.20.0):No such file or directory
+1456774091918	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.21.0):No such file or directory
+1456774091921	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.22.0):No such file or directory
+1456774091923	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.23.0):No such file or directory
+1456774091925	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.24.0):No such file or directory
+1456774091928	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.25.0):No such file or directory
+1456774091930	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.26.0):No such file or directory
+1456774091932	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.27.0):No such file or directory
+1456774091935	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.28.0):No such file or directory
+1456774091937	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.29.0):No such file or directory
+1456774091940	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.30.0):No such file or directory
+1456774091942	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.31.0):No such file or directory
+1456774091944	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.32.0):No such file or directory
+1456774091947	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.33.0):No such file or directory
+1456774091949	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.34.0):No such file or directory
+1456774091952	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.35.0):No such file or directory
+1456774091954	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.36.0):No such file or directory
+1456774091956	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.37.0):No such file or directory
+1456774091959	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.38.0):No such file or directory
+1456774091961	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.39.0):No such file or directory
+1456774091964	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.40.0):No such file or directory
+1456774091966	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.41.0):No such file or directory
+1456774091968	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.42.0):No such file or directory
+1456774091971	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.43.0):No such file or directory
+1456774091973	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.44.0):No such file or directory
+1456774091975	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.45.0):No such file or directory
+1456774091978	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.46.0):No such file or directory
+1456774091980	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.47.0):No such file or directory
+1456774091982	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.48.0):No such file or directory
+1456774091985	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.49.0):No such file or directory
+1456774091987	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.50.0):No such file or directory
+1456774091990	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.51.0):No such file or directory
+1456774091992	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.52.0):No such file or directory
+1456774091994	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.53.0):No such file or directory
+1456774091996	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.54.0):No such file or directory
+1456774091999	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.55.0):No such file or directory
+1456774092001	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.56.0):No such file or directory
+1456774092004	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.57.0):No such file or directory
+1456774092006	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.58.0):No such file or directory
+1456774092008	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.59.0):No such file or directory
+1456774092011	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.60.0):No such file or directory
+1456774092013	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.61.0):No such file or directory
+1456774092015	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.62.0):No such file or directory
+1456774092018	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.63.0):No such file or directory
+1456774092020	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.64.0):No such file or directory
+1456774092022	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.65.0):No such file or directory
+1456774092025	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.66.0):No such file or directory
+1456774092027	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.67.0):No such file or directory
+1456774092029	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.68.0):No such file or directory
+1456774092032	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.69.0):No such file or directory
+1456774092034	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.70.0):No such file or directory
+1456774092036	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.71.0):No such file or directory
+1456774092039	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.72.0):No such file or directory
+1456774092041	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.73.0):No such file or directory
+1456774092043	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.74.0):No such file or directory
+1456774092046	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.75.0):No such file or directory
+1456774092048	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.76.0):No such file or directory
+1456774092050	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.77.0):No such file or directory
+1456774092053	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.78.0):No such file or directory
+1456774092055	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.79.0):No such file or directory
+1456774092057	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.80.0):No such file or directory
+1456774092060	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.81.0):No such file or directory
+1456774092062	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.82.0):No such file or directory
+1456774092064	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.83.0):No such file or directory
+1456774092067	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.84.0):No such file or directory
+1456774092069	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.85.0):No such file or directory
+1456774092071	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.86.0):No such file or directory
+1456774092074	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.87.0):No such file or directory
+1456774092076	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.88.0):No such file or directory
+1456774092079	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.89.0):No such file or directory
+1456774092081	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.90.0):No such file or directory
+1456774092083	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.91.0):No such file or directory
+1456774092086	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.92.0):No such file or directory
+1456774092088	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.93.0):No such file or directory
+1456774092090	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.94.0):No such file or directory
+1456774092093	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.95.0):No such file or directory
+1456774092095	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.96.0):No such file or directory
+1456774092098	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.97.0):No such file or directory
+1456774092100	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.98.0):No such file or directory
+1456774092102	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.99.0):No such file or directory
+1456774092105	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.100.0):No such file or directory
+1456774092107	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.101.0):No such file or directory
+1456774092110	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.102.0):No such file or directory
+1456774092112	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.103.0):No such file or directory
+1456774092114	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.104.0):No such file or directory
+1456774092117	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.105.0):No such file or directory
+1456774092119	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.106.0):No such file or directory
+1456774092122	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.107.0):No such file or directory
+1456774092124	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.108.0):No such file or directory
+1456774092126	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.109.0):No such file or directory
+1456774092129	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.110.0):No such file or directory
+1456774092131	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.111.0):No such file or directory
+1456774092133	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.112.0):No such file or directory
+1456774092136	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.113.0):No such file or directory
+1456774092138	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.114.0):No such file or directory
+1456774092140	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.115.0):No such file or directory
+1456774092143	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.116.0):No such file or directory
+1456774092145	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.117.0):No such file or directory
+1456774092148	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.118.0):No such file or directory
+1456774092150	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.119.0):No such file or directory
+1456774092152	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.120.0):No such file or directory
+1456774092155	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.121.0):No such file or directory
+1456774092157	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.122.0):No such file or directory
+1456774092159	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.123.0):No such file or directory
+1456774092162	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.124.0):No such file or directory
+1456774092164	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.125.0):No such file or directory
+1456774092167	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.126.0):No such file or directory
+1456774092169	<WARNING 7fe3545d3740> Unable to unlink file (stream.3.127.0):No such file or directory
+1456774092171	<INFO 7fe3545d3740> SLIPSTORE::ZMQ_THREADS 2
+1456774092174	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1456774092176	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1456774092178	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1456774092181	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456774092183	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1456774092186	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1456774092188	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1456774092190	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1456774092193	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5098
+1456774092195	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5099
+1456774092197	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5100
+1456774092200	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5101
+1456774092202	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5102
+1456774092204	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at ipc://client
+1456774092207	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5104
+1456774092209	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5105
+1456774092211	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1456774092215	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1456774092218	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1456774092220	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456774092223	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1456774092225	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1456774092227	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1456774092230	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1456774092232	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5005
+1456774092234	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5023
+1456774092237	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5041
+1456774092239	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5059
+1456774092241	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5077
+1456774092244	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to ipc://server
+1456774092246	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5113
+1456774092249	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5131
+1456774092251	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5125
+1456774092253	<INFO 7fe3545d3740> SLIPSTORE::COMM Listening at tcp://ens1f0:5107
+1456774092256	<INFO 7fe3545d3740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1456774092258	<INFO 7fe3545d3740> SLIPSTORE::HELP_POLICY NONE
+1456774092260	<INFO 7fe3545d3740> SLIPSTORE::SERVER ASYNC
+1456774092263	<INFO 7fe3545d3740> SLIPSTORE::MACHINES 8
+1456774092265	<INFO 7fe3545d3740> SLIPSTORE::ME 5
+1456774092268	<INFO 7fe3545d3740> SLIPSTORE::SLIPCHUNK 4194304
+1456774092270	<INFO 7fe3545d3740> SLIPSTORE::QUOTA 18446744073709551615
+1456774092272	<INFO 7fe3545d3740> SLIPSTORE::IO PAGECACHE
+1456774092275	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5106
+1456774092277	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5090
+1456774092280	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5013
+1456774092282	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5091
+1456774092284	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5031
+1456774092287	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5092
+1456774092289	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5049
+1456774092292	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5093
+1456774092294	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5067
+1456774092296	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5094
+1456774092299	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5085
+1456774092301	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at ipc://server
+1456774092303	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to ipc://client
+1456774092306	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5096
+1456774092308	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5121
+1456774092310	<INFO 7fc5363f8700> SLIPSTORE::COMM Listening at tcp://ens1f0:5097
+1456774092313	<INFO 7fc5363f8700> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5139
+1456774092685	<INFO 7fe3545d3740> SLIPSTORE::CHECKPOINTS NONE FOUND
+1456774248652	<INFO 7fe3545d3740> 2016-02-29 20:30:48 Completed init
+1456774300179	<INFO 7fe3545d3740> 2016-02-29 20:31:40 Completed phase 1 Bytes read 17462732816 Bytes written 13313228704
+1456774373737	<INFO 7fe3545d3740> 2016-02-29 20:32:53 Completed phase 2 Bytes read 22041660808 Bytes written 15115645416
+1456774423995	<INFO 7fe3545d3740> 2016-02-29 20:33:43 Completed phase 3 Bytes read 27189279088 Bytes written 15700688744
+1456774459343	<INFO 7fe3545d3740> 2016-02-29 20:34:19 Completed phase 4 Bytes read 32015160448 Bytes written 15718482536
+1456774488130	<INFO 7fe3545d3740> 2016-02-29 20:34:48 Completed phase 5 Bytes read 36593830280 Bytes written 15735261232
+1456774513647	<INFO 7fe3545d3740> 2016-02-29 20:35:13 Completed phase 6 Bytes read 41171662264 Bytes written 15752038456
+1456774536298	<INFO 7fe3545d3740> 2016-02-29 20:35:36 Completed phase 7 Bytes read 45749493192 Bytes written 15768815672
+1456774536301	<INFO 7fe3545d3740> ALGORITHM::BFS::VERTICES_DISCOVERED 1096361
+1456774536303	<INFO 7fe3545d3740> ALGORITHM::BFS::EDGES_EXPLORED 124848669
+1456774536306	<INFO 7fc52bfff700> CORE::PARTITIONS_PROCESSED 564
+1456774536308	<INFO 7fc52b7fe700> CORE::PARTITIONS_PROCESSED 480
+1456774536311	<INFO 7fc5353f6700> CORE::PARTITIONS_PROCESSED 494
+1456774536313	<INFO 7fe3545d3740> CORE::PARTITIONS_PROCESSED 320
+1456774536316	<INFO 7fe3545d3740> CORE::BYTES::EDGES_STREAMED 1353925464
+1456774536318	<INFO 7fe3545d3740> CORE::BYTES::UPDATES_OUT 119561704
+1456774536320	<INFO 7fe3545d3740> CORE::BYTES::UPDATES_IN 43928608
+1456774536323	<INFO 7fc52a7fc700> CORE::PARTITIONS_PROCESSED 570
+1456774536325	<INFO 7fc529ffb700> CORE::PARTITIONS_PROCESSED 602
+1456774536327	<INFO 7fc534bf5700> CORE::PARTITIONS_PROCESSED 505
+1456774536330	<INFO 7fc52affd700> CORE::PARTITIONS_PROCESSED 565
+1456774536334	<INFO 7fc534bf5700> CORE::BYTES::EDGES_STREAMED 1233677172
+1456774536336	<INFO 7fc529ffb700> CORE::BYTES::EDGES_STREAMED 1314360528
+1456774536339	<INFO 7fc5353f6700> CORE::BYTES::EDGES_STREAMED 1264852404
+1456774536341	<INFO 7fc534bf5700> CORE::BYTES::UPDATES_OUT 122919496
+1456774536343	<INFO 7fc52b7fe700> CORE::BYTES::EDGES_STREAMED 1357809756
+1456774536345	<INFO 7fc52bfff700> CORE::BYTES::EDGES_STREAMED 1318781340
+1456774536348	<INFO 7fc52a7fc700> CORE::BYTES::EDGES_STREAMED 1360643796
+1456774536350	<INFO 7fc52bfff700> CORE::BYTES::UPDATES_OUT 119318256
+1456774536353	<INFO 7fc529ffb700> CORE::BYTES::UPDATES_OUT 123442128
+1456774536355	<INFO 7fc52bfff700> CORE::BYTES::UPDATES_IN 51587400
+1456774536357	<INFO 7fc5353f6700> CORE::BYTES::UPDATES_OUT 119448952
+1456774536360	<INFO 7fc529ffb700> CORE::BYTES::UPDATES_IN 37999440
+1456774536362	<INFO 7fc52b7fe700> CORE::BYTES::UPDATES_OUT 116240840
+1456774536365	<INFO 7fc52a7fc700> CORE::BYTES::UPDATES_OUT 139397936
+1456774536367	<INFO 7fc52b7fe700> CORE::BYTES::UPDATES_IN 37242752
+1456774536370	<INFO 7fc5353f6700> CORE::BYTES::UPDATES_IN 39014288
+1456774536372	<INFO 7fc52a7fc700> CORE::BYTES::UPDATES_IN 37550656
+1456774536375	<INFO 7fc52affd700> CORE::BYTES::EDGES_STREAMED 1334796600
+1456774536377	<INFO 7fc52affd700> CORE::BYTES::UPDATES_OUT 138460040
+1456774536380	<INFO 7fc52affd700> CORE::BYTES::UPDATES_IN 35133736
+1456774536382	<INFO 7fc534bf5700> CORE::BYTES::UPDATES_IN 35079792
+1456774536385	<INFO 7fc5363f8700> SLIPSTORE service is exiting
+1456774536387	<INFO 7fc5363f8700> SLIPSTORE::HELP_OFFERS_RECVD 1568
+1456774536390	<INFO 7fc5363f8700> SLIPSTORE::HELP_OFFERS_ACCEPTED 0
+1456774536392	<INFO 7fc5363f8700> SLIPSTORE::HELP_ACCEPTANCE_RATIO 0
+1456774536395	<INFO 7fc5363f8700> SLIPSTORE::SERVER_BUSY_DISK  330.183 seconds
+1456774536397	<INFO 7fc5363f8700> SLIPSTORE::SERVER_BUSY_MEM  0 seconds
+1456774536400	<INFO 7fc5363f8700> SLIPSTORE::SERVER_TOTAL  445.378 seconds
+1456774536403	<INFO 7fe3545d3740> SLIPSTORE::CLIENT::DISK_READ_TIME  179.475 seconds
+1456774536405	<INFO 7fe3545d3740> SLIPSTORE::CLIENT::MEM_READ_TIME  0 seconds
+1456774536407	<INFO 7fe3545d3740> SLIPSTORE::CLIENT::DISK_BYTES_READ 24223630344
+1456774536410	<INFO 7fe3545d3740> SLIPSTORE::CLIENT::MEM_BYTES_READ 0
+1456774536412	<INFO 7fe3545d3740> SLIPSTORE::CLIENT::WRITE_TIME  80.9928 seconds
+1456774536415	<INFO 7fe3545d3740> SLIPSTORE::CLIENT::BYTES_WRITTEN 385875968
+1456774536418	<INFO 7fe3545d3740> SLIPSTORE::CLIENT_BUSY  260.468 seconds
+1456774536420	<INFO 7fe3545d3740> SLIPSTORE::IO::TIME 283.884 seconds
+1456774536423	<INFO 7fe3545d3740> SLIPSTORE::SNAP::TIME 0 seconds
+1456774536426	<INFO 7fe3545d3740> SLIPSTORE::MAX_DISK_USAGE_BYTES 15078639992
+1456774536428	<INFO 7fe3545d3740> CORE::RUSAGE::MAX_RSS_KB 125947104
+1456774536431	<INFO 7fe3545d3740> CORE::RUSAGE::MINFLT 31883715
+1456774536433	<INFO 7fe3545d3740> CORE::RUSAGE::MAJFLT 110
+1456774536436	<INFO 7fe3545d3740> CORE::RUSAGE::MAJFLT 110
+1456774536438	<INFO 7fe3545d3740> CORE::RUSAGE::INBLK 71733352
+1456774536441	<INFO 7fe3545d3740> CORE::RUSAGE::OUBLK 30820592
+1456774536443	<INFO 7fe3545d3740> CORE::UTILS::BYTES_READ 45749493192
+1456774536446	<INFO 7fe3545d3740> CORE::UTILS::BYTES_WRITTEN 15768815672
+1456774536448	<INFO 7fe3545d3740> CORE::UTILS::TILE_COPY_BYTES 234881024
+1456774536451	<INFO 7fe3545d3740> CORE::TIME::IO_WAIT 241.119 seconds
+1456774536454	<INFO 7fe3545d3740> CORE::TIME_TILE_COPY 0 seconds
+1456774536456	<INFO 7fe3545d3740> CORE::TIME_TILE_MERGE 0 seconds
+1456774536459	<INFO 7fe3545d3740> CORE::TIME_PROCESSING_STOLEN 0 seconds
+1456774536461	<INFO 7fe3545d3740> CORE::TIME_MERGE_WAIT 0 seconds
+1456774536464	<INFO 7fe3545d3740> CORE::TIME_ALL_MC_BARRIER 168.545 seconds
+1456774536467	<INFO 7fe3545d3740> CORE::PHASES 7
+1456774536469	<INFO 7fe3545d3740> CORE::TIME::SETUP 3.62807 seconds
+1456774536472	<INFO 7fe3545d3740> CORE::TIME::WALL 447.248 seconds
+1456774536474	<INFO 7fe3545d3740> SHUTDOWN

@@ -1,0 +1,285 @@
+1456779040595	<INFO 7f4c2efdf740> 2016-02-29 21:50:40 STARTUP
+1456779040599	<INFO 7f4c2efdf740> CORE::GRAPH rmat-28_s8
+1456779040603	<INFO 7f4c2efdf740> CORE::ALGORITHM pagerank
+1456779040606	<INFO 7f4c2efdf740> CORE::VERTEX_STRIPING ON
+1456779040611	<INFO 7f4c2efdf740> 2016-02-29 21:50:40 Blocking memory amount 126701535232
+1456779146632	<INFO 7f4c2efdf740> 2016-02-29 21:52:26 Done blocking memory
+1456779146635	<INFO 7f4c2efdf740> SG-DRIVER-ORIGINAL
+1456779146639	<INFO 7f4c2efdf740> CORE::CONFIG::PROCESSORS 8
+1456779146643	<INFO 7f4c2efdf740> CORE::CONFIG::PHYSICAL_MEMORY 2147483648
+1456779146647	<INFO 7f4c2efdf740> CORE::CONFIG::VERTICES 268435456
+1456779146651	<INFO 7f4c2efdf740> CORE::CONFIG::VERTEX_SIZE 12
+1456779146654	<INFO 7f4c2efdf740> CORE::CONFIG::VERTEX_BUFFER 100663296
+1456779146658	<INFO 7f4c2efdf740> CORE::CONFIG::EDGES 536870912
+1456779146661	<INFO 7f4c2efdf740> CORE::CONFIG::PARTITIONS 256
+1456779146665	<INFO 7f4c2efdf740> CORE::CONFIG::FANOUT 256
+1456779146669	<INFO 7f4c2efdf740> CORE::CONFIG::SUPER_PARTITIONS 32
+1456779146672	<INFO 7f4c2efdf740> CORE::CONFIG::TILES 1
+1456779146676	<INFO 7f4c2efdf740> CORE::CONFIG::BUFFER_SIZE 409360179
+1456779146680	<INFO 7f4c2efdf740> CORE::CONFIG::MAX_BUFFERS 4
+1456779146683	<INFO 7f4c2efdf740> CORE::CONFIG::MAX_STREAMS 4
+1456779146687	<INFO 7f4c2efdf740> SLIPSTREAM::EXT_MEM_SHUFFLE OFF
+1456779148413	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.0.0):No such file or directory
+1456779148417	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.1.0):No such file or directory
+1456779148421	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.2.0):No such file or directory
+1456779148425	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.3.0):No such file or directory
+1456779148429	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.4.0):No such file or directory
+1456779148433	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.5.0):No such file or directory
+1456779148437	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.6.0):No such file or directory
+1456779148441	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.7.0):No such file or directory
+1456779148445	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.8.0):No such file or directory
+1456779148449	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.9.0):No such file or directory
+1456779148453	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.10.0):No such file or directory
+1456779148457	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.11.0):No such file or directory
+1456779148461	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.12.0):No such file or directory
+1456779148465	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.13.0):No such file or directory
+1456779148469	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.14.0):No such file or directory
+1456779148473	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.15.0):No such file or directory
+1456779148477	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.16.0):No such file or directory
+1456779148481	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.17.0):No such file or directory
+1456779148486	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.18.0):No such file or directory
+1456779148490	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.19.0):No such file or directory
+1456779148494	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.20.0):No such file or directory
+1456779148498	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.21.0):No such file or directory
+1456779148502	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.22.0):No such file or directory
+1456779148506	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.23.0):No such file or directory
+1456779148510	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.24.0):No such file or directory
+1456779148514	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.25.0):No such file or directory
+1456779148518	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.26.0):No such file or directory
+1456779148522	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.27.0):No such file or directory
+1456779148526	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.28.0):No such file or directory
+1456779148529	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.29.0):No such file or directory
+1456779148533	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.30.0):No such file or directory
+1456779148537	<WARNING 7f4c2efdf740> Unable to unlink file (stream.0.31.0):No such file or directory
+1456779148541	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.1.0):No such file or directory
+1456779148545	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.2.0):No such file or directory
+1456779148548	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.3.0):No such file or directory
+1456779148553	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.4.0):No such file or directory
+1456779148557	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.5.0):No such file or directory
+1456779148560	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.6.0):No such file or directory
+1456779148564	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.7.0):No such file or directory
+1456779148568	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.8.0):No such file or directory
+1456779148572	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.9.0):No such file or directory
+1456779148575	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.10.0):No such file or directory
+1456779148579	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.11.0):No such file or directory
+1456779148583	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.12.0):No such file or directory
+1456779148587	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.13.0):No such file or directory
+1456779148590	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.14.0):No such file or directory
+1456779148594	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.15.0):No such file or directory
+1456779148597	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.16.0):No such file or directory
+1456779148601	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.17.0):No such file or directory
+1456779148605	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.18.0):No such file or directory
+1456779148609	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.19.0):No such file or directory
+1456779148613	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.20.0):No such file or directory
+1456779148616	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.21.0):No such file or directory
+1456779148620	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.22.0):No such file or directory
+1456779148624	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.23.0):No such file or directory
+1456779148627	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.24.0):No such file or directory
+1456779148631	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.25.0):No such file or directory
+1456779148635	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.26.0):No such file or directory
+1456779148639	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.27.0):No such file or directory
+1456779148643	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.28.0):No such file or directory
+1456779148646	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.29.0):No such file or directory
+1456779148650	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.30.0):No such file or directory
+1456779148654	<WARNING 7f4c2efdf740> Unable to unlink file (stream.1.31.0):No such file or directory
+1456779148658	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.0.0):No such file or directory
+1456779148661	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.1.0):No such file or directory
+1456779148665	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.2.0):No such file or directory
+1456779148669	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.3.0):No such file or directory
+1456779148673	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.4.0):No such file or directory
+1456779148676	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.5.0):No such file or directory
+1456779148679	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.6.0):No such file or directory
+1456779148682	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.7.0):No such file or directory
+1456779148685	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.8.0):No such file or directory
+1456779148689	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.9.0):No such file or directory
+1456779148693	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.10.0):No such file or directory
+1456779148697	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.11.0):No such file or directory
+1456779148701	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.12.0):No such file or directory
+1456779148704	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.13.0):No such file or directory
+1456779148708	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.14.0):No such file or directory
+1456779148712	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.15.0):No such file or directory
+1456779148716	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.16.0):No such file or directory
+1456779148719	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.17.0):No such file or directory
+1456779148723	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.18.0):No such file or directory
+1456779148727	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.19.0):No such file or directory
+1456779148731	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.20.0):No such file or directory
+1456779148735	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.21.0):No such file or directory
+1456779148738	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.22.0):No such file or directory
+1456779148741	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.23.0):No such file or directory
+1456779148744	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.24.0):No such file or directory
+1456779148748	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.25.0):No such file or directory
+1456779148751	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.26.0):No such file or directory
+1456779148754	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.27.0):No such file or directory
+1456779148756	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.28.0):No such file or directory
+1456779148759	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.29.0):No such file or directory
+1456779148763	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.30.0):No such file or directory
+1456779148766	<WARNING 7f4c2efdf740> Unable to unlink file (stream.2.31.0):No such file or directory
+1456779148769	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.0.0):No such file or directory
+1456779148773	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.1.0):No such file or directory
+1456779148776	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.2.0):No such file or directory
+1456779148779	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.3.0):No such file or directory
+1456779148783	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.4.0):No such file or directory
+1456779148786	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.5.0):No such file or directory
+1456779148790	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.6.0):No such file or directory
+1456779148793	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.7.0):No such file or directory
+1456779148796	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.8.0):No such file or directory
+1456779148800	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.9.0):No such file or directory
+1456779148803	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.10.0):No such file or directory
+1456779148806	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.11.0):No such file or directory
+1456779148810	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.12.0):No such file or directory
+1456779148814	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.13.0):No such file or directory
+1456779148818	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.14.0):No such file or directory
+1456779148821	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.15.0):No such file or directory
+1456779148825	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.16.0):No such file or directory
+1456779148829	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.17.0):No such file or directory
+1456779148832	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.18.0):No such file or directory
+1456779148836	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.19.0):No such file or directory
+1456779148839	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.20.0):No such file or directory
+1456779148843	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.21.0):No such file or directory
+1456779148846	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.22.0):No such file or directory
+1456779148849	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.23.0):No such file or directory
+1456779148853	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.24.0):No such file or directory
+1456779148855	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.25.0):No such file or directory
+1456779148858	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.26.0):No such file or directory
+1456779148861	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.27.0):No such file or directory
+1456779148865	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.28.0):No such file or directory
+1456779148868	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.29.0):No such file or directory
+1456779148871	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.30.0):No such file or directory
+1456779148874	<WARNING 7f4c2efdf740> Unable to unlink file (stream.3.31.0):No such file or directory
+1456779148876	<INFO 7f4c2efdf740> SLIPSTORE::ZMQ_THREADS 2
+1456779148880	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1456779148884	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1456779148888	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1456779148891	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456779148894	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1456779148897	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1456779148901	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1456779148905	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1456779148909	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5062
+1456779148912	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5063
+1456779148916	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5064
+1456779148919	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at ipc://client
+1456779148923	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5066
+1456779148926	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5067
+1456779148930	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5068
+1456779148933	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5069
+1456779148936	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1456779148939	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1456779148943	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1456779148945	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456779148949	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1456779148952	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1456779148955	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1456779148958	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1456779148962	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5003
+1456779148965	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5021
+1456779148968	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5039
+1456779148971	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to ipc://server
+1456779148974	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5075
+1456779148978	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5093
+1456779148982	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5111
+1456779148986	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5129
+1456779148989	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5089
+1456779148993	<INFO 7f4c2efdf740> SLIPSTORE::COMM Listening at tcp://ens1f0:5071
+1456779148996	<INFO 7f4c2efdf740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456779148999	<INFO 7f4c2efdf740> SLIPSTORE::HELP_POLICY NONE
+1456779149002	<INFO 7f4c2efdf740> SLIPSTORE::SERVER ASYNC
+1456779149005	<INFO 7f4c2efdf740> SLIPSTORE::MACHINES 8
+1456779149008	<INFO 7f4c2efdf740> SLIPSTORE::ME 3
+1456779149012	<INFO 7f4c2efdf740> SLIPSTORE::SLIPCHUNK 4194304
+1456779149015	<INFO 7f4c2efdf740> SLIPSTORE::QUOTA 18446744073709551615
+1456779149019	<INFO 7f4c2efdf740> SLIPSTORE::IO PAGECACHE
+1456779149023	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5070
+1456779149026	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5054
+1456779149029	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5011
+1456779149032	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5055
+1456779149035	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5029
+1456779149038	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5056
+1456779149042	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5047
+1456779149046	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at ipc://server
+1456779149049	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to ipc://client
+1456779149053	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5058
+1456779149055	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5083
+1456779149059	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5059
+1456779149062	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5101
+1456779149065	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5060
+1456779149068	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5119
+1456779149070	<INFO 7f2e18ff4700> SLIPSTORE::COMM Listening at tcp://ens1f0:5061
+1456779149073	<INFO 7f2e18ff4700> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5137
+1456779151890	<INFO 7f4c2efdf740> SLIPSTORE::CHECKPOINTS NONE FOUND
+1456779223990	<INFO 7f4c2efdf740> 2016-02-29 21:53:43 Completed init
+1456779258816	<INFO 7f4c2efdf740> 2016-02-29 21:54:18 Completed phase 1 Bytes read 10322961348 Bytes written 6880348920
+1456779327458	<INFO 7f4c2efdf740> 2016-02-29 21:55:27 Completed phase 2 Bytes read 14606124936 Bytes written 10085616272
+1456779417465	<INFO 7f4c2efdf740> 2016-02-29 21:56:57 Completed phase 3 Bytes read 20334993924 Bytes written 13178043296
+1456779503583	<INFO 7f4c2efdf740> 2016-02-29 21:58:23 Completed phase 4 Bytes read 26052751608 Bytes written 16281442168
+1456779593714	<INFO 7f4c2efdf740> 2016-02-29 21:59:53 Completed phase 5 Bytes read 31791509428 Bytes written 19349581056
+1456779679420	<INFO 7f4c2efdf740> 2016-02-29 22:01:19 Completed phase 6 Bytes read 37603898096 Bytes written 22434528888
+1456779769982	<INFO 7f4c2efdf740> 2016-02-29 22:02:49 Completed phase 7 Bytes read 43331506956 Bytes written 25517415864
+1456779769985	<INFO 7f4c2efdf740> CORE::PARTITIONS_PROCESSED 142
+1456779769987	<INFO 7f4c2efdf740> CORE::BYTES::EDGES_STREAMED 1091356272
+1456779769990	<INFO 7f4c2efdf740> CORE::BYTES::UPDATES_OUT 632063936
+1456779769992	<INFO 7f4c2efdf740> CORE::BYTES::UPDATES_IN 273688376
+1456779769994	<INFO 7f2e07fff700> CORE::PARTITIONS_PROCESSED 416
+1456779769997	<INFO 7f2e07fff700> CORE::BYTES::EDGES_STREAMED 1236869796
+1456779769999	<INFO 7f2e07fff700> CORE::BYTES::UPDATES_OUT 698980160
+1456779770001	<INFO 7f2e07fff700> CORE::BYTES::UPDATES_IN 262500816
+1456779770003	<INFO 7f2e0cff9700> CORE::PARTITIONS_PROCESSED 363
+1456779770006	<INFO 7f2e0cff9700> CORE::BYTES::EDGES_STREAMED 1200102024
+1456779770008	<INFO 7f2e0cff9700> CORE::BYTES::UPDATES_OUT 695272632
+1456779770010	<INFO 7f2e0cff9700> CORE::BYTES::UPDATES_IN 338722440
+1456779770013	<INFO 7f2e0d7fa700> CORE::PARTITIONS_PROCESSED 354
+1456779770015	<INFO 7f2e0effd700> CORE::PARTITIONS_PROCESSED 309
+1456779770017	<INFO 7f2e0dffb700> CORE::PARTITIONS_PROCESSED 289
+1456779770019	<INFO 7f2e0effd700> CORE::BYTES::EDGES_STREAMED 1020249408
+1456779770022	<INFO 7f2e0e7fc700> CORE::PARTITIONS_PROCESSED 376
+1456779770024	<INFO 7f2e0effd700> CORE::BYTES::UPDATES_OUT 569456736
+1456779770026	<INFO 7f2e0dffb700> CORE::BYTES::EDGES_STREAMED 1067865888
+1456779770029	<INFO 7f2e0d7fa700> CORE::BYTES::EDGES_STREAMED 1339794672
+1456779770031	<INFO 7f2e0f7fe700> CORE::PARTITIONS_PROCESSED 311
+1456779770033	<INFO 7f2e0dffb700> CORE::BYTES::UPDATES_OUT 620591672
+1456779770036	<INFO 7f2e0e7fc700> CORE::BYTES::EDGES_STREAMED 1141417356
+1456779770038	<INFO 7f2e0effd700> CORE::BYTES::UPDATES_IN 257901328
+1456779770040	<INFO 7f2e0d7fa700> CORE::BYTES::UPDATES_OUT 747859624
+1456779770043	<INFO 7f2e0f7fe700> CORE::BYTES::EDGES_STREAMED 1023779004
+1456779770046	<INFO 7f2e0dffb700> CORE::BYTES::UPDATES_IN 320979032
+1456779770048	<INFO 7f2e0e7fc700> CORE::BYTES::UPDATES_OUT 659835312
+1456779770050	<INFO 7f2e0f7fe700> CORE::BYTES::UPDATES_OUT 588188168
+1456779770053	<INFO 7f2e0d7fa700> CORE::BYTES::UPDATES_IN 361016808
+1456779770055	<INFO 7f2e0e7fc700> CORE::BYTES::UPDATES_IN 343361880
+1456779770058	<INFO 7f2e0f7fe700> CORE::BYTES::UPDATES_IN 285434640
+1456779770214	<INFO 7f2e18ff4700> SLIPSTORE service is exiting
+1456779770216	<INFO 7f2e18ff4700> SLIPSTORE::HELP_OFFERS_RECVD 392
+1456779770219	<INFO 7f2e18ff4700> SLIPSTORE::HELP_OFFERS_ACCEPTED 0
+1456779770222	<INFO 7f2e18ff4700> SLIPSTORE::HELP_ACCEPTANCE_RATIO 0
+1456779770225	<INFO 7f2e18ff4700> SLIPSTORE::SERVER_BUSY_DISK  382.97 seconds
+1456779770227	<INFO 7f2e18ff4700> SLIPSTORE::SERVER_BUSY_MEM  0 seconds
+1456779770230	<INFO 7f2e18ff4700> SLIPSTORE::SERVER_TOTAL  621.769 seconds
+1456779770233	<INFO 7f4c2efdf740> SLIPSTORE::CLIENT::DISK_READ_TIME  184.497 seconds
+1456779770236	<INFO 7f4c2efdf740> SLIPSTORE::CLIENT::MEM_READ_TIME  0 seconds
+1456779770238	<INFO 7f4c2efdf740> SLIPSTORE::CLIENT::DISK_BYTES_READ 21711061232
+1456779770241	<INFO 7f4c2efdf740> SLIPSTORE::CLIENT::MEM_BYTES_READ 0
+1456779770243	<INFO 7f4c2efdf740> SLIPSTORE::CLIENT::WRITE_TIME  83.3207 seconds
+1456779770246	<INFO 7f4c2efdf740> SLIPSTORE::CLIENT::BYTES_WRITTEN 3623878656
+1456779770249	<INFO 7f4c2efdf740> SLIPSTORE::CLIENT_BUSY  267.818 seconds
+1456779770252	<INFO 7f4c2efdf740> SLIPSTORE::IO::TIME 289.354 seconds
+1456779770254	<INFO 7f4c2efdf740> SLIPSTORE::SNAP::TIME 0 seconds
+1456779770257	<INFO 7f4c2efdf740> SLIPSTORE::MAX_DISK_USAGE_BYTES 9380973200
+1456779771152	<INFO 7f4c2efdf740> CORE::RUSAGE::MAX_RSS_KB 125951232
+1456779771156	<INFO 7f4c2efdf740> CORE::RUSAGE::MINFLT 32099205
+1456779771160	<INFO 7f4c2efdf740> CORE::RUSAGE::MAJFLT 96
+1456779771163	<INFO 7f4c2efdf740> CORE::RUSAGE::MAJFLT 96
+1456779771167	<INFO 7f4c2efdf740> CORE::RUSAGE::INBLK 55934368
+1456779771170	<INFO 7f4c2efdf740> CORE::RUSAGE::OUBLK 49846608
+1456779771173	<INFO 7f4c2efdf740> CORE::UTILS::BYTES_READ 43331506956
+1456779771177	<INFO 7f4c2efdf740> CORE::UTILS::BYTES_WRITTEN 25517415864
+1456779771180	<INFO 7f4c2efdf740> CORE::UTILS::TILE_COPY_BYTES 3825205248
+1456779771184	<INFO 7f4c2efdf740> CORE::TIME::IO_WAIT 242.377 seconds
+1456779771188	<INFO 7f4c2efdf740> CORE::TIME_TILE_COPY 0 seconds
+1456779771191	<INFO 7f4c2efdf740> CORE::TIME_TILE_MERGE 0 seconds
+1456779771195	<INFO 7f4c2efdf740> CORE::TIME_PROCESSING_STOLEN 0 seconds
+1456779771197	<INFO 7f4c2efdf740> CORE::TIME_MERGE_WAIT 0 seconds
+1456779771200	<INFO 7f4c2efdf740> CORE::TIME_ALL_MC_BARRIER 305.442 seconds
+1456779771204	<INFO 7f4c2efdf740> CORE::PHASES 7
+1456779771208	<INFO 7f4c2efdf740> CORE::TIME::SETUP 6.42561 seconds
+1456779771211	<INFO 7f4c2efdf740> CORE::TIME::WALL 624.521 seconds
+1456779771215	<INFO 7f4c2efdf740> SHUTDOWN

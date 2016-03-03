@@ -1,0 +1,815 @@
+1456758378526	<INFO 7ff4aef5c740> 2016-02-29 16:06:18 STARTUP
+1456758378530	<INFO 7ff4aef5c740> CORE::GRAPH rmat-28-und_s8
+1456758378534	<INFO 7ff4aef5c740> CORE::ALGORITHM bfs
+1456758378538	<INFO 7ff4aef5c740> CORE::VERTEX_STRIPING ON
+1456758378542	<INFO 7ff4aef5c740> 2016-02-29 16:06:18 Blocking memory amount 120259084288
+1456758479297	<INFO 7ff4aef5c740> 2016-02-29 16:07:59 Done blocking memory
+1456758479300	<INFO 7ff4aef5c740> SG-DRIVER-ORIGINAL
+1456758479304	<INFO 7ff4aef5c740> CORE::CONFIG::PROCESSORS 8
+1456758479307	<INFO 7ff4aef5c740> CORE::CONFIG::PHYSICAL_MEMORY 209715200
+1456758479311	<INFO 7ff4aef5c740> CORE::CONFIG::VERTICES 268435456
+1456758479315	<INFO 7ff4aef5c740> CORE::CONFIG::VERTEX_SIZE 8
+1456758479319	<INFO 7ff4aef5c740> CORE::CONFIG::VERTEX_BUFFER 134217728
+1456758479322	<INFO 7ff4aef5c740> CORE::CONFIG::EDGES 1073741824
+1456758479326	<INFO 7ff4aef5c740> CORE::CONFIG::PARTITIONS 256
+1456758479330	<INFO 7ff4aef5c740> CORE::CONFIG::FANOUT 256
+1456758479334	<INFO 7ff4aef5c740> CORE::CONFIG::SUPER_PARTITIONS 16
+1456758479338	<INFO 7ff4aef5c740> CORE::CONFIG::TILES 1
+1456758479342	<INFO 7ff4aef5c740> CORE::CONFIG::BUFFER_SIZE 15095603
+1456758479346	<INFO 7ff4aef5c740> CORE::CONFIG::MAX_BUFFERS 4
+1456758479350	<INFO 7ff4aef5c740> CORE::CONFIG::MAX_STREAMS 4
+1456758479354	<INFO 7ff4aef5c740> SLIPSTREAM::EXT_MEM_SHUFFLE OFF
+1456758479472	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.0.0):No such file or directory
+1456758479475	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.1.0):No such file or directory
+1456758479479	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.2.0):No such file or directory
+1456758479483	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.3.0):No such file or directory
+1456758479486	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.4.0):No such file or directory
+1456758479490	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.5.0):No such file or directory
+1456758479494	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.6.0):No such file or directory
+1456758479499	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.7.0):No such file or directory
+1456758479503	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.8.0):No such file or directory
+1456758479508	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.9.0):No such file or directory
+1456758479512	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.10.0):No such file or directory
+1456758479516	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.11.0):No such file or directory
+1456758479519	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.12.0):No such file or directory
+1456758479524	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.13.0):No such file or directory
+1456758479528	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.14.0):No such file or directory
+1456758479532	<WARNING 7ff4aef5c740> Unable to unlink file (stream.0.15.0):No such file or directory
+1456758479536	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.1.0):No such file or directory
+1456758479540	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.2.0):No such file or directory
+1456758479544	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.3.0):No such file or directory
+1456758479548	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.4.0):No such file or directory
+1456758479553	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.5.0):No such file or directory
+1456758479557	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.6.0):No such file or directory
+1456758479561	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.7.0):No such file or directory
+1456758479564	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.8.0):No such file or directory
+1456758479568	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.9.0):No such file or directory
+1456758479572	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.10.0):No such file or directory
+1456758479576	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.11.0):No such file or directory
+1456758479580	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.12.0):No such file or directory
+1456758479584	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.13.0):No such file or directory
+1456758479587	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.14.0):No such file or directory
+1456758479590	<WARNING 7ff4aef5c740> Unable to unlink file (stream.1.15.0):No such file or directory
+1456758479593	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.0.0):No such file or directory
+1456758479597	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.1.0):No such file or directory
+1456758479600	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.2.0):No such file or directory
+1456758479604	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.3.0):No such file or directory
+1456758479607	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.4.0):No such file or directory
+1456758479610	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.5.0):No such file or directory
+1456758479614	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.6.0):No such file or directory
+1456758479618	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.7.0):No such file or directory
+1456758479621	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.8.0):No such file or directory
+1456758479624	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.9.0):No such file or directory
+1456758479628	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.10.0):No such file or directory
+1456758479632	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.11.0):No such file or directory
+1456758479635	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.12.0):No such file or directory
+1456758479638	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.13.0):No such file or directory
+1456758479642	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.14.0):No such file or directory
+1456758479645	<WARNING 7ff4aef5c740> Unable to unlink file (stream.2.15.0):No such file or directory
+1456758479648	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.0.0):No such file or directory
+1456758479652	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.1.0):No such file or directory
+1456758479655	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.2.0):No such file or directory
+1456758479658	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.3.0):No such file or directory
+1456758479661	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.4.0):No such file or directory
+1456758479664	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.5.0):No such file or directory
+1456758479668	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.6.0):No such file or directory
+1456758479671	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.7.0):No such file or directory
+1456758479674	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.8.0):No such file or directory
+1456758479677	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.9.0):No such file or directory
+1456758479680	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.10.0):No such file or directory
+1456758479683	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.11.0):No such file or directory
+1456758479686	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.12.0):No such file or directory
+1456758479690	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.13.0):No such file or directory
+1456758479693	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.14.0):No such file or directory
+1456758479696	<WARNING 7ff4aef5c740> Unable to unlink file (stream.3.15.0):No such file or directory
+1456758479699	<INFO 7ff4aef5c740> SLIPSTORE::ZMQ_THREADS 2
+1456758479702	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1456758479706	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1456758479709	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1456758479712	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456758479715	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1456758479718	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1456758479721	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1456758479724	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1456758479727	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5062
+1456758479730	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5063
+1456758479733	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5064
+1456758479736	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at ipc://client
+1456758479739	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5066
+1456758479742	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5067
+1456758479744	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5068
+1456758479747	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5069
+1456758479750	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1456758479752	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1456758479755	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1456758479758	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456758479762	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1456758479764	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1456758479768	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1456758479771	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1456758479774	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5003
+1456758479777	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5021
+1456758479780	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5039
+1456758479783	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to ipc://server
+1456758479786	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5075
+1456758479789	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5093
+1456758479793	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5111
+1456758479796	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5129
+1456758479799	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5089
+1456758479802	<INFO 7ff4aef5c740> SLIPSTORE::COMM Listening at tcp://ens1f0:5071
+1456758479805	<INFO 7ff4aef5c740> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1456758479808	<INFO 7ff4aef5c740> SLIPSTORE::HELP_POLICY NONE
+1456758479812	<INFO 7ff4aef5c740> SLIPSTORE::SERVER SYNC
+1456758479815	<INFO 7ff4aef5c740> SLIPSTORE::MACHINES 8
+1456758479818	<INFO 7ff4aef5c740> SLIPSTORE::ME 3
+1456758479821	<INFO 7ff4aef5c740> SLIPSTORE::SLIPCHUNK 4194304
+1456758479823	<INFO 7ff4aef5c740> SLIPSTORE::QUOTA 18446744073709551615
+1456758479826	<INFO 7ff4aef5c740> SLIPSTORE::IO PAGECACHE
+1456758479829	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5070
+1456758479832	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5054
+1456758479835	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5011
+1456758479838	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5055
+1456758479840	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5029
+1456758479844	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5056
+1456758479846	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5047
+1456758479849	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at ipc://server
+1456758479852	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to ipc://client
+1456758479855	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5058
+1456758479858	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5083
+1456758479862	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5059
+1456758479865	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5101
+1456758479868	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5060
+1456758479872	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5119
+1456758479875	<INFO 7fd88e7fc700> SLIPSTORE::COMM Listening at tcp://ens1f0:5061
+1456758479878	<INFO 7fd88e7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5137
+1456758482794	<INFO 7ff4aef5c740> SLIPSTORE::CHECKPOINTS NONE FOUND
+1456758884331	<INFO 7ff4aef5c740> 2016-02-29 16:14:44 Completed init
+1456758884449	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456758884452	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456758884454	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456758884457	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456758884459	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456758884461	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456758884464	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456758884466	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456758884468	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456758884471	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456758884473	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456758884476	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456758884482	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456758884485	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456758884488	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456758884491	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456758885010	<INFO 7fd88e7fc700> trunc() stream.0.14.0
+1456758885012	<INFO 7fd88e7fc700> trunc() ok stream.0.14.0
+1456758885046	<INFO 7fd88e7fc700> trunc() stream.0.9.0
+1456758885049	<INFO 7fd88e7fc700> trunc() ok stream.0.9.0
+1456758885052	<INFO 7fd88e7fc700> trunc() stream.0.13.0
+1456758885055	<INFO 7fd88e7fc700> trunc() ok stream.0.13.0
+1456758885057	<INFO 7fd88e7fc700> trunc() stream.0.10.0
+1456758885059	<INFO 7fd88e7fc700> trunc() ok stream.0.10.0
+1456758885079	<INFO 7fd88e7fc700> trunc() stream.0.12.0
+1456758885082	<INFO 7fd88e7fc700> trunc() ok stream.0.12.0
+1456758885122	<INFO 7fd88e7fc700> trunc() stream.0.8.0
+1456758885125	<INFO 7fd88e7fc700> trunc() ok stream.0.8.0
+1456758885129	<INFO 7fd88e7fc700> trunc() stream.0.11.0
+1456758885132	<INFO 7fd88e7fc700> trunc() ok stream.0.11.0
+1456758885169	<INFO 7fd88e7fc700> trunc() stream.0.15.0
+1456758885171	<INFO 7fd88e7fc700> trunc() ok stream.0.15.0
+1456758886041	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456758886050	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456758886057	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456758886062	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456758886080	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456758886089	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456758886098	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456758886106	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456758886122	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456758886129	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456758886145	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456758886154	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456758886157	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456758886163	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456758886166	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456758886172	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456758886738	<INFO 7fd88dffb700> reset  3 0 0
+1456758886740	<INFO 7fd88dffb700> trunc() stream.3.0.0
+1456758886742	<INFO 7fd88dffb700> trunc() ok stream.3.0.0
+1456758886745	<INFO 7fd88dffb700> done reset  3 0 0
+1456758886747	<INFO 7fd88dffb700> reset  3 1 0
+1456758886750	<INFO 7fd88dffb700> trunc() stream.3.1.0
+1456758886752	<INFO 7fd88dffb700> trunc() ok stream.3.1.0
+1456758886754	<INFO 7fd88dffb700> done reset  3 1 0
+1456758886757	<INFO 7fd88dffb700> reset  3 2 0
+1456758886759	<INFO 7fd88dffb700> trunc() stream.3.2.0
+1456758886762	<INFO 7fd88dffb700> trunc() ok stream.3.2.0
+1456758886765	<INFO 7fd88dffb700> done reset  3 2 0
+1456758886767	<INFO 7fd88dffb700> reset  3 3 0
+1456758886770	<INFO 7fd88dffb700> trunc() stream.3.3.0
+1456758886772	<INFO 7fd88dffb700> trunc() ok stream.3.3.0
+1456758886775	<INFO 7fd88dffb700> done reset  3 3 0
+1456758886777	<INFO 7fd88dffb700> reset  3 4 0
+1456758886780	<INFO 7fd88dffb700> trunc() stream.3.4.0
+1456758886782	<INFO 7fd88dffb700> trunc() ok stream.3.4.0
+1456758886784	<INFO 7fd88dffb700> done reset  3 4 0
+1456758886787	<INFO 7fd88dffb700> reset  3 5 0
+1456758886790	<INFO 7fd88dffb700> trunc() stream.3.5.0
+1456758886792	<INFO 7fd88dffb700> trunc() ok stream.3.5.0
+1456758886794	<INFO 7fd88dffb700> done reset  3 5 0
+1456758886797	<INFO 7fd88dffb700> reset  3 6 0
+1456758886799	<INFO 7fd88dffb700> trunc() stream.3.6.0
+1456758886802	<INFO 7fd88dffb700> trunc() ok stream.3.6.0
+1456758886804	<INFO 7fd88dffb700> done reset  3 6 0
+1456758886806	<INFO 7fd88dffb700> reset  3 7 0
+1456758886808	<INFO 7fd88dffb700> trunc() stream.3.7.0
+1456758886811	<INFO 7fd88dffb700> trunc() ok stream.3.7.0
+1456758886818	<INFO 7fd88dffb700> done reset  3 7 0
+1456758886822	<INFO 7fd88dffb700> reset  3 8 0
+1456758886824	<INFO 7fd88dffb700> trunc() stream.3.8.0
+1456758886827	<INFO 7fd88dffb700> trunc() ok stream.3.8.0
+1456758886829	<INFO 7fd88dffb700> done reset  3 8 0
+1456758886831	<INFO 7fd88dffb700> reset  3 9 0
+1456758886835	<INFO 7fd88dffb700> trunc() stream.3.9.0
+1456758886837	<INFO 7fd88dffb700> trunc() ok stream.3.9.0
+1456758886843	<INFO 7fd88dffb700> done reset  3 9 0
+1456758886845	<INFO 7fd88dffb700> reset  3 10 0
+1456758886848	<INFO 7fd88dffb700> trunc() stream.3.10.0
+1456758886852	<INFO 7fd88dffb700> trunc() ok stream.3.10.0
+1456758886854	<INFO 7fd88dffb700> done reset  3 10 0
+1456758886857	<INFO 7fd88dffb700> reset  3 11 0
+1456758886859	<INFO 7fd88dffb700> trunc() stream.3.11.0
+1456758886861	<INFO 7fd88dffb700> trunc() ok stream.3.11.0
+1456758886863	<INFO 7fd88dffb700> done reset  3 11 0
+1456758886867	<INFO 7fd88dffb700> reset  3 12 0
+1456758886870	<INFO 7fd88dffb700> trunc() stream.3.12.0
+1456758886872	<INFO 7fd88dffb700> trunc() ok stream.3.12.0
+1456758886875	<INFO 7fd88dffb700> done reset  3 12 0
+1456758886877	<INFO 7fd88dffb700> reset  3 13 0
+1456758886880	<INFO 7fd88dffb700> trunc() stream.3.13.0
+1456758886886	<INFO 7fd88dffb700> trunc() ok stream.3.13.0
+1456758886891	<INFO 7fd88dffb700> done reset  3 13 0
+1456758886894	<INFO 7fd88dffb700> reset  3 14 0
+1456758886897	<INFO 7fd88dffb700> trunc() stream.3.14.0
+1456758886901	<INFO 7fd88dffb700> trunc() ok stream.3.14.0
+1456758886905	<INFO 7fd88dffb700> done reset  3 14 0
+1456758886911	<INFO 7fd88dffb700> reset  3 15 0
+1456758886915	<INFO 7fd88dffb700> trunc() stream.3.15.0
+1456758886918	<INFO 7fd88dffb700> trunc() ok stream.3.15.0
+1456758886923	<INFO 7fd88dffb700> done reset  3 15 0
+1456759069442	<INFO 7ff4aef5c740> 2016-02-29 16:17:49 Completed phase 1 Bytes read 22908856228 Bytes written 13272613792
+1456759069848	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456759069855	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456759069858	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456759069863	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456759069878	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456759069885	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456759069887	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456759069892	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456759069902	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456759069909	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456759069911	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456759069916	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456759069929	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456759069937	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456759069986	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456759069993	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456759070485	<INFO 7fd88dffb700> reset  3 0 0
+1456759070487	<INFO 7fd88dffb700> trunc() stream.3.0.0
+1456759070489	<INFO 7fd88dffb700> trunc() ok stream.3.0.0
+1456759070492	<INFO 7fd88dffb700> done reset  3 0 0
+1456759070494	<INFO 7fd88dffb700> reset  3 1 0
+1456759070496	<INFO 7fd88dffb700> trunc() stream.3.1.0
+1456759070499	<INFO 7fd88dffb700> trunc() ok stream.3.1.0
+1456759070501	<INFO 7fd88dffb700> done reset  3 1 0
+1456759070786	<INFO 7fd88dffb700> reset  3 2 0
+1456759070789	<INFO 7fd88dffb700> trunc() stream.3.2.0
+1456759070791	<INFO 7fd88dffb700> trunc() ok stream.3.2.0
+1456759070794	<INFO 7fd88dffb700> done reset  3 2 0
+1456759070796	<INFO 7fd88dffb700> reset  3 3 0
+1456759070798	<INFO 7fd88dffb700> trunc() stream.3.3.0
+1456759070801	<INFO 7fd88dffb700> trunc() ok stream.3.3.0
+1456759070803	<INFO 7fd88dffb700> done reset  3 3 0
+1456759070806	<INFO 7fd88dffb700> reset  3 4 0
+1456759070808	<INFO 7fd88dffb700> trunc() stream.3.4.0
+1456759070810	<INFO 7fd88dffb700> trunc() ok stream.3.4.0
+1456759070813	<INFO 7fd88dffb700> done reset  3 4 0
+1456759070815	<INFO 7fd88dffb700> reset  3 5 0
+1456759070817	<INFO 7fd88dffb700> trunc() stream.3.5.0
+1456759070820	<INFO 7fd88dffb700> trunc() ok stream.3.5.0
+1456759070822	<INFO 7fd88dffb700> done reset  3 5 0
+1456759070824	<INFO 7fd88dffb700> reset  3 6 0
+1456759070827	<INFO 7fd88dffb700> trunc() stream.3.6.0
+1456759070829	<INFO 7fd88dffb700> trunc() ok stream.3.6.0
+1456759070831	<INFO 7fd88dffb700> done reset  3 6 0
+1456759070834	<INFO 7fd88dffb700> reset  3 7 0
+1456759070836	<INFO 7fd88dffb700> trunc() stream.3.7.0
+1456759070838	<INFO 7fd88dffb700> trunc() ok stream.3.7.0
+1456759070841	<INFO 7fd88dffb700> done reset  3 7 0
+1456759070843	<INFO 7fd88dffb700> reset  3 8 0
+1456759070846	<INFO 7fd88dffb700> trunc() stream.3.8.0
+1456759070848	<INFO 7fd88dffb700> trunc() ok stream.3.8.0
+1456759070850	<INFO 7fd88dffb700> done reset  3 8 0
+1456759070853	<INFO 7fd88dffb700> reset  3 9 0
+1456759070855	<INFO 7fd88dffb700> trunc() stream.3.9.0
+1456759070858	<INFO 7fd88dffb700> trunc() ok stream.3.9.0
+1456759070860	<INFO 7fd88dffb700> done reset  3 9 0
+1456759070863	<INFO 7fd88dffb700> reset  3 10 0
+1456759070865	<INFO 7fd88dffb700> trunc() stream.3.10.0
+1456759070868	<INFO 7fd88dffb700> trunc() ok stream.3.10.0
+1456759070870	<INFO 7fd88dffb700> done reset  3 10 0
+1456759070872	<INFO 7fd88dffb700> reset  3 11 0
+1456759070876	<INFO 7fd88dffb700> trunc() stream.3.11.0
+1456759070879	<INFO 7fd88dffb700> trunc() ok stream.3.11.0
+1456759070881	<INFO 7fd88dffb700> done reset  3 11 0
+1456759070884	<INFO 7fd88dffb700> reset  3 12 0
+1456759070887	<INFO 7fd88dffb700> trunc() stream.3.12.0
+1456759070889	<INFO 7fd88dffb700> trunc() ok stream.3.12.0
+1456759070891	<INFO 7fd88dffb700> done reset  3 12 0
+1456759070894	<INFO 7fd88dffb700> reset  3 13 0
+1456759070897	<INFO 7fd88dffb700> trunc() stream.3.13.0
+1456759070900	<INFO 7fd88dffb700> trunc() ok stream.3.13.0
+1456759070903	<INFO 7fd88dffb700> done reset  3 13 0
+1456759070906	<INFO 7fd88dffb700> reset  3 14 0
+1456759070908	<INFO 7fd88dffb700> trunc() stream.3.14.0
+1456759070911	<INFO 7fd88dffb700> trunc() ok stream.3.14.0
+1456759070913	<INFO 7fd88dffb700> done reset  3 14 0
+1456759070916	<INFO 7fd88dffb700> reset  3 15 0
+1456759070918	<INFO 7fd88dffb700> trunc() stream.3.15.0
+1456759070921	<INFO 7fd88dffb700> trunc() ok stream.3.15.0
+1456759070923	<INFO 7fd88dffb700> done reset  3 15 0
+1456759292496	<INFO 7ff4aef5c740> 2016-02-29 16:21:32 Completed phase 2 Bytes read 32935768528 Bytes written 17268252480
+1456759295248	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456759295255	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456759302684	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456759302692	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456759302832	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456759302839	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456759302842	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456759302847	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456759309574	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456759309582	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456759309641	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456759309649	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456759310174	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456759310181	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456759329310	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456759329316	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456759330818	<INFO 7fd88dffb700> reset  3 0 0
+1456759330820	<INFO 7fd88dffb700> trunc() stream.3.0.0
+1456759331258	<INFO 7fd88dffb700> trunc() ok stream.3.0.0
+1456759331261	<INFO 7fd88dffb700> done reset  3 0 0
+1456759333466	<INFO 7fd88dffb700> reset  3 1 0
+1456759333469	<INFO 7fd88dffb700> trunc() stream.3.1.0
+1456759333619	<INFO 7fd88dffb700> trunc() ok stream.3.1.0
+1456759333622	<INFO 7fd88dffb700> done reset  3 1 0
+1456759334725	<INFO 7fd88dffb700> reset  3 2 0
+1456759334728	<INFO 7fd88dffb700> trunc() stream.3.2.0
+1456759334879	<INFO 7fd88dffb700> trunc() ok stream.3.2.0
+1456759334882	<INFO 7fd88dffb700> done reset  3 2 0
+1456759335675	<INFO 7fd88dffb700> reset  3 3 0
+1456759335678	<INFO 7fd88dffb700> trunc() stream.3.3.0
+1456759335730	<INFO 7fd88dffb700> trunc() ok stream.3.3.0
+1456759335732	<INFO 7fd88dffb700> done reset  3 3 0
+1456759336439	<INFO 7fd88dffb700> reset  3 4 0
+1456759336442	<INFO 7fd88dffb700> trunc() stream.3.4.0
+1456759336592	<INFO 7fd88dffb700> trunc() ok stream.3.4.0
+1456759336594	<INFO 7fd88dffb700> done reset  3 4 0
+1456759337389	<INFO 7fd88dffb700> reset  3 5 0
+1456759337391	<INFO 7fd88dffb700> trunc() stream.3.5.0
+1456759337446	<INFO 7fd88dffb700> trunc() ok stream.3.5.0
+1456759337448	<INFO 7fd88dffb700> done reset  3 5 0
+1456759337852	<INFO 7fd88dffb700> reset  3 6 0
+1456759337855	<INFO 7fd88dffb700> trunc() stream.3.6.0
+1456759337910	<INFO 7fd88dffb700> trunc() ok stream.3.6.0
+1456759337912	<INFO 7fd88dffb700> done reset  3 6 0
+1456759338210	<INFO 7fd88dffb700> reset  3 7 0
+1456759338212	<INFO 7fd88dffb700> trunc() stream.3.7.0
+1456759338232	<INFO 7fd88dffb700> trunc() ok stream.3.7.0
+1456759338234	<INFO 7fd88dffb700> done reset  3 7 0
+1456759338652	<INFO 7fd88dffb700> reset  3 8 0
+1456759338654	<INFO 7fd88dffb700> trunc() stream.3.8.0
+1456759338765	<INFO 7fd88dffb700> trunc() ok stream.3.8.0
+1456759338767	<INFO 7fd88dffb700> done reset  3 8 0
+1456759339362	<INFO 7fd88dffb700> reset  3 9 0
+1456759339364	<INFO 7fd88dffb700> trunc() stream.3.9.0
+1456759339406	<INFO 7fd88dffb700> trunc() ok stream.3.9.0
+1456759339408	<INFO 7fd88dffb700> done reset  3 9 0
+1456759339726	<INFO 7fd88dffb700> reset  3 10 0
+1456759339729	<INFO 7fd88dffb700> trunc() stream.3.10.0
+1456759339771	<INFO 7fd88dffb700> trunc() ok stream.3.10.0
+1456759339773	<INFO 7fd88dffb700> done reset  3 10 0
+1456759340016	<INFO 7fd88dffb700> reset  3 11 0
+1456759340019	<INFO 7fd88dffb700> trunc() stream.3.11.0
+1456759340038	<INFO 7fd88dffb700> trunc() ok stream.3.11.0
+1456759340040	<INFO 7fd88dffb700> done reset  3 11 0
+1456759340281	<INFO 7fd88dffb700> reset  3 12 0
+1456759340283	<INFO 7fd88dffb700> trunc() stream.3.12.0
+1456759340326	<INFO 7fd88dffb700> trunc() ok stream.3.12.0
+1456759340328	<INFO 7fd88dffb700> done reset  3 12 0
+1456759340583	<INFO 7fd88dffb700> reset  3 13 0
+1456759340585	<INFO 7fd88dffb700> trunc() stream.3.13.0
+1456759340606	<INFO 7fd88dffb700> trunc() ok stream.3.13.0
+1456759340608	<INFO 7fd88dffb700> done reset  3 13 0
+1456759340765	<INFO 7fd88dffb700> reset  3 14 0
+1456759340768	<INFO 7fd88dffb700> trunc() stream.3.14.0
+1456759340787	<INFO 7fd88dffb700> trunc() ok stream.3.14.0
+1456759340789	<INFO 7fd88dffb700> done reset  3 14 0
+1456759340905	<INFO 7fd88dffb700> reset  3 15 0
+1456759340907	<INFO 7fd88dffb700> trunc() stream.3.15.0
+1456759340913	<INFO 7fd88dffb700> trunc() ok stream.3.15.0
+1456759340916	<INFO 7fd88dffb700> done reset  3 15 0
+1456759554068	<INFO 7ff4aef5c740> 2016-02-29 16:25:54 Completed phase 3 Bytes read 45856808396 Bytes written 20051798600
+1456759555497	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456759555507	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456759556666	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456759556673	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456759556675	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456759556680	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456759556682	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456759556687	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456759561128	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456759561138	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456759561146	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456759561156	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456759561353	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456759561360	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456759574911	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456759574918	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456759576378	<INFO 7fd88dffb700> reset  3 0 0
+1456759576380	<INFO 7fd88dffb700> trunc() stream.3.0.0
+1456759576760	<INFO 7fd88dffb700> trunc() ok stream.3.0.0
+1456759576763	<INFO 7fd88dffb700> done reset  3 0 0
+1456759578660	<INFO 7fd88dffb700> reset  3 1 0
+1456759578663	<INFO 7fd88dffb700> trunc() stream.3.1.0
+1456759578784	<INFO 7fd88dffb700> trunc() ok stream.3.1.0
+1456759578787	<INFO 7fd88dffb700> done reset  3 1 0
+1456759579729	<INFO 7fd88dffb700> reset  3 2 0
+1456759579731	<INFO 7fd88dffb700> trunc() stream.3.2.0
+1456759579854	<INFO 7fd88dffb700> trunc() ok stream.3.2.0
+1456759579856	<INFO 7fd88dffb700> done reset  3 2 0
+1456759580491	<INFO 7fd88dffb700> reset  3 3 0
+1456759580494	<INFO 7fd88dffb700> trunc() stream.3.3.0
+1456759580535	<INFO 7fd88dffb700> trunc() ok stream.3.3.0
+1456759580537	<INFO 7fd88dffb700> done reset  3 3 0
+1456759581099	<INFO 7fd88dffb700> reset  3 4 0
+1456759581101	<INFO 7fd88dffb700> trunc() stream.3.4.0
+1456759581227	<INFO 7fd88dffb700> trunc() ok stream.3.4.0
+1456759581230	<INFO 7fd88dffb700> done reset  3 4 0
+1456759581884	<INFO 7fd88dffb700> reset  3 5 0
+1456759581886	<INFO 7fd88dffb700> trunc() stream.3.5.0
+1456759581927	<INFO 7fd88dffb700> trunc() ok stream.3.5.0
+1456759581929	<INFO 7fd88dffb700> done reset  3 5 0
+1456759582234	<INFO 7fd88dffb700> reset  3 6 0
+1456759582237	<INFO 7fd88dffb700> trunc() stream.3.6.0
+1456759582278	<INFO 7fd88dffb700> trunc() ok stream.3.6.0
+1456759582280	<INFO 7fd88dffb700> done reset  3 6 0
+1456759582504	<INFO 7fd88dffb700> reset  3 7 0
+1456759582506	<INFO 7fd88dffb700> trunc() stream.3.7.0
+1456759582519	<INFO 7fd88dffb700> trunc() ok stream.3.7.0
+1456759582521	<INFO 7fd88dffb700> done reset  3 7 0
+1456759582994	<INFO 7fd88dffb700> reset  3 8 0
+1456759582996	<INFO 7fd88dffb700> trunc() stream.3.8.0
+1456759583134	<INFO 7fd88dffb700> trunc() ok stream.3.8.0
+1456759583136	<INFO 7fd88dffb700> done reset  3 8 0
+1456759583856	<INFO 7fd88dffb700> reset  3 9 0
+1456759583858	<INFO 7fd88dffb700> trunc() stream.3.9.0
+1456759583902	<INFO 7fd88dffb700> trunc() ok stream.3.9.0
+1456759583905	<INFO 7fd88dffb700> done reset  3 9 0
+1456759584254	<INFO 7fd88dffb700> reset  3 10 0
+1456759584257	<INFO 7fd88dffb700> trunc() stream.3.10.0
+1456759584302	<INFO 7fd88dffb700> trunc() ok stream.3.10.0
+1456759584305	<INFO 7fd88dffb700> done reset  3 10 0
+1456759584550	<INFO 7fd88dffb700> reset  3 11 0
+1456759584553	<INFO 7fd88dffb700> trunc() stream.3.11.0
+1456759584566	<INFO 7fd88dffb700> trunc() ok stream.3.11.0
+1456759584569	<INFO 7fd88dffb700> done reset  3 11 0
+1456759584781	<INFO 7fd88dffb700> reset  3 12 0
+1456759584783	<INFO 7fd88dffb700> trunc() stream.3.12.0
+1456759584828	<INFO 7fd88dffb700> trunc() ok stream.3.12.0
+1456759584830	<INFO 7fd88dffb700> done reset  3 12 0
+1456759585078	<INFO 7fd88dffb700> reset  3 13 0
+1456759585080	<INFO 7fd88dffb700> trunc() stream.3.13.0
+1456759585094	<INFO 7fd88dffb700> trunc() ok stream.3.13.0
+1456759585096	<INFO 7fd88dffb700> done reset  3 13 0
+1456759585219	<INFO 7fd88dffb700> reset  3 14 0
+1456759585221	<INFO 7fd88dffb700> trunc() stream.3.14.0
+1456759585235	<INFO 7fd88dffb700> trunc() ok stream.3.14.0
+1456759585237	<INFO 7fd88dffb700> done reset  3 14 0
+1456759585323	<INFO 7fd88dffb700> reset  3 15 0
+1456759585325	<INFO 7fd88dffb700> trunc() stream.3.15.0
+1456759585327	<INFO 7fd88dffb700> trunc() ok stream.3.15.0
+1456759585330	<INFO 7fd88dffb700> done reset  3 15 0
+1456759720008	<INFO 7ff4aef5c740> 2016-02-29 16:28:40 Completed phase 4 Bytes read 57873660488 Bytes written 20198359640
+1456759720448	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456759720454	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456759720473	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456759720481	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456759720483	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456759720490	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456759720492	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456759720498	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456759720500	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456759720505	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456759720507	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456759720513	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456759720515	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456759720520	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456759721085	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456759721092	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456759721226	<INFO 7fd88dffb700> reset  3 0 0
+1456759721228	<INFO 7fd88dffb700> trunc() stream.3.0.0
+1456759721230	<INFO 7fd88dffb700> trunc() ok stream.3.0.0
+1456759721233	<INFO 7fd88dffb700> done reset  3 0 0
+1456759721240	<INFO 7fd88dffb700> reset  3 1 0
+1456759721242	<INFO 7fd88dffb700> trunc() stream.3.1.0
+1456759721245	<INFO 7fd88dffb700> trunc() ok stream.3.1.0
+1456759721247	<INFO 7fd88dffb700> done reset  3 1 0
+1456759721251	<INFO 7fd88dffb700> reset  3 2 0
+1456759721253	<INFO 7fd88dffb700> trunc() stream.3.2.0
+1456759721256	<INFO 7fd88dffb700> trunc() ok stream.3.2.0
+1456759721258	<INFO 7fd88dffb700> done reset  3 2 0
+1456759721260	<INFO 7fd88dffb700> reset  3 3 0
+1456759721263	<INFO 7fd88dffb700> trunc() stream.3.3.0
+1456759721265	<INFO 7fd88dffb700> trunc() ok stream.3.3.0
+1456759721268	<INFO 7fd88dffb700> done reset  3 3 0
+1456759721270	<INFO 7fd88dffb700> reset  3 4 0
+1456759721272	<INFO 7fd88dffb700> trunc() stream.3.4.0
+1456759721275	<INFO 7fd88dffb700> trunc() ok stream.3.4.0
+1456759721277	<INFO 7fd88dffb700> done reset  3 4 0
+1456759721279	<INFO 7fd88dffb700> reset  3 5 0
+1456759721282	<INFO 7fd88dffb700> trunc() stream.3.5.0
+1456759721285	<INFO 7fd88dffb700> trunc() ok stream.3.5.0
+1456759721287	<INFO 7fd88dffb700> done reset  3 5 0
+1456759721289	<INFO 7fd88dffb700> reset  3 6 0
+1456759721292	<INFO 7fd88dffb700> trunc() stream.3.6.0
+1456759721295	<INFO 7fd88dffb700> trunc() ok stream.3.6.0
+1456759721298	<INFO 7fd88dffb700> done reset  3 6 0
+1456759721300	<INFO 7fd88dffb700> reset  3 7 0
+1456759721302	<INFO 7fd88dffb700> trunc() stream.3.7.0
+1456759721305	<INFO 7fd88dffb700> trunc() ok stream.3.7.0
+1456759721307	<INFO 7fd88dffb700> done reset  3 7 0
+1456759721309	<INFO 7fd88dffb700> reset  3 8 0
+1456759721312	<INFO 7fd88dffb700> trunc() stream.3.8.0
+1456759721314	<INFO 7fd88dffb700> trunc() ok stream.3.8.0
+1456759721316	<INFO 7fd88dffb700> done reset  3 8 0
+1456759721319	<INFO 7fd88dffb700> reset  3 9 0
+1456759721322	<INFO 7fd88dffb700> trunc() stream.3.9.0
+1456759721324	<INFO 7fd88dffb700> trunc() ok stream.3.9.0
+1456759721326	<INFO 7fd88dffb700> done reset  3 9 0
+1456759721329	<INFO 7fd88dffb700> reset  3 10 0
+1456759721331	<INFO 7fd88dffb700> trunc() stream.3.10.0
+1456759721333	<INFO 7fd88dffb700> trunc() ok stream.3.10.0
+1456759721336	<INFO 7fd88dffb700> done reset  3 10 0
+1456759721338	<INFO 7fd88dffb700> reset  3 11 0
+1456759721341	<INFO 7fd88dffb700> trunc() stream.3.11.0
+1456759721343	<INFO 7fd88dffb700> trunc() ok stream.3.11.0
+1456759721345	<INFO 7fd88dffb700> done reset  3 11 0
+1456759721348	<INFO 7fd88dffb700> reset  3 12 0
+1456759721350	<INFO 7fd88dffb700> trunc() stream.3.12.0
+1456759721354	<INFO 7fd88dffb700> trunc() ok stream.3.12.0
+1456759721359	<INFO 7fd88dffb700> done reset  3 12 0
+1456759721361	<INFO 7fd88dffb700> reset  3 13 0
+1456759721364	<INFO 7fd88dffb700> trunc() stream.3.13.0
+1456759721366	<INFO 7fd88dffb700> trunc() ok stream.3.13.0
+1456759721368	<INFO 7fd88dffb700> done reset  3 13 0
+1456759721371	<INFO 7fd88dffb700> reset  3 14 0
+1456759721373	<INFO 7fd88dffb700> trunc() stream.3.14.0
+1456759721375	<INFO 7fd88dffb700> trunc() ok stream.3.14.0
+1456759721379	<INFO 7fd88dffb700> done reset  3 14 0
+1456759721381	<INFO 7fd88dffb700> reset  3 15 0
+1456759721385	<INFO 7fd88dffb700> trunc() stream.3.15.0
+1456759721387	<INFO 7fd88dffb700> trunc() ok stream.3.15.0
+1456759721390	<INFO 7fd88dffb700> done reset  3 15 0
+1456759789305	<INFO 7ff4aef5c740> 2016-02-29 16:29:49 Completed phase 5 Bytes read 67906912204 Bytes written 20332605304
+1456759789685	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456759789694	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456759789733	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456759789741	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456759789753	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456759789760	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456759789763	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456759789768	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456759789777	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456759789785	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456759789787	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456759789794	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456759789807	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456759789821	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456759789839	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456759789847	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456759790443	<INFO 7fd88dffb700> reset  3 0 0
+1456759790446	<INFO 7fd88dffb700> trunc() stream.3.0.0
+1456759790448	<INFO 7fd88dffb700> trunc() ok stream.3.0.0
+1456759790450	<INFO 7fd88dffb700> done reset  3 0 0
+1456759790453	<INFO 7fd88dffb700> reset  3 1 0
+1456759790455	<INFO 7fd88dffb700> trunc() stream.3.1.0
+1456759790458	<INFO 7fd88dffb700> trunc() ok stream.3.1.0
+1456759790460	<INFO 7fd88dffb700> done reset  3 1 0
+1456759790462	<INFO 7fd88dffb700> reset  3 2 0
+1456759790465	<INFO 7fd88dffb700> trunc() stream.3.2.0
+1456759790467	<INFO 7fd88dffb700> trunc() ok stream.3.2.0
+1456759790470	<INFO 7fd88dffb700> done reset  3 2 0
+1456759790472	<INFO 7fd88dffb700> reset  3 3 0
+1456759790474	<INFO 7fd88dffb700> trunc() stream.3.3.0
+1456759790477	<INFO 7fd88dffb700> trunc() ok stream.3.3.0
+1456759790479	<INFO 7fd88dffb700> done reset  3 3 0
+1456759790481	<INFO 7fd88dffb700> reset  3 4 0
+1456759790484	<INFO 7fd88dffb700> trunc() stream.3.4.0
+1456759790486	<INFO 7fd88dffb700> trunc() ok stream.3.4.0
+1456759790488	<INFO 7fd88dffb700> done reset  3 4 0
+1456759790491	<INFO 7fd88dffb700> reset  3 5 0
+1456759790493	<INFO 7fd88dffb700> trunc() stream.3.5.0
+1456759790496	<INFO 7fd88dffb700> trunc() ok stream.3.5.0
+1456759790498	<INFO 7fd88dffb700> done reset  3 5 0
+1456759790500	<INFO 7fd88dffb700> reset  3 6 0
+1456759790503	<INFO 7fd88dffb700> trunc() stream.3.6.0
+1456759790505	<INFO 7fd88dffb700> trunc() ok stream.3.6.0
+1456759790507	<INFO 7fd88dffb700> done reset  3 6 0
+1456759790510	<INFO 7fd88dffb700> reset  3 7 0
+1456759790512	<INFO 7fd88dffb700> trunc() stream.3.7.0
+1456759790515	<INFO 7fd88dffb700> trunc() ok stream.3.7.0
+1456759790517	<INFO 7fd88dffb700> done reset  3 7 0
+1456759790519	<INFO 7fd88dffb700> reset  3 8 0
+1456759790522	<INFO 7fd88dffb700> trunc() stream.3.8.0
+1456759790524	<INFO 7fd88dffb700> trunc() ok stream.3.8.0
+1456759790527	<INFO 7fd88dffb700> done reset  3 8 0
+1456759790530	<INFO 7fd88dffb700> reset  3 9 0
+1456759790533	<INFO 7fd88dffb700> trunc() stream.3.9.0
+1456759790535	<INFO 7fd88dffb700> trunc() ok stream.3.9.0
+1456759790538	<INFO 7fd88dffb700> done reset  3 9 0
+1456759790540	<INFO 7fd88dffb700> reset  3 10 0
+1456759790543	<INFO 7fd88dffb700> trunc() stream.3.10.0
+1456759790545	<INFO 7fd88dffb700> trunc() ok stream.3.10.0
+1456759790548	<INFO 7fd88dffb700> done reset  3 10 0
+1456759790550	<INFO 7fd88dffb700> reset  3 11 0
+1456759790553	<INFO 7fd88dffb700> trunc() stream.3.11.0
+1456759790556	<INFO 7fd88dffb700> trunc() ok stream.3.11.0
+1456759790558	<INFO 7fd88dffb700> done reset  3 11 0
+1456759790560	<INFO 7fd88dffb700> reset  3 12 0
+1456759790563	<INFO 7fd88dffb700> trunc() stream.3.12.0
+1456759790565	<INFO 7fd88dffb700> trunc() ok stream.3.12.0
+1456759790569	<INFO 7fd88dffb700> done reset  3 12 0
+1456759790575	<INFO 7fd88dffb700> reset  3 13 0
+1456759790578	<INFO 7fd88dffb700> trunc() stream.3.13.0
+1456759790580	<INFO 7fd88dffb700> trunc() ok stream.3.13.0
+1456759790584	<INFO 7fd88dffb700> done reset  3 13 0
+1456759790587	<INFO 7fd88dffb700> reset  3 14 0
+1456759790589	<INFO 7fd88dffb700> trunc() stream.3.14.0
+1456759790592	<INFO 7fd88dffb700> trunc() ok stream.3.14.0
+1456759790594	<INFO 7fd88dffb700> done reset  3 14 0
+1456759790597	<INFO 7fd88dffb700> reset  3 15 0
+1456759790600	<INFO 7fd88dffb700> trunc() stream.3.15.0
+1456759790603	<INFO 7fd88dffb700> trunc() ok stream.3.15.0
+1456759790605	<INFO 7fd88dffb700> done reset  3 15 0
+1456759857363	<INFO 7ff4aef5c740> 2016-02-29 16:30:57 Completed phase 6 Bytes read 77930887416 Bytes written 20466823072
+1456759857742	<INFO 7fd88e7fc700> trunc() stream.0.4.0
+1456759857754	<INFO 7fd88e7fc700> trunc() ok stream.0.4.0
+1456759857785	<INFO 7fd88e7fc700> trunc() stream.0.2.0
+1456759857794	<INFO 7fd88e7fc700> trunc() ok stream.0.2.0
+1456759857796	<INFO 7fd88e7fc700> trunc() stream.0.0.0
+1456759857803	<INFO 7fd88e7fc700> trunc() ok stream.0.0.0
+1456759857806	<INFO 7fd88e7fc700> trunc() stream.0.1.0
+1456759857813	<INFO 7fd88e7fc700> trunc() ok stream.0.1.0
+1456759857815	<INFO 7fd88e7fc700> trunc() stream.0.6.0
+1456759857823	<INFO 7fd88e7fc700> trunc() ok stream.0.6.0
+1456759857835	<INFO 7fd88e7fc700> trunc() stream.0.5.0
+1456759857846	<INFO 7fd88e7fc700> trunc() ok stream.0.5.0
+1456759857865	<INFO 7fd88e7fc700> trunc() stream.0.3.0
+1456759857875	<INFO 7fd88e7fc700> trunc() ok stream.0.3.0
+1456759857926	<INFO 7fd88e7fc700> trunc() stream.0.7.0
+1456759857936	<INFO 7fd88e7fc700> trunc() ok stream.0.7.0
+1456759858523	<INFO 7fd88dffb700> reset  3 0 0
+1456759858525	<INFO 7fd88dffb700> trunc() stream.3.0.0
+1456759858527	<INFO 7fd88dffb700> trunc() ok stream.3.0.0
+1456759858530	<INFO 7fd88dffb700> done reset  3 0 0
+1456759858532	<INFO 7fd88dffb700> reset  3 1 0
+1456759858534	<INFO 7fd88dffb700> trunc() stream.3.1.0
+1456759858537	<INFO 7fd88dffb700> trunc() ok stream.3.1.0
+1456759858539	<INFO 7fd88dffb700> done reset  3 1 0
+1456759858541	<INFO 7fd88dffb700> reset  3 2 0
+1456759858543	<INFO 7fd88dffb700> trunc() stream.3.2.0
+1456759858546	<INFO 7fd88dffb700> trunc() ok stream.3.2.0
+1456759858549	<INFO 7fd88dffb700> done reset  3 2 0
+1456759858551	<INFO 7fd88dffb700> reset  3 3 0
+1456759858554	<INFO 7fd88dffb700> trunc() stream.3.3.0
+1456759858556	<INFO 7fd88dffb700> trunc() ok stream.3.3.0
+1456759858558	<INFO 7fd88dffb700> done reset  3 3 0
+1456759858561	<INFO 7fd88dffb700> reset  3 4 0
+1456759858563	<INFO 7fd88dffb700> trunc() stream.3.4.0
+1456759858566	<INFO 7fd88dffb700> trunc() ok stream.3.4.0
+1456759858568	<INFO 7fd88dffb700> done reset  3 4 0
+1456759858570	<INFO 7fd88dffb700> reset  3 5 0
+1456759858573	<INFO 7fd88dffb700> trunc() stream.3.5.0
+1456759858575	<INFO 7fd88dffb700> trunc() ok stream.3.5.0
+1456759858577	<INFO 7fd88dffb700> done reset  3 5 0
+1456759858580	<INFO 7fd88dffb700> reset  3 6 0
+1456759858582	<INFO 7fd88dffb700> trunc() stream.3.6.0
+1456759858584	<INFO 7fd88dffb700> trunc() ok stream.3.6.0
+1456759858587	<INFO 7fd88dffb700> done reset  3 6 0
+1456759858589	<INFO 7fd88dffb700> reset  3 7 0
+1456759858591	<INFO 7fd88dffb700> trunc() stream.3.7.0
+1456759858594	<INFO 7fd88dffb700> trunc() ok stream.3.7.0
+1456759858596	<INFO 7fd88dffb700> done reset  3 7 0
+1456759858599	<INFO 7fd88dffb700> reset  3 8 0
+1456759858605	<INFO 7fd88dffb700> trunc() stream.3.8.0
+1456759858610	<INFO 7fd88dffb700> trunc() ok stream.3.8.0
+1456759858615	<INFO 7fd88dffb700> done reset  3 8 0
+1456759858618	<INFO 7fd88dffb700> reset  3 9 0
+1456759858620	<INFO 7fd88dffb700> trunc() stream.3.9.0
+1456759858623	<INFO 7fd88dffb700> trunc() ok stream.3.9.0
+1456759858625	<INFO 7fd88dffb700> done reset  3 9 0
+1456759858627	<INFO 7fd88dffb700> reset  3 10 0
+1456759858631	<INFO 7fd88dffb700> trunc() stream.3.10.0
+1456759858635	<INFO 7fd88dffb700> trunc() ok stream.3.10.0
+1456759858637	<INFO 7fd88dffb700> done reset  3 10 0
+1456759858640	<INFO 7fd88dffb700> reset  3 11 0
+1456759858643	<INFO 7fd88dffb700> trunc() stream.3.11.0
+1456759858646	<INFO 7fd88dffb700> trunc() ok stream.3.11.0
+1456759858648	<INFO 7fd88dffb700> done reset  3 11 0
+1456759858651	<INFO 7fd88dffb700> reset  3 12 0
+1456759858653	<INFO 7fd88dffb700> trunc() stream.3.12.0
+1456759858655	<INFO 7fd88dffb700> trunc() ok stream.3.12.0
+1456759858659	<INFO 7fd88dffb700> done reset  3 12 0
+1456759858662	<INFO 7fd88dffb700> reset  3 13 0
+1456759858665	<INFO 7fd88dffb700> trunc() stream.3.13.0
+1456759858667	<INFO 7fd88dffb700> trunc() ok stream.3.13.0
+1456759858669	<INFO 7fd88dffb700> done reset  3 13 0
+1456759858672	<INFO 7fd88dffb700> reset  3 14 0
+1456759858674	<INFO 7fd88dffb700> trunc() stream.3.14.0
+1456759858676	<INFO 7fd88dffb700> trunc() ok stream.3.14.0
+1456759858682	<INFO 7fd88dffb700> done reset  3 14 0
+1456759858685	<INFO 7fd88dffb700> reset  3 15 0
+1456759858688	<INFO 7fd88dffb700> trunc() stream.3.15.0
+1456759858691	<INFO 7fd88dffb700> trunc() ok stream.3.15.0
+1456759858694	<INFO 7fd88dffb700> done reset  3 15 0
+1456759926378	<INFO 7ff4aef5c740> 2016-02-29 16:32:06 Completed phase 7 Bytes read 87954841788 Bytes written 20601040800
+1456759926380	<INFO 7ff4aef5c740> ALGORITHM::BFS::VERTICES_DISCOVERED 6903226
+1456759926382	<INFO 7ff4aef5c740> ALGORITHM::BFS::EDGES_EXPLORED 285080363
+1456759926385	<INFO 7ff4aef5c740> CORE::PARTITIONS_PROCESSED 2167
+1456759926387	<INFO 7ff4aef5c740> CORE::BYTES::EDGES_STREAMED 3188308956
+1456759926389	<INFO 7ff4aef5c740> CORE::BYTES::UPDATES_OUT 310263760
+1456759926392	<INFO 7ff4aef5c740> CORE::BYTES::UPDATES_IN 255107480
+1456759926394	<INFO 7fd87bfff700> CORE::PARTITIONS_PROCESSED 5336
+1456759926396	<INFO 7fd87bfff700> CORE::BYTES::EDGES_STREAMED 2754747960
+1456759926399	<INFO 7fd879ffb700> CORE::PARTITIONS_PROCESSED 5801
+1456759926401	<INFO 7fd87bfff700> CORE::BYTES::UPDATES_OUT 268863376
+1456759926403	<INFO 7fd879ffb700> CORE::BYTES::EDGES_STREAMED 3344638596
+1456759926406	<INFO 7fd87bfff700> CORE::BYTES::UPDATES_IN 190994288
+1456759926408	<INFO 7fd879ffb700> CORE::BYTES::UPDATES_OUT 296706808
+1456759926410	<INFO 7fd879ffb700> CORE::BYTES::UPDATES_IN 242333040
+1456759926412	<INFO 7fd87b7fe700> CORE::PARTITIONS_PROCESSED 3722
+1456759926415	<INFO 7fd88cff9700> CORE::PARTITIONS_PROCESSED 4283
+1456759926417	<INFO 7fd87b7fe700> CORE::BYTES::EDGES_STREAMED 2787977004
+1456759926419	<INFO 7fd88cff9700> CORE::BYTES::EDGES_STREAMED 2516982888
+1456759926422	<INFO 7fd88cff9700> CORE::BYTES::UPDATES_OUT 243664144
+1456759926424	<INFO 7fd87b7fe700> CORE::BYTES::UPDATES_OUT 264648088
+1456759926427	<INFO 7fd87b7fe700> CORE::BYTES::UPDATES_IN 192026088
+1456759926429	<INFO 7fd87a7fc700> CORE::PARTITIONS_PROCESSED 5035
+1456759926431	<INFO 7fd88cff9700> CORE::BYTES::UPDATES_IN 182038288
+1456759926434	<INFO 7fd88d7fa700> CORE::PARTITIONS_PROCESSED 4211
+1456759926436	<INFO 7fd88d7fa700> CORE::BYTES::EDGES_STREAMED 2808299376
+1456759926438	<INFO 7fd87a7fc700> CORE::BYTES::EDGES_STREAMED 3355173384
+1456759926441	<INFO 7fd88d7fa700> CORE::BYTES::UPDATES_OUT 268215928
+1456759926443	<INFO 7fd87affd700> CORE::PARTITIONS_PROCESSED 5027
+1456759926445	<INFO 7fd87a7fc700> CORE::BYTES::UPDATES_OUT 313465696
+1456759926448	<INFO 7fd87affd700> CORE::BYTES::EDGES_STREAMED 3249699864
+1456759926450	<INFO 7fd88d7fa700> CORE::BYTES::UPDATES_IN 185678928
+1456759926452	<INFO 7fd87affd700> CORE::BYTES::UPDATES_OUT 314815104
+1456759926455	<INFO 7fd87a7fc700> CORE::BYTES::UPDATES_IN 240029776
+1456759926457	<INFO 7fd87affd700> CORE::BYTES::UPDATES_IN 226423304
+1456759926459	<INFO 7fd88e7fc700> SLIPSTORE service is exiting
+1456759926462	<INFO 7fd88e7fc700> SLIPSTORE::HELP_OFFERS_RECVD 196
+1456759926464	<INFO 7fd88e7fc700> SLIPSTORE::HELP_OFFERS_ACCEPTED 0
+1456759926466	<INFO 7fd88e7fc700> SLIPSTORE::HELP_ACCEPTANCE_RATIO 0
+1456759926469	<INFO 7fd88e7fc700> SLIPSTORE::SERVER_BUSY_DISK  404.56 seconds
+1456759926471	<INFO 7fd88e7fc700> SLIPSTORE::SERVER_BUSY_MEM  0 seconds
+1456759926474	<INFO 7fd88e7fc700> SLIPSTORE::SERVER_TOTAL  1446.88 seconds
+1456759926476	<INFO 7ff4aef5c740> SLIPSTORE::CLIENT::DISK_READ_TIME  133.686 seconds
+1456759926479	<INFO 7ff4aef5c740> SLIPSTORE::CLIENT::MEM_READ_TIME  0 seconds
+1456759926481	<INFO 7ff4aef5c740> SLIPSTORE::CLIENT::DISK_BYTES_READ 40383758388
+1456759926483	<INFO 7ff4aef5c740> SLIPSTORE::CLIENT::MEM_BYTES_READ 0
+1456759926486	<INFO 7ff4aef5c740> SLIPSTORE::CLIENT::WRITE_TIME  468.863 seconds
+1456759926488	<INFO 7ff4aef5c740> SLIPSTORE::CLIENT::BYTES_WRITTEN 16272853432
+1456759926491	<INFO 7ff4aef5c740> SLIPSTORE::CLIENT_BUSY  602.567 seconds
+1456759926493	<INFO 7ff4aef5c740> SLIPSTORE::IO::TIME 218.528 seconds
+1456759926496	<INFO 7ff4aef5c740> SLIPSTORE::SNAP::TIME 0 seconds
+1456759926498	<INFO 7ff4aef5c740> SLIPSTORE::MAX_DISK_USAGE_BYTES 16995870760
+1456759926501	<INFO 7ff4aef5c740> CORE::RUSAGE::MAX_RSS_KB 117705696
+1456759926504	<INFO 7ff4aef5c740> CORE::RUSAGE::MINFLT 30009298
+1456759926507	<INFO 7ff4aef5c740> CORE::RUSAGE::MAJFLT 26
+1456759926509	<INFO 7ff4aef5c740> CORE::RUSAGE::MAJFLT 26
+1456759926512	<INFO 7ff4aef5c740> CORE::RUSAGE::INBLK 46430816
+1456759926514	<INFO 7ff4aef5c740> CORE::RUSAGE::OUBLK 40241704
+1456759926517	<INFO 7ff4aef5c740> CORE::UTILS::BYTES_READ 87954841788
+1456759926520	<INFO 7ff4aef5c740> CORE::UTILS::BYTES_WRITTEN 20601040800
+1456759926522	<INFO 7ff4aef5c740> CORE::UTILS::TILE_COPY_BYTES 1879048192
+1456759926525	<INFO 7ff4aef5c740> CORE::TIME::IO_WAIT 516.38 seconds
+1456759926528	<INFO 7ff4aef5c740> CORE::TIME_TILE_COPY 0 seconds
+1456759926530	<INFO 7ff4aef5c740> CORE::TIME_TILE_MERGE 0 seconds
+1456759926533	<INFO 7ff4aef5c740> CORE::TIME_PROCESSING_STOLEN 0 seconds
+1456759926536	<INFO 7ff4aef5c740> CORE::TIME_MERGE_WAIT 0 seconds
+1456759926538	<INFO 7ff4aef5c740> CORE::TIME_ALL_MC_BARRIER 772.638 seconds
+1456759926541	<INFO 7ff4aef5c740> CORE::PHASES 7
+1456759926544	<INFO 7ff4aef5c740> CORE::TIME::SETUP 3.5167 seconds
+1456759926547	<INFO 7ff4aef5c740> CORE::TIME::WALL 1447.1 seconds
+1456759926550	<INFO 7ff4aef5c740> SHUTDOWN
