@@ -1691,10 +1691,13 @@ namespace x_lib {
                              unsigned long stream_out) {
     // Make sure everyone is ready
     slipstore::slipstore_server->help_handle()->reset();
+
     // setup the partition map
     sio->setup_pmap(0);
     sio->state_buffer->bufsize = sio->tile_size(0, 0);
     sio->inter_machine_barrier();
+
+    // setting the use stream_out_variable. Not sure to understand...
     unsigned long use_stream_out;
     unsigned long visible_bits = 0;
     if (sio->ext_mem_shuffle) {
@@ -1722,6 +1725,8 @@ namespace x_lib {
     else {
       use_stream_out = ULONG_MAX;
     }
+
+
     do_stream_internal<A, IN, OUT>(sio, 0, 0, stream_in, use_stream_out,
                                    NULL, false);
     sio->inter_machine_barrier();
