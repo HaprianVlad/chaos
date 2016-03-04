@@ -71,6 +71,7 @@ namespace algorithm {
                                         unsigned char *edge_format,
                                         unsigned char *update_stream,
                                         per_processor_data *per_cpu_data,
+                                        bool local_tile,
                                         unsigned long bsp_phase) {
                 vertex_t src, dst;
                 F::read_edge(edge_format, src, dst);
