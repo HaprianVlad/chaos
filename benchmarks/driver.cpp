@@ -146,8 +146,8 @@ int main(int argc, const char *argv[]) {
   ///ADD_SG_ALGORITHM(noop, algorithm::sg_simple::noop, 2, false);
   ADD_SG_ALGORITHM(out_degree_cnt, algorithm::sg_simple::out_degree_cnt, 1, false);
   ADD_SG_ALGORITHM(out_degree_cnt, algorithm::sg_simple::out_degree_cnt, 2, false);
-  ADD_SG_ALGORITHM(in_degree_cnt, algorithm::sg_simple::in_degree_cnt, 1, false);
-  ADD_SG_ALGORITHM(in_degree_cnt, algorithm::sg_simple::in_degree_cnt, 2, false);
+  //ADD_SG_ALGORITHM(in_degree_cnt, algorithm::sg_simple::in_degree_cnt, 1, false);
+  //ADD_SG_ALGORITHM(in_degree_cnt, algorithm::sg_simple::in_degree_cnt, 2, false);
   ///ADD_SG_ALGORITHM(degree_cnt_max, algorithm::sg_simple::degree_cnt_max, 1, false);
   ///ADD_SG_ALGORITHM(degree_cnt_max, algorithm::sg_simple::degree_cnt_max, 2, false);
   ADD_SG_ALGORITHM(conductance, algorithm::sg_simple::conductance, 1, false);
