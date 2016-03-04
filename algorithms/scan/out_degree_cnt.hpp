@@ -124,6 +124,10 @@ namespace algorithm {
 
         static db_sync *get_db_sync() { return NULL; }
 
+        static bool need_scatter_merge(unsigned long bsp_phase) {
+            return false;
+        }
+
         static void preprocessing() { }
 
         static void postprocessing() { }
