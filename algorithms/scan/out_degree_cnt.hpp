@@ -139,6 +139,14 @@ namespace algorithm {
         static bool need_scatter_merge(unsigned long bsp_phase) {
             return false;
         }
+        static void vertex_apply(unsigned char *v,
+                                 unsigned char *copy,
+                                 unsigned long copy_machine,
+                                 per_processor_data *per_cpu_data,
+                                 unsigned long bsp_phase) {
+            // Nothing
+        }
+
 
         static void preprocessing() { }
 
