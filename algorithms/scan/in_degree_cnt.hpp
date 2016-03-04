@@ -105,15 +105,11 @@ namespace algorithm {
             public:
                 void prep_db_data(per_processor_data **pcpu_array,
                                   unsigned long me,
-                                  unsigned long processors) {
-
-                }
+                                  unsigned long processors) {}
 
                 void finalize_db_data(per_processor_data **pcpu_array,
                                       unsigned long me,
-                                      unsigned long processors) {
-
-                }
+                                      unsigned long processors) {}
 
                 unsigned char *db_buffer() { return 0; }
 
@@ -121,24 +117,14 @@ namespace algorithm {
 
                 void db_generate() { }
 
-                void db_merge() {
+                void db_merge() {}
 
-                }
-
-                void db_absorb() {
-
-                }
-
-                ~db_sync() {
-                }
-
+                void db_absorb() {}
+                ~db_sync() {}
             };
 
             static db_sync *get_db_sync() { return NULL; }
 
-            static bool need_scatter_merge(unsigned long bsp_phase) {
-                return false;
-            }
 
             static bool apply_one_update(unsigned char *vertex_state,
                                          unsigned char *update_stream,

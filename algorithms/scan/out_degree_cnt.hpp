@@ -27,6 +27,33 @@
 
 namespace algorithm {
   namespace sg_simple {
+
+      class out_degree_per_processor_data : public per_processor_data {
+      public:
+          static unsigned long vertices_discovered;
+          static unsigned long edges_explored;
+          unsigned long local_vertices_discovered;
+          unsigned long local_edges_explored;
+
+          out_degree_per_processor_data(unsigned long machines_in)
+                  : local_vertices_discovered(0),
+                    local_edges_explored(0) {
+          }
+
+          bool reduce(per_processor_data **per_cpu_array,
+                      unsigned long processors) {
+              for (unsigned long i = 0; i < processors; i++) {
+                  out_degree_per_processor_data *data =
+                          static_cast<out_degree_per_processor_data *>(per_cpu_array[i]);
+                  vertices_discovered += data->local_vertices_discovered;
+                  data->local_vertices_discovered = 0;
+                  edges_explored += data->local_edges_explored;
+                  data->local_edges_explored = 0;
+              }
+              return false;
+          }
+      }  __attribute__((__aligned__(64)));
+
     template<typename F>
     class out_degree_cnt {
     public:
@@ -40,11 +67,22 @@ namespace algorithm {
 
         static void take_checkpoint(unsigned char *buffer,
                                     per_processor_data **per_cpu_array,
-                                    unsigned long processors) {}
+                                    unsigned long processors) {
+            out_degree_per_processor_data *data =
+                    static_cast<out_degree_per_processor_data *>(per_cpu_array[0]);
+            (void) data->reduce(per_cpu_array, processors);
+            memcpy(buffer, &out_degree_per_processor_data::vertices_discovered, sizeof(unsigned long));
+            buffer += sizeof(unsigned long);
+            memcpy(buffer, &out_degree_per_processor_data::edges_explored, sizeof(unsigned long));
+        }
 
         static void restore_checkpoint(unsigned char *buffer,
                                        per_processor_data **per_cpu_array,
-                                       unsigned long processors) {}
+                                       unsigned long processors) {
+            memcpy(&out_degree_per_processor_data::vertices_discovered, buffer, sizeof(unsigned long));
+            buffer += sizeof(unsigned long);
+            memcpy(&out_degree_per_processor_data::edges_explored, buffer, sizeof(unsigned long));
+        }
 
         static unsigned long split_size_bytes() {
           return 0;
@@ -106,15 +144,11 @@ namespace algorithm {
         public:
             void prep_db_data(per_processor_data **pcpu_array,
                               unsigned long me,
-                              unsigned long processors) {
-
-            }
+                              unsigned long processors) {}
 
             void finalize_db_data(per_processor_data **pcpu_array,
                                   unsigned long me,
-                                  unsigned long processors) {
-
-            }
+                                  unsigned long processors) {}
 
             unsigned char *db_buffer() { return 0; }
 
@@ -122,17 +156,10 @@ namespace algorithm {
 
             void db_generate() { }
 
-            void db_merge() {
+            void db_merge() {}
 
-            }
-
-            void db_absorb() {
-
-            }
-
-            ~db_sync() {
-            }
-
+            void db_absorb() {}
+            ~db_sync() {}
         };
 
         static db_sync *get_db_sync() { return NULL; }
@@ -164,7 +191,7 @@ namespace algorithm {
         static per_processor_data *
         create_per_processor_data(unsigned long processor_id,
                                   unsigned long machines) {
-          return NULL;
+          return new out_degree_per_processor_data(machines);
         }
 
 
