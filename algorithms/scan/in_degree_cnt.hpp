@@ -85,8 +85,10 @@ namespace algorithm {
             bool need_data_barrier() {
                 return false;
             }
+            
+            class db_sync {};
 
-            static void *get_db_sync() { return NULL; }
+            static db_sync *get_db_sync() { return NULL; }
 
             static void preprocessing() { }
 
