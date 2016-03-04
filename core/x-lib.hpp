@@ -1692,13 +1692,18 @@ namespace x_lib {
   static bool do_init_stream(streamIO<A> *sio,
                              unsigned long stream_in,
                              unsigned long stream_out) {
+
+    BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check1 ";
     // Make sure everyone is ready
     slipstore::slipstore_server->help_handle()->reset();
-
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check2 ";
     // setup the partition map
     sio->setup_pmap(0);
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check3 ";
     sio->state_buffer->bufsize = sio->tile_size(0, 0);
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check4 ";
     sio->inter_machine_barrier();
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check5 ";
 
     // setting the use stream_out_variable. Not sure to understand...
     unsigned long use_stream_out;
@@ -1728,11 +1733,14 @@ namespace x_lib {
     else {
       use_stream_out = ULONG_MAX;
     }
-
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check7 ";
     // seems to be the thing that does the partitioning
     do_stream_internal<A, IN, OUT>(sio, 0, 0, stream_in, use_stream_out,
                                    NULL, false);
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check8 ";
     sio->inter_machine_barrier();
+
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check9 ";
 
     if (stream_out != ULONG_MAX && sio->ext_mem_shuffle) {
       unsigned long input = 0;
@@ -1752,11 +1760,14 @@ namespace x_lib {
                               visible_bits == configuration::ext_mem_bits ?
                               stream_out : sio->ext_tmps[1 - input]);
           }
+            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check10 ";
           sio->reset_stream(sio->ext_tmps[input], i);
+            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check11 ";
         }
         input = 1 - input;
       }
       sio->inter_machine_barrier();
+        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check12 ";
     }
     return false;
   }

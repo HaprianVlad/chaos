@@ -321,6 +321,8 @@ namespace algorithm {
         (graph_storage, this);
 
     if (!restored) {
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Start edge split ";
+
       // start the edge split
       sg_pcpu::current_step = phase_edge_split;
 
