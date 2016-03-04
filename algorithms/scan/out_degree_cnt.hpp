@@ -86,7 +86,7 @@ namespace algorithm {
             return false;
         }
 
-        static void *get_db_sync() { return nullptr; }
+        static void *get_db_sync() { return NULL; }
 
         static void preprocessing() { }
 
