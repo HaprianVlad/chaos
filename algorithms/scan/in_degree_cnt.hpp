@@ -41,7 +41,11 @@ namespace algorithm {
             static unsigned long checkpoint_size() {
                 return 3 * sizeof(unsigned long);
             }
-            
+
+            static void restore_checkpoint(unsigned char *buffer,
+                                           per_processor_data **per_cpu_array,
+                                           unsigned long processors) {}
+
             static unsigned long split_key(unsigned char *buffer,
                                            unsigned long jump) {
                 return 0;

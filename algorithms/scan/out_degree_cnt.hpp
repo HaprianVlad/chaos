@@ -38,6 +38,10 @@ namespace algorithm {
             return 3 * sizeof(unsigned long);
         }
 
+        static void restore_checkpoint(unsigned char *buffer,
+                                       per_processor_data **per_cpu_array,
+                                       unsigned long processors) {}
+
         static unsigned long split_size_bytes() {
           return 0;
         }
