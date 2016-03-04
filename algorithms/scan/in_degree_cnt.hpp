@@ -138,7 +138,16 @@ namespace algorithm {
             static bool need_scatter_merge(unsigned long bsp_phase) {
                 return false;
             }
-            
+
+            static bool apply_one_update(unsigned char *vertex_state,
+                                         unsigned char *update_stream,
+                                         per_processor_data *per_cpu_data,
+                                         bool local_tile,
+                                         unsigned long bsp_phase) {
+                BOOST_ASSERT_MSG(false, "Should not be called !");
+                return false;
+            }
+
             static void vertex_apply(unsigned char *v,
                                      unsigned char *copy,
                                      unsigned long copy_machine,
