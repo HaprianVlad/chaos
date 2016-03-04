@@ -42,6 +42,10 @@ namespace algorithm {
                 return 3 * sizeof(unsigned long);
             }
 
+            static void take_checkpoint(unsigned char *buffer,
+                                        per_processor_data **per_cpu_array,
+                                        unsigned long processors) {}
+            
             static void restore_checkpoint(unsigned char *buffer,
                                            per_processor_data **per_cpu_array,
                                            unsigned long processors) {}
