@@ -38,6 +38,10 @@ namespace algorithm {
                 return 0;
             }
 
+            static unsigned long checkpoint_size() {
+                return 3 * sizeof(unsigned long);
+            }
+            
             static unsigned long split_key(unsigned char *buffer,
                                            unsigned long jump) {
                 return 0;

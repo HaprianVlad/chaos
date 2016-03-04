@@ -34,6 +34,10 @@ namespace algorithm {
             unsigned long degree;
         };
 
+        static unsigned long checkpoint_size() {
+            return 3 * sizeof(unsigned long);
+        }
+
         static unsigned long split_size_bytes() {
           return 0;
         }
