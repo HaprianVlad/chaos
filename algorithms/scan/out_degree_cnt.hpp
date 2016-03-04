@@ -81,6 +81,11 @@ namespace algorithm {
           return (bsp_phase == 0);
         }
 
+        static
+        bool need_data_barrier() {
+            return true;
+        }
+
         static void preprocessing() { }
 
         static void postprocessing() { }
