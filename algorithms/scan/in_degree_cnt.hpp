@@ -86,7 +86,8 @@ namespace algorithm {
             static void postprocessing() { }
 
             static per_processor_data *
-            create_per_processor_data(unsigned long processor_id) {
+            create_per_processor_data(unsigned long processor_id,
+                                      unsigned long machines) {
                 return NULL;
             }
 
