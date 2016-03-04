@@ -265,6 +265,7 @@ namespace x_lib {
                 unsigned long partition,
                 unsigned long tile,
                 unsigned long align) {
+
         unsigned char *bufhead = buffer;
         slipstore::slipstore_req_t req;
         if (do_batch_io) {

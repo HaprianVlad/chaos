@@ -52,6 +52,9 @@ namespace x_lib {
       unsigned long buffer_size;
       unsigned long vertex_state_buffer_size;
 
+      static unsigned long new_super_partitions;
+      unsigned long sum_out_degree_for_new_super_partition;
+
       /* Mapping */
       static unsigned long partition_shift;
       static unsigned long tile_shift;
@@ -164,6 +167,8 @@ namespace x_lib {
         max_buffers;
         BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::MAX_STREAMS " <<
         max_streams;
+        BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::SUM_OF_OUT_DEGREE_FOR_NEW_PARTITIONS " <<
+        sum_out_degree_for_new_super_partition;
         if (vm.count("ext_mem_shuffle") > 0) {
           BOOST_LOG_TRIVIAL(info) << "SLIPSTREAM::EXT_MEM_SHUFFLE ON";
           BOOST_LOG_TRIVIAL(info) << "SLIPSTREAM::EXT_MEM_FANOUT_BITS "
@@ -211,6 +216,10 @@ namespace x_lib {
         // Cache <-> MM tuning
         unsigned long partitions;
         unsigned long vertices_per_partition = llc_size / vertex_footprint;
+        // TODO: make sure vertices_per_partitions is what we need to use
+        // set sum to this value in order to be sure that the vertex set for the new partitions does not exceed the memory
+        sum_out_degree_for_new_super_partition = vertices_per_partition;
+
         partitions = 1;
         while ((vertices_per_partition * partitions) < vertices) {
           partitions = partitions * 2;

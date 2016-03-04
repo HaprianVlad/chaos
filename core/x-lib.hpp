@@ -1181,6 +1181,8 @@ namespace x_lib {
         work_item.stream_in->cleanup();
         memory_buffer::release_buffer(work_item.stream_in);
       }
+
+      // post some request to the ioService
       memory_buffer *outstanding = memory_buffer::get_free_buffer(sio->io_wait_time);
       outstanding->uptodate = false;
       slipstore::ioService.post(boost::bind(&memory_buffer::fill,
@@ -1190,6 +1192,7 @@ namespace x_lib {
                                             superp,
                                             tile,
                                             IN::item_size()));
+      // not sure why the while is needed
       while (true) {
         sio->io_wait_time.start();
         outstanding->wait_uptodate();
@@ -1726,7 +1729,7 @@ namespace x_lib {
       use_stream_out = ULONG_MAX;
     }
 
-
+    // seems to be the thing that does the partitioning
     do_stream_internal<A, IN, OUT>(sio, 0, 0, stream_in, use_stream_out,
                                    NULL, false);
     sio->inter_machine_barrier();
