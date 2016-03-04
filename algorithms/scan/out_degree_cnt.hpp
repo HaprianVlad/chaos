@@ -64,7 +64,7 @@ namespace algorithm {
         }
 
         static unsigned long split_size_bytes() {
-          return 0;
+          return sizeof(struct degree_cnts);
         }
 
         static unsigned long split_key(unsigned char *buffer,
@@ -90,12 +90,12 @@ namespace algorithm {
                                     per_processor_data *per_cpu_data,
                                     bool local_tile,
                                     unsigned long bsp_phase) {
-          vertex_t src, dst;
-          F::read_edge(edge_format, src, dst);
-          unsigned long vindex = x_lib::configuration::map_offset(src);
-          struct degree_cnts *v = (struct degree_cnts *) vertex_state;
-          v[vindex].degree++;
-          return false;
+              vertex_t src, dst;
+              F::read_edge(edge_format, src, dst);
+              unsigned long vindex = x_lib::configuration::map_offset(src);
+              struct degree_cnts *v = (struct degree_cnts *) vertex_state;
+              v[vindex].degree++;
+              return false;
         }
 
         static bool init(unsigned char *vertex_state,
