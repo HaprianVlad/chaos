@@ -30,26 +30,12 @@ namespace algorithm {
 
       class out_degree_per_processor_data : public per_processor_data {
       public:
-          static unsigned long vertices_discovered;
-          static unsigned long edges_explored;
-          unsigned long local_vertices_discovered;
-          unsigned long local_edges_explored;
 
-          out_degree_per_processor_data(unsigned long machines_in)
-                  : local_vertices_discovered(0),
-                    local_edges_explored(0) {
-          }
+          out_degree_per_processor_data(unsigned long machines_in) { }
 
           bool reduce(per_processor_data **per_cpu_array,
                       unsigned long processors) {
-              for (unsigned long i = 0; i < processors; i++) {
-                  out_degree_per_processor_data *data =
-                          static_cast<out_degree_per_processor_data *>(per_cpu_array[i]);
-                  vertices_discovered += data->local_vertices_discovered;
-                  data->local_vertices_discovered = 0;
-                  edges_explored += data->local_edges_explored;
-                  data->local_edges_explored = 0;
-              }
+
               return false;
           }
       }  __attribute__((__aligned__(64)));
@@ -68,20 +54,13 @@ namespace algorithm {
         static void take_checkpoint(unsigned char *buffer,
                                     per_processor_data **per_cpu_array,
                                     unsigned long processors) {
-            out_degree_per_processor_data *data =
-                    static_cast<out_degree_per_processor_data *>(per_cpu_array[0]);
-            (void) data->reduce(per_cpu_array, processors);
-            memcpy(buffer, &out_degree_per_processor_data::vertices_discovered, sizeof(unsigned long));
-            buffer += sizeof(unsigned long);
-            memcpy(buffer, &out_degree_per_processor_data::edges_explored, sizeof(unsigned long));
+
         }
 
         static void restore_checkpoint(unsigned char *buffer,
                                        per_processor_data **per_cpu_array,
                                        unsigned long processors) {
-            memcpy(&out_degree_per_processor_data::vertices_discovered, buffer, sizeof(unsigned long));
-            buffer += sizeof(unsigned long);
-            memcpy(&out_degree_per_processor_data::edges_explored, buffer, sizeof(unsigned long));
+
         }
 
         static unsigned long split_size_bytes() {
