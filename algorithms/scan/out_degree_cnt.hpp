@@ -86,7 +86,41 @@ namespace algorithm {
             return false;
         }
 
-        class db_sync {};
+
+        class db_sync {
+
+            unsigned long machines;
+        public:
+            void prep_db_data(per_processor_data **pcpu_array,
+                              unsigned long me,
+                              unsigned long processors) {
+
+            }
+
+            void finalize_db_data(per_processor_data **pcpu_array,
+                                  unsigned long me,
+                                  unsigned long processors) {
+
+            }
+
+            unsigned char *db_buffer() { return 0; }
+
+            unsigned long db_size() { return 0; }
+
+            void db_generate() { }
+
+            void db_merge() {
+
+            }
+
+            void db_absorb() {
+
+            }
+
+            ~db_sync() {
+            }
+
+        };
 
         static db_sync *get_db_sync() { return NULL; }
 
