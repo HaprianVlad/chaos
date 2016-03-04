@@ -35,7 +35,7 @@ static void setup_options(int argc, const char *argv[]) {
       "Number of processors")
   ("benchmark,b",
       boost::program_options::value<std::string>()->default_value("bfs"),
-      "bfs, bfs_async, bfs_forest, bfs_filt, noop, degree_cnt, conductance, range_check, reverse, \
+      "bfs, bfs_async, bfs_forest, bfs_filt, noop, out_degree_cnt,  in_degree_cnt, conductance, range_check, reverse, \
      spmv, sssp, sssp_forest, cc, cc_online, als, als_async, als_graphchi, checkbip, mis, \
      pagerank, pagerank_ddf, belief_propagation, belief_propagation_graphchi, \
      mcst, hyperanf, scc, triangle_counting, kcores, bc")

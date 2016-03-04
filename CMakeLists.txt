@@ -28,7 +28,7 @@ set(SOURCE_FILES
     algorithms/pagerank/pagerank.hpp
     algorithms/pagerank/pagerank_ddf.hpp
     algorithms/scan/conductance.hpp
-    algorithms/scan/degree_cnt.hpp
+        algorithms/scan/out_degree_cnt.hpp
     algorithms/scan/degree_cnt_max.hpp
     algorithms/scan/noop.hpp
     algorithms/scan/range_check.hpp

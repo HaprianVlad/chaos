@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 
-#ifndef _DEGREE_CNT_
-#define _DEGREE_CNT_
+#ifndef _OUT_DEGREE_CNT_
+#define _OUT_DEGREE_CNT_
 
 #include "../../core/x-lib.hpp"
 #include "../../utils/options_utils.h"
@@ -28,7 +28,7 @@
 namespace algorithm {
   namespace sg_simple {
     template<typename F>
-    class degree_cnt {
+    class out_degree_cnt {
     public:
         struct __attribute__((__packed__)) degree_cnts {
             unsigned long degree;

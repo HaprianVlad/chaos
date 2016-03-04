@@ -38,7 +38,8 @@
 //#include "../algorithms/bfs/bfs_yahoo.hpp"
 //#include "../algorithms/bfs/bfs_yahoo_count.hpp"
 #include "../algorithms/scan/noop.hpp"
-#include "../algorithms/scan/degree_cnt.hpp"
+#include "../algorithms/scan/out_degree_cnt.hpp"
+#include "../algorithms/scan/in_degree_cnt.hpp"
 #include "../algorithms/scan/degree_cnt_max.hpp"
 #include "../algorithms/scan/conductance.hpp"
 #include "../algorithms/scan/range_check.hpp"
@@ -143,8 +144,10 @@ int main(int argc, const char *argv[]) {
   //ADD_ALGORITHM(bfs_count, algorithm::bfs_cnt::bfs_yahoo_count, 2, false);
   ///ADD_SG_ALGORITHM(noop, algorithm::sg_simple::noop, 1, false);
   ///ADD_SG_ALGORITHM(noop, algorithm::sg_simple::noop, 2, false);
-  ///ADD_SG_ALGORITHM(degree_cnt, algorithm::sg_simple::degree_cnt, 1, false);
-  ///ADD_SG_ALGORITHM(degree_cnt, algorithm::sg_simple::degree_cnt, 2, false);
+  ADD_SG_ALGORITHM(out_degree_cnt, algorithm::sg_simple::out_degree_cnt, 1, false);
+  ADD_SG_ALGORITHM(out_degree_cnt, algorithm::sg_simple::out_degree_cnt, 2, false);
+  ADD_SG_ALGORITHM(in_degree_cnt, algorithm::sg_simple::in_degree_cnt, 1, false);
+  ADD_SG_ALGORITHM(in_degree_cnt, algorithm::sg_simple::in_degree_cnt, 2, false);
   ///ADD_SG_ALGORITHM(degree_cnt_max, algorithm::sg_simple::degree_cnt_max, 1, false);
   ///ADD_SG_ALGORITHM(degree_cnt_max, algorithm::sg_simple::degree_cnt_max, 2, false);
   ADD_SG_ALGORITHM(conductance, algorithm::sg_simple::conductance, 1, false);
