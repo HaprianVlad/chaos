@@ -1164,13 +1164,18 @@ namespace x_lib {
                                  filter *override_input_filter,
                                  bool sync) {
     struct work<A, IN, OUT> work_item;
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckA ";
     work_item.superp = superp;
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckB ";
     work_item.state = sio->state_buffer;
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckC ";
     work_item.ingest = NULL;
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckD ";
     work_item.local_tile = (
         (superp % slipstore::slipstore_client_fill->get_machines()) ==
         slipstore::slipstore_client_fill->get_me()
     );
+      BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckE ";
     if (stream_in != ULONG_MAX) {
       if (sio->ingest_buffers[stream_in] != NULL) {
         work_item.ingest = sio->ingest_buffers[stream_in];
@@ -1182,8 +1187,10 @@ namespace x_lib {
         memory_buffer::release_buffer(work_item.stream_in);
       }
 
+        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckF ";
       // post some request to the ioService
       memory_buffer *outstanding = memory_buffer::get_free_buffer(sio->io_wait_time);
+        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckG ";
       outstanding->uptodate = false;
       slipstore::ioService.post(boost::bind(&memory_buffer::fill,
                                             outstanding,
@@ -1192,9 +1199,12 @@ namespace x_lib {
                                             superp,
                                             tile,
                                             IN::item_size()));
+
+        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckH ";
       // not sure why the while is needed
       while (true) {
         sio->io_wait_time.start();
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckI ";
         outstanding->wait_uptodate();
         sio->io_wait_time.stop();
         if (outstanding->bufsize == 0) {
@@ -1202,29 +1212,47 @@ namespace x_lib {
           memory_buffer::release_buffer(outstanding);
           break;
         }
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckJ ";
         work_item.stream_in = outstanding;
         outstanding = memory_buffer::get_free_buffer(sio->io_wait_time);
         outstanding->uptodate = false;
-        slipstore::ioService.post(boost::bind(&memory_buffer::fill,
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckK ";
+
+          slipstore::ioService.post(boost::bind(&memory_buffer::fill,
                                               outstanding,
                                               slipstore::slipstore_client_fill,
                                               stream_in,
                                               superp,
                                               tile,
                                               IN::item_size()));
-        if (override_input_filter != NULL) {
+
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckL ";
+
+          if (override_input_filter != NULL) {
           work_item.input_filter = override_input_filter;
         }
         else {
           work_item.input_filter = work_item.stream_in->work_queues;
         }
-        SETUP_STREAMOUT();
-        (*sio->workers[0])();
-        work_item.stream_in->cleanup();
-        memory_buffer::release_buffer(work_item.stream_in);
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckM ";
+
+          SETUP_STREAMOUT();
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckN ";
+
+          (*sio->workers[0])();
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckO ";
+
+          work_item.stream_in->cleanup();
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckP ";
+
+          memory_buffer::release_buffer(work_item.stream_in);
+          BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckQ ";
+
       }
     }
     else {
+
+        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckR ";
       BOOST_ASSERT_MSG(override_input_filter != NULL,
                        "Must have input stream or input filter !");
       work_item.input_filter = override_input_filter;
@@ -1232,6 +1260,7 @@ namespace x_lib {
       BOOST_ASSERT_MSG(stream_out != ULONG_MAX,
                        "Must have input stream or output stream !");
       work_item.stream_out = memory_buffer::get_free_buffer(sio->io_wait_time);
+        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckS ";
       work_item.disk_stream_out = stream_out;
       work_item.io_clock = &sio->io_wait_time;
       sio->workers[0]->work_to_do = &work_item;
