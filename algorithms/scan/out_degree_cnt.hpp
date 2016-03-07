@@ -191,8 +191,8 @@ namespace algorithm {
             static void preprocessing() { }
 
             static void postprocessing() {
-               // BOOST_LOG_TRIVIAL(info) << "ALGORITHM::OUT_DEGREE_COUNT::EDGES_EXPLORED "
-                //<< out_degree_per_processor_data::edges_explored;
+                BOOST_LOG_TRIVIAL(info) << "ALGORITHM::OUT_DEGREE_COUNT::EDGES_EXPLORED "
+                << out_degree_per_processor_data::edges_explored;
             }
 
             static per_processor_data *
