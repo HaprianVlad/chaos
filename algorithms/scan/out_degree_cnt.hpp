@@ -111,8 +111,7 @@ namespace algorithm {
                 vertex_t src, dst;
                 F::read_edge(edge_format, src, dst);
 
-                unsigned long vindex = x_lib::configuration::map_offset(src);
-
+                //unsigned long vindex = x_lib::configuration::map_offset(src);
                 //struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
                 //vertices[vindex].degree++;
 
@@ -199,7 +198,10 @@ namespace algorithm {
 
             static void preprocessing() { }
 
-            static void postprocessing() { }
+            static void postprocessing() {
+                BOOST_LOG_TRIVIAL(info) << "ALGORITHM::OUT_DEGREE_COUNT::EDGES_EXPLORED "
+                << out_degree_per_processor_data::edges_explored;
+            }
 
             static per_processor_data *
             create_per_processor_data(unsigned long processor_id,
