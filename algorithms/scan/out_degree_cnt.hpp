@@ -53,15 +53,11 @@ namespace algorithm {
 
         static void take_checkpoint(unsigned char *buffer,
                                     per_processor_data **per_cpu_array,
-                                    unsigned long processors) {
-
-        }
+                                    unsigned long processors) {}
 
         static void restore_checkpoint(unsigned char *buffer,
                                        per_processor_data **per_cpu_array,
-                                       unsigned long processors) {
-
-        }
+                                       unsigned long processors) {}
 
         static unsigned long split_size_bytes() {
           return sizeof(struct degree_cnts);
@@ -175,7 +171,7 @@ namespace algorithm {
 
 
         static unsigned long min_super_phases() {
-          return 0;
+          return 1;
         }
 
     };
