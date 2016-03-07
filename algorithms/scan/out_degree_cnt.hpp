@@ -33,7 +33,9 @@ namespace algorithm {
             static unsigned long edges_explored;
             unsigned long local_edges_explored;
 
-            out_degree_per_processor_data(unsigned long machines_in) : local_edges_explored(0) { }
+            out_degree_per_processor_data(unsigned long machines_in)  {
+                local_edges_explored = 0;
+            }
 
             bool reduce(per_processor_data **per_cpu_array,
                         unsigned long processors) {
