@@ -43,7 +43,7 @@ namespace algorithm {
                 for (unsigned long i = 0; i < processors; i++) {
                     out_degree_per_processor_data *data =
                             static_cast<out_degree_per_processor_data *>(per_cpu_array[i]);
-                    edges_explored += data->local_edges_explored;
+                    //edges_explored += data->local_edges_explored;
                     data->local_edges_explored = 0;
                 }
                 return false;
@@ -113,10 +113,6 @@ namespace algorithm {
                                         unsigned long bsp_phase) {
                 vertex_t src, dst;
                 F::read_edge(edge_format, src, dst);
-
-                //unsigned long vindex = x_lib::configuration::map_offset(src);
-                //struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
-                //vertices[vindex].degree++;
 
                 struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
                 update->parent = src;
