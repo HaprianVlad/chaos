@@ -30,22 +30,37 @@ namespace algorithm {
 
         class out_degree_per_processor_data : public per_processor_data {
         public:
+            static unsigned long edges_explored;
+            unsigned long local_edges_explored;
 
-            out_degree_per_processor_data(unsigned long machines_in) { }
+            out_degree_per_processor_data(unsigned long machines_in) : local_edges_explored(0) { }
 
             bool reduce(per_processor_data **per_cpu_array,
                         unsigned long processors) {
 
+                for (unsigned long i = 0; i < processors; i++) {
+                    bfs_per_processor_data *data =
+                            static_cast<bfs_per_processor_data *>(per_cpu_array[i]);
+                    edges_explored += data->local_edges_explored;
+                    data->local_edges_explored = 0;
+                }
                 return false;
+
             }
         }  __attribute__((__aligned__(64)));
 
         template<typename F>
         class out_degree_cnt {
         public:
-            struct __attribute__((__packed__)) degree_cnts {
+            struct __attribute__((__packed__)) degree_cnts_vertex {
                 unsigned long degree;
             };
+
+            struct __attribute__((__packed__)) degree_cnts_update {
+                vertex_t parent;
+                vertex_t child;
+            };
+
 
             static unsigned long checkpoint_size() {
                 return 3 * sizeof(unsigned long);
@@ -60,7 +75,7 @@ namespace algorithm {
                                            unsigned long processors) {}
 
             static unsigned long split_size_bytes() {
-                return sizeof(struct degree_cnts);
+                return sizeof(struct degree_cnts_update);
             }
 
             static unsigned long split_key(unsigned char *buffer,
@@ -69,15 +84,22 @@ namespace algorithm {
             }
 
             static unsigned long vertex_state_bytes() {
-                return sizeof(struct degree_cnts);
+                return sizeof(struct degree_cnts_vertex);
             }
 
             static bool apply_one_update(unsigned char *vertex_state,
                                          unsigned char *update_stream,
                                          per_processor_data *per_cpu_data,
                                          unsigned long bsp_phase) {
-                BOOST_ASSERT_MSG(false, "Should not be called !");
-                return false;
+                struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
+
+                unsigned long vindex =
+                        x_lib::configuration::map_offset(update->parent);
+
+                struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
+                vertices[vindex].degree++;
+
+                return true;
             }
 
             static bool generate_update(unsigned char *vertex_state,
@@ -88,18 +110,29 @@ namespace algorithm {
                                         unsigned long bsp_phase) {
                 vertex_t src, dst;
                 F::read_edge(edge_format, src, dst);
+
                 unsigned long vindex = x_lib::configuration::map_offset(src);
-                struct degree_cnts *v = (struct degree_cnts *) vertex_state;
-                v[vindex].degree++;
-                return false;
+
+                //struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
+                //vertices[vindex].degree++;
+
+                struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
+                update->parent = src;
+                update->child = dst;
+
+                static_cast
+                        <out_degree_per_processor_data *>(per_cpu_data)->local_edges_explored++;
+
+                return true;
             }
+
 
             static bool init(unsigned char *vertex_state,
                              unsigned long vertex_index,
                              unsigned long bsp_phase,
                              per_processor_data *cpu_state) {
                 if (bsp_phase == 0) {
-                    struct degree_cnts *dc = (struct degree_cnts *) vertex_state;
+                    struct degree_cnts_vertex *dc = (struct degree_cnts_vertex *) vertex_state;
                     dc->degree = 0;
                     return true;
                 }
