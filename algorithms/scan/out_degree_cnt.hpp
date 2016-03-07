@@ -43,7 +43,7 @@ namespace algorithm {
                 for (unsigned long i = 0; i < processors; i++) {
                     out_degree_per_processor_data *data =
                             static_cast<out_degree_per_processor_data *>(per_cpu_array[i]);
-                    //edges_explored += data->local_edges_explored;
+                    edges_explored += data->local_edges_explored;
                     data->local_edges_explored = 0;
                 }
                 return false;
@@ -190,8 +190,8 @@ namespace algorithm {
             static void preprocessing() { }
 
             static void postprocessing() {
-                BOOST_LOG_TRIVIAL(info) << "ALGORITHM::OUT_DEGREE_COUNT::EDGES_EXPLORED "
-                << out_degree_per_processor_data::edges_explored;
+               // BOOST_LOG_TRIVIAL(info) << "ALGORITHM::OUT_DEGREE_COUNT::EDGES_EXPLORED "
+                //<< out_degree_per_processor_data::edges_explored;
             }
 
             static per_processor_data *
