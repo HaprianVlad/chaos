@@ -30,6 +30,7 @@ namespace algorithm {
 
         class out_degree_per_processor_data : public per_processor_data {
         public:
+
             static unsigned long edges_explored;
             unsigned long local_edges_explored;
 
@@ -43,7 +44,7 @@ namespace algorithm {
                 for (unsigned long i = 0; i < processors; i++) {
                     out_degree_per_processor_data *data =
                             static_cast<out_degree_per_processor_data *>(per_cpu_array[i]);
-                    edges_explored += data->local_edges_explored;
+                    //edges_explored += data->local_edges_explored;
                     data->local_edges_explored = 0;
                 }
                 return false;
