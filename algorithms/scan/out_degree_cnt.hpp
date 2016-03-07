@@ -90,9 +90,10 @@ namespace algorithm {
             }
 
             static bool apply_one_update(unsigned char *vertex_state,
-                                         unsigned char *update_stream,
-                                         per_processor_data *per_cpu_data,
-                                         unsigned long bsp_phase) {
+                                          unsigned char *update_stream,
+                                          per_processor_data *per_cpu_data,
+                                          bool local_tile,
+                                          unsigned long bsp_phase) {
                 struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
 
                 unsigned long vindex =
