@@ -34,9 +34,8 @@ namespace algorithm {
             static unsigned long edges_explored;
             unsigned long local_edges_explored;
 
-            out_degree_per_processor_data(unsigned long machines_in)  {
-                local_edges_explored = 0;
-            }
+            out_degree_per_processor_data(unsigned long machines_in) : local_edges_explored(0)  {}
+
 
             bool reduce(per_processor_data **per_cpu_array,
                         unsigned long processors) {
@@ -44,7 +43,7 @@ namespace algorithm {
                 for (unsigned long i = 0; i < processors; i++) {
                     out_degree_per_processor_data *data =
                             static_cast<out_degree_per_processor_data *>(per_cpu_array[i]);
-                    //edges_explored += data->local_edges_explored;
+                    edges_explored += data->local_edges_explored;
                     data->local_edges_explored = 0;
                 }
                 return false;
@@ -55,6 +54,7 @@ namespace algorithm {
         template<typename F>
         class out_degree_cnt {
         public:
+
             struct __attribute__((__packed__)) degree_cnts_vertex {
                 unsigned long degree;
             };
