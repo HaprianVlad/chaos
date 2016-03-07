@@ -98,9 +98,13 @@ namespace algorithm {
                          unsigned long vertex_index,
                          unsigned long bsp_phase,
                          per_processor_data *cpu_state) {
-          struct degree_cnts *dc = (struct degree_cnts *) vertex_state;
-          dc->degree = 0;
-          return true;
+            if (bsp_phase == 0) {
+                struct degree_cnts *dc = (struct degree_cnts *) vertex_state;
+                dc->degree = 0;
+                return true;
+            }
+
+            return false;
         }
 
         static bool need_init(unsigned long bsp_phase) {
@@ -161,7 +165,7 @@ namespace algorithm {
 
         static void preprocessing() { }
 
-        static void postprocessing() { }
+        static void postprocessing() {}
 
         static per_processor_data *
         create_per_processor_data(unsigned long processor_id,
