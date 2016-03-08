@@ -215,7 +215,7 @@ namespace algorithm {
 
             // Lower bound on number of phases (if no one voted to continue)
             static unsigned long min_super_phases() {
-                return 0;
+                return 1;
             }
 
         };
