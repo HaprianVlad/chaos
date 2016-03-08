@@ -17,7 +17,7 @@
  */
 
 #ifndef _IN_DEGREE_CNT_
-#define _IN_DEGREE_CNT_
+#define _IN_DEGREE_CNT__
 
 #include "../../core/x-lib.hpp"
 #include "../../utils/options_utils.h"
@@ -26,160 +26,199 @@
 #include<string>
 
 namespace algorithm {
-  namespace sg_simple {
+    namespace sg_simple {
 
-      class in_degree_per_processor_data : public per_processor_data {
-      public:
+        // Not relevant for this project
+        class in_degree_per_processor_data : public per_processor_data {
+        public:
 
-          in_degree_per_processor_data(unsigned long machines_in) { }
 
-          bool reduce(per_processor_data **per_cpu_array,
-                      unsigned long processors) {
+            in_degree_per_processor_data(unsigned long machines_in)  {}
 
-              return false;
-          }
-      }  __attribute__((__aligned__(64)));
 
-    template<typename F>
-    class in_degree_cnt {
-    public:
-        struct __attribute__((__packed__)) degree_cnts {
-            unsigned long degree;
-        };
+            bool reduce(per_processor_data **per_cpu_array,
+                        unsigned long processors) {
+                return false;
+            }
+        }  __attribute__((__aligned__(64)));
 
-        static unsigned long checkpoint_size() {
-            return 3 * sizeof(unsigned long);
-        }
 
-        static void take_checkpoint(unsigned char *buffer,
-                                    per_processor_data **per_cpu_array,
-                                    unsigned long processors) {}
+        // Algorithm definition
+        template<typename F>
+        class in_degree_cnt {
+        public:
 
-        static void restore_checkpoint(unsigned char *buffer,
-                                       per_processor_data **per_cpu_array,
-                                       unsigned long processors) {}
+            // Struct definition vertex state
+            struct __attribute__((__packed__)) degree_cnts_vertex {
+                unsigned long degree;
+            };
 
-        static unsigned long split_size_bytes() {
-          return sizeof(struct degree_cnts);
-        }
+            // Struct definition vertex state
+            struct __attribute__((__packed__)) degree_cnts_update {
+                vertex_t parent;
+                vertex_t child;
+            };
 
-        static unsigned long split_key(unsigned char *buffer,
-                                       unsigned long jump) {
-          return 0;
-        }
 
-        static unsigned long vertex_state_bytes() {
-          return sizeof(struct degree_cnts);
-        }
+            // Not relevant for this project
+            static unsigned long checkpoint_size() {
+                return 2 * sizeof(unsigned long);
+            }
 
-        static bool apply_one_update(unsigned char *vertex_state,
-                                     unsigned char *update_stream,
-                                     per_processor_data *per_cpu_data,
-                                     unsigned long bsp_phase) {
-          BOOST_ASSERT_MSG(false, "Should not be called !");
-          return false;
-        }
+            // Not relevant for this project
+            static void take_checkpoint(unsigned char *buffer,
+                                        per_processor_data **per_cpu_array,
+                                        unsigned long processors) {}
 
-        static bool generate_update(unsigned char *vertex_state,
-                                    unsigned char *edge_format,
-                                    unsigned char *update_stream,
-                                    per_processor_data *per_cpu_data,
-                                    bool local_tile,
-                                    unsigned long bsp_phase) {
-              vertex_t src, dst;
-              F::read_edge(edge_format, src, dst);
-              unsigned long vindex = x_lib::configuration::map_offset(dst);
-              struct degree_cnts *v = (struct degree_cnts *) vertex_state;
-              v[vindex].degree++;
-              return false;
-        }
+            // Not relevant for this project
+            static void restore_checkpoint(unsigned char *buffer,
+                                           per_processor_data **per_cpu_array,
+                                           unsigned long processors) {}
 
-        static bool init(unsigned char *vertex_state,
-                         unsigned long vertex_index,
-                         unsigned long bsp_phase,
-                         per_processor_data *cpu_state) {
-            if (bsp_phase == 0) {
-                struct degree_cnts *dc = (struct degree_cnts *) vertex_state;
-                dc->degree = 0;
+
+            // Where to split updates
+            // Can set to 0 if no gather phase is expected.
+            // Caveat: if set to 0 and gather runs, will cause infinite loops ;-)
+            // Needs to be set to the size of degree_cnts_update structure
+            static unsigned long split_size_bytes() {
+                return sizeof(struct degree_cnts_update);
+            }
+
+            // Not relevant for our algorithms
+            static unsigned long split_key(unsigned char *buffer,
+                                           unsigned long jump) {
+                return 0;
+            }
+
+            // Size of vertex state
+            static unsigned long vertex_state_bytes() {
+                return sizeof(struct degree_cnts_vertex);
+            }
+
+
+            // Gather user function
+            static bool apply_one_update(unsigned char *vertex_state,
+                                          unsigned char *update_stream,
+                                          per_processor_data *per_cpu_data,
+                                          bool local_tile,
+                                          unsigned long bsp_phase) {
+                struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
+
+                unsigned long vindex = x_lib::configuration::map_offset(update->parent);
+
+                // update the counter at each destination vertex
+                struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
+                vertices[vindex].degree++;
+
                 return true;
             }
 
-            return false;
-        }
+            // Scatter user function
+            static bool generate_update(unsigned char *vertex_state,
+                                        unsigned char *edge_format,
+                                        unsigned char *update_stream,
+                                        per_processor_data *per_cpu_data,
+                                        bool local_tile,
+                                        unsigned long bsp_phase) {
+                vertex_t src, dst;
+                F::read_edge(edge_format, src, dst);
 
-        static bool need_init(unsigned long bsp_phase) {
-          return (bsp_phase == 0);
-        }
-
-        static
-        bool need_data_barrier() {
-            return false;
-        }
+                // Sends update from source to destination
+                struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
+                update->parent = src;
+                update->child = dst;
 
 
-        class db_sync {
+                return true;
+            }
 
-            unsigned long machines;
-        public:
-            void prep_db_data(per_processor_data **pcpu_array,
-                              unsigned long me,
-                              unsigned long processors) {}
+            // Apply user function
+            static void vertex_apply(unsigned char *v,
+                                     unsigned char *copy,
+                                     unsigned long copy_machine,
+                                     per_processor_data *per_cpu_data,
+                                     unsigned long bsp_phase) {
+                BOOST_ASSERT_MSG(false, "Should not be called !");
+            }
 
-            void finalize_db_data(per_processor_data **pcpu_array,
+
+            // Initialization of state
+            static bool init(unsigned char *vertex_state,
+                             unsigned long vertex_index,
+                             unsigned long bsp_phase,
+                             per_processor_data *cpu_state) {
+
+                struct degree_cnts_vertex *dc = (struct degree_cnts_vertex *) vertex_state;
+                dc->degree = 0;
+                return true;
+
+            }
+
+            // When to initialize state
+            static bool need_init(unsigned long bsp_phase) {
+                return (bsp_phase == 0);
+            }
+
+
+            static
+            bool need_data_barrier() {
+                return false;
+            }
+
+            // Not relevant for this project
+            class db_sync {
+
+                unsigned long machines;
+            public:
+                void prep_db_data(per_processor_data **pcpu_array,
                                   unsigned long me,
                                   unsigned long processors) {}
 
-            unsigned char *db_buffer() { return 0; }
+                void finalize_db_data(per_processor_data **pcpu_array,
+                                      unsigned long me,
+                                      unsigned long processors) {}
 
-            unsigned long db_size() { return 0; }
+                unsigned char *db_buffer() { return 0; }
 
-            void db_generate() { }
+                unsigned long db_size() { return 0; }
 
-            void db_merge() {}
+                void db_generate() { }
 
-            void db_absorb() {}
-            ~db_sync() {}
+                void db_merge() {}
+
+                void db_absorb() {}
+                ~db_sync() {}
+            };
+
+            static db_sync *get_db_sync() { return NULL; }
+
+
+            // Whether to write state back at the end of the scatter
+            // Normaly we don't need it because we run also an update phase
+            static bool need_scatter_merge(unsigned long bsp_phase) {
+                return false;
+            }
+
+
+
+            static void preprocessing() { }
+
+            static void postprocessing() {
+            }
+
+            static per_processor_data *
+            create_per_processor_data(unsigned long processor_id,
+                                      unsigned long machines) {
+                return new in_degree_per_processor_data(machines);
+            }
+
+            // Lower bound on number of phases (if no one voted to continue)
+            static unsigned long min_super_phases() {
+                return 0;
+            }
+
         };
-
-        static db_sync *get_db_sync() { return NULL; }
-
-        static bool need_scatter_merge(unsigned long bsp_phase) {
-            return false;
-        }
-        static void vertex_apply(unsigned char *v,
-                                 unsigned char *copy,
-                                 unsigned long copy_machine,
-                                 per_processor_data *per_cpu_data,
-                                 unsigned long bsp_phase) {
-            // Nothing
-        }
-
-        static bool apply_one_update(unsigned char *vertex_state,
-                                     unsigned char *update_stream,
-                                     per_processor_data *per_cpu_data,
-                                     bool local_tile,
-                                     unsigned long bsp_phase) {
-            BOOST_ASSERT_MSG(false, "Should not be called !");
-            return false;
-        }
-
-        static void preprocessing() { }
-
-        static void postprocessing() {}
-
-        static per_processor_data *
-        create_per_processor_data(unsigned long processor_id,
-                                  unsigned long machines) {
-          return new in_degree_per_processor_data(machines);
-        }
-
-
-        static unsigned long min_super_phases() {
-          return 1;
-        }
-
-    };
-  }
+    }
 }
 
 #endif

@@ -71,7 +71,7 @@ namespace algorithm {
             // Can set to 0 if no gather phase is expected.
             // Caveat: if set to 0 and gather runs, will cause infinite loops ;-)
             static unsigned long split_size_bytes() {
-                return sizeof(struct degree_cnts_update);
+                return sizeof(struct degree_cnts);
             }
 
             // Not relevant for our algorithms
@@ -82,7 +82,7 @@ namespace algorithm {
 
             // Size of vertex state
             static unsigned long vertex_state_bytes() {
-                return sizeof(struct degree_cnts_vertex);
+                return sizeof(struct degree_cnts);
             }
 
             // Gather user function
