@@ -35,7 +35,6 @@ namespace algorithm {
 
             in_degree_per_processor_data(unsigned long machines_in)  {}
 
-
             bool reduce(per_processor_data **per_cpu_array,
                         unsigned long processors) {
                 return false;
@@ -104,7 +103,7 @@ namespace algorithm {
                                           unsigned long bsp_phase) {
                 struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
 
-                unsigned long vindex = x_lib::configuration::map_offset(update->parent);
+                unsigned long vindex = x_lib::configuration::map_offset(update->child);
 
                 // update the counter at each destination vertex
                 struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
