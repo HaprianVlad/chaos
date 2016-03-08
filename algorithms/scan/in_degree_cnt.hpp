@@ -137,8 +137,8 @@ namespace algorithm {
                                      unsigned long copy_machine,
                                      per_processor_data *per_cpu_data,
                                      unsigned long bsp_phase) {
-                struct bfs_vertex *vtx = (struct bfs_vertex *) v;
-                struct bfs_vertex *vtx_cpy = (struct bfs_vertex *) copy;
+                struct degree_cnts_vertex *vtx = (struct degree_cnts_vertex *) v;
+                struct degree_cnts_vertex *vtx_cpy = (struct degree_cnts_vertex *) copy;
                 vtx->degree += vtx_cpy->degree;
             }
 
