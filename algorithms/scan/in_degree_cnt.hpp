@@ -137,7 +137,9 @@ namespace algorithm {
                                      unsigned long copy_machine,
                                      per_processor_data *per_cpu_data,
                                      unsigned long bsp_phase) {
-                BOOST_ASSERT_MSG(false, "Should not be called !");
+                struct bfs_vertex *vtx = (struct bfs_vertex *) v;
+                struct bfs_vertex *vtx_cpy = (struct bfs_vertex *) copy;
+                vtx->degree += vtx_cpy->degree;
             }
 
 
