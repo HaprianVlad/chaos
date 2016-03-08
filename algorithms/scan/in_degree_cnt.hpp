@@ -139,7 +139,7 @@ namespace algorithm {
                                      unsigned long bsp_phase) {
                 struct degree_cnts_vertex *vtx = (struct degree_cnts_vertex *) v;
                 struct degree_cnts_vertex *vtx_cpy = (struct degree_cnts_vertex *) copy;
-                vtx->degree += vtx_cpy->degree;
+               // vtx->degree += vtx_cpy->degree;
             }
 
 
