@@ -35,7 +35,6 @@ namespace algorithm {
 
             in_degree_per_processor_data(unsigned long machines_in)  {}
 
-
             bool reduce(per_processor_data **per_cpu_array,
                         unsigned long processors) {
                 return false;
@@ -104,7 +103,7 @@ namespace algorithm {
                                           unsigned long bsp_phase) {
                 struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
 
-                unsigned long vindex = x_lib::configuration::map_offset(update->parent);
+                unsigned long vindex = x_lib::configuration::map_offset(update->child);
 
                 // update the counter at each destination vertex
                 struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
@@ -138,7 +137,9 @@ namespace algorithm {
                                      unsigned long copy_machine,
                                      per_processor_data *per_cpu_data,
                                      unsigned long bsp_phase) {
-                BOOST_ASSERT_MSG(false, "Should not be called !");
+                struct bfs_vertex *vtx = (struct bfs_vertex *) v;
+                struct bfs_vertex *vtx_cpy = (struct bfs_vertex *) copy;
+                vtx->degree += vtx_cpy->degree;
             }
 
 
@@ -214,7 +215,7 @@ namespace algorithm {
 
             // Lower bound on number of phases (if no one voted to continue)
             static unsigned long min_super_phases() {
-                return 0;
+                return 1;
             }
 
         };
