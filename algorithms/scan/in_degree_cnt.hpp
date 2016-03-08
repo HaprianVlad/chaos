@@ -109,7 +109,7 @@ namespace algorithm {
                 struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
                 vertices[vindex].degree++;
 
-                return true;
+                return false;
             }
 
             // Scatter user function
@@ -128,7 +128,7 @@ namespace algorithm {
                 update->child = dst;
 
 
-                return true;
+                return false;
             }
 
             // Apply user function
@@ -137,9 +137,9 @@ namespace algorithm {
                                      unsigned long copy_machine,
                                      per_processor_data *per_cpu_data,
                                      unsigned long bsp_phase) {
-                //struct degree_cnts_vertex *vtx = (struct degree_cnts_vertex *) v;
-                //struct degree_cnts_vertex *vtx_cpy = (struct degree_cnts_vertex *) copy;
-               // vtx->degree += vtx_cpy->degree;
+                struct degree_cnts_vertex *vtx = (struct degree_cnts_vertex *) v;
+                struct degree_cnts_vertex *vtx_cpy = (struct degree_cnts_vertex *) copy;
+                vtx->degree += vtx_cpy->degree;
             }
 
 
