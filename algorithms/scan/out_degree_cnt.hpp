@@ -28,84 +28,75 @@
 namespace algorithm {
     namespace sg_simple {
 
+        // Not relevant for this project
         class out_degree_per_processor_data : public per_processor_data {
         public:
 
-            static unsigned long edges_explored;
-            unsigned long local_edges_explored;
-
-            out_degree_per_processor_data(unsigned long machines_in) : local_edges_explored(0)  {}
-
+            out_degree_per_processor_data(unsigned long machines_in) {}
 
             bool reduce(per_processor_data **per_cpu_array,
                         unsigned long processors) {
-
-                for (unsigned long i = 0; i < processors; i++) {
-                    out_degree_per_processor_data *data =
-                            static_cast<out_degree_per_processor_data *>(per_cpu_array[i]);
-                    edges_explored += data->local_edges_explored;
-                    data->local_edges_explored = 0;
-                }
                 return false;
-
             }
+
         }  __attribute__((__aligned__(64)));
 
+        // Algorithm definition
         template<typename F>
         class out_degree_cnt {
         public:
 
-            struct __attribute__((__packed__)) degree_cnts_vertex {
+            // Struct definitions (vertex state and updates)
+            struct __attribute__((__packed__)) degree_cnts {
                 unsigned long degree;
             };
 
-            struct __attribute__((__packed__)) degree_cnts_update {
-                vertex_t parent;
-                vertex_t child;
-            };
 
-
+            // Not relevant for this project
             static unsigned long checkpoint_size() {
-                return 3 * sizeof(unsigned long);
+                return 2 * sizeof(unsigned long);
             }
 
+            // Not relevant for this project
             static void take_checkpoint(unsigned char *buffer,
                                         per_processor_data **per_cpu_array,
                                         unsigned long processors) {}
 
+            // Not relevant for this project
             static void restore_checkpoint(unsigned char *buffer,
                                            per_processor_data **per_cpu_array,
                                            unsigned long processors) {}
 
+            // Where to split updates
+            // Can set to 0 if no gather phase is expected.
+            // Caveat: if set to 0 and gather runs, will cause infinite loops ;-)
             static unsigned long split_size_bytes() {
                 return sizeof(struct degree_cnts_update);
             }
 
+            // Not relevant for our algorithms
             static unsigned long split_key(unsigned char *buffer,
                                            unsigned long jump) {
                 return 0;
             }
 
+            // Size of vertex state
             static unsigned long vertex_state_bytes() {
                 return sizeof(struct degree_cnts_vertex);
             }
 
+            // Gather user function
             static bool apply_one_update(unsigned char *vertex_state,
                                           unsigned char *update_stream,
                                           per_processor_data *per_cpu_data,
                                           bool local_tile,
                                           unsigned long bsp_phase) {
-                struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
-
-                unsigned long vindex =
-                        x_lib::configuration::map_offset(update->parent);
-
-                struct degree_cnts_vertex *vertices = (struct degree_cnts_vertex *) vertex_state;
-                vertices[vindex].degree++;
-
-                return true;
+                BOOST_ASSERT_MSG(false, "Should not be called !");
+                return false;
             }
 
+
+            // Scatter user function
             static bool generate_update(unsigned char *vertex_state,
                                         unsigned char *edge_format,
                                         unsigned char *update_stream,
@@ -114,32 +105,34 @@ namespace algorithm {
                                         unsigned long bsp_phase) {
                 vertex_t src, dst;
                 F::read_edge(edge_format, src, dst);
-
-                struct degree_cnts_update *update = (struct degree_cnts_update *) update_stream;
-                update->parent = src;
-                update->child = dst;
-
-                static_cast
-                        <out_degree_per_processor_data *>(per_cpu_data)->local_edges_explored++;
-
-                return true;
+                unsigned long vindex = x_lib::configuration::map_offset(src);
+                struct degree_cnts *v = (struct degree_cnts *) vertex_state;
+                v[vindex].degree++;
+                return false;
             }
 
 
+            // Apply user function
+            static void vertex_apply(unsigned char *v,
+                                     unsigned char *copy,
+                                     unsigned long copy_machine,
+                                     per_processor_data *per_cpu_data,
+                                     unsigned long bsp_phase) {
+                BOOST_ASSERT_MSG(false, "Should not be called !");
+            }
+
+            // Initialization of state
             static bool init(unsigned char *vertex_state,
                              unsigned long vertex_index,
                              unsigned long bsp_phase,
                              per_processor_data *cpu_state) {
-                if (bsp_phase == 0) {
-                    struct degree_cnts_vertex *dc = (struct degree_cnts_vertex *) vertex_state;
-                    dc->degree = 0;
-                    return true;
-                }
-
-                return false;
+                struct degree_cnts *dc = (struct degree_cnts *) vertex_state;
+                dc->degree = 0;
+                return true;
 
             }
 
+            // When to initialize state
             static bool need_init(unsigned long bsp_phase) {
                 return (bsp_phase == 0);
             }
@@ -149,7 +142,7 @@ namespace algorithm {
                 return false;
             }
 
-
+            // Not relevant for this project
             class db_sync {
 
                 unsigned long machines;
@@ -176,24 +169,18 @@ namespace algorithm {
 
             static db_sync *get_db_sync() { return NULL; }
 
+            // Whether to write state back at the end of the scatter
+            // Very relevant for our algorithm since we only run a scatter pass ;-)
             static bool need_scatter_merge(unsigned long bsp_phase) {
-                return false;
-            }
-            static void vertex_apply(unsigned char *v,
-                                     unsigned char *copy,
-                                     unsigned long copy_machine,
-                                     per_processor_data *per_cpu_data,
-                                     unsigned long bsp_phase) {
-                // Nothing
+                return bsp_phase == 0;
             }
 
 
-            static void preprocessing() { }
 
-            static void postprocessing() {
-                BOOST_LOG_TRIVIAL(info) << "ALGORITHM::OUT_DEGREE_COUNT::EDGES_EXPLORED "
-                << out_degree_per_processor_data::edges_explored;
-            }
+
+            static void preprocessing() {}
+
+            static void postprocessing() {}
 
             static per_processor_data *
             create_per_processor_data(unsigned long processor_id,
@@ -202,8 +189,9 @@ namespace algorithm {
             }
 
 
+            // Lower bound on number of phases (if no one voted to continue)
             static unsigned long min_super_phases() {
-                return 1;
+                return 0;
             }
 
         };
