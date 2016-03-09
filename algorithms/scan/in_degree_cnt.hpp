@@ -128,7 +128,7 @@ namespace algorithm {
                 update->child = dst;
 
 
-                return false;
+                return true;
             }
 
             // Apply user function
