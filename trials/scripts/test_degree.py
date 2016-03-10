@@ -7,22 +7,23 @@ def main(argv):
 	rmatFile = sys.argv[1]
 	outDegreeResultsFile = sys.argv[2]
 	inDegreeResultsFile = sys.argv[3]
-
+	
+	print rmatFile
 	expected = computeDegreesOnRmatGraph(rmatFile, maxID)
 
-	outDegreesExpected = expected[1]
-	inDegreesExpected = expected[2]
+	outDegreesExpected = expected[0]
+	inDegreesExpected = expected[1]
 
 	outDegreesComputed = readDegrees(outDegreeResultsFile, maxID)
 	inDegreesComputed = readDegrees(inDegreeResultsFile, maxID)
 	
 	print "OUT DEGREES EXPECTED"
-	print outDegreesEXPECTED
+	print outDegreesExpected
 	print "OUT DEGREES COMPUTED"
 	print outDegreesComputed
 
 	print "IN DEGREES EXPECTED"
-	print inDegreesEXPECTED
+	print inDegreesExpected
 	print "OUT DEGREES COMPUTED"
 	print inDegreesComputed
 	
@@ -74,11 +75,9 @@ def computeDegreesOnRmatGraph(f, maxID):
 	return [outDegrees, inDegrees]
 
 if __name__ == "__main__":
-	if len (sys.argv) != 3 :
+	if len (sys.argv) != 4 :
 		print "Usage: python test_degree.py <rmatGraph file path> <outDegreeResults file path> <inDegreeResults file path> "
 	else :
 		main(sys.argv[1:])
 		
-
-
 
