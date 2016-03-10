@@ -24,7 +24,7 @@ def main(argv):
 
 	print "IN DEGREES EXPECTED"
 	print inDegreesExpected
-	print "OUT DEGREES COMPUTED"
+	print "IN DEGREES COMPUTED"
 	print inDegreesComputed
 	
 	if verify(outDegreesExpected, outDegreesComputed):
