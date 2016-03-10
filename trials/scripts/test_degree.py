@@ -51,11 +51,13 @@ def verify(d1, d2):
 
 def readDegrees(f, maxID):
 	degrees = {}
+	src = 0
 	with open(f,'rb') as infile:
-		for chunk in iter((lambda:infile.read(8)),''):
-			src = struct.unpack('I', chunk[0:4])[0]
-			if src < maxID:
-			     degrees[src] = struct.unpack('I', chunk[4:8])[0]
+		for chunk in iter((lambda:infile.read(8)),''):			
+		        degrees[src] = struct.unpack('L', chunk[0:8])[0]
+			src = src + 1
+			if src >= maxID:
+				break;
 	return degrees
 
 def computeDegreesOnRmatGraph(f, maxID):
