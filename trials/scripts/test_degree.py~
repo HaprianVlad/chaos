@@ -2,19 +2,17 @@ import sys
 import struct
 
 def main(argv):
-	maxID = 10
-	
 	rmatFile = sys.argv[1]
 	outDegreeResultsFile = sys.argv[2]
 	inDegreeResultsFile = sys.argv[3]
 
-	expected = computeDegreesOnRmatGraph(rmatFile, maxID)
+	expected = computeDegreesOnRmatGraph(rmatFile)
 
 	outDegreesExpected = expected[1]
 	inDegreesExpected = expected[2]
 
-	outDegreesComputed = readDegrees(outDegreeResultsFile, maxID)
-	inDegreesComputed = readDegrees(inDegreeResultsFile, maxID)
+	outDegreesComputed = readDegrees(outDegreeResultsFile)
+	inDegreesComputed = readDegrees(inDegreeResultsFile)
 	
 	print "OUT DEGREES EXPECTED"
 	print outDegreesEXPECTED
@@ -48,7 +46,7 @@ def verify(d1, d2):
 	return True
 
 
-def readDegrees(f, maxID):
+def readDegrees(f):
 	degrees = {}
 	with open(f,'rb') as infile:
 	for chunk in iter((lambda:infile.read(8)),''):
@@ -57,7 +55,7 @@ def readDegrees(f, maxID):
 		     degrees[src] = struct.unpack('I', chunk[4:8])[0]
 	return degrees
 
-def computeDegreesOnRmatGraph(f, maxID):
+def computeDegreesOnRmatGraph(f):
 	outDegrees = {}
 	inDegrees = {}
 	for i in range(maxID):
