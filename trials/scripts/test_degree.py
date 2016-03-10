@@ -28,12 +28,12 @@ def main(argv):
 	
 	if verify(outDegreesExpected, outDegreesComputed):
 		print "OUT DEGREE TEST PASSED"
-	else 
+	else: 
 		print "OUT DEGREE TEST FAILED"
 
 	if verify(inDegreesExpected, inDegreesComputed):
 		print "IN DEGREE TEST PASSED"
-	else 
+	else: 
 		print "IN DEGREE TEST FAILED"
 
 
@@ -51,10 +51,10 @@ def verify(d1, d2):
 def readDegrees(f, maxID):
 	degrees = {}
 	with open(f,'rb') as infile:
-	for chunk in iter((lambda:infile.read(8)),''):
-	        src = struct.unpack('I', chunk[0:4])[0]
-		if src < maxID:
-		     degrees[src] = struct.unpack('I', chunk[4:8])[0]
+		for chunk in iter((lambda:infile.read(8)),''):
+			src = struct.unpack('I', chunk[0:4])[0]
+			if src < maxID:
+			     degrees[src] = struct.unpack('I', chunk[4:8])[0]
 	return degrees
 
 def computeDegreesOnRmatGraph(f, maxID):
@@ -76,7 +76,8 @@ def computeDegreesOnRmatGraph(f, maxID):
 if __name__ == "__main__":
 	if len (sys.argv) != 3 :
 		print "Usage: python test_degree.py <rmatGraph file path> <outDegreeResults file path> <inDegreeResults file path> "
-	main(sys.argv[1:])
+	else :
+		main(sys.argv[1:])
 		
 
 
