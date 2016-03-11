@@ -11,31 +11,53 @@ def main(argv):
 	v_id = 0
 	p_sum = 0
 	start = 0
+	edges = 0
+	max_out_degree = 0
+	max_difference = 0
 	with open(outDegreeFile,'rb') as infile:
 		for chunk in iter((lambda:infile.read(8)),''):			
 		        vertex_degree = struct.unpack('L', chunk[0:8])[0]
+			
+			max_out_degree = max(vertex_degree, max_out_degree)
+
+			edges += int(vertex_degree)
 			p_sum = p_sum + int(vertex_degree)
-			if (p_sum >= outDegreeSumPerPartition) or p_sum >= maxNumberOfEdgesPerPartition:
+
+			if (p_sum >= outDegreeSumPerPartition) or (p_sum >= maxNumberOfEdgesPerPartition):
 				end = v_id  
 				partitions[p_id] = [start, end, p_sum]
 				start = v_id + 1 
 				p_id = p_id + 1
+				max_difference = max3(max_difference, p_sum - outDegreeSumPerPartition, p_sum - maxNumberOfEdgesPerPartition)
 				p_sum = 0
 
 			v_id = v_id + 1
 			
-		partitions[p_id] = [start, v_id-1]
+		partitions[p_id] = [start, v_id-1, p_sum]
 
-	print partitions
+	printPartitions(partitions)
+	print "Total number of vertices: " + str(v_id)
+	print "Total number of edges: " + str(edges)
+	print "Max out degree: " + str(max_out_degree)
+	print "Max partition overhead: " + str(max_difference)
 
+def max(a, b):
+	if a > b:
+		return a
+	return b
 
+def max3(a,b,c):
+	if a > max(b,c):
+	 	return a
+	return max(b,c)
 
 def printPartitions(partitions):
-	for p_pid in partitions.keys():
-		print "Partition " + pid 
-		print "    start vertex:" + partitions[p_id][0]
-		print "    end vertex:" + partitions[p_id][1]
-		print "    edges: " + partitions[p_id][2]
+	for p_id in partitions.keys():
+		print "Partition " + str(p_id) 
+		print "    start vertex: " + str(partitions[p_id][0])
+		print "    end vertex: " + str(partitions[p_id][1])
+		print "    vertices: " + str(partitions[p_id][1] - partitions[p_id][0])
+		print "    edges: " + str(partitions[p_id][2])
 
 
 if __name__ == "__main__":
