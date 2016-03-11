@@ -261,6 +261,7 @@ namespace x_lib {
         }
 
         void autotuneNewPartitions() {
+
             // set sum to this value in order to be sure that the vertex set for the new partitions
             // does not exceed the memory
             sum_out_degrees_for_new_super_partition = vertices / super_partitions ;
