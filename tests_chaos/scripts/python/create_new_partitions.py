@@ -5,8 +5,10 @@ def main(argv):
 	outDegreeFile = sys.argv[1]
 	outDegreeSumPerPartition = int(sys.argv[2])
 	maxNumberOfEdgesPerPartition = int(sys.argv[3])
+	resultFile = sys.argv[4]
 
 	partitions = {}
+	results = [0]
 	p_id = 0
 	v_id = 0
 	p_sum = 0
@@ -30,16 +32,18 @@ def main(argv):
 				p_id = p_id + 1
 				max_difference = max3(max_difference, p_sum - outDegreeSumPerPartition, p_sum - maxNumberOfEdgesPerPartition)
 				p_sum = 0
+				results.append(start)
 
 			v_id = v_id + 1
 			
 		partitions[p_id] = [start, v_id-1, p_sum]
 
-	printPartitions(partitions)
+	printPartitionDetails(partitions)
 	print "Total number of vertices: " + str(v_id)
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
 	print "Max partition overhead: " + str(max_difference)
+	printResults(results, resultFile)
 
 def max(a, b):
 	if a > b:
@@ -51,7 +55,7 @@ def max3(a,b,c):
 	 	return a
 	return max(b,c)
 
-def printPartitions(partitions):
+def printPartitionDetails(partitions):
 	for p_id in partitions.keys():
 		print "Partition " + str(p_id) 
 		print "    start vertex: " + str(partitions[p_id][0])
@@ -60,9 +64,16 @@ def printPartitions(partitions):
 		print "    edges: " + str(partitions[p_id][2])
 
 
+def printResults(results, fileName):
+	with open(fileName, 'w') as f:
+		f.write(str(len(results)) + '\n')
+   		for v in results:
+			f.write(str(v) + '\n') 
+		
+
 if __name__ == "__main__":
-	if len (sys.argv) != 4 :
-		print "Usage: python create_new_partitions.py <vertex out degree file> <max sum of out degrees per partition> <max number of edges per partition> "
+	if len (sys.argv) != 5 :
+		print "Usage: python create_new_partitions.py <vertex out degree file> <max sum of out degrees per partition> <max number of edges per partition> <result file> "
 	else :
 		main(sys.argv[1:])
 
