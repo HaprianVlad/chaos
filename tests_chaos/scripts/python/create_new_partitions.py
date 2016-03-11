@@ -1,14 +1,6 @@
 import sys
 import struct
 
-if __name__ == "__main__":
-	if len (sys.argv) != 4 :
-		print "Usage: python create_new_partitions.py <vertex out degree file> <max sum of out degrees per partition> <max number of edges per partition> "
-	else :
-		main(sys.argv[1:])
-
-
-
 def main(argv):
 	outDegreeFile = sys.argv[1]
 	outDegreeSumPerPartition = sys.argv[2]
@@ -39,4 +31,12 @@ def main(argv):
 
 
 
-	
+
+if __name__ == "__main__":
+	if len (sys.argv) != 4 :
+		print "Usage: python create_new_partitions.py <vertex out degree file> <max sum of out degrees per partition> <max number of edges per partition> "
+	else :
+		main(sys.argv[1:])
+
+
+
