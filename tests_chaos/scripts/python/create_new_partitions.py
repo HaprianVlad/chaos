@@ -3,8 +3,8 @@ import struct
 
 def main(argv):
 	outDegreeFile = sys.argv[1]
-	outDegreeSumPerPartition = sys.argv[2]
-	maxNumberOfEdgesPerPartition = sys.argv[3]
+	outDegreeSumPerPartition = int(sys.argv[2])
+	maxNumberOfEdgesPerPartition = int(sys.argv[3])
 
 	partitions = {}
 	p_id = 0
@@ -14,18 +14,17 @@ def main(argv):
 	with open(outDegreeFile,'rb') as infile:
 		for chunk in iter((lambda:infile.read(8)),''):			
 		        vertex_degree = struct.unpack('L', chunk[0:8])[0]
-			p_sum = p_sum + vertex_degree
-			if p_sum >= outDegreeSumPerPartition or p_sum >= maxNumberOfEdgesPerPartition:
+			p_sum = p_sum + int(vertex_degree)
+			if (p_sum >= outDegreeSumPerPartition) or p_sum >= maxNumberOfEdgesPerPartition:
 				end = v_id  
-				partitions[pid] = [start, end]
-				
+				partitions[p_id] = [start, end]
 				start = v_id + 1 
-				p_id +=1
+				p_id = p_id + 1
 				p_sum = 0
 
 			v_id = v_id + 1
-
-		partitions[pid] = [start, v_id-1]
+			
+		partitions[p_id] = [start, v_id-1]
 
 	print partitions
 
