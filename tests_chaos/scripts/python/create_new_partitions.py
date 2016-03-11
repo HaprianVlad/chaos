@@ -17,7 +17,7 @@ def main(argv):
 			p_sum = p_sum + int(vertex_degree)
 			if (p_sum >= outDegreeSumPerPartition) or p_sum >= maxNumberOfEdgesPerPartition:
 				end = v_id  
-				partitions[p_id] = [start, end]
+				partitions[p_id] = [start, end, p_sum]
 				start = v_id + 1 
 				p_id = p_id + 1
 				p_sum = 0
@@ -29,6 +29,13 @@ def main(argv):
 	print partitions
 
 
+
+def printPartitions(partitions):
+	for p_pid in partitions.keys():
+		print "Partition " + pid 
+		print "    start vertex:" + partitions[p_id][0]
+		print "    end vertex:" + partitions[p_id][1]
+		print "    edges: " + partitions[p_id][2]
 
 
 if __name__ == "__main__":
