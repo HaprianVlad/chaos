@@ -19,6 +19,8 @@
 #ifndef _AUTOTUNER_
 #define _AUTOTUNER_
 
+#include <fstream>
+
 #include "../utils/boost_log_wrapper.h"
 #include "../utils/memory_utils.h"
 #include "../utils/options_utils.h"
@@ -52,9 +54,15 @@ namespace x_lib {
         unsigned long buffer_size;
         unsigned long vertex_state_buffer_size;
 
+        /* New partitioning variables */
         static unsigned long new_super_partitions;
+        static unsigned int * new_super_partition_offsets;
+
         static unsigned long sum_out_degrees_for_new_super_partition;
         static unsigned long max_edges_per_partition;
+
+        // TODO: need to be read from config file.
+        static char * partitioning_file_name;
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -269,6 +277,27 @@ namespace x_lib {
             // this ensures that we have at least as many new partitions as machines.
             max_edges_per_partition = edges / super_partitions;
 
+            // TODO: the partitioning file is computed by taking in acount the above two variables. So something should be done here
+
+
+            readPartitioningFile();
+        }
+
+        void readPartitioningFile() {
+            std::ifstream infile(partitioning_file_name);
+
+            unsigned int value;
+            unsigned int i=0;
+            while (infile >> value) {
+                if (i==0) {
+                    new_super_partitions = value;
+                    new_super_partition_offsets = new unsigned int[new_super_partitions];
+                }
+                else {
+                    new_super_partition_offsets[i-1] = value;
+                }
+                i++;
+            }
         }
 
         void manual() {
