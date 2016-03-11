@@ -277,10 +277,11 @@ namespace x_lib {
             // this ensures that we have at least as many new partitions as machines.
             max_edges_per_partition = edges / super_partitions;
 
-            // TODO: the partitioning file is computed by taking in acount the above two variables. So something should be done here
+            // TODO: the partitioning file is computed by taking in acount the above two variables. So something should be done here.
+            // It would also be possible to read them from some config file
 
 
-            readPartitioningFile();
+            //readPartitioningFile();
         }
 
         void readPartitioningFile() {
