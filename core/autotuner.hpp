@@ -53,8 +53,8 @@ namespace x_lib {
         unsigned long vertex_state_buffer_size;
 
         static unsigned long new_super_partitions;
-        unsigned long sum_out_degree_for_new_super_partition;
-        unsigned  long max_edges_per_partition;
+        static unsigned long sum_out_degrees_for_new_super_partition;
+        static unsigned long max_edges_per_partition;
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -168,8 +168,10 @@ namespace x_lib {
             max_buffers;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::MAX_STREAMS " <<
             max_streams;
-            BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::SUM_OF_OUT_DEGREE_FOR_NEW_PARTITIONS " <<
-            sum_out_degree_for_new_super_partition;
+            BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::SUM_OF_OUT_DEGREES_FOR_NEW_PARTITIONS::FIRST_CONSTRAINT " <<
+            sum_out_degrees_for_new_super_partition;
+            BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::MAX_EDGES_PER_NEW_PARTITION::SECOND_CONSTRAINT " <<
+            max_edges_per_partition;
             if (vm.count("ext_mem_shuffle") > 0) {
                 BOOST_LOG_TRIVIAL(info) << "SLIPSTREAM::EXT_MEM_SHUFFLE ON";
                 BOOST_LOG_TRIVIAL(info) << "SLIPSTREAM::EXT_MEM_FANOUT_BITS "
@@ -261,7 +263,7 @@ namespace x_lib {
         void autotuneNewPartitions() {
             // set sum to this value in order to be sure that the vertex set for the new partitions
             // does not exceed the memory
-            sum_out_degree_for_new_super_partition = vertices / super_partitions ;
+            sum_out_degrees_for_new_super_partition = vertices / super_partitions ;
 
             // this ensures that we have at least as many new partitions as machines.
             max_edges_per_partition = edges / super_partitions;
