@@ -332,7 +332,7 @@ namespace x_lib {
             long > ("max_edges_per_new_super_partition");
 
             new_super_partition_offsets = new unsigned long[new_super_partitions];
-            for (int i=0; i<new_super_partitions; i++) {
+            for (unsigned long i=0; i < new_super_partitions; i++) {
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
                 long > ("P" + i);
             }
