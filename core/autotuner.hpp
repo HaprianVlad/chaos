@@ -19,7 +19,7 @@
 #ifndef _AUTOTUNER_
 #define _AUTOTUNER_
 
-#include <fstream>
+#include <string>
 
 #include "../utils/boost_log_wrapper.h"
 #include "../utils/memory_utils.h"
@@ -337,7 +337,7 @@ namespace x_lib {
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
                 long > ("partitions_offsets_file.P" +  std::to_string(i));
             }
-            
+
         }
 
     };
