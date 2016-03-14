@@ -177,7 +177,7 @@ namespace x_lib {
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::SUM_OF_OUT_DEGREES_FOR_NEW_PARTITIONS::FIRST_CONSTRAINT " <<
             sum_out_degrees_for_new_super_partition;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::MAX_EDGES_PER_NEW_PARTITION::SECOND_CONSTRAINT " <<
-            max_edges_per_partition;
+            max_edges_per_new_super_partition;
             if (vm.count("ext_mem_shuffle") > 0) {
                 BOOST_LOG_TRIVIAL(info) << "SLIPSTREAM::EXT_MEM_SHUFFLE ON";
                 BOOST_LOG_TRIVIAL(info) << "SLIPSTREAM::EXT_MEM_FANOUT_BITS "
