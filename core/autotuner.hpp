@@ -333,7 +333,6 @@ namespace x_lib {
 
             new_super_partition_offsets = new unsigned long[new_super_partitions];
             for (unsigned long i=0; i < new_super_partitions; i++) {
-                BOOST_LOG_TRIVIAL(fatal) << "partitions_offsets_file.P" + to_string(i);
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
                 long > ("partitions_offsets_file.P" +  to_string(i));
             }
@@ -341,8 +340,7 @@ namespace x_lib {
         }
 
         template <class T>
-        inline std::string to_string (const T & t)
-        {
+        inline std::string to_string (const T & t) {
             std::stringstream ss;
             ss << t;
             return ss.str();
