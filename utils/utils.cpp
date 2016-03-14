@@ -23,6 +23,7 @@ boost::program_options::options_description desc("Supported options");
 boost::program_options::variables_map vm;
 boost::property_tree::ptree pt;
 boost::property_tree::ptree pt_slipstore;
+boost::property_tree::ptree pt_partitions;
 
 unsigned long stat_bytes_read = 0;
 unsigned long stat_bytes_written = 0;
