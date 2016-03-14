@@ -54,7 +54,7 @@ static void init_partitions_offsets(const std::string &partitions_file_name) {
     boost::property_tree::ini_parser::read_ini(partitions_file_name, pt_partitions);
   }
   catch (...) {
-    BOOST_LOG_TRIVIAL(fatal) << "Unable to read slipstore property file";
+    BOOST_LOG_TRIVIAL(fatal) << "Unable to read partitions property file";
     exit(-1);
   }
 }
