@@ -66,7 +66,7 @@ def printPartitionDetails(partitions):
 
 def printResults(results, fileName, c1, c2):
 	with open(fileName, 'w') as f:
-		f.write("[Partitions]" + '\n')
+		f.write("[partitions_offsets_file]" + '\n')
 		f.write("sum_out_degrees_for_new_super_partition=" + str(c1))
  		f.write("max_edges_per_new_super_partition=" + str(c1))
 		f.write("number_of_new_super_partitions=" + str(len(results)) + '\n')
