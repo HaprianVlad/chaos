@@ -31,11 +31,11 @@ namespace x_lib {
   unsigned long configuration::ext_fanout_bits = 0;
   unsigned long map_spshift_wrap::map_spshift = 100;
 
-  bool old_partitioning_mode = true;
-  unsigned long new_super_partitions = 0;
-  unsigned long sum_out_degrees_for_new_super_partition = 0;
-  unsigned long max_edges_per_new_super_partition = 0;
-  unsigned long * new_super_partition_offsets = NULL;
+  bool configuration::old_partitioning_mode = true;
+  unsigned long configuration::new_super_partitions = 0;
+  unsigned long configuration::sum_out_degrees_for_new_super_partition = 0;
+  unsigned long configuration::max_edges_per_new_super_partition = 0;
+  unsigned long * configuration::new_super_partition_offsets = NULL;
 
   x_barrier *x_thread::sync;
   volatile bool x_thread::terminate = false;
