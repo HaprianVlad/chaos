@@ -110,6 +110,8 @@ int main(int argc, const char *argv[]) {
   init_graph_desc(vm["graph"].as<std::string>());
   /* Read in slipstore information */
   init_slipstore_desc();
+  /* Read the spliting partition file */
+  init_split_partitions(vm["partitions"].as<std::string>());
 
   unsigned long blocked_memory = vm["blocked_memory"].as < unsigned
   long > ();

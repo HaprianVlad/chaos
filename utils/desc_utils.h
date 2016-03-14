@@ -27,6 +27,7 @@
 
 extern boost::property_tree::ptree pt;
 extern boost::property_tree::ptree pt_slipstore;
+extern boost::property_tree::ptree pt_partitions;
 
 static void init_graph_desc(const std::string &graph_name) {
   try {
@@ -41,6 +42,16 @@ static void init_graph_desc(const std::string &graph_name) {
 static void init_slipstore_desc() {
   try {
     boost::property_tree::ini_parser::read_ini("slipstore.ini", pt_slipstore);
+  }
+  catch (...) {
+    BOOST_LOG_TRIVIAL(fatal) << "Unable to read slipstore property file";
+    exit(-1);
+  }
+}
+
+static void init_split_partitions(const std::string &partitions_file_name) {
+  try {
+    boost::property_tree::ini_parser::read_ini(partitions_file_name + ".ini", pt_partitions);
   }
   catch (...) {
     BOOST_LOG_TRIVIAL(fatal) << "Unable to read slipstore property file";

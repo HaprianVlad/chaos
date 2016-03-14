@@ -66,9 +66,10 @@ def printPartitionDetails(partitions):
 
 def printResults(results, fileName):
 	with open(fileName, 'w') as f:
-		f.write(str(len(results)) + '\n')
-   		for v in results:
-			f.write(str(v) + '\n') 
+		f.write("[Partitions]" + '\n')
+		f.write("size=" + str(len(results)) + '\n')
+   		for v in range(len(results)):
+			f.write("0=" + str(resulst[v]) + '\n') 
 		
 
 if __name__ == "__main__":
