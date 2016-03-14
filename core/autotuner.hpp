@@ -337,7 +337,7 @@ namespace x_lib {
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
                 long > ("partitions_offsets_file.P" +  std::to_string(i));
             }
-
+            
         }
 
     };
