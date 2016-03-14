@@ -333,6 +333,7 @@ namespace x_lib {
 
             new_super_partition_offsets = new unsigned long[new_super_partitions];
             for (unsigned long i=0; i < new_super_partitions; i++) {
+                BOOST_LOG_TRIVIAL(fatal) << "partitions_offsets_file.P" + i;
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
                 long > ("partitions_offsets_file.P" + i);
             }
