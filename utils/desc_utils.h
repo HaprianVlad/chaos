@@ -55,6 +55,7 @@ static void init_partitions_offsets(const std::string &partitions_file_name) {
   }
   catch (...) {
     BOOST_LOG_TRIVIAL(fatal) << "Unable to read partitions property file";
+    BOOST_LOG_TRIVIAL(fatal) << partitions_file_name;
     exit(-1);
   }
 }
