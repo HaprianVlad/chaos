@@ -314,7 +314,7 @@ namespace x_lib {
             tiles = 1;
 
             new_super_partitions = pt_partitions.get < unsigned
-            long > ("number_of_new_super_partitions");
+            long > ("partitions_offsets_file.number_of_new_super_partitions");
             if (new_super_partitions == 0) {
                 // The splitting file for the new partitions is not yet computed so we need to do an out_degree_cnt with the old_partitioning mode
                 old_partitioning_mode = true;
@@ -327,14 +327,14 @@ namespace x_lib {
 
         void readPartitioningFile() {
             sum_out_degrees_for_new_super_partition = pt_partitions.get < unsigned
-            long > ("sum_out_degrees_for_new_super_partition");
+            long > ("partitions_offsets_file.sum_out_degrees_for_new_super_partition");
             max_edges_per_new_super_partition =  pt_partitions.get < unsigned
-            long > ("max_edges_per_new_super_partition");
+            long > ("partitions_offsets_file.max_edges_per_new_super_partition");
 
             new_super_partition_offsets = new unsigned long[new_super_partitions];
             for (unsigned long i=0; i < new_super_partitions; i++) {
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
-                long > ("P" + i);
+                long > ("partitions_offsets_file.P" + i);
             }
 
         }
