@@ -41,7 +41,7 @@ static void setup_options(int argc, const char *argv[]) {
      mcst, hyperanf, scc, triangle_counting, kcores, bc")
       ("graph,g", boost::program_options::value<std::string>()->required(),
        "Name of the graph/matrix")
-      ("partitions_offsets_file, part_file", boost::program_options::value<std::string>()->required(),
+      ("partitions_offsets_file", boost::program_options::value<std::string>()->required(),
        "Name of the partitions offsets file")
       ("autotune,a", "Autotune partition count")
       ("cpu_cache_size",
