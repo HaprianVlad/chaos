@@ -111,7 +111,7 @@ int main(int argc, const char *argv[]) {
   /* Read in slipstore information */
   init_slipstore_desc();
   /* Read the spliting partition file */
-  init_split_partitions(vm["partitions"].as<std::string>());
+  init_partitions_offsets(vm["partitions_offsets_file"].as<std::string>());
 
   unsigned long blocked_memory = vm["blocked_memory"].as < unsigned
   long > ();

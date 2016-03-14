@@ -49,7 +49,7 @@ static void init_slipstore_desc() {
   }
 }
 
-static void init_split_partitions(const std::string &partitions_file_name) {
+static void init_partitions_offsets(const std::string &partitions_file_name) {
   try {
     boost::property_tree::ini_parser::read_ini(partitions_file_name + ".ini", pt_partitions);
   }

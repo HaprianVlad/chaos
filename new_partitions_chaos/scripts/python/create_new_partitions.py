@@ -43,7 +43,7 @@ def main(argv):
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
 	print "Max partition overhead: " + str(max_difference)
-	printResults(results, resultFile)
+	printResults(results, resultFile, outDegreeSumPerPartition, maxNumberOfEdgesPerPartition)
 
 def max(a, b):
 	if a > b:
@@ -64,12 +64,14 @@ def printPartitionDetails(partitions):
 		print "    edges: " + str(partitions[p_id][2])
 
 
-def printResults(results, fileName):
+def printResults(results, fileName, c1, c2):
 	with open(fileName, 'w') as f:
 		f.write("[Partitions]" + '\n')
-		f.write("size=" + str(len(results)) + '\n')
+		f.write("sum_out_degrees_for_new_super_partition+" str(c1))
+ 		f.write("max_edges_per_new_super_partition+" str(c1))
+		f.write("number_of_new_super_partitions=" + str(len(results)) + '\n')
    		for v in range(len(results)):
-			f.write(v + "=" + str(resulst[v]) + '\n') 
+			f.write("P" + v + "=" + str(resulst[v]) + '\n') 
 		
 
 if __name__ == "__main__":

@@ -55,15 +55,13 @@ namespace x_lib {
         unsigned long vertex_state_buffer_size;
 
         /* New partitioning variables */
+        static bool old_partitioning_mode;
         static unsigned long new_super_partitions;
-        static unsigned int * new_super_partition_offsets;
 
         static unsigned long sum_out_degrees_for_new_super_partition;
-        static unsigned long max_edges_per_partition;
+        static unsigned long max_edges_per_new_super_partition;
 
-        // TODO: need to be read from config file.
-        static char * partitioning_file_name;
-
+        static unsigned long * new_super_partition_offsets;
         /* Mapping */
         static unsigned long partition_shift;
         static unsigned long tile_shift;
@@ -258,7 +256,9 @@ namespace x_lib {
                     if (ram_budget <= RAM_ADJUST * available_ram &&
                         buffer_size >= stream_unit * tiles * super_partitions) {
                         setup_mapping();
-                        autotuneNewPartitions();
+                        if (old_partitioning_mode) {
+                            createConstraintsForNewPartitions();
+                        }
                         return true;
                     }
                     super_partitions = super_partitions * 2;
@@ -268,38 +268,15 @@ namespace x_lib {
             return false;
         }
 
-        void autotuneNewPartitions() {
-
+        void createConstraintsForNewPartitions() {
             // set sum to this value in order to be sure that the vertex set for the new partitions
             // does not exceed the memory
             sum_out_degrees_for_new_super_partition = vertices / super_partitions ;
 
             // this ensures that we have at least as many new partitions as machines.
-            max_edges_per_partition = edges / super_partitions;
-
-            // TODO: the partitioning file is computed by taking in acount the above two variables. So something should be done here.
-            // It would also be possible to read them from some config file
-
-
-            //readPartitioningFile();
+            max_edges_per_new_super_partition = edges / super_partitions;
         }
 
-        void readPartitioningFile() {
-            std::ifstream infile(partitioning_file_name);
-
-            unsigned int value;
-            unsigned int i=0;
-            while (infile >> value) {
-                if (i==0) {
-                    new_super_partitions = value;
-                    new_super_partition_offsets = new unsigned int[new_super_partitions];
-                }
-                else {
-                    new_super_partition_offsets[i-1] = value;
-                }
-                i++;
-            }
-        }
 
         void manual() {
             unsigned long total_partitions = vm["partitions"].as < unsigned
@@ -335,7 +312,33 @@ namespace x_lib {
             available_ram = vm["physical_memory"].as < unsigned
             long > ();
             tiles = 1;
+
+            new_super_partitions = pt_partitions.get < unsigned
+            long > ("number_of_new_super_partitions");
+            if (new_super_partitions == 0) {
+                // The splitting file for the new partitions is not yet computed so we need to do an out_degree_cnt with the old_partitioning mode
+                old_partitioning_mode = true;
+            } else {
+                old_partitioning_mode = false;
+                readPartitioningFile();
+            }
         }
+
+
+        void readPartitioningFile() {
+            sum_out_degrees_for_new_super_partition = pt_partitions.get < unsigned
+            long > ("sum_out_degrees_for_new_super_partition");
+            max_edges_per_new_super_partition =  pt_partitions.get < unsigned
+            long > ("max_edges_per_new_super_partition");
+
+            new_super_partition_offsets = new unsigned long[new_super_partitions];
+            for (int i=0; i<new_super_partitions; i++) {
+                new_super_partition_offsets[i] = pt_partitions.get < unsigned
+                long > ("P" + i);
+            }
+
+        }
+
     };
 
     class map_cached_partition_wrap {
