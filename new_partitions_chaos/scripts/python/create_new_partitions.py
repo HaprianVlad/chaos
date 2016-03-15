@@ -12,34 +12,33 @@ def main(argv):
 	partitions = {}
 	results = [0]
 	p_id = 0
-	v_id = 0
+
 	p_sum = 0
 	start = 0
 	edges = 0
 	max_out_degree = 0
 	max_difference = 0
-	offset = 0
+	v_id = 0
 	with open(outDegreeFile,'rb') as infile:
 		for chunk in iter((lambda:infile.read(8)),''):	
-			if (((v_id % vp) * p + v_id / vp) == offset):		
-				vertex_degree = struct.unpack('L', chunk[0:8])[0]
 			
-				max_out_degree = max(vertex_degree, max_out_degree)
+			vertex_degree = struct.unpack('L', chunk[0:8])[0]
+			max_out_degree = max(vertex_degree, max_out_degree)
 
-				edges += int(vertex_degree)
-				p_sum = p_sum + int(vertex_degree)
+			edges += int(vertex_degree)
+			p_sum = p_sum + int(vertex_degree)
 
-				if (p_sum >= outDegreeSumPerPartition) or (p_sum >= maxNumberOfEdgesPerPartition):
-					end = v_id  
-					partitions[p_id] = [start, end, p_sum]
-					start = v_id + 1 
-					p_id = p_id + 1
-					max_difference = max3(max_difference, p_sum - outDegreeSumPerPartition, p_sum - maxNumberOfEdgesPerPartition)
-					p_sum = 0
-					results.append(start)
+			if (p_sum >= outDegreeSumPerPartition) or (p_sum >= maxNumberOfEdgesPerPartition):
+				end = v_id  
+				partitions[p_id] = [start, end, p_sum]
+				start = v_id + 1 
+				p_id = p_id + 1
+				max_difference = max3(max_difference, p_sum - outDegreeSumPerPartition, p_sum - maxNumberOfEdgesPerPartition)
+				p_sum = 0
+				results.append(start)
 
-				v_id = v_id + 1
-			offset += 1
+			
+			v_id += 1
 			
 		partitions[p_id] = [start, v_id-1, p_sum]
 
