@@ -51,6 +51,18 @@ def main(argv):
 	printResults(results, resultFile, outDegreeSumPerPartition, maxNumberOfEdgesPerPartition)
 
 
+def getVertexId(offset, p, vp):
+        i=0
+	while (True):
+		if (((i % vp) * p + i / vp) == offset):
+                	return [True, i]
+		i+=1
+		if (i >= maxID):
+			break;
+
+        return [False]
+
+
 def max(a, b):
 	if a > b:
 		return a
