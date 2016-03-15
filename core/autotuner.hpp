@@ -356,6 +356,20 @@ namespace x_lib {
         }
     };
 
+    class map_cached_partition_wrap_new {
+    public:
+        static unsigned long map(unsigned long key) {
+            for (unsigned long i = 0; i < configuration::new_super_partitions - 1; i++) {
+                if (key >= configuration::new_super_partition_offsets[i] &&
+                        key < configuration::new_super_partition_offsets[i+1]) {
+                    return i;
+                }
+            }
+
+            return configuration::new_super_partitions - 1;
+        }
+    };
+
     struct map_spshift_wrap {
         static unsigned long map_spshift;
 

@@ -283,8 +283,14 @@ namespace x_lib {
                 callback_state.ingest = false;
             }
             if (stream_in != NULL) {
-                make_index<IN, map_cached_partition_wrap>
-                        (stream_in, processor_id, config->cached_partitions, sync);
+                if (config->old_partitioning_mode) {
+                    make_index<IN, map_cached_partition_wrap>
+                            (stream_in, processor_id, config->cached_partitions, sync);
+                } else {
+                    make_index<IN, map_cached_partition_wrap_new>
+                            (stream_in, processor_id, config->cached_partitions, sync);
+                }
+
             }
             sync->wait();
             input_filter->prep_dq(processor_id);
