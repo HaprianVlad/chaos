@@ -26,7 +26,6 @@ with open(f,'rb') as infile:
 		value =  struct.unpack('L', chunk[0:8])[0]
 		print value
 		if (res[0]):
-			print offset
 			v_id = res[1]
 			degrees[v_id] = value
 			found = found + 1
