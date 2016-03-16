@@ -12,8 +12,11 @@ found=0
 with open(f,'rb') as infile:
 	for chunk in iter((lambda:infile.read(8)),''):			
 		value =  struct.unpack('Q', chunk[0:8])[0]
-		v_id = ((offset % vp) << p) + (offset >> vp) 
+		v_id = ((offset % vp) *  p) + (offset/vp) 
 		if (v_id < maxID):
+			print found
+			print v_id
+			print
 			degrees[v_id] = value
 			found = found + 1
 			if (found >= maxID):
