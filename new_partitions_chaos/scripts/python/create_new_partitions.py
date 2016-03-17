@@ -20,9 +20,16 @@ def main(argv):
 	max_difference = 0
 	offset = 0
 	degrees = {}
+	toAdd = 0
+	toSub = 0
 	with open(outDegreeFile,'rb') as infile:
 		for chunk in iter((lambda:infile.read(8)),''):
-			v_id = ((offset % vp) *  p) + (offset/vp) 	
+			v_id = ((offset % vp) *  p) + (offset/vp) + toAdd - toSub
+			if v_id in degrees:		
+				toAdd = offset
+				v_id = toAdd 
+				toSub += 4
+				 	
 			degrees[v_id] = long(struct.unpack('Q', chunk[0:8])[0])
 			offset += 1
 
@@ -45,12 +52,12 @@ def main(argv):
 
 		
 		
-	partitions[p_id] = [start, v_id-1, p_sum]
+	partitions[p_id] = [start, v_id, p_sum]
 
 	
 
 	printPartitionDetails(partitions)
-	print "Total number of vertices: " + str(v_id)
+	print "Total number of vertices: " + str(len(degrees))
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
 	print "Max partition overhead: " + str(max_difference)
