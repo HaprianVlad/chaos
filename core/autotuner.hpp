@@ -283,6 +283,15 @@ namespace x_lib {
             long > ();
             super_partitions = vm["super_partitions"].as < unsigned
             long > ();
+            unsigned long machines =
+                    pt_slipstore.get < unsigned
+            long > ("machines.count");
+
+            if (!old_partitioning_mode) {
+                super_partitions = new_super_partitions;
+                total_partitions = super_partitions * super_partitions * machines;
+            }
+
             cached_partitions = total_partitions / super_partitions;
             fanout = vm["fanout"].as < unsigned
             long > ();
@@ -320,7 +329,6 @@ namespace x_lib {
                 old_partitioning_mode = true;
             } else {
                 old_partitioning_mode = false;
-                super_partitions = new_super_partitions;
                 readPartitioningFile();
             }
         }
