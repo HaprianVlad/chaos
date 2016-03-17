@@ -331,6 +331,8 @@ namespace x_lib {
             max_edges_per_new_super_partition =  pt_partitions.get < unsigned
             long > ("partitions_offsets_file.max_edges_per_new_super_partition");
 
+            super_partitions = new_super_partitions;
+
             new_super_partition_offsets = new unsigned long[new_super_partitions];
             for (unsigned long i=0; i < new_super_partitions; i++) {
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
