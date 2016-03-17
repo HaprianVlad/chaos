@@ -283,6 +283,7 @@ namespace x_lib {
             long > ();
             super_partitions = vm["super_partitions"].as < unsigned
             long > ();
+
             unsigned long machines =
                     pt_slipstore.get < unsigned
             long > ("machines.count");
