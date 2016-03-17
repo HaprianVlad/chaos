@@ -320,6 +320,7 @@ namespace x_lib {
                 old_partitioning_mode = true;
             } else {
                 old_partitioning_mode = false;
+                super_partitions = new_super_partitions;
                 readPartitioningFile();
             }
         }
@@ -330,8 +331,6 @@ namespace x_lib {
             long > ("partitions_offsets_file.sum_out_degrees_for_new_super_partition");
             max_edges_per_new_super_partition =  pt_partitions.get < unsigned
             long > ("partitions_offsets_file.max_edges_per_new_super_partition");
-
-            super_partitions = new_super_partitions;
 
             new_super_partition_offsets = new unsigned long[new_super_partitions];
             for (unsigned long i=0; i < new_super_partitions; i++) {
