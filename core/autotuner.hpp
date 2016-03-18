@@ -279,10 +279,7 @@ namespace x_lib {
 
 
         void manual() {
-            unsigned long total_partitions = vm["partitions"].as < unsigned
-            long > ();
-            super_partitions = vm["super_partitions"].as < unsigned
-            long > ();
+            unsigned long total_partitions;
 
             unsigned long machines =
                     pt_slipstore.get < unsigned
@@ -291,6 +288,13 @@ namespace x_lib {
             if (!old_partitioning_mode) {
                 super_partitions = new_super_partitions;
                 total_partitions = super_partitions * super_partitions * machines;
+            } else {
+                total_partitions = vm["partitions"].as < unsigned
+                long > ();
+                super_partitions = vm["super_partitions"].as < unsigned
+                long > ();
+
+                createConstraintsForNewPartitions();
             }
 
             cached_partitions = total_partitions / super_partitions;
@@ -369,6 +373,7 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
+            BOOST_LOG_TRIVIAL(info) << "NEW_PARTITIONS_CALLED " << key;
             for (unsigned long i = 0; i < configuration::new_super_partitions - 1; i++) {
                 if (key >= configuration::new_super_partition_offsets[i] &&
                         key < configuration::new_super_partition_offsets[i+1]) {
