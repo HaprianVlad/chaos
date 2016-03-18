@@ -379,12 +379,12 @@ namespace x_lib {
             for (unsigned long i = 0; i < configuration::new_super_partitions - 1; i++) {
                 if (key >= configuration::new_super_partition_offsets[i] &&
                         key < configuration::new_super_partition_offsets[i+1]) {
-                    return i & (configuration::cached_partitions - 1);
+                    return (i >> configuration::super_partition_shift) & (configuration::cached_partitions - 1);
 
                 }
             }
 
-            return (configuration::new_super_partitions - 1) &
+            return ((configuration::new_super_partitions - 1)  >> configuration::super_partition_shift) &
                    (configuration::cached_partitions - 1);
         }
     };
