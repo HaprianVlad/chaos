@@ -1198,6 +1198,8 @@ namespace x_lib {
             memory_buffer *outstanding = memory_buffer::get_free_buffer(sio->io_wait_time);
             BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckG ";
             outstanding->uptodate = false;
+            // read things from disk. This is done by an ioService that will fill
+            // the memory buffers and call us back
             slipstore::ioService.post(boost::bind(&memory_buffer::fill,
                                                   outstanding,
                                                   slipstore::slipstore_client_fill,
@@ -1207,10 +1209,11 @@ namespace x_lib {
                                                   IN::item_size()));
 
             BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckH ";
-            // not sure why the while is needed
+            // wait for the callback from disk
             while (true) {
                 sio->io_wait_time.start();
                 BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckI ";
+                // wait for IO to be done.
                 outstanding->wait_uptodate();
                 sio->io_wait_time.stop();
                 if (outstanding->bufsize == 0) {
@@ -1219,11 +1222,12 @@ namespace x_lib {
                     break;
                 }
                 BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckJ ";
+                // once disk IO is done transform the result in a input stream for the workers (threads)
                 work_item.stream_in = outstanding;
                 outstanding = memory_buffer::get_free_buffer(sio->io_wait_time);
                 outstanding->uptodate = false;
                 BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckK ";
-
+                // Launch another IO request if there are still things to be read on the disk
                 slipstore::ioService.post(boost::bind(&memory_buffer::fill,
                                                       outstanding,
                                                       slipstore::slipstore_client_fill,
@@ -1244,7 +1248,8 @@ namespace x_lib {
 
                 SETUP_STREAMOUT();
                 BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckN ";
-
+                // do the partitioning job
+                // in this case the worker 0 is the current thread.
                 (*sio->workers[0])();
                 BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckO ";
 

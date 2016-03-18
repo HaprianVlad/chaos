@@ -188,7 +188,9 @@ namespace x_lib {
           unsigned long key = M::map(T::key(input_stream + j));
           sorted = sorted && (key >= old_key);
           old_key = key;
-          output_id = key >> shift; //sorted does not change !
+          //TODO: shift disabled
+
+          //output_id = key >> shift; //sorted does not change !
           output_id = output_id & (num_out - 1);
           indices[1 - input][output_id] += split_size_bytes;
         }
@@ -217,7 +219,8 @@ namespace x_lib {
         else {
           unsigned long saved_start_index = indices[1 - input][output_start];
           for (unsigned long j = 0; j < input_size; j += split_size_bytes) {
-            output_id = M::map(T::key(input_stream + j)) >> shift;
+            //TODO: shift disabled
+            output_id = M::map(T::key(input_stream + j)); // >> shift;
             output_id = output_id & (num_out - 1);
             memcpy(output_stream + indices[1 - input][output_id],
                    input_stream + j, split_size_bytes);
