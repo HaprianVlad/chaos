@@ -373,14 +373,15 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
-            BOOST_LOG_TRIVIAL(info) << "NEW_PARTITIONS_CALLED " << key;
+            BOOST_LOG_TRIVIAL(info) << "NEW_PARTITIONS_CALLED key " << key;
             for (unsigned long i = 0; i < configuration::new_super_partitions - 1; i++) {
                 if (key >= configuration::new_super_partition_offsets[i] &&
                         key < configuration::new_super_partition_offsets[i+1]) {
+                    BOOST_LOG_TRIVIAL(info) << "NEW_PARTITIONS_CALLED partition " << i;
                     return i;
                 }
             }
-
+            BOOST_LOG_TRIVIAL(info) << "NEW_PARTITIONS_CALLED partition " <<  configuration::new_super_partitions - 1;
             return configuration::new_super_partitions - 1;
         }
     };
