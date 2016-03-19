@@ -30,6 +30,7 @@ namespace x_lib {
   unsigned long configuration::ext_mem_bits = 0;
   unsigned long configuration::ext_fanout_bits = 0;
   unsigned long map_spshift_wrap::map_spshift = 100;
+    unsigned long map_spshift_wrap_new::map_spshift = 100;
 
   bool configuration::old_partitioning_mode = true;
   unsigned long configuration::new_super_partitions = 0;
