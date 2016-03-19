@@ -61,7 +61,10 @@ namespace x_lib {
         static unsigned long sum_out_degrees_for_new_super_partition;
         static unsigned long max_edges_per_new_super_partition;
 
+        static unsigned long max_vertices_per_new_super_partition;
+
         static unsigned long * new_super_partition_offsets;
+        static unsigned long * vertices_per_new_super_partition;
         /* Mapping */
         static unsigned long partition_shift;
         static unsigned long tile_shift;
@@ -104,12 +107,12 @@ namespace x_lib {
         }
 
         unsigned long state_bufsize(unsigned long superp) {
-            if (superp == (super_partitions - 1)) {
-                return vertices * vertex_size - (superp * vertex_state_buffer_size);
+            if (old_partitioning_mode) {
+                if (superp == (super_partitions - 1)) {
+                    return vertices * vertex_size - (superp * vertex_state_buffer_size);
+                }
             }
-            else {
-                return vertex_state_buffer_size;
-            }
+            return vertex_state_buffer_size;
         }
 
         unsigned long max_state_bufsize() {
@@ -134,9 +137,14 @@ namespace x_lib {
 
         unsigned long calculate_ram_budget() {
             unsigned long ram_budget = 0;
-            // Loaded vertices
-            vertex_state_buffer_size =
-                    ((vertices + super_partitions - 1) / super_partitions) * vertex_size;
+            if (old_partitioning_mode) {
+                // Loaded vertices
+                vertex_state_buffer_size =
+                        ((vertices + super_partitions - 1) / super_partitions) * vertex_size;
+            } else {
+                vertex_state_buffer_size = max_vertices_per_new_super_partition * vertex_size;
+            }
+
             ram_budget += vertex_state_buffer_size;
             // Indexes [+1 for the aux]
             unsigned long aux_cnt = ((vm.count("qsort") > 0) ? 0 : 1);
@@ -352,6 +360,18 @@ namespace x_lib {
             for (unsigned long i=0; i < new_super_partitions; i++) {
                 new_super_partition_offsets[i] = pt_partitions.get < unsigned
                 long > ("partitions_offsets_file.P" +  to_string(i));
+            }
+            max_vertices_per_new_super_partition = 0;
+            vertices_per_new_super_partition = new unsigned long[new_super_partitions];
+            for (unsigned long i=0; i < new_super_partitions; i++) {
+                if ((i+1) < new_super_partitions) {
+                    vertices_per_new_super_partition[i] = new_super_partition_offsets[i+1] - new_super_partition_offsets[i];
+                } else {
+                    vertices_per_new_super_partition[i] = vertices - new_super_partition_offsets[i];
+                }
+                if (vertices_per_new_super_partition[i] > max_vertices_per_new_super_partition) {
+                    max_vertices_per_new_super_partition = vertices_per_new_super_partition[i];
+                }
             }
 
         }

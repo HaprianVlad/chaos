@@ -872,7 +872,7 @@ namespace x_lib {
 
             // initialize the storage system
             slipstore::init(streams,
-                            config->vertex_state_buffer_size / config->tiles,
+                            config->max_state_bufsize() / config->tiles,
                             config->super_partitions);
             slipstore::slipstore_server->help_handle()->setup(config->super_partitions);
             open_streams = 2; //vertex and input streams are auto opened
