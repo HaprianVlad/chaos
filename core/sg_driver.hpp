@@ -368,16 +368,7 @@ namespace algorithm {
                 if (measure_scatter_gather) {
                     gather_cost.start();
                 }
-                // Old interface
-                //for(unsigned long i=0;i<graph_storage->get_config()->super_partitions;i++) {
-                //  graph_storage->state_load(i);
-                //  x_lib::do_stream<scatter_gather<A, F>,
-                //		   update_type_wrapper<A>,
-                //		   update_type_wrapper<A> >
-                //    (graph_storage, i, updates_stream, ULONG_MAX, NULL, true);
-                //  graph_storage->reset_stream(updates_stream, i);
-                //  graph_storage->state_store(i);
-                //}
+
                 x_lib::do_stream_skip<scatter_gather<A, F>,
                         update_type_wrapper<A>,
                         update_type_wrapper<A> >
@@ -409,26 +400,7 @@ namespace algorithm {
             if (measure_scatter_gather) {
                 scatter_cost.start();
             }
-            // Old interface
-            //for(unsigned long i=0;i<graph_storage->get_config()->super_partitions;i++) {
-            //	graph_storage->state_load(i);
-            // x_lib::do_cpu<scatter_gather<A, F> >(graph_storage, i);
-            // x_lib::do_stream<scatter_gather<A, F>,
-            // edge_type_wrapper<F>,
-            // update_type_wrapper<A> >
-            // (graph_storage, i, edge_stream, updates_stream, NULL,
-            // A::need_scatter_merge(sg_pcpu::bsp_phase));
-            // sg_pcpu::current_step = phase_post_scatter;
-            // if(i == (graph_storage->get_config()->super_partitions - 1)) {
-            //	  sg_pcpu::do_algo_reduce = true;
-            //}
-            //	bool stop_result =  x_lib::do_cpu<scatter_gather<A, F> >(graph_storage, i);
-            //	if(i == (graph_storage->get_config()->super_partitions - 1)) {
-            //	  global_stop = global_stop && stop_result;
-            //	}
-            //	sg_pcpu::do_algo_reduce = false;
-            //	graph_storage->state_store(i);
-            //}
+
 
             x_lib::do_stream_skip<scatter_gather<A, F>,
                     edge_type_wrapper<F>,
