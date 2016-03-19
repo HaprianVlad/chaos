@@ -412,8 +412,6 @@ namespace x_lib {
     };
 
     struct map_spshift_wrap_new {
-        //TODO: to which value it should be initialized
-        static unsigned long map_spshift;
 
         static unsigned long map_internal(unsigned long key) {
             unsigned long superp = configuration::getNewSuperPartition(key);
@@ -423,7 +421,7 @@ namespace x_lib {
         }
 
         static unsigned long map(unsigned long key) {
-            return map_internal(key) >> map_spshift;
+            return map_internal(key) >> map_spshift_wrap::map_spshift;
         }
     };
 }
