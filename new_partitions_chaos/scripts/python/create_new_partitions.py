@@ -40,7 +40,6 @@ def main(argv):
 
 		edges += vertex_degree
 		p_sum = p_sum + vertex_degree
-
 		if (p_sum >= outDegreeSumPerPartition) or (p_sum >= maxNumberOfEdgesPerPartition):
 			end = v_id  
 			partitions[p_id] = [start, end, p_sum]
