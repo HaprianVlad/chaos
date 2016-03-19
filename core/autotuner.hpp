@@ -121,9 +121,28 @@ namespace x_lib {
 
         unsigned long state_count(unsigned long superp,
                                   unsigned long partition) {
+
+            return old_partitioning_mode ? old_state_count(superp, partition) : new_state_count(superp, partition);
+        }
+
+        unsigned  long old_state_count(unsigned long superp, unsigned long partition) {
             unsigned long base = (partition << super_partition_shift) | superp;
             unsigned long count = (vertices - 1) &
                                   ~((1UL << (partition_shift + super_partition_shift)) - 1);
+            BOOST_ASSERT_MSG((base & count) == 0, "Error in state count calculation");
+            if ((count | base) < vertices) {
+                count = count >> (partition_shift + super_partition_shift);
+            }
+            else {
+                count = (count >> (partition_shift + super_partition_shift)) - 1;
+            }
+            count++;
+            return count;
+        }
+
+        unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
+            unsigned long base = (partition << super_partition_shift) | superp;
+            unsigned long count = vertices_per_new_super_partition[superp];
             BOOST_ASSERT_MSG((base & count) == 0, "Error in state count calculation");
             if ((count | base) < vertices) {
                 count = count >> (partition_shift + super_partition_shift);
