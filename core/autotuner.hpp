@@ -363,7 +363,7 @@ namespace x_lib {
             return ss.str();
         }
 
-        static unsigned  long getSuperPartition(unsigned long key) {
+        static unsigned  long getNewSuperPartition(unsigned long key) {
             for (unsigned long i = 0; i < new_super_partitions - 1; i++) {
                 if (key >= new_super_partition_offsets[i] &&
                     key < new_super_partition_offsets[i+1]) {
@@ -374,8 +374,8 @@ namespace x_lib {
             return (new_super_partitions - 1);
         }
 
-        static unsigned long getPartition(unsigned long key) {
-            return getSuperPartition(key) & (cached_partitions - 1);
+        static unsigned long getNewPartition(unsigned long key) {
+            return getNewSuperPartition(key) & (cached_partitions - 1);
         }
     };
 
@@ -385,14 +385,6 @@ namespace x_lib {
             return (key >> configuration::super_partition_shift) &
                    (configuration::cached_partitions - 1);
         }
-    };
-
-    class map_cached_partition_wrap_new {
-    public:
-        static unsigned long map(unsigned long key) {
-            return  configuration::getPartition(key);
-        }
-
     };
 
     struct map_spshift_wrap {
@@ -411,12 +403,21 @@ namespace x_lib {
         }
     };
 
+    class map_cached_partition_wrap_new {
+    public:
+        static unsigned long map(unsigned long key) {
+            return configuration::getNewPartition(key);
+        }
+
+    };
+
     struct map_spshift_wrap_new {
+        //TODO: to which value it should be initialized
         static unsigned long map_spshift;
 
         static unsigned long map_internal(unsigned long key) {
-            unsigned long superp = configuration::getSuperPartition(key);
-            unsigned long p = configuration::getPartition(key);
+            unsigned long superp = configuration::getNewSuperPartition(key);
+            unsigned long p = configuration::getNewPartition(key);
             unsigned long tile = p >> configuration::tile_shift;
             return superp * configuration::tiles + tile;
         }
