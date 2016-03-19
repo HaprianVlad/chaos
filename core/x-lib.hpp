@@ -151,11 +151,10 @@ namespace x_lib {
                     make_index<OUT, map_spshift_wrap>(stream_out, processor_id,
                                                       config->super_partitions * config->tiles,
                                                       sync);
-                } else{
+                } else {
                     make_index<OUT, map_spshift_wrap_new>(stream_out, processor_id,
                                                       config->super_partitions * config->tiles,
                                                       sync);
-                }
                 }
                 if (processor_id == 0) {
                     slipstore::ioService.post(boost::bind(&memory_buffer::drain,
