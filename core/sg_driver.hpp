@@ -338,13 +338,13 @@ namespace algorithm {
             }
         }
         BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Completed init ";
-        if (!graph_storage->get_config()->old_partitioning_mode) {
+        /*if (!graph_storage->get_config()->old_partitioning_mode) {
             BOOST_LOG_TRIVIAL(info) << "New super partitions were generated";
             graph_storage->terminate();
             wall_clock.stop();
             wall_clock.print("CORE::TIME::WALL");
             exit(1);
-        }
+        }*/
 
 
         // Supersteps
