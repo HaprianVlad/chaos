@@ -362,7 +362,21 @@ namespace x_lib {
             ss << t;
             return ss.str();
         }
+        
+        static unsigned  long getSuperPartition(unsigned long key) {
+            for (unsigned long i = 0; i < new_super_partitions - 1; i++) {
+                if (key >= new_super_partition_offsets[i] &&
+                    key < new_super_partition_offsets[i+1]) {
+                    return i;
 
+                }
+            }
+            return (new_super_partitions - 1);
+        }
+
+        static unsigned long getPartition(unsigned long key) {
+            return key & (cached_partitions - 1);
+        }
     };
 
     class map_cached_partition_wrap {
@@ -376,20 +390,28 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
-            for (unsigned long i = 0; i < configuration::new_super_partitions - 1; i++) {
-                if (key >= configuration::new_super_partition_offsets[i] &&
-                        key < configuration::new_super_partition_offsets[i+1]) {
-                    return i & (configuration::cached_partitions - 1);
-
-                }
-            }
-
-            return (configuration::new_super_partitions - 1) &
-                   (configuration::cached_partitions - 1);
+            return  configuration::getPartition(configuration::getSuperPartition(key));
         }
+
     };
 
     struct map_spshift_wrap {
+        static unsigned long map_spshift;
+
+        static unsigned long map_internal(unsigned long key) {
+            unsigned long superp = key & (configuration::super_partitions - 1);
+            unsigned long p = (key >> configuration::super_partition_shift) &
+                              (configuration::cached_partitions - 1);
+            unsigned long tile = p >> configuration::tile_shift;
+            return superp * configuration::tiles + tile;
+        }
+
+        static unsigned long map(unsigned long key) {
+            return map_internal(key) >> map_spshift;
+        }
+    };
+
+    struct map_spshift_wrap_new {
         static unsigned long map_spshift;
 
         static unsigned long map_internal(unsigned long key) {
