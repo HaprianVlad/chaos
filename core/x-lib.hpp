@@ -1569,9 +1569,7 @@ namespace x_lib {
                 }
             }
 
-            //for(unsigned long partition=me;
-            //partition < sio->get_config()->super_partitions;
-            //partition += m) {
+
             sio->state_load(partition);
             do_stream_internal<A, IN, OUT>(sio, partition, 0, stream_in,
                                            use_stream_out,
