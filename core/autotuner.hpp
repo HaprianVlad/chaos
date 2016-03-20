@@ -65,6 +65,7 @@ namespace x_lib {
 
         static unsigned long * new_super_partition_offsets;
         static unsigned long * vertices_per_new_super_partition;
+        static unsigned long * vertices_per_new_partition;
         /* Mapping */
         static unsigned long partition_shift;
         static unsigned long tile_shift;
@@ -141,7 +142,7 @@ namespace x_lib {
         }
 
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
-            return vertices_per_new_super_partition[superp] >> partition_shift;
+            return vertices_per_new_partition[partition];
         }
 
         unsigned long calculate_ram_budget() {
@@ -306,6 +307,7 @@ namespace x_lib {
                 total_partitions = super_partitions * super_partitions * machines;
                 cached_partitions = total_partitions / super_partitions;
                 fanout = cached_partitions;
+                vertices_per_new_partition = new unsigned long[cached_partitions];
 
             } else {
                 total_partitions = vm["partitions"].as < unsigned
@@ -411,8 +413,7 @@ namespace x_lib {
     class map_cached_partition_wrap {
     public:
         static unsigned long map(unsigned long key) {
-            return (key >> configuration::super_partition_shift) &
-                   (configuration::cached_partitions - 1);
+            return (key >> configuration::super_partition_shift) & (configuration::cached_partitions - 1);
         }
     };
 
@@ -435,7 +436,9 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
-            return configuration::getNewPartition(key);
+            unsigned long partition = configuration::getNewPartition(key);
+            configuration::vertices_per_new_partition[partition] ++;
+            return partition;
         }
 
     };
