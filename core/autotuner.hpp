@@ -66,6 +66,7 @@ namespace x_lib {
         static unsigned long * new_super_partition_offsets;
         static unsigned long * vertices_per_new_super_partition;
         static unsigned long * vertices_per_new_partition;
+
         /* Mapping */
         static unsigned long partition_shift;
         static unsigned long tile_shift;
@@ -394,7 +395,7 @@ namespace x_lib {
             return ss.str();
         }
 
-        static unsigned  long getNewSuperPartition(unsigned long key) {
+        static unsigned  long map_new_super_partition(unsigned long key) {
             for (unsigned long i = 0; i < new_super_partitions - 1; i++) {
                 if (key >= new_super_partition_offsets[i] &&
                     key < new_super_partition_offsets[i+1]) {
@@ -405,8 +406,8 @@ namespace x_lib {
             return (new_super_partitions - 1);
         }
 
-        static unsigned long getNewPartition(unsigned long key) {
-            return getNewSuperPartition(key) & (cached_partitions - 1);
+        static unsigned long map_new_partition(unsigned long key) {
+            return map_new_super_partition(key) & (cached_partitions - 1);
         }
     };
 
@@ -436,7 +437,7 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
-            unsigned long partition = configuration::getNewPartition(key);
+            unsigned long partition = configuration::map_new_partition(key);
             configuration::vertices_per_new_partition[partition] ++;
             return partition;
         }
@@ -446,8 +447,8 @@ namespace x_lib {
     struct map_spshift_wrap_new {
 
         static unsigned long map_internal(unsigned long key) {
-            unsigned long superp = configuration::getNewSuperPartition(key);
-            unsigned long p = configuration::getNewPartition(key);
+            unsigned long superp = configuration::map_new_super_partition(key);
+            unsigned long p = configuration::map_new_partition(key);
             unsigned long tile = p >> configuration::tile_shift;
             return superp * configuration::tiles + tile;
         }
