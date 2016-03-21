@@ -420,7 +420,7 @@ namespace x_lib {
             unsigned long vertices_per_partition = (vertices_per_new_super_partition[superp] / partitions_per_super_partition);
             unsigned long result = v_id_in_super_partition / vertices_per_partition;
 
-            BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::BUFFER_SIZE " << v_id << " " << superp << " " <<   vertices_per_partition << " " << result;
+            BOOST_LOG_TRIVIAL(info) << "XXX " << v_id << " " << superp << " " <<   vertices_per_partition << " " << result;
 
             return result;
         }
