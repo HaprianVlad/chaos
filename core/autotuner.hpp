@@ -444,7 +444,7 @@ namespace x_lib {
         static unsigned long map(unsigned long key) {
             unsigned long super_partition = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(super_partition);
-            BOOST_LOG_TRIVIAL(info) << "PUT " << super_partition << " " << partition;
+
 
             //configuration::vertices_per_new_partition[(super_partition << configuration::partition_shift) + partition]++;
             return partition;
@@ -458,6 +458,7 @@ namespace x_lib {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long p = configuration::map_new_partition(superp);
             unsigned long tile = p >> configuration::tile_shift;
+            BOOST_LOG_TRIVIAL(info) << "PUT " << superp << " " << p;
             return superp * configuration::tiles + tile;
         }
 
