@@ -419,10 +419,12 @@ namespace x_lib {
             unsigned long v_id_in_super_partition = v_id - start;
             unsigned long vertices_per_partition = (vertices_per_new_super_partition[superp] / partitions_per_super_partition);
 
-            unsigned long partition = 0;
-            if (vertices_per_partition != 0) {
-                partition = v_id_in_super_partition / vertices_per_partition;
+            if (vertices_per_new_super_partition[superp] % partitions_per_super_partition) {
+                vertices_per_partition++;
             }
+
+            unsigned long partition = v_id_in_super_partition / vertices_per_partition;
+
 
             return partition;
         }
