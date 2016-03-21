@@ -443,8 +443,7 @@ namespace x_lib {
             unsigned long super_partition = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(super_partition);
 
-            configuration::vertices_per_new_partition[super_partition * configuration::cached_partitions + partition] ++;
-            BOOST_LOG_TRIVIAL(info) << "XXXX " << partition;
+            configuration::vertices_per_new_partition[super_partition * configuration::cached_partitions + partition]++;
             return partition;
         }
 
