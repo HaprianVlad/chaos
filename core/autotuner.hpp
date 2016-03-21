@@ -143,7 +143,7 @@ namespace x_lib {
         }
 
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
-            return vertices_per_new_partition[superp << partition_shift + partition];
+            return vertices_per_new_partition[(superp << partition_shift) + partition];
         }
 
         unsigned long calculate_ram_budget() {
@@ -443,7 +443,7 @@ namespace x_lib {
             unsigned long super_partition = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(super_partition);
 
-            configuration::vertices_per_new_partition[super_partition << configuration::partition_shift + partition]++;
+            configuration::vertices_per_new_partition[(super_partition << configuration::partition_shift) + partition]++;
             return partition;
         }
 
