@@ -312,7 +312,6 @@ namespace x_lib {
                 vertices_per_new_partition = new unsigned long [super_partitions * cached_partitions];
                 for (unsigned long i=0; i<cached_partitions; i++) {
                     vertices_per_new_partition[i]= 0;
-
                 }
 
             } else {
@@ -442,12 +441,12 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
-
             unsigned long super_partition = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(super_partition);
 
-            configuration::vertices_per_new_partition[super_partition*partition] ++;
-            return  partition;
+            configuration::vertices_per_new_partition[super_partition * partition] ++;
+
+            return partition;
         }
 
     };
@@ -456,7 +455,7 @@ namespace x_lib {
 
         static unsigned long map_internal(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long p = configuration::map_new_partition(key);
+            unsigned long p = configuration::map_new_partition(superp);
             unsigned long tile = p >> configuration::tile_shift;
             return superp * configuration::tiles + tile;
         }
