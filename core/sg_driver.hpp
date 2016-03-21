@@ -346,7 +346,7 @@ namespace algorithm {
             for (unsigned long i=0; i < graph_storage->get_config()->super_partitions; i++) {
                 for (unsigned long j = 0; i < graph_storage->get_config()->cached_partitions; j++) {
                     BOOST_LOG_TRIVIAL(info) << "super partition " << i << "partition " << j << " vertices " <<
-                    graph_storage->get_config()->vertices_per_new_partition[i*j];
+                    graph_storage->get_config()->vertices_per_new_partition[i*  graph_storage->get_config()->cached_partitions +  j];
                 }
             }
             //exit(1);
