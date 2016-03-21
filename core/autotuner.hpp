@@ -312,7 +312,7 @@ namespace x_lib {
                 total_partitions = super_partitions * super_partitions * machines;
                 cached_partitions = total_partitions / super_partitions;
                 fanout = cached_partitions;
-                partitions_per_super_partition = super_partitions / cached_partitions;
+                partitions_per_super_partition = cached_partitions / super_partitions ;
                 /*
                 vertices_per_new_partition = new unsigned long [super_partitions << partition_shift];
                 for (unsigned long i=0; i < cached_partitions; i++) {
