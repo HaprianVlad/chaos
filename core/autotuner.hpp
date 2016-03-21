@@ -310,7 +310,7 @@ namespace x_lib {
                 fanout = cached_partitions;
 
                 vertices_per_new_partition = new unsigned long [super_partitions * cached_partitions];
-                for (unsigned long i=0; i<cached_partitions; i++) {
+                for (unsigned long i=0; i < cached_partitions; i++) {
                     vertices_per_new_partition[i]= 0;
                 }
 
@@ -404,7 +404,6 @@ namespace x_lib {
                 if (key >= new_super_partition_offsets[i] &&
                     key < new_super_partition_offsets[i+1]) {
                     return i;
-
                 }
             }
             return (new_super_partitions - 1);
@@ -445,7 +444,7 @@ namespace x_lib {
             unsigned long partition = configuration::map_new_partition(super_partition);
 
             configuration::vertices_per_new_partition[super_partition * configuration::cached_partitions + partition] ++;
-
+            BOOST_LOG_TRIVIAL(info) << "XXXX " << partition;
             return partition;
         }
 
