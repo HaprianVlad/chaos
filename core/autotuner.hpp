@@ -145,8 +145,9 @@ namespace x_lib {
         }
 
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
-            
-            return vertices_per_new_partition[get_id(superp, partition % partitions_per_super_partition)];
+            unsigned  long count = vertices_per_new_partition[get_id(superp, partition % partitions_per_super_partition)];
+            BOOST_LOG_TRIVIAL(info) << "XXX " << superp << " " << partition << " " << count;
+            return count;
         }
 
         unsigned long calculate_ram_budget() {
