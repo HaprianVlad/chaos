@@ -143,7 +143,7 @@ namespace x_lib {
         }
 
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
-            return vertices_per_new_partition[superp *  configuration::cached_partitions + partition];
+            return vertices_per_new_partition[superp << configuration::partition_shift + partition];
         }
 
         unsigned long calculate_ram_budget() {
@@ -309,7 +309,7 @@ namespace x_lib {
                 cached_partitions = total_partitions / super_partitions;
                 fanout = cached_partitions;
 
-                vertices_per_new_partition = new unsigned long [super_partitions * cached_partitions];
+                vertices_per_new_partition = new unsigned long [super_partitions << configuration::partition_shift];
                 for (unsigned long i=0; i < cached_partitions; i++) {
                     vertices_per_new_partition[i]= 0;
                 }
@@ -443,7 +443,7 @@ namespace x_lib {
             unsigned long super_partition = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(super_partition);
 
-            configuration::vertices_per_new_partition[super_partition * configuration::cached_partitions + partition]++;
+            configuration::vertices_per_new_partition[super_partition << configuration::partition_shift + partition]++;
             return partition;
         }
 
