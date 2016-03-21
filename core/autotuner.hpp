@@ -144,7 +144,7 @@ namespace x_lib {
 
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
 
-          
+
             return 0;//vertices_per_new_partition[(superp << partition_shift) + partition];
         }
 
@@ -444,7 +444,7 @@ namespace x_lib {
     public:
         static unsigned long map(unsigned long key) {
             unsigned long super_partition = configuration::map_new_super_partition(key);
-            unsigned long partition = configuration::map_new_partition(key / super_partition);
+            unsigned long partition = configuration::map_new_partition(key  >> configuration::super_partition_shift);
 
 
             //configuration::vertices_per_new_partition[(super_partition << configuration::partition_shift) + partition]++;
@@ -457,7 +457,7 @@ namespace x_lib {
 
         static unsigned long map_internal(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long p = configuration::map_new_partition(key / superp);
+            unsigned long p = configuration::map_new_partition(key >> configuration::super_partition_shift);
             unsigned long tile = p >> configuration::tile_shift;
 
             return superp * configuration::tiles + tile;
