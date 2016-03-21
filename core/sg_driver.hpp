@@ -340,16 +340,16 @@ namespace algorithm {
         BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Completed init ";
         if (!graph_storage->get_config()->old_partitioning_mode) {
             BOOST_LOG_TRIVIAL(info) << "New super partitions were generated";
-            graph_storage->terminate();
-            wall_clock.stop();
-            wall_clock.print("CORE::TIME::WALL");
+            //graph_storage->terminate();
+            //wall_clock.stop();
+            //wall_clock.print("CORE::TIME::WALL");
             for (unsigned long i=0; i < graph_storage->get_config()->super_partitions; i++) {
                 for (unsigned long j = 0; i < graph_storage->get_config()->cached_partitions; j++) {
                     BOOST_LOG_TRIVIAL(info) << "super partition " << i << "partition " << j << " vertices " <<
                     graph_storage->get_config()->vertices_per_new_partition[i][j];
                 }
             }
-            exit(1);
+            //exit(1);
         }
 
 
