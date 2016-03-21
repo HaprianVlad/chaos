@@ -443,7 +443,7 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
-            unsigned long super_partition = configuration::map_new_super_partition(key);
+            //unsigned long super_partition = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key  >> configuration::super_partition_shift);
 
 
