@@ -417,8 +417,12 @@ namespace x_lib {
         static unsigned long map_new_partition(unsigned long v_id, unsigned long superp) {
             unsigned long start = new_super_partition_offsets[superp];
             unsigned long v_id_in_super_partition = v_id - start;
+            unsigned long vertices_per_partition = (vertices_per_new_super_partition[superp] / partitions_per_super_partition);
+            unsigned long result = v_id_in_super_partition / vertices_per_partition;
 
-            return (v_id_in_super_partition / (vertices_per_new_super_partition[superp] / partitions_per_super_partition));
+            BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::BUFFER_SIZE " << v_id << " " << superp << " " <<   vertices_per_partition << " " << result;
+
+            return result;
         }
 
     };
