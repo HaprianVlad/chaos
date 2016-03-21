@@ -67,6 +67,8 @@ namespace x_lib {
         static unsigned long * vertices_per_new_super_partition;
         static unsigned long * vertices_per_new_partition;
 
+        static unsigned long partitions_per_super_partition;
+
         /* Mapping */
         static unsigned long partition_shift;
         static unsigned long tile_shift;
@@ -310,7 +312,7 @@ namespace x_lib {
                 total_partitions = super_partitions * super_partitions * machines;
                 cached_partitions = total_partitions / super_partitions;
                 fanout = cached_partitions;
-
+                partitions_per_super_partition = super_partitions / cached_partitions;
                 /*
                 vertices_per_new_partition = new unsigned long [super_partitions << partition_shift];
                 for (unsigned long i=0; i < cached_partitions; i++) {
@@ -412,9 +414,13 @@ namespace x_lib {
             return (new_super_partitions - 1);
         }
 
-        static unsigned long map_new_partition(unsigned long key) {
-            return key  & (cached_partitions - 1);
+        static unsigned long map_new_partition(unsigned long v_id, unsigned long superp) {
+            unsigned long start = new_super_partition_offsets[superp];
+            unsigned long v_id_in_super_partition = v_id - start;
+
+            return (v_id_in_super_partition / (vertices_per_new_super_partition[superp] / partitions_per_super_partition));
         }
+
     };
 
     class map_cached_partition_wrap {
@@ -443,9 +449,8 @@ namespace x_lib {
     class map_cached_partition_wrap_new {
     public:
         static unsigned long map(unsigned long key) {
-            //unsigned long super_partition = configuration::map_new_super_partition(key);
-            unsigned long partition = configuration::map_new_partition(key  >> configuration::super_partition_shift);
-
+            unsigned long superp = configuration::map_new_super_partition(key);
+            unsigned long partition = configuration::map_new_partition(key, superp);
 
             //configuration::vertices_per_new_partition[(super_partition << configuration::partition_shift) + partition]++;
             return partition;
@@ -457,7 +462,8 @@ namespace x_lib {
 
         static unsigned long map_internal(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long p = configuration::map_new_partition(key >> configuration::super_partition_shift);
+            unsigned long p = configuration::map_new_partition(key, superp);
+
             unsigned long tile = p >> configuration::tile_shift;
 
             return superp * configuration::tiles + tile;

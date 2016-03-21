@@ -39,6 +39,7 @@ namespace x_lib {
   unsigned long * configuration::new_super_partition_offsets = NULL;
   unsigned long * configuration::vertices_per_new_super_partition = NULL;
   unsigned long * configuration::vertices_per_new_partition = NULL;
+  unsigned long partitions_per_super_partition = 0;
 
   x_barrier *x_thread::sync;
   volatile bool x_thread::terminate = false;
