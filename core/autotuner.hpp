@@ -314,6 +314,8 @@ namespace x_lib {
                 fanout = cached_partitions;
                 partitions_per_super_partition = cached_partitions / super_partitions ;
 
+                BOOST_ASSERT_MSG(partitions_per_super_partition, "Partitions per super partition is 0");
+
                 vertices_per_new_partition = new unsigned long [cached_partitions];
                 for (unsigned long i=0; i < cached_partitions; i++) {
                     vertices_per_new_partition[i]= 0;
@@ -372,29 +374,70 @@ namespace x_lib {
 
 
         void readPartitioningFile() {
+            read_new_partitioning_constraints();
+
+            init_read_in_data_structures();
+
+            for (unsigned long i=0; i < new_super_partitions; i++) {
+                read_super_partition_start_offset(i);
+            }
+
+            for (unsigned long i=0; i < new_super_partitions; i++) {
+                update_vertices_per_super_partition(i);
+                update_vertices_per_partition(i);
+                update_max_vertices_per_super_partition(i);
+            }
+
+        }
+
+        void read_new_partitioning_constraints() {
             sum_out_degrees_for_new_super_partition = pt_partitions.get < unsigned
             long > ("partitions_offsets_file.sum_out_degrees_for_new_super_partition");
             max_edges_per_new_super_partition =  pt_partitions.get < unsigned
             long > ("partitions_offsets_file.max_edges_per_new_super_partition");
+        }
 
+        void init_read_in_data_structures() {
             new_super_partition_offsets = new unsigned long[new_super_partitions];
-            for (unsigned long i=0; i < new_super_partitions; i++) {
-                new_super_partition_offsets[i] = pt_partitions.get < unsigned
-                long > ("partitions_offsets_file.P" +  to_string(i));
-            }
             max_vertices_per_new_super_partition = 0;
             vertices_per_new_super_partition = new unsigned long[new_super_partitions];
-            for (unsigned long i=0; i < new_super_partitions; i++) {
-                if ((i+1) < new_super_partitions) {
-                    vertices_per_new_super_partition[i] = new_super_partition_offsets[i+1] - new_super_partition_offsets[i];
-                } else {
-                    vertices_per_new_super_partition[i] = vertices - new_super_partition_offsets[i];
+        }
+
+        void read_super_partition_start_offset(unsigned long superp) {
+            new_super_partition_offsets[superp] = pt_partitions.get < unsigned
+            long > ("partitions_offsets_file.P" +  to_string(superp));
+        }
+
+        void update_vertices_per_super_partition(unsigned long superp) {
+            if ((superp+1) < new_super_partitions) {
+                vertices_per_new_super_partition[superp] = new_super_partition_offsets[superp+1] - new_super_partition_offsets[superp];
+            } else {
+                vertices_per_new_super_partition[superp] = vertices - new_super_partition_offsets[superp];
+            }
+        }
+
+        void update_vertices_per_partition(unsigned long superp) {
+            unsigned long vertices = vertices_per_new_super_partition[superp];
+            unsigned long partitions = partitions_per_super_partition;
+
+            unsigned long vertices_per_partition = vertices/ partitions;
+            unsigned long rest = vertices % partitions;
+
+            for (unsigned long i=0; i < partitions; i++) {
+                unsigned  long total = vertices_per_partition;
+                if (rest > 0) {
+                    total++;
+                    rest--;
                 }
-                if (vertices_per_new_super_partition[i] > max_vertices_per_new_super_partition) {
-                    max_vertices_per_new_super_partition = vertices_per_new_super_partition[i];
-                }
+                vertices_per_new_partition[get_id(superp,i)] = total;
             }
 
+        }
+
+        void update_max_vertices_per_super_partition(unsigned long superp) {
+            if (vertices_per_new_super_partition[superp] > max_vertices_per_new_super_partition) {
+                max_vertices_per_new_super_partition = vertices_per_new_super_partition[superp];
+            }
         }
 
         template <class T>
@@ -417,16 +460,8 @@ namespace x_lib {
         static unsigned long map_new_partition(unsigned long v_id, unsigned long superp) {
             unsigned long start = new_super_partition_offsets[superp];
             unsigned long v_id_in_super_partition = v_id - start;
-            unsigned long vertices_per_partition = (vertices_per_new_super_partition[superp] / partitions_per_super_partition);
 
-            if (vertices_per_new_super_partition[superp] % partitions_per_super_partition) {
-                vertices_per_partition++;
-            }
-
-            unsigned long partition = v_id_in_super_partition / vertices_per_partition;
-
-
-            return partition;
+            return v_id_in_super_partition % partitions_per_super_partition;
         }
 
         static unsigned long get_id(unsigned long superp, unsigned long p) {
@@ -464,8 +499,6 @@ namespace x_lib {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
 
-            configuration::vertices_per_new_partition[configuration::get_id(superp, partition)]++;
-
             return partition;
         }
 
@@ -474,16 +507,15 @@ namespace x_lib {
     struct map_spshift_wrap_new {
 
         static unsigned long map_internal(unsigned long key) {
-            unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long p = configuration::map_new_partition(key, superp);
-
-            unsigned long tile = p >> configuration::tile_shift;
-
-            return superp * configuration::tiles + tile;
+            BOOST_LOG_TRIVIAL(fatal) << "map_internal should not be called in map_spshift_wrap_new!";
+            return 0;
         }
 
         static unsigned long map(unsigned long key) {
-            return map_internal(key) >> map_spshift_wrap::map_spshift;
+            unsigned long superp = configuration::map_new_super_partition(key);
+            unsigned long start = configuration::new_super_partition_offsets[superp];
+            unsigned long offset = key - start;
+            return offset;
         }
     };
 }
