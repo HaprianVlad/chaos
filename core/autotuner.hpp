@@ -485,6 +485,7 @@ namespace x_lib {
             return v_id_in_super_partition % partitions_per_super_partition;
         }
 
+        // returns the [superp][p] entry in vertices_per_new_partition array.
         static unsigned long get_id(unsigned long superp, unsigned long p) {
             return superp * partitions_per_super_partition + p;
         }
@@ -516,6 +517,8 @@ namespace x_lib {
 
     class map_cached_partition_wrap_new {
     public:
+
+        // should return the partition within a super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
@@ -532,6 +535,7 @@ namespace x_lib {
             return 0;
         }
 
+        // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
 
