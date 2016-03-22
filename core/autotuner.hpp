@@ -374,20 +374,29 @@ namespace x_lib {
 
 
         void readPartitioningFile() {
+            BOOST_LOG_TRIVIAL(info) << "A" ;
             read_new_partitioning_constraints();
-
+            BOOST_LOG_TRIVIAL(info) << "B" ;
             init_read_in_data_structures();
+            BOOST_LOG_TRIVIAL(info) << "C" ;
 
             for (unsigned long i=0; i < new_super_partitions; i++) {
                 read_super_partition_start_offset(i);
             }
+            BOOST_LOG_TRIVIAL(info) << "D" ;
 
             for (unsigned long i=0; i < new_super_partitions; i++) {
+                BOOST_LOG_TRIVIAL(info) << "D1" ;
                 update_vertices_per_super_partition(i);
+                BOOST_LOG_TRIVIAL(info) << "D2" ;
                 update_vertices_per_partition(i);
+                BOOST_LOG_TRIVIAL(info) << "D3" ;
                 update_max_vertices_per_super_partition(i);
+                BOOST_LOG_TRIVIAL(info) << "D4" ;
+
             }
 
+            BOOST_LOG_TRIVIAL(info) << "E" ;
         }
 
         void read_new_partitioning_constraints() {
