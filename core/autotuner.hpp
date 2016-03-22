@@ -366,7 +366,7 @@ namespace x_lib {
             fanout = cached_partitions;
             partitions_per_super_partition = cached_partitions / super_partitions ;
 
-            BOOST_ASSERT_MSG(partitions_per_super_partition, "Partitions per super partition is 0");
+            BOOST_ASSERT_MSG(partitions_per_super_partition > 0, "Partitions per super partition is 0");
 
             vertices_per_new_partition = new unsigned long [cached_partitions];
             for (unsigned long i=0; i < cached_partitions; i++) {
@@ -389,6 +389,18 @@ namespace x_lib {
                 update_vertices_per_partition(i);
                 update_max_vertices_per_super_partition(i);
             }
+
+            check_vertex_consistency();
+        }
+
+        void check_vertex_consistency() {
+            unsigned long sum = 0;
+            for (unsigned long i=0; i < cached_partitions; i++) {
+                sum += vertices_per_new_partition[i];
+            }
+
+            BOOST_ASSERT_MSG(vertices == sum, "Vertices where lost while putting them in partitions");
+
         }
 
         void read_new_partitioning_constraints() {
@@ -514,7 +526,7 @@ namespace x_lib {
 
         static unsigned long map(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            
+
             return superp;
         }
     };
