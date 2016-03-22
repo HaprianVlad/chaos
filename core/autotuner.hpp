@@ -514,9 +514,8 @@ namespace x_lib {
 
         static unsigned long map(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long partition = configuration::map_new_partition(key, superp);
-
-            return partition;
+            
+            return superp;
         }
     };
 }
