@@ -146,7 +146,6 @@ namespace x_lib {
 
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
             unsigned  long count = vertices_per_new_partition[get_id(superp, partition % partitions_per_super_partition)];
-            BOOST_LOG_TRIVIAL(info) << "XXX " << superp << " " << partition << " " << count;
             return count;
         }
 
@@ -349,8 +348,6 @@ namespace x_lib {
                 // The splitting file for the new partitions is not yet computed so we need to do an out_degree_cnt with the old_partitioning mode
                 old_partitioning_mode = true;
             } else {
-
-
                 old_partitioning_mode = false;
                 init_partitioning_details();
                 readPartitioningFile();
@@ -380,6 +377,7 @@ namespace x_lib {
 
         void readPartitioningFile() {
             read_new_partitioning_constraints();
+
             init_read_in_data_structures();
 
             for (unsigned long i=0; i < new_super_partitions; i++) {
@@ -390,9 +388,7 @@ namespace x_lib {
                 update_vertices_per_super_partition(i);
                 update_vertices_per_partition(i);
                 update_max_vertices_per_super_partition(i);
-
             }
-
         }
 
         void read_new_partitioning_constraints() {
@@ -435,7 +431,6 @@ namespace x_lib {
                     rest--;
                 }
                 vertices_per_new_partition[get_id(superp,i)] = total;
-                BOOST_LOG_TRIVIAL(info) << "YYY " << superp << " " << i << " " << total ;
             }
 
         }
