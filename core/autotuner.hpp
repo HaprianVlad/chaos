@@ -144,6 +144,7 @@ namespace x_lib {
             return count;
         }
 
+        // Should return the number of vertices in a given partition of a super partition
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
             unsigned  long count = vertices_per_new_partition[get_id(superp, partition % partitions_per_super_partition)];
             return count;
@@ -393,6 +394,7 @@ namespace x_lib {
             check_vertex_consistency();
         }
 
+        // checks if the sum of vertices in all the partitions is the total number of vertices
         void check_vertex_consistency() {
             unsigned long sum = 0;
             for (unsigned long i=0; i < cached_partitions; i++) {
@@ -421,6 +423,7 @@ namespace x_lib {
             long > ("partitions_offsets_file.P" +  to_string(superp));
         }
 
+        // computes the number of vertices in a super partition
         void update_vertices_per_super_partition(unsigned long superp) {
             if ((superp+1) < new_super_partitions) {
                 vertices_per_new_super_partition[superp] = new_super_partition_offsets[superp+1] - new_super_partition_offsets[superp];
@@ -429,6 +432,9 @@ namespace x_lib {
             }
         }
 
+        // computes the number of vertices in each partition of a super partition
+        // Ex: if each super_partition has 8 partitions and the partition has 13 vertices
+        // we will have 2 vertices in partitions: 0, 1, 2, 3, 4 and 1 vertex in the rest
         void update_vertices_per_partition(unsigned long superp) {
             unsigned long vertices = vertices_per_new_super_partition[superp];
             unsigned long partitions = partitions_per_super_partition;
@@ -460,6 +466,7 @@ namespace x_lib {
             return ss.str();
         }
 
+        // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
         static unsigned  long map_new_super_partition(unsigned long key) {
             for (unsigned long i = 0; i < new_super_partitions - 1; i++) {
                 if (key >= new_super_partition_offsets[i] &&
@@ -470,6 +477,7 @@ namespace x_lib {
             return (new_super_partitions - 1);
         }
 
+        // returns the partition within a super partition in which we map a vertex
         static unsigned long map_new_partition(unsigned long v_id, unsigned long superp) {
             unsigned long start = new_super_partition_offsets[superp];
             unsigned long v_id_in_super_partition = v_id - start;
