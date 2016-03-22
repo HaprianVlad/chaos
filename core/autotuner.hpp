@@ -512,7 +512,7 @@ namespace x_lib {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
 
-            return partition;
+            return configuration::get_id(superp,partition);
         }
 
     };
