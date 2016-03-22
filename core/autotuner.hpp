@@ -303,25 +303,7 @@ namespace x_lib {
 
         void manual() {
             unsigned long total_partitions;
-            unsigned long machines =
-                    pt_slipstore.get < unsigned
-            long > ("machines.count");
-
-            if (!old_partitioning_mode) {
-                super_partitions = new_super_partitions;
-                total_partitions = super_partitions * super_partitions * machines;
-                cached_partitions = total_partitions / super_partitions;
-                fanout = cached_partitions;
-                partitions_per_super_partition = cached_partitions / super_partitions ;
-
-                BOOST_ASSERT_MSG(partitions_per_super_partition, "Partitions per super partition is 0");
-
-                vertices_per_new_partition = new unsigned long [cached_partitions];
-                for (unsigned long i=0; i < cached_partitions; i++) {
-                    vertices_per_new_partition[i]= 0;
-                }
-
-            } else {
+            if (old_partitioning_mode) {
                 total_partitions = vm["partitions"].as < unsigned
                 long > ();
                 super_partitions = vm["super_partitions"].as < unsigned
@@ -367,36 +349,50 @@ namespace x_lib {
                 // The splitting file for the new partitions is not yet computed so we need to do an out_degree_cnt with the old_partitioning mode
                 old_partitioning_mode = true;
             } else {
+
+
                 old_partitioning_mode = false;
+                init_partitioning_details();
                 readPartitioningFile();
             }
         }
 
 
+        void init_partitioning_details() {
+            unsigned long machines =
+                    pt_slipstore.get < unsigned
+            long > ("machines.count");
+
+            super_partitions = new_super_partitions;
+            unsigned long total_partitions = super_partitions * super_partitions * machines;
+            cached_partitions = total_partitions / super_partitions;
+            fanout = cached_partitions;
+            partitions_per_super_partition = cached_partitions / super_partitions ;
+
+            BOOST_ASSERT_MSG(partitions_per_super_partition, "Partitions per super partition is 0");
+
+            vertices_per_new_partition = new unsigned long [cached_partitions];
+            for (unsigned long i=0; i < cached_partitions; i++) {
+                vertices_per_new_partition[i]= 0;
+            }
+
+        }
+
         void readPartitioningFile() {
-            BOOST_LOG_TRIVIAL(info) << "A" ;
             read_new_partitioning_constraints();
-            BOOST_LOG_TRIVIAL(info) << "B" ;
             init_read_in_data_structures();
-            BOOST_LOG_TRIVIAL(info) << "C" ;
 
             for (unsigned long i=0; i < new_super_partitions; i++) {
                 read_super_partition_start_offset(i);
             }
-            BOOST_LOG_TRIVIAL(info) << "D" ;
 
             for (unsigned long i=0; i < new_super_partitions; i++) {
-                BOOST_LOG_TRIVIAL(info) << "D1" ;
                 update_vertices_per_super_partition(i);
-                BOOST_LOG_TRIVIAL(info) << "D2" ;
                 update_vertices_per_partition(i);
-                BOOST_LOG_TRIVIAL(info) << "D3" ;
                 update_max_vertices_per_super_partition(i);
-                BOOST_LOG_TRIVIAL(info) << "D4" ;
 
             }
 
-            BOOST_LOG_TRIVIAL(info) << "E" ;
         }
 
         void read_new_partitioning_constraints() {
