@@ -272,12 +272,6 @@ namespace algorithm {
         // graph stored as an IO stream. Initialize also everything which is linked to the graph storage
         graph_storage = new x_lib::streamIO<scatter_gather>();
 
-        /*
-        sg_pcpu::scatter_filter = new
-          x_lib::filter(MAX(graph_storage->get_config()->cached_partitions,
-                graph_storage->get_config()->super_partitions),
-                num_processors);
-        */
 
         sg_pcpu::bsp_phase = 0;
 
@@ -343,12 +337,6 @@ namespace algorithm {
             graph_storage->terminate();
             wall_clock.stop();
             wall_clock.print("CORE::TIME::WALL");
-            for (unsigned long i=0; i < graph_storage->get_config()->super_partitions; i++) {
-                for (unsigned long j = 0; i < graph_storage->get_config()->cached_partitions; j++) {
-                    BOOST_LOG_TRIVIAL(info) << "super partition " << i << "partition " << j << " vertices " <<
-                    graph_storage->get_config()->vertices_per_new_partition[i*  graph_storage->get_config()->cached_partitions +  j];
-                }
-            }
             exit(1);
         }*/
 

@@ -853,7 +853,9 @@ namespace x_lib {
             long > ();
 
             // does the big work for configuring things
+            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " START read config parameters";
             make_config();
+            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " END read config parameters ";
 
 
             // init the buffers

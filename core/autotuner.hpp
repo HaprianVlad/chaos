@@ -399,8 +399,8 @@ namespace x_lib {
 
         void init_read_in_data_structures() {
             new_super_partition_offsets = new unsigned long[new_super_partitions];
-            max_vertices_per_new_super_partition = 0;
             vertices_per_new_super_partition = new unsigned long[new_super_partitions];
+            max_vertices_per_new_super_partition = 0;
         }
 
         void read_super_partition_start_offset(unsigned long superp) {
@@ -430,6 +430,7 @@ namespace x_lib {
                     rest--;
                 }
                 vertices_per_new_partition[get_id(superp,i)] = total;
+                BOOST_LOG_TRIVIAL(info) << "YYY " << superp << " " << i << " " << total ;
             }
 
         }
