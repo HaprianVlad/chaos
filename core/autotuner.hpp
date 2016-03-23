@@ -544,7 +544,7 @@ namespace x_lib {
 
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
-            unsigned long superp_new = configuration::map_new_super_partition(key);
+            //unsigned long superp_new = configuration::map_new_super_partition(key);
             unsigned long superp_old = map_spshift_wrap::map(key);
 
 
