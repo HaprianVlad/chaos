@@ -147,7 +147,7 @@ namespace x_lib {
         // Should return the number of vertices in a given partition of a super partition
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
             unsigned  long count = vertices_per_new_partition[get_id(superp, partition % partitions_per_super_partition)];
-            return count;
+            return old_state_count(superp, partition);
         }
 
         unsigned long calculate_ram_budget() {
