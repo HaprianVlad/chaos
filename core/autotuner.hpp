@@ -370,7 +370,7 @@ namespace x_lib {
             super_partitions = new_super_partitions;
             total_partitions = super_partitions * super_partitions * machines;
             cached_partitions = total_partitions / super_partitions;
-            fanout = cached_partitions;
+            fanout = cached_partitions / 2;
 
             partitions_per_super_partition = cached_partitions;
 
