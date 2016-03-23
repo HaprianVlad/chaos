@@ -153,7 +153,7 @@ namespace x_lib {
             BOOST_LOG_TRIVIAL(info) << "XXX " << "super partition " << superp << " partition " << partition << " old count  " << old_count << " new count " << new_count;
 
 
-            return new_count; //old_state_count(superp, partition);
+            return new_count;
         }
 
         unsigned long calculate_ram_budget() {
@@ -370,7 +370,7 @@ namespace x_lib {
             super_partitions = new_super_partitions;
             total_partitions = super_partitions * super_partitions * machines;
             cached_partitions = total_partitions / super_partitions;
-            fanout = cached_partitions ;
+            fanout = cached_partitions;
 
             partitions_per_super_partition = cached_partitions;
 
@@ -528,6 +528,8 @@ namespace x_lib {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
 
+            BOOST_LOG_TRIVIAL(info) << "ZZZ " << " partition new " << partition << "  partition old " << map_cached_partition_wrap::map(key);
+
             return partition;
         }
 
@@ -542,9 +544,13 @@ namespace x_lib {
 
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
-            unsigned long superp = configuration::map_new_super_partition(key);
+            unsigned long superp_new = configuration::map_new_super_partition(key);
+            unsigned long superp_old = map_spshift_wrap::map(key);
 
-            return superp;
+            BOOST_LOG_TRIVIAL(info) << "YYY " << "super partition new " << superp_new << " super partition old " << superp_old;
+
+            return superp_old;
+            //return superp;
         }
     };
 }
