@@ -151,8 +151,6 @@ namespace x_lib {
             unsigned long old_count = old_state_count(superp, partition);
 
             BOOST_LOG_TRIVIAL(info) << "XXX " << "super partition " << superp << " partition " << partition << " old count  " << old_count << " new count " << new_count;
-
-
             return new_count;
         }
 
@@ -545,9 +543,10 @@ namespace x_lib {
 
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
-            unsigned long superp_new = configuration::map_new_super_partition(key);
+            //unsigned long superp_new = configuration::map_new_super_partition(key);
 
-            return superp_new;
+            //return superp_new;
+            return map_spshift_wrap::map(key);
         }
     };
 }
