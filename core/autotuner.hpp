@@ -68,6 +68,7 @@ namespace x_lib {
         static unsigned long * vertices_per_new_partition;
 
         static unsigned long partitions_per_super_partition;
+        static unsigned long new_cached_partitions;
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -370,14 +371,13 @@ namespace x_lib {
             unsigned long total_partitions = super_partitions * super_partitions * machines;
             cached_partitions = total_partitions / super_partitions;
             fanout = cached_partitions;
-            partitions_per_super_partition = cached_partitions / super_partitions ;
+            new_cached_partitions = cached_partitions * processors;
+            partitions_per_super_partition = new_cached_partitions / super_partitions ;
 
             BOOST_ASSERT_MSG(partitions_per_super_partition > 0, "Partitions per super partition is 0");
 
             vertices_per_new_partition = new unsigned long [cached_partitions];
-            for (unsigned long i=0; i < cached_partitions; i++) {
-                vertices_per_new_partition[i]= 0;
-            }
+
 
         }
 
