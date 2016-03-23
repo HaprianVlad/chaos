@@ -153,7 +153,7 @@ namespace x_lib {
             BOOST_LOG_TRIVIAL(info) << "XXX " << "super partition " << superp << " partition " << partition << " old count  " << old_count << " new count " << new_count;
 
 
-            return old_state_count(superp, partition);
+            return new_count; //old_state_count(superp, partition);
         }
 
         unsigned long calculate_ram_budget() {
