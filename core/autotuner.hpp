@@ -528,7 +528,7 @@ namespace x_lib {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
 
-            BOOST_LOG_TRIVIAL(info) << "ZZZ " << " partition new " << partition << "  partition old " << map_cached_partition_wrap::map(key);
+            //BOOST_LOG_TRIVIAL(info) << "ZZZ " << " partition new " << partition << "  partition old " << map_cached_partition_wrap::map(key);
 
             return partition;
         }
@@ -547,7 +547,8 @@ namespace x_lib {
             unsigned long superp_new = configuration::map_new_super_partition(key);
             unsigned long superp_old = map_spshift_wrap::map(key);
 
-            BOOST_LOG_TRIVIAL(info) << "YYY " << "super partition new " << superp_new << " super partition old " << superp_old;
+
+            //BOOST_LOG_TRIVIAL(info) << "YYY " << "super partition new " << superp_new << " super partition old " << superp_old;
 
             return superp_old;
             //return superp;
