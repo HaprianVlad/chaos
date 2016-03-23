@@ -148,9 +148,9 @@ namespace x_lib {
         unsigned  long new_state_count(unsigned long superp, unsigned long partition) {
             unsigned long new_count = vertices_per_new_partition[get_id(superp, partition % partitions_per_super_partition)];
             unsigned long old_count = old_state_count(superp, partition);
-            if (new_count != old_count) {
-                BOOST_LOG_TRIVIAL(info) << "XXX " << "super partition " << superp << " partition " << partition << " old count  " << old_count << " new count " << new_count;
-            }
+
+            BOOST_LOG_TRIVIAL(info) << "XXX " << "super partition " << superp << " partition " << partition << " old count  " << old_count << " new count " << new_count;
+
 
             return old_state_count(superp, partition);
         }
