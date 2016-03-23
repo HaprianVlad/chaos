@@ -68,7 +68,7 @@ namespace x_lib {
         static unsigned long * vertices_per_new_partition;
 
         static unsigned long partitions_per_super_partition;
-        static unsigned long new_cached_partitions;
+        static unsigned long total_partitions;
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -368,15 +368,15 @@ namespace x_lib {
             long > ("machines.count");
 
             super_partitions = new_super_partitions;
-            unsigned long total_partitions = super_partitions * super_partitions * machines;
+            total_partitions = super_partitions * super_partitions * machines;
             cached_partitions = total_partitions / super_partitions;
             fanout = cached_partitions;
-            new_cached_partitions = cached_partitions * processors;
-            partitions_per_super_partition = new_cached_partitions / super_partitions ;
+
+            partitions_per_super_partition = cached_partitions;
 
             BOOST_ASSERT_MSG(partitions_per_super_partition > 0, "Partitions per super partition is 0");
 
-            vertices_per_new_partition = new unsigned long [cached_partitions];
+            vertices_per_new_partition = new unsigned long [total_partitions];
 
 
         }
@@ -402,7 +402,7 @@ namespace x_lib {
         // checks if the sum of vertices in all the partitions is the total number of vertices
         void check_vertex_consistency() {
             unsigned long sum = 0;
-            for (unsigned long i=0; i < cached_partitions; i++) {
+            for (unsigned long i=0; i < total_partitions; i++) {
                 sum += vertices_per_new_partition[i];
             }
 
