@@ -544,11 +544,12 @@ namespace x_lib {
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long partition = configuration::map_new_partition(key, superp);
+            unsigned long partition = (key >> configuration::super_partition_shift) &
+                                      (configuration::cached_partitions - 1);
             unsigned long tile = partition >> configuration::tile_shift;
 
             return superp * configuration::tiles + tile;
-            
+
 
         }
     };
