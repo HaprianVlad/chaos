@@ -161,9 +161,7 @@ namespace x_lib {
                 vertex_state_buffer_size =
                         ((vertices + super_partitions - 1) / super_partitions) * vertex_size;
             } else {
-                //vertex_state_buffer_size = max_vertices_per_new_super_partition * vertex_size;
-                vertex_state_buffer_size =
-                        ((vertices + super_partitions - 1) / super_partitions) * vertex_size;
+                vertex_state_buffer_size = max_vertices_per_new_super_partition * vertex_size;
             }
 
             ram_budget += vertex_state_buffer_size;
