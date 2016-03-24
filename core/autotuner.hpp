@@ -161,7 +161,9 @@ namespace x_lib {
                 vertex_state_buffer_size =
                         ((vertices + super_partitions - 1) / super_partitions) * vertex_size;
             } else {
-                vertex_state_buffer_size = max_vertices_per_new_super_partition * vertex_size;
+                //vertex_state_buffer_size = max_vertices_per_new_super_partition * vertex_size;
+                vertex_state_buffer_size =
+                        ((vertices + super_partitions - 1) / super_partitions) * vertex_size;
             }
 
             ram_budget += vertex_state_buffer_size;
@@ -544,13 +546,8 @@ namespace x_lib {
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long partition = configuration::map_new_partition(key, superp);
 
-            unsigned long tile = partition >> configuration::tile_shift;
-
-            return superp * configuration::tiles + tile;
-
-
+            return superp;
         }
     };
 }
