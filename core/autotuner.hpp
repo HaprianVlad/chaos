@@ -523,13 +523,13 @@ namespace x_lib {
 
         // should return the partition within a super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
-            //unsigned long superp = configuration::map_new_super_partition(key);
-            //unsigned long partition = configuration::map_new_partition(key, superp);
+            unsigned long superp = configuration::map_new_super_partition(key);
+            unsigned long partition = configuration::map_new_partition(key, superp);
 
             //BOOST_LOG_TRIVIAL(info) << "ZZZ " << " partition new " << partition << "  partition old " << map_cached_partition_wrap::map(key);
 
-            //return partition;
-            return (key >> configuration::super_partition_shift) & (configuration::cached_partitions - 1);
+            return partition;
+
         }
 
     };
@@ -544,8 +544,8 @@ namespace x_lib {
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long partition = (key >> configuration::super_partition_shift) &
-                                      (configuration::cached_partitions - 1);
+            unsigned long partition = configuration::map_new_partition(key, superp);
+
             unsigned long tile = partition >> configuration::tile_shift;
 
             return superp * configuration::tiles + tile;
