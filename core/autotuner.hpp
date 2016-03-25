@@ -180,6 +180,7 @@ namespace x_lib {
 
     public:
         void dump_config() {
+            BOOST_LOG_TRIVIAL(info) << "PARTITIONING::OLD " << old_partitioning_mode;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::PROCESSORS " << processors;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::PHYSICAL_MEMORY " <<
             available_ram;
@@ -213,9 +214,18 @@ namespace x_lib {
             else {
                 BOOST_LOG_TRIVIAL(info) << "SLIPSTREAM::EXT_MEM_SHUFFLE OFF";
             }
+
         }
 
         static unsigned long map_offset(unsigned long key) {
+            return old_partitioning_mode ? map_offset_old(key) : map_offset_new(key);
+        }
+
+        static unsigned long map_offset_old(unsigned long key) {
+            return key >> (super_partition_shift + partition_shift);
+        }
+
+        static unsigned long map_offset_new(unsigned long key) {
             return key >> (super_partition_shift + partition_shift);
         }
 
@@ -495,58 +505,49 @@ namespace x_lib {
 
     };
 
+
     class map_cached_partition_wrap {
     public:
+        static unsigned long map_internal_old(unsigned long key) {
+            return configuration::map_cached_partition(key);
+        }
+
+
+        static unsigned long map_internal_new(unsigned long key) {
+            unsigned long superp = configuration::map_new_super_partition(key);
+            unsigned long partition = configuration::map_new_partition(key, superp);
+
+            return partition;
+        }
+
+        // should return the partition within a super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
-            return (key >> configuration::super_partition_shift) & (configuration::cached_partitions - 1);
+            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
     };
 
     struct map_spshift_wrap {
         static unsigned long map_spshift;
 
-        static unsigned long map_internal(unsigned long key) {
-            unsigned long superp = key & (configuration::super_partitions - 1);
-            unsigned long p = (key >> configuration::super_partition_shift) &
-                              (configuration::cached_partitions - 1);
+        static unsigned long map_internal_old(unsigned long key) {
+            unsigned long superp = configuration::map_super_partition(key);
+            unsigned long p =  configuration::map_cached_partition(key);
             unsigned long tile = p >> configuration::tile_shift;
-            return superp * configuration::tiles + tile;
+            return (superp * configuration::tiles + tile)>> map_spshift;
         }
 
-        static unsigned long map(unsigned long key) {
-            return map_internal(key) >> map_spshift;
-        }
-    };
 
-    class map_cached_partition_wrap_new {
-    public:
-
-        // should return the partition within a super_partition where the vertex key is
-        static unsigned long map(unsigned long key) {
+        static unsigned long map_internal_new(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
-            unsigned long partition = configuration::map_new_partition(key, superp);
-
-            //BOOST_LOG_TRIVIAL(info) << "ZZZ " << " partition new " << partition << "  partition old " << map_cached_partition_wrap::map(key);
-
-            return partition;
-
-        }
-
-    };
-
-    struct map_spshift_wrap_new {
-
-        static unsigned long map_internal(unsigned long key) {
-            BOOST_LOG_TRIVIAL(fatal) << "map_internal should not be called in map_spshift_wrap_new!";
-            return 0;
+            return superp;
         }
 
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
-            unsigned long superp = configuration::map_new_super_partition(key);
-
-            return superp;
+            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
     };
+
+
 }
 #endif

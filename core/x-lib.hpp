@@ -147,15 +147,11 @@ namespace x_lib {
             bool empty = false;
             sync->wait();
             if (stream_out->bufsize > 0) {
-                if (config->old_partitioning_mode) {
-                    make_index<OUT, map_spshift_wrap>(stream_out, processor_id,
+
+                make_index<OUT, map_spshift_wrap>(stream_out, processor_id,
                                                       config->super_partitions * config->tiles,
                                                       sync);
-                } else {
-                    make_index<OUT, map_spshift_wrap_new>(stream_out, processor_id,
-                                                      config->super_partitions * config->tiles,
-                                                      sync);
-                }
+
                 if (processor_id == 0) {
                     slipstore::ioService.post(boost::bind(&memory_buffer::drain,
                                                           stream_out,
@@ -261,9 +257,12 @@ namespace x_lib {
             if (ingest != NULL) {
                 sync->wait();
                 callback_state.ingest = true;
+
                 make_index<IN, map_spshift_wrap>(ingest, processor_id,
                                                  config->super_partitions,
                                                  sync);
+
+
                 unsigned long ingest_bytes;
                 unsigned char *ingest_src =
                         ingest->get_substream(processor_id, superp, &ingest_bytes);
@@ -289,13 +288,10 @@ namespace x_lib {
                 callback_state.ingest = false;
             }
             if (stream_in != NULL) {
-                if (config->old_partitioning_mode) {
-                    make_index<IN, map_cached_partition_wrap>
-                            (stream_in, processor_id, config->cached_partitions, sync);
-                } else {
-                    make_index<IN, map_cached_partition_wrap_new>
-                            (stream_in, processor_id, config->cached_partitions, sync);
-                }
+
+                make_index<IN, map_cached_partition_wrap>
+                        (stream_in, processor_id, config->cached_partitions, sync);
+
 
             }
             sync->wait();
@@ -348,10 +344,13 @@ namespace x_lib {
                         algorithm::per_processor_data *cpu_state,
                         unsigned char *outbuf) {
             sync->wait();
+
             make_index<OBJ, map_spshift_wrap>(stream_out,
                                               processor_id,
                                               config->super_partitions * config->tiles,
                                               sync);
+
+
             if (processor_id == 0) {
                 slipstore::ioService.post(boost::bind(&memory_buffer::drain_local,
                                                       stream_out,
