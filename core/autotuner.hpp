@@ -544,6 +544,7 @@ namespace x_lib {
 
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
+            BOOST_LOG_TRIVIAL(info) << "PARTITIONING::OLD " << configuration::old_partitioning_mode;
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
     };
