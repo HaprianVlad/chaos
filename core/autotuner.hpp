@@ -226,7 +226,11 @@ namespace x_lib {
         }
 
         static unsigned long map_offset_new(unsigned long key) {
-            return key >> (super_partition_shift + partition_shift);
+            unsigned long superp = map_new_super_partition(key);
+            unsigned long start = new_super_partition_offsets[superp];
+            unsigned long v_id_in_super_partition = key - start;
+
+            return v_id_in_super_partition / partitions_per_super_partition;
         }
 
         static unsigned long map_cached_partition(unsigned long key) {
@@ -385,8 +389,6 @@ namespace x_lib {
             BOOST_ASSERT_MSG(partitions_per_super_partition > 0, "Partitions per super partition is 0");
 
             vertices_per_new_partition = new unsigned long [total_partitions];
-
-
         }
 
         void readPartitioningFile() {
@@ -544,7 +546,6 @@ namespace x_lib {
 
         // should the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
-            BOOST_LOG_TRIVIAL(info) << "PARTITIONING::OLD " << configuration::old_partitioning_mode;
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
     };
