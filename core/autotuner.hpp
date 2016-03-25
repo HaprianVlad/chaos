@@ -241,7 +241,23 @@ namespace x_lib {
             return key & (super_partitions - 1);
         }
 
+
         static unsigned long map_inverse(unsigned long super_partition,
+                                             unsigned long partition,
+                                             unsigned long offset) {
+            return  old_partitioning_mode ? map_inverse_old(super_partition, partition, offset) :map_inverse_new(super_partition, partition, offset);
+
+        }
+
+        static unsigned long map_inverse_new(unsigned long super_partition,
+                                            unsigned long partition,
+                                            unsigned long offset) {
+
+            unsigned long start = new_super_partition_offsets[super_partition];
+            return start + offset * partitions_per_super_partition + partition;
+        }
+
+        static unsigned long map_inverse_old(unsigned long super_partition,
                                          unsigned long partition,
                                          unsigned long offset) {
             return
