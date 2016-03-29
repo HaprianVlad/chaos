@@ -28,7 +28,7 @@ def main(argv):
 			if v_id in degrees:		
 				toAdd = offset
 				v_id = toAdd 
-				toSub += 4
+				toSub += p
 				 	
 			degrees[v_id] = long(struct.unpack('Q', chunk[0:8])[0])
 			offset += 1
