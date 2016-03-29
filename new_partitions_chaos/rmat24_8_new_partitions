@@ -1,0 +1,12 @@
+[partitions_offsets_file]
+sum_out_degrees_for_new_super_partition=67108864
+max_edges_per_new_super_partition=67108864
+number_of_new_super_partitions=8
+P0=0
+P1=70325
+P2=453393
+P3=1126945
+P4=2359298
+P5=4325545
+P6=7340545
+P7=9474065

@@ -1,7 +1,15 @@
 
 On 8 machines
+
+for 256 partitions
 ./launchPartitioning.sh out_degree_rmat24 2097152 8388608 result 4 524288
+
+for 8 partitions
+./launchPartitioning.sh out_degree_rmat24 67108864 67108864 rmat24_8_partitions 4 524288
+
+
 ./launchReadDegree.sh out_degree_rmat24 4 524288
+
 
 
 On 1 machine
