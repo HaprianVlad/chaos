@@ -496,6 +496,10 @@ namespace x_lib {
 
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
         static unsigned  long map_new_super_partition(unsigned long key) {
+            return binary_search_new_super_partition(key, 0, new_super_partitions-1);
+        }
+
+        static unsigned long linear_search_new_super_partition(unsigned long key) {
             for (unsigned long i = 0; i < new_super_partitions - 1; i++) {
                 if (key >= new_super_partition_offsets[i] &&
                     key < new_super_partition_offsets[i+1]) {
@@ -503,6 +507,24 @@ namespace x_lib {
                 }
             }
             return (new_super_partitions - 1);
+        }
+
+        static unsigned long binary_search_new_super_partition(unsigned long key, unsigned long start, unsigned long end) {
+            if (start >= end) {
+                return end;
+            }
+            unsigned long mid = (start + end) / 2;
+
+            if (key >= new_super_partition_offsets[mid] &&
+                key < new_super_partition_offsets[mid+1]) {
+                return mid;
+            }
+
+            if (key >= new_super_partition_offsets[mid+1]) {
+                return binary_search_new_super_partition(key, mid+1, end);
+            } else {
+                return  binary_search_new_super_partition(key, start, mid-1);
+            }
         }
 
         // returns the partition within a super partition in which we map a vertex
