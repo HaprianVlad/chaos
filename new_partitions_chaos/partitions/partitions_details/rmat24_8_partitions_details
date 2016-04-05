@@ -42,3 +42,47 @@ Total number of vertices: 16777216
 Total number of edges: 536870912
 Max out degree: 742295
 Max partition overhead: 6739
+Partition 0
+    start vertex: 0
+    end vertex: 70324
+    vertices: 70325
+    edges: 67108977
+Partition 1
+    start vertex: 70325
+    end vertex: 453392
+    vertices: 383068
+    edges: 67108884
+Partition 2
+    start vertex: 453393
+    end vertex: 1126944
+    vertices: 673552
+    edges: 67109014
+Partition 3
+    start vertex: 1126945
+    end vertex: 2359297
+    vertices: 1232353
+    edges: 67111624
+Partition 4
+    start vertex: 2359298
+    end vertex: 4325544
+    vertices: 1966247
+    edges: 67109261
+Partition 5
+    start vertex: 4325545
+    end vertex: 7340544
+    vertices: 3015000
+    edges: 67115603
+Partition 6
+    start vertex: 7340545
+    end vertex: 9474064
+    vertices: 2133520
+    edges: 67110295
+Partition 7
+    start vertex: 9474065
+    end vertex: 16777215
+    vertices: 7303151
+    edges: 67097254
+Total number of vertices: 16777216
+Total number of edges: 536870912
+Max out degree: 742295
+Max partition overhead: 6739
