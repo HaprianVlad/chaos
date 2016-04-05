@@ -32,6 +32,7 @@ namespace x_lib {
   unsigned long map_spshift_wrap::map_spshift = 100;
 
   bool configuration::old_partitioning_mode = true;
+  bool balanced_partitions = false;
   unsigned long configuration::new_super_partitions = 0;
   unsigned long configuration::sum_out_degrees_for_new_super_partition = 0;
   unsigned long configuration::max_edges_per_new_super_partition = 0;

@@ -56,6 +56,8 @@ namespace x_lib {
 
         /* New partitioning variables */
         static bool old_partitioning_mode;
+        static bool balanced_partitions;
+
         static unsigned long new_super_partitions;
 
         static unsigned long sum_out_degrees_for_new_super_partition;
@@ -224,11 +226,20 @@ namespace x_lib {
         }
 
         static unsigned long map_offset_new(unsigned long key) {
+            return balanced_partitions ? map_offset_new_balanced(key) : map_offset_new_unbalanced(key);
+        }
+
+        static unsigned long map_offset_new_unbalanced(unsigned long key) {
             unsigned long superp = map_new_super_partition(key);
             unsigned long start = new_super_partition_offsets[superp];
             unsigned long v_id_in_super_partition = key - start;
 
             return v_id_in_super_partition / partitions_per_super_partition;
+        }
+
+        static unsigned long map_offset_new_balanced(unsigned long key) {
+            // TODO
+            return 0;
         }
 
         static unsigned long map_cached_partition(unsigned long key) {
@@ -251,9 +262,24 @@ namespace x_lib {
         static unsigned long map_inverse_new(unsigned long super_partition,
                                             unsigned long partition,
                                             unsigned long offset) {
+            
+            return balanced_partitions ? map_inverse_new_balanced(super_partition, partition, offset) : map_inverse_new_unbalanced(super_partition, partition, offset);
+        }
+
+        static unsigned long map_inverse_new_unbalanced(unsigned long super_partition,
+                                             unsigned long partition,
+                                             unsigned long offset) {
 
             unsigned long start = new_super_partition_offsets[super_partition];
             return start + offset * partitions_per_super_partition + partition;
+        }
+
+        static unsigned long map_inverse_new_balanced(unsigned long super_partition,
+                                             unsigned long partition,
+                                             unsigned long offset) {
+
+           //TODO
+            return 0;
         }
 
         static unsigned long map_inverse_old(unsigned long super_partition,
@@ -378,6 +404,8 @@ namespace x_lib {
 
             new_super_partitions = pt_partitions.get < unsigned
             long > ("partitions_offsets_file.number_of_new_super_partitions");
+            balanced_partitions = pt_partitions.get < unsigned
+            long > ("partitions_offsets_file.same_size_edge_sets_per_partition") == 1;
             if (new_super_partitions == 0) {
                 // The splitting file for the new partitions is not yet computed so we need to do an out_degree_cnt with the old_partitioning mode
                 old_partitioning_mode = true;
@@ -462,10 +490,19 @@ namespace x_lib {
             }
         }
 
+
+        void update_vertices_per_partition(unsigned long superp) {
+          if (balanced_partitions) {
+              update_vertices_per_partition_balanced(superp);
+          } else {
+              update_vertices_per_partition_unbalanced(superp);
+          }
+        }
+
         // computes the number of vertices in each partition of a super partition
         // Ex: if each super_partition has 8 partitions and the partition has 13 vertices
         // we will have 2 vertices in partitions: 0, 1, 2, 3, 4 and 1 vertex in the rest
-        void update_vertices_per_partition(unsigned long superp) {
+        void update_vertices_per_partition_unbalanced(unsigned long superp) {
             unsigned long vertices = vertices_per_new_super_partition[superp];
             unsigned long partitions = partitions_per_super_partition;
 
@@ -481,6 +518,26 @@ namespace x_lib {
                 vertices_per_new_partition[get_id(superp,i)] = total;
             }
 
+        }
+
+        void update_vertices_per_partition_balanced(unsigned long superp) {
+            unsigned long total_vertices = vertices_per_new_super_partition[superp];
+            unsigned long partitions = partitions_per_super_partition;
+            for (unsigned long i=0; i < partitions; i++) {
+                unsigned long start;
+                unsigned long end;
+                if (i < partitions - 1) {
+                    start = pt_partitions.get < unsigned
+                    long > ("partitions_offsets_file.P" +  to_string(superp) + "pp" + to_string(i));
+                    end = pt_partitions.get < unsigned
+                    long > ("partitions_offsets_file.P" +  to_string(superp) + "pp" + to_string(i+1));
+                } else {
+                    start = pt_partitions.get < unsigned
+                    long > ("partitions_offsets_file.P" +  to_string(superp) + "pp" + to_string(i));
+                    end = total_vertices;
+                }
+                vertices_per_new_partition[get_id(superp,i)] = end - start;
+            }
         }
 
         void update_max_vertices_per_super_partition(unsigned long superp) {
@@ -531,10 +588,20 @@ namespace x_lib {
 
         // returns the partition within a super partition in which we map a vertex
         static unsigned long map_new_partition(unsigned long v_id, unsigned long superp) {
+            return balanced_partitions ? map_new_partition_balanced(v_id, superp) : map_new_partition_unbalanced(v_id, superp);
+        }
+
+        static unsigned long map_new_partition_unbalanced(unsigned long v_id, unsigned long superp) {
             unsigned long start = new_super_partition_offsets[superp];
             unsigned long v_id_in_super_partition = v_id - start;
 
             return v_id_in_super_partition % partitions_per_super_partition;
+        }
+
+        static unsigned long map_new_partition_balanced(unsigned long v_id, unsigned long superp) {
+
+
+            return 0;
         }
 
         // returns the [superp][p] entry in vertices_per_new_partition array.

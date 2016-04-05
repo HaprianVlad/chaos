@@ -103,10 +103,10 @@ def printResults(results, fileName, c1, c2, partitions, outDegrees, partitions_p
 			end_vertex = partitions[p_id][1]
 			vertices = end_vertex - start_vertex + 1
 			f.write("Vertices=" + str(vertices) + '\n')
-			obtainBalancedPartitions(f, partitions_per_super_partition, edges, start_vertex, end_vertex, outDegrees)			
+			obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, outDegrees)			
 
 
-def obtainBalancedPartitions(f, partitions_per_super_partition, edges, start_vertex, end_vertex, degrees):
+def obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, degrees):
 	constraint = edges/partitions_per_super_partition
 	p_sum = 0
 	start = start_vertex
@@ -121,7 +121,7 @@ def obtainBalancedPartitions(f, partitions_per_super_partition, edges, start_ver
 			end = v_id  
 			start = v_id + 1 
 			p_sum = 0
-			f.write("pp" + str(index) + "=" + str(start) + '\n')
+			f.write("P" + str(p_id) + "pp" + str(index) + "=" + str(start) + '\n')
 			index += 1
 
 		
