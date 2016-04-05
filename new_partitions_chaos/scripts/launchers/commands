@@ -2,24 +2,24 @@ RMAT24
 On 8 machines
 
 for 256 partitions
-./launchPartitioning.sh out_degree_rmat24 2097152 8388608 result 4 524288
+./launchPartitioning.sh out_degree_rmat24 2097152 8388608 result 4 524288 
 
 for 8 partitions
-./launchPartitioning.sh out_degree_rmat24 67108864 67108864 rmat24_8_partitions 4 524288
+./launchPartitioning.sh out_degree_rmat24 67108864 67108864 rmat24_8_partitions 4 524288 8 >> rmat24_8_partitions_details
 
 
 RMAT28
 for 8 partitions (with 8 partitions we might get in worst case an RAM overflow, because in worst case the vertex state might be of 8GB and 
 there are only 2GB available per machine)
-./launchPartitioning.sh out_degree_rmat28 1073741824 1073741824 rmat28_8_partitions 8 4194304 >> rmat28_8_partitions_details
+./launchPartitioning.sh out_degree_rmat28 1073741824 1073741824 rmat28_8_partitions 8 4194304 8 >> rmat28_8_partitions_details
 for 32 partitions
-./launchPartitioning.sh	out_degree_rmat28 268435456 268435456 rmat28_32_partitions 8 4194304 >> rmat28_32_partitions_details
+./launchPartitioning.sh	out_degree_rmat28 268435456 268435456 rmat28_32_partitions 8 4194304 8 >> rmat28_32_partitions_details
 
 RMAT28 DIRECTED
 for 8 paritions(might overflow the RAM)
-./launchPartitioning.sh out_degree_rmat28_directed 536870912 536870912 rmat28_8_partitions_directed 8 4194304 >> rmat28_8_partitions_details_directed
+./launchPartitioning.sh out_degree_rmat28_directed 536870912 536870912 rmat28_8_partitions_directed 8 4194304 8 >> rmat28_8_partitions_details_directed
 for 32 partitions 
-./launchPartitioning.sh out_degree_rmat28_directed 134217728 134217728 rmat28_32_partitions_directed 8 4194304 >> rmat28_32_partitions_details_d$
+./launchPartitioning.sh out_degree_rmat28_directed 134217728 134217728 rmat28_32_partitions_directed 8 4194304 8 >> rmat28_32_partitions_details_d$
 
 
 
