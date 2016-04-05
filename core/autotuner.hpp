@@ -530,7 +530,7 @@ namespace x_lib {
             for (unsigned long i=0; i < partitions; i++) {
                 unsigned long start;
                 unsigned long end;
-                if (i < partitions - 1) {
+                if ((i + 1 ) < partitions) {
                     start = pt_partitions.get < unsigned
                     long > ("partitions_offsets_file.P" +  to_string(superp) + "pp" + to_string(i));
                     end = pt_partitions.get < unsigned
