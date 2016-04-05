@@ -111,7 +111,7 @@ def obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, sta
 	p_sum = 0
 	start = start_vertex
 	index = 0 
-	f.write("pp" + str(index) + "=" + str(start) + '\n')
+	f.write("P" + str(p_id) + "pp" + str(index) + "=" + str(start) + '\n')
 	index += 1
 	for i in range(end_vertex-start_vertex + 1):
 		v_id = i + start_vertex
