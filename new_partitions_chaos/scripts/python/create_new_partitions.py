@@ -121,6 +121,9 @@ def obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, sta
 			p_sum = 0
 			f.write("P" + str(p_id) + "pp" + str(index) + "=" + str(start) + '\n')
 			index += 1
+	while (index < partitions_per_super_partition):
+		f.write("P" + str(p_id) + "pp" + str(index) + "=" + str(start) + '\n')
+		index += 1
 
 		
 	
