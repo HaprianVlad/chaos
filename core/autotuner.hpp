@@ -181,6 +181,7 @@ namespace x_lib {
     public:
         void dump_config() {
             BOOST_LOG_TRIVIAL(info) << "PARTITIONING::OLD " << old_partitioning_mode;
+            BOOST_LOG_TRIVIAL(info) << "PARTITIONING::BALANCED_PARTITIONS " << balanced_partitions;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::PROCESSORS " << processors;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::PHYSICAL_MEMORY " <<
             available_ram;

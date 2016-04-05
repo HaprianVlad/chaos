@@ -98,11 +98,9 @@ def printResults(results, fileName, c1, c2, partitions, outDegrees, partitions_p
    		for p_id in range(len(results)):
 			f.write("P" + str(p_id) + "=" + str(results[p_id]) + '\n')
 			edges = partitions[p_id][2]
-			f.write("Edges=" + str(edges) + '\n')
 			start_vertex = partitions[p_id][0]
 			end_vertex = partitions[p_id][1]
 			vertices = end_vertex - start_vertex + 1
-			f.write("Vertices=" + str(vertices) + '\n')
 			obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, outDegrees)			
 
 
