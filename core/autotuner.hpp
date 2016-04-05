@@ -280,7 +280,7 @@ namespace x_lib {
         static unsigned long map_inverse_new_balanced(unsigned long superp,
                                              unsigned long partition,
                                              unsigned long offset) {
-            
+
             return new_partition_offsets[get_id(superp, partition)] + offset;
         }
 
