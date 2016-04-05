@@ -240,12 +240,8 @@ namespace x_lib {
         }
 
         static unsigned long map_offset_new_balanced(unsigned long key) {
-            BOOST_LOG_TRIVIAL(info) << "XXX1 " << key;
             unsigned long superp = map_new_super_partition(key);
-            BOOST_LOG_TRIVIAL(info) << "XXX2 " << superp;
             unsigned long partition = map_new_partition_balanced(key, superp);
-            BOOST_LOG_TRIVIAL(info) << "XXX3 " << partition;
-            BOOST_LOG_TRIVIAL(info) << "XXX4 " <<  new_partition_offsets[get_id(superp, partition)];
             return key - new_partition_offsets[get_id(superp, partition)];
         }
 
@@ -607,10 +603,14 @@ namespace x_lib {
         }
 
         static unsigned long map_new_partition_balanced(unsigned long v_id, unsigned long superp) {
+            BOOST_LOG_TRIVIAL(info) << "XXX1 " <<  v_id  << " " << superp;
             unsigned long start = get_id(superp, 0);
+            BOOST_LOG_TRIVIAL(info) << "XXX2 " <<  start;
             unsigned long end = get_id(superp, partitions_per_super_partition);
-
-            return binary_interval_search(new_partition_offsets, v_id, start, end);
+            BOOST_LOG_TRIVIAL(info) << "XXX3 " <<  end;
+            unsigned long partition = binary_interval_search(new_partition_offsets, v_id, start, end);
+            BOOST_LOG_TRIVIAL(info) << "XXX4 " <<  partition;
+            return partition;
         }
 
         // returns the [superp][p] entry in vertices_per_new_partition array.
