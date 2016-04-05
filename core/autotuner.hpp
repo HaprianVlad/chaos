@@ -244,7 +244,7 @@ namespace x_lib {
             unsigned long superp = map_new_super_partition(key);
             BOOST_LOG_TRIVIAL(info) << "XXX2 " << superp;
             unsigned long partition = map_new_partition_balanced(key, superp);
-            BOOST_LOG_TRIVIAL(info) << "XXX3 " << partition
+            BOOST_LOG_TRIVIAL(info) << "XXX3 " << partition;
             BOOST_LOG_TRIVIAL(info) << "XXX4 " <<  new_partition_offsets[get_id(superp, partition)];
             return key - new_partition_offsets[get_id(superp, partition)];
         }
