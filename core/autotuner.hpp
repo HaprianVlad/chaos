@@ -66,6 +66,7 @@ namespace x_lib {
         static unsigned long max_vertices_per_new_super_partition;
 
         static unsigned long * new_super_partition_offsets;
+        static unsigned long * new_partition_offsets;
         static unsigned long * vertices_per_new_super_partition;
         static unsigned long * vertices_per_new_partition;
 
@@ -238,8 +239,10 @@ namespace x_lib {
         }
 
         static unsigned long map_offset_new_balanced(unsigned long key) {
-            // TODO
-            return 0;
+            unsigned long superp = map_new_super_partition(key);
+            unsigned long partition = map_new_partition_balanced(key, superp);
+
+            return key - new_partition_offsets[get_id(superp, partition)];
         }
 
         static unsigned long map_cached_partition(unsigned long key) {
@@ -262,7 +265,7 @@ namespace x_lib {
         static unsigned long map_inverse_new(unsigned long super_partition,
                                             unsigned long partition,
                                             unsigned long offset) {
-            
+
             return balanced_partitions ? map_inverse_new_balanced(super_partition, partition, offset) : map_inverse_new_unbalanced(super_partition, partition, offset);
         }
 
@@ -274,12 +277,11 @@ namespace x_lib {
             return start + offset * partitions_per_super_partition + partition;
         }
 
-        static unsigned long map_inverse_new_balanced(unsigned long super_partition,
+        static unsigned long map_inverse_new_balanced(unsigned long superp,
                                              unsigned long partition,
                                              unsigned long offset) {
-
-           //TODO
-            return 0;
+            
+            return new_partition_offsets[get_id(superp, partition)] + offset;
         }
 
         static unsigned long map_inverse_old(unsigned long super_partition,
@@ -404,13 +406,13 @@ namespace x_lib {
 
             new_super_partitions = pt_partitions.get < unsigned
             long > ("partitions_offsets_file.number_of_new_super_partitions");
-            balanced_partitions = pt_partitions.get < unsigned
-            long > ("partitions_offsets_file.same_size_edge_sets_per_partition") == 1;
             if (new_super_partitions == 0) {
                 // The splitting file for the new partitions is not yet computed so we need to do an out_degree_cnt with the old_partitioning mode
                 old_partitioning_mode = true;
             } else {
                 old_partitioning_mode = false;
+                balanced_partitions = pt_partitions.get < unsigned
+                long > ("partitions_offsets_file.same_size_edge_sets_per_partition") == 1;
                 init_partitioning_details();
                 readPartitioningFile();
             }
@@ -432,6 +434,7 @@ namespace x_lib {
             BOOST_ASSERT_MSG(partitions_per_super_partition > 0, "Partitions per super partition is 0");
 
             vertices_per_new_partition = new unsigned long [total_partitions];
+            new_partition_offsets = new unsigned long [total_partitions];
         }
 
         void readPartitioningFile() {
@@ -536,6 +539,7 @@ namespace x_lib {
                     long > ("partitions_offsets_file.P" +  to_string(superp) + "pp" + to_string(i));
                     end = total_vertices;
                 }
+                new_partition_offsets[get_id(superp,i)] = start;
                 vertices_per_new_partition[get_id(superp,i)] = end - start;
             }
         }
@@ -555,7 +559,7 @@ namespace x_lib {
 
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
         static unsigned  long map_new_super_partition(unsigned long key) {
-            return binary_search_new_super_partition(key, 0, new_super_partitions-1);
+            return binary_interval_search(new_super_partition_offsets, key, 0, new_super_partitions-1);
         }
 
         static unsigned long linear_search_new_super_partition(unsigned long key) {
@@ -568,21 +572,21 @@ namespace x_lib {
             return (new_super_partitions - 1);
         }
 
-        static unsigned long binary_search_new_super_partition(unsigned long key, unsigned long start, unsigned long end) {
+        static unsigned long binary_interval_search(unsigned long * array, unsigned long key, unsigned long start, unsigned long end) {
             if (start >= end) {
                 return end;
             }
             unsigned long mid = (start + end) / 2;
 
-            if (key >= new_super_partition_offsets[mid] &&
-                key < new_super_partition_offsets[mid+1]) {
+            if (key >= array[mid] &&
+                key < array[mid+1]) {
                 return mid;
             }
 
-            if (key >= new_super_partition_offsets[mid+1]) {
-                return binary_search_new_super_partition(key, mid+1, end);
+            if (key >= array[mid+1]) {
+                return binary_interval_search(array, key, mid+1, end);
             } else {
-                return  binary_search_new_super_partition(key, start, mid-1);
+                return  binary_interval_search(array, key, start, mid-1);
             }
         }
 
@@ -599,9 +603,10 @@ namespace x_lib {
         }
 
         static unsigned long map_new_partition_balanced(unsigned long v_id, unsigned long superp) {
+            unsigned long start = get_id(superp, 0);
+            unsigned long end = get_id(superp, partitions_per_super_partition);
 
-
-            return 0;
+            return binary_interval_search(new_partition_offsets, v_id, start, end);
         }
 
         // returns the [superp][p] entry in vertices_per_new_partition array.

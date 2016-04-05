@@ -38,6 +38,7 @@ namespace x_lib {
   unsigned long configuration::max_edges_per_new_super_partition = 0;
   unsigned long configuration::max_vertices_per_new_super_partition = 0;
   unsigned long * configuration::new_super_partition_offsets = NULL;
+  unsigned long * configuration::new_partition_offsets = NULL;
   unsigned long * configuration::vertices_per_new_super_partition = NULL;
   unsigned long * configuration::vertices_per_new_partition = NULL;
   unsigned long configuration::partitions_per_super_partition = 0;
