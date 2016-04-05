@@ -603,14 +603,11 @@ namespace x_lib {
         }
 
         static unsigned long map_new_partition_balanced(unsigned long v_id, unsigned long superp) {
-            BOOST_LOG_TRIVIAL(info) << "XXX1 " <<  v_id  << " " << superp;
             unsigned long start = get_id(superp, 0);
-            BOOST_LOG_TRIVIAL(info) << "XXX2 " <<  start;
             unsigned long end = get_id(superp, partitions_per_super_partition);
-            BOOST_LOG_TRIVIAL(info) << "XXX3 " <<  end;
             unsigned long partition = binary_interval_search(new_partition_offsets, v_id, start, end);
-            BOOST_LOG_TRIVIAL(info) << "XXX4 " <<  partition;
-            return partition;
+
+            return partition - start;
         }
 
         // returns the [superp][p] entry in vertices_per_new_partition array.
