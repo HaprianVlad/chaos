@@ -214,6 +214,7 @@ namespace x_lib {
 
         }
 
+        // returns the vertex offset within a partition (its index in the partition)
         static unsigned long map_offset(unsigned long key) {
             return old_partitioning_mode ? map_offset_old(key) : map_offset_new(key);
         }
@@ -239,6 +240,7 @@ namespace x_lib {
         }
 
 
+        // computes the vertex id based on its position: super_partition, partition and offset within partition
         static unsigned long map_inverse(unsigned long super_partition,
                                              unsigned long partition,
                                              unsigned long offset) {

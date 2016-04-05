@@ -51,7 +51,7 @@ def main(argv):
 
 		
 		
-	partitions[p_id] = [start, v_id+1, p_sum]
+	partitions[p_id] = [start, v_id, p_sum]
 
 	
 
@@ -60,7 +60,7 @@ def main(argv):
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
 	print "Max partition overhead: " + str(max_difference)
-	printResults(results, resultFile, outDegreeSumPerPartition, maxNumberOfEdgesPerPartition)
+	printResults(results, resultFile, outDegreeSumPerPartition, maxNumberOfEdgesPerPartition, partitions, degrees)
 
 
 def max(a, b):
@@ -79,18 +79,24 @@ def printPartitionDetails(partitions):
 		print "Partition " + str(p_id) 
 		print "    start vertex: " + str(partitions[p_id][0])
 		print "    end vertex: " + str(partitions[p_id][1])
-		print "    vertices: " + str(partitions[p_id][1] - partitions[p_id][0])
+		print "    vertices: " + str(partitions[p_id][1] - partitions[p_id][0] + 1)
 		print "    edges: " + str(partitions[p_id][2])
 
 
-def printResults(results, fileName, c1, c2):
+def printResults(results, fileName, c1, c2, partitions, outDegrees):
 	with open(fileName, 'w') as f:
 		f.write("[partitions_offsets_file]" + '\n')
 		f.write("sum_out_degrees_for_new_super_partition=" + str(c1) + '\n')
  		f.write("max_edges_per_new_super_partition=" + str(c2) + '\n')
 		f.write("number_of_new_super_partitions=" + str(len(results)) + '\n')
    		for v in range(len(results)):
-			f.write("P" + str(v) + "=" + str(results[v]) + '\n') 
+			f.write("P" + str(v) + "=" + str(results[v]) + '\n')
+			f.write("Edges=" + str(partitions[p_id][2]) + '\n')
+			vertices = partitions[p_id][1] - partitions[p_id][0] + 1
+			f.write("Vertices=" + str(vertices) + '\n')
+			for i in range(vertices):
+				v_id = i + v
+				f.write("out_degree" + str(v_id) + "=" + str(outDegrees[v_id]) + '\n')
 		
 
 if __name__ == "__main__":
