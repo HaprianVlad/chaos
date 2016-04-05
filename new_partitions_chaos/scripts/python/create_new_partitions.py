@@ -97,11 +97,12 @@ def printResults(results, fileName, c1, c2, partitions, outDegrees, partitions_p
 		f.write("number_of_new_super_partitions=" + str(len(results)) + '\n')
    		for p_id in range(len(results)):
 			f.write("P" + str(p_id) + "=" + str(results[p_id]) + '\n')
-			edges = partitions[p_id][2]
-			start_vertex = partitions[p_id][0]
-			end_vertex = partitions[p_id][1]
-			vertices = end_vertex - start_vertex + 1
-			obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, outDegrees)			
+			if (partitions_per_super_partition > 0):
+				edges = partitions[p_id][2]
+				start_vertex = partitions[p_id][0]
+				end_vertex = partitions[p_id][1]
+				vertices = end_vertex - start_vertex + 1
+				obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, outDegrees)			
 
 
 def obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, degrees):
