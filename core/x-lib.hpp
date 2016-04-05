@@ -1559,7 +1559,7 @@ namespace x_lib {
             }
 
             if (log_phases) {
-                /*if (sync) {
+                if (sync) {
                     BOOST_LOG_TRIVIAL(info)
                     << clock::timestamp()
                     << " Started gather ";
@@ -1567,7 +1567,7 @@ namespace x_lib {
                     BOOST_LOG_TRIVIAL(info)
                     << clock::timestamp()
                     << " Started scatter ";
-                }*/
+                }
             }
 
 
@@ -1600,7 +1600,7 @@ namespace x_lib {
                 sio->state_store(partition);
             }
             if (log_phases) {
-                /*
+
                 if (sync) {
                     BOOST_LOG_TRIVIAL(info)
                     << clock::timestamp()
@@ -1609,7 +1609,7 @@ namespace x_lib {
                     BOOST_LOG_TRIVIAL(info)
                     << clock::timestamp()
                     << " Completed scatter ";
-                }*/
+                }
             }
         }
 
