@@ -20,6 +20,8 @@ for 8 paritions(might overflow the RAM)
 ./launchPartitioning.sh out_degree_rmat28_directed 536870912 536870912 rmat28_8_partitions_directed 8 4194304 64 >> rmat28_8_partitions_details_directed
 for 32 partitions 
 ./launchPartitioning.sh out_degree_rmat28_directed 134217728 134217728 rmat28_32_partitions_directed 8 4194304 256 >> rmat28_32_partitions_details_d$
+for 16 partititions
+./launchPartitioning.sh out_degree_rmat28_directed 268435456 268435456 rmat28_16_partitions_directed 8 4194304 0 >> rmat28_16_partitions_details_directed
 
 
 

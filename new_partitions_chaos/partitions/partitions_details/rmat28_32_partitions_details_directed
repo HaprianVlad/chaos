@@ -1,0 +1,324 @@
+Partition 0
+    start vertex: 0
+    end vertex: 34817
+    vertices: 34818
+    edges: 134229797
+Partition 1
+    start vertex: 34818
+    end vertex: 206592
+    vertices: 171775
+    edges: 134219305
+Partition 2
+    start vertex: 206593
+    end vertex: 557122
+    vertices: 350530
+    edges: 134236390
+Partition 3
+    start vertex: 557123
+    end vertex: 1124920
+    vertices: 567798
+    edges: 134217799
+Partition 4
+    start vertex: 1124921
+    end vertex: 2131488
+    vertices: 1006568
+    edges: 134220914
+Partition 5
+    start vertex: 2131489
+    end vertex: 3316227
+    vertices: 1184739
+    edges: 134217770
+Partition 6
+    start vertex: 3316228
+    end vertex: 4620289
+    vertices: 1304062
+    edges: 134219691
+Partition 7
+    start vertex: 4620290
+    end vertex: 7275616
+    vertices: 2655327
+    edges: 134217774
+Partition 8
+    start vertex: 7275617
+    end vertex: 8914976
+    vertices: 1639360
+    edges: 134225976
+Partition 9
+    start vertex: 8914977
+    end vertex: 11666449
+    vertices: 2751473
+    edges: 134217778
+Partition 10
+    start vertex: 11666450
+    end vertex: 16813761
+    vertices: 5147312
+    edges: 134217809
+Partition 11
+    start vertex: 16813762
+    end vertex: 18034760
+    vertices: 1220999
+    edges: 134217736
+Partition 12
+    start vertex: 18034761
+    end vertex: 22036504
+    vertices: 4001744
+    edges: 134218656
+Partition 13
+    start vertex: 22036505
+    end vertex: 31392265
+    vertices: 9355761
+    edges: 134217730
+Partition 14
+    start vertex: 31392266
+    end vertex: 34112644
+    vertices: 2720379
+    edges: 134218684
+Partition 15
+    start vertex: 34112645
+    end vertex: 37748768
+    vertices: 3636124
+    edges: 134265349
+Partition 16
+    start vertex: 37748769
+    end vertex: 43042081
+    vertices: 5293313
+    edges: 134217767
+Partition 17
+    start vertex: 43042082
+    end vertex: 53478657
+    vertices: 10436576
+    edges: 134218217
+Partition 18
+    start vertex: 53478658
+    end vertex: 67240968
+    vertices: 13762311
+    edges: 134231611
+Partition 19
+    start vertex: 67240969
+    end vertex: 69209122
+    vertices: 1968154
+    edges: 134218698
+Partition 20
+    start vertex: 69209123
+    end vertex: 74072848
+    vertices: 4863726
+    edges: 134217748
+Partition 21
+    start vertex: 74072849
+    end vertex: 83979457
+    vertices: 9906609
+    edges: 134217738
+Partition 22
+    start vertex: 83979458
+    end vertex: 100683908
+    vertices: 16704451
+    edges: 134218918
+Partition 23
+    start vertex: 100683909
+    end vertex: 117448792
+    vertices: 16764884
+    edges: 134218206
+Partition 24
+    start vertex: 117448793
+    end vertex: 134481936
+    vertices: 17033144
+    edges: 134232353
+Partition 25
+    start vertex: 134481937
+    end vertex: 136529937
+    vertices: 2048001
+    edges: 134217802
+Partition 26
+    start vertex: 136529938
+    end vertex: 142671872
+    vertices: 6141935
+    edges: 134224544
+Partition 27
+    start vertex: 142671873
+    end vertex: 151585805
+    vertices: 8913933
+    edges: 134217901
+Partition 28
+    start vertex: 151585806
+    end vertex: 168100896
+    vertices: 16515091
+    edges: 134218569
+Partition 29
+    start vertex: 168100897
+    end vertex: 187334688
+    vertices: 19233792
+    edges: 134217745
+Partition 30
+    start vertex: 187334689
+    end vertex: 209760800
+    vertices: 22426112
+    edges: 134217733
+Partition 31
+    start vertex: 209760801
+    end vertex: 268435456
+    vertices: 58674656
+    edges: 136060468
+Partition 32
+    start vertex: 268435457
+    end vertex: 268470658
+    vertices: 35202
+    edges: 134218920
+Partition 33
+    start vertex: 268470659
+    end vertex: 268649481
+    vertices: 178823
+    edges: 134219518
+Partition 34
+    start vertex: 268649482
+    end vertex: 268993536
+    vertices: 344055
+    edges: 134273831
+Partition 35
+    start vertex: 268993537
+    end vertex: 269568017
+    vertices: 574481
+    edges: 134218162
+Partition 36
+    start vertex: 269568018
+    end vertex: 270569729
+    vertices: 1001712
+    edges: 134222362
+Partition 37
+    start vertex: 270569730
+    end vertex: 271822865
+    vertices: 1253136
+    edges: 134217756
+Partition 38
+    start vertex: 271822866
+    end vertex: 273098504
+    vertices: 1275639
+    edges: 134217742
+Partition 39
+    start vertex: 273098505
+    end vertex: 275779880
+    vertices: 2681376
+    edges: 134217735
+Partition 40
+    start vertex: 275779881
+    end vertex: 277353473
+    vertices: 1573593
+    edges: 134223684
+Partition 41
+    start vertex: 277353474
+    end vertex: 280232450
+    vertices: 2878977
+    edges: 134218386
+Partition 42
+    start vertex: 280232451
+    end vertex: 285253680
+    vertices: 5021230
+    edges: 134221265
+Partition 43
+    start vertex: 285253681
+    end vertex: 286525441
+    vertices: 1271761
+    edges: 134221150
+Partition 44
+    start vertex: 286525442
+    end vertex: 290513856
+    vertices: 3988415
+    edges: 134217739
+Partition 45
+    start vertex: 290513857
+    end vertex: 299991677
+    vertices: 9477821
+    edges: 134217728
+Partition 46
+    start vertex: 299991678
+    end vertex: 302563712
+    vertices: 2572035
+    edges: 134218558
+Partition 47
+    start vertex: 302563713
+    end vertex: 306184840
+    vertices: 3621128
+    edges: 134220317
+Partition 48
+    start vertex: 306184841
+    end vertex: 311558437
+    vertices: 5373597
+    edges: 134217937
+Partition 49
+    start vertex: 311558438
+    end vertex: 322052381
+    vertices: 10493944
+    edges: 134217730
+Partition 50
+    start vertex: 322052382
+    end vertex: 335678672
+    vertices: 13626291
+    edges: 134218164
+Partition 51
+    start vertex: 335678673
+    end vertex: 337649664
+    vertices: 1970992
+    edges: 134224005
+Partition 52
+    start vertex: 337649665
+    end vertex: 342892736
+    vertices: 5243072
+    edges: 134218208
+Partition 53
+    start vertex: 342892737
+    end vertex: 352452992
+    vertices: 9560256
+    edges: 134221785
+Partition 54
+    start vertex: 352452993
+    end vertex: 369132162
+    vertices: 16679170
+    edges: 134218115
+Partition 55
+    start vertex: 369132163
+    end vertex: 385911168
+    vertices: 16779006
+    edges: 134218311
+Partition 56
+    start vertex: 385911169
+    end vertex: 402920066
+    vertices: 17008898
+    edges: 134219093
+Partition 57
+    start vertex: 402920067
+    end vertex: 405014656
+    vertices: 2094590
+    edges: 134223703
+Partition 58
+    start vertex: 405014657
+    end vertex: 411112476
+    vertices: 6097820
+    edges: 134217885
+Partition 59
+    start vertex: 411112477
+    end vertex: 420092462
+    vertices: 8979986
+    edges: 134217729
+Partition 60
+    start vertex: 420092463
+    end vertex: 436608032
+    vertices: 16515570
+    edges: 134217738
+Partition 61
+    start vertex: 436608033
+    end vertex: 457179168
+    vertices: 20571136
+    edges: 134218521
+Partition 62
+    start vertex: 457179169
+    end vertex: 478281733
+    vertices: 21102565
+    edges: 134218095
+Partition 63
+    start vertex: 478281734
+    end vertex: 536870911
+    vertices: 58589178
+    edges: 132137544
+Total number of vertices: 536870912
+Total number of edges: 8589934592
+Max out degree: 1977880
+Max partition overhead: 1842740
