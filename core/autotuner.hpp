@@ -537,17 +537,11 @@ namespace x_lib {
                 } else {
                     start = pt_partitions.get < unsigned
                     long > ("partitions_offsets_file.P" +  to_string(superp) + "pp" + to_string(i));
-                    if ((superp+1) < new_super_partitions) {
-                        end = new_super_partition_offsets[superp+1];
-                    } else {
-                        end = vertices;
-                    }
+                    end = (superp + 1) < new_super_partitions ? new_super_partition_offsets[superp + 1] : vertices;
                 }
 
                 new_partition_offsets[get_id(superp,i)] = start;
-                BOOST_LOG_TRIVIAL(info) << "YYY " << start;
                 vertices_per_new_partition[get_id(superp,i)] = end - start;
-                BOOST_LOG_TRIVIAL(info) << "ZZZ " << end-start;
             }
         }
 
@@ -613,11 +607,6 @@ namespace x_lib {
             unsigned long start = get_id(superp, 0);
             unsigned long end = get_id(superp, partitions_per_super_partition - 1);
             unsigned long partition = binary_interval_search(new_partition_offsets, v_id, start, end);
-
-            if (partition  <  start || partition-start >= partitions_per_super_partition) {
-                BOOST_LOG_TRIVIAL(info) << "XXX " << partition - start;
-                return 0;
-            }
 
             return partition - start;
         }
