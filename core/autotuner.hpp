@@ -540,7 +540,9 @@ namespace x_lib {
                     end = total_vertices;
                 }
                 new_partition_offsets[get_id(superp,i)] = start;
+                BOOST_LOG_TRIVIAL(info) << "YYY " << start;
                 vertices_per_new_partition[get_id(superp,i)] = end - start;
+                BOOST_LOG_TRIVIAL(info) << "ZZZ " << end-start;
             }
         }
 
@@ -606,6 +608,11 @@ namespace x_lib {
             unsigned long start = get_id(superp, 0);
             unsigned long end = get_id(superp, partitions_per_super_partition);
             unsigned long partition = binary_interval_search(new_partition_offsets, v_id, start, end);
+
+            if (partition - start < 0 || partition-start >= partitions_per_super_partition) {
+                BOOST_LOG_TRIVIAL(info) << "XXX " << partition - start;
+                return 0;
+            }
 
             return partition - start;
         }
