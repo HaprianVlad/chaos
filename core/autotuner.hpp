@@ -606,7 +606,7 @@ namespace x_lib {
 
         static unsigned long map_new_partition_balanced(unsigned long v_id, unsigned long superp) {
             unsigned long start = get_id(superp, 0);
-            unsigned long end = get_id(superp, partitions_per_super_partition);
+            unsigned long end = get_id(superp, partitions_per_super_partition - 1);
             unsigned long partition = binary_interval_search(new_partition_offsets, v_id, start, end);
 
             if (partition - start < 0 || partition-start >= partitions_per_super_partition) {
