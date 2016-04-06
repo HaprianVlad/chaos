@@ -1,0 +1,84 @@
+Partition 0
+    start vertex: 0
+    end vertex: 206464
+    vertices: 206465
+    edges: 268435765
+Partition 1
+    start vertex: 206465
+    end vertex: 1124864
+    vertices: 918400
+    edges: 268441576
+Partition 2
+    start vertex: 1124865
+    end vertex: 3315224
+    vertices: 2190360
+    edges: 268435495
+Partition 3
+    start vertex: 3315225
+    end vertex: 7274500
+    vertices: 3959276
+    edges: 268435993
+Partition 4
+    start vertex: 7274501
+    end vertex: 11666165
+    vertices: 4391665
+    edges: 268435465
+Partition 5
+    start vertex: 11666166
+    end vertex: 18032740
+    vertices: 6366575
+    edges: 268435494
+Partition 6
+    start vertex: 18032741
+    end vertex: 31328257
+    vertices: 13295517
+    edges: 268435476
+Partition 7
+    start vertex: 31328258
+    end vertex: 37748760
+    vertices: 6420503
+    edges: 268436469
+Partition 8
+    start vertex: 37748761
+    end vertex: 53478016
+    vertices: 15729256
+    edges: 268435809
+Partition 9
+    start vertex: 53478017
+    end vertex: 69208929
+    vertices: 15730913
+    edges: 268435467
+Partition 10
+    start vertex: 69208930
+    end vertex: 83976453
+    vertices: 14767524
+    edges: 268435638
+Partition 11
+    start vertex: 83976454
+    end vertex: 117448705
+    vertices: 33472252
+    edges: 268439347
+Partition 12
+    start vertex: 117448706
+    end vertex: 136527888
+    vertices: 19079183
+    edges: 268436918
+Partition 13
+    start vertex: 136527889
+    end vertex: 151585057
+    vertices: 15057169
+    edges: 268435560
+Partition 14
+    start vertex: 151585058
+    end vertex: 187301888
+    vertices: 35716831
+    edges: 268435948
+Partition 15
+    start vertex: 187301889
+    end vertex: 268435455
+    vertices: 81133567
+    edges: 268420876
+Total number of vertices: 268435456
+Total number of edges: 4294967296
+Max out degree: 1977880
+Max partition overhead: 6120
