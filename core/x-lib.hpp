@@ -637,6 +637,10 @@ namespace x_lib {
         rtc_clock tile_copy_time;
         rtc_clock tile_merge_time;
         rtc_clock im_barrier_time;
+        rtc_clock scatter_barrier_time;
+        rtc_clock gatter_barrier_time;
+        rtc_clock init_barrier_time;
+        rtc_clock shut_down_barrier_time;
         rtc_clock processing_stolen_time;
         rtc_clock merge_wait_time;
 
@@ -827,17 +831,62 @@ namespace x_lib {
             tile_copy_done = true;
         }
 
-
-        void inter_machine_barrier() {
+        // goal : 0 - mesure gather time
+        //        1 - mesure scatter time
+        //        2 - start-up time
+        //        3 - shutdown time
+        void inter_machine_barrier(unsigned long goal) {
             null_barrier_work null_obj;
-            im_barrier_time.start();
+
+            startBarrierTime(goal);
             slipstore::slipstore_client_barrier->in_progress = true;
             slipstore::ioService.post
                     (boost::bind(&slipstore::client_barrier::work_barrier,
                                  slipstore::slipstore_client_barrier,
                                  &null_obj));
             while (slipstore::slipstore_client_barrier->in_progress);
-            im_barrier_time.stop();
+            stopBarrierTime(goal);
+        }
+
+        void startBarrierTime(unsigned long goal) {
+            switch(goal) {
+                case 0:
+                    gatter_barrier_time.start();
+                    break;
+                case 1:
+                    scatter_barrier_time.start();
+                    break;
+                case 2:
+                    init_barrier_time.start();
+                    break;
+                case 3:
+                    shut_down_barrier_time.start();
+                    break;
+                default:
+                    im_barrier_time.start();
+                    break;
+            }
+
+        }
+
+        void stopBarrierTime(unsigned long goal) {
+            switch(goal) {
+                case 0:
+                    gatter_barrier_time.stop();
+                    break;
+                case 1:
+                    scatter_barrier_time.stop();
+                    break;
+                case 2:
+                    init_barrier_time.stop();
+                    break;
+                case 3:
+                    shut_down_barrier_time.stop();
+                    break;
+                default:
+                    im_barrier_time.stop();
+                    break;
+            }
         }
 
         streamIO() {
@@ -913,7 +962,7 @@ namespace x_lib {
                 ext_tmps[1] = ULONG_MAX;
             }
             // Wait for other machines to start up
-            inter_machine_barrier();
+            inter_machine_barrier(2);
         }
 
         const configuration *get_config() {
@@ -1013,13 +1062,13 @@ namespace x_lib {
             bool empty;
             check_empty_work wk(stream, streams);
             wk.in_progress = true;
-            inter_machine_barrier();
+            inter_machine_barrier(4);
             slipstore::ioService.post
                     (boost::bind(&check_empty_work::do_it,
                                  &wk));
             while (wk.in_progress);
             empty = wk.empty;
-            inter_machine_barrier();
+            inter_machine_barrier(4);
             return empty;
         }
 
@@ -1039,7 +1088,7 @@ namespace x_lib {
             for (unsigned long i = 1; i < config->processors; i++) {
                 thread_array[i]->join();
             }
-            inter_machine_barrier(); // avoid killing servers while messages inflight
+            inter_machine_barrier(3); // avoid killing servers while messages inflight
             slipstore::shutdown();
             delete streams;
             struct rusage ru;
@@ -1060,7 +1109,11 @@ namespace x_lib {
             tile_merge_time.print("CORE::TIME_TILE_MERGE");
             processing_stolen_time.print("CORE::TIME_PROCESSING_STOLEN");
             merge_wait_time.print("CORE::TIME_MERGE_WAIT");
-            im_barrier_time.print("CORE::TIME_ALL_MC_BARRIER");
+            im_barrier_time.print("CORE::OTHER_TIME_ALL_MC_BARRIER");
+            scatter_barrier_time.print("CORE::SCATTER_TIME_ALL_MC_BARRIER");
+            gatter_barrier_time.print("CORE::GATHER_TIME_ALL_MC_BARRIER");
+            init_barrier_time.print("CORE::INIT_TIME_ALL_MC_BARRIER");
+            shut_down_barrier_time.print("CORE::SHUT_DOWN_TIME_ALL_MC_BARRIER");
         }
 
         void rewind_stream(unsigned long stream) {
@@ -1456,12 +1509,12 @@ namespace x_lib {
     static void take_checkpoint(streamIO<A> *sio, A *app) {
         if (sio->take_checkpoints) { // Take a checkpoint
             // Make sure updates have hit storage server
-            sio->inter_machine_barrier();
+            sio->inter_machine_barrier(4);
             unsigned char *app_buffer = new unsigned char[A::checkpoint_size()];
             unsigned char *runtime_buffer;
             unsigned long cno = next_checkpoint();
             runtime_buffer = sio->streams->take_snapshot(cno);
-            sio->inter_machine_barrier(); // Checkpoint complete
+            sio->inter_machine_barrier(4); // Checkpoint complete
             // Write out checkpoint metadata
             app->take_checkpoint(app_buffer);
             write_checkpoint(cno,
@@ -1470,7 +1523,7 @@ namespace x_lib {
                              runtime_buffer,
                              sio->streams->snap_metadata_size());
             delete app_buffer;
-            sio->inter_machine_barrier(); // Metadata write complete
+            sio->inter_machine_barrier(4); // Metadata write complete
             // Delete previous checkpoint
             if (cno > 0) {
                 del_checkpoint(cno - 1);
@@ -1504,7 +1557,7 @@ namespace x_lib {
             while (order_wk.in_progress);
         }
         // Make sure everyone is ready
-        sio->inter_machine_barrier();
+        sio->inter_machine_barrier(4);
 
         unsigned long use_stream_out;
         unsigned long visible_bits = 0;
@@ -1725,7 +1778,12 @@ namespace x_lib {
                 input = 1 - input;
             }
         }
-        sio->inter_machine_barrier(); // All done
+        if (sync) {
+            sio->inter_machine_barrier(0); // All done gather
+        } else {
+            sio->inter_machine_barrier(1); // All done scatter
+        }
+
         return reduce_result;
     }
 
@@ -1748,7 +1806,7 @@ namespace x_lib {
         //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check3 ";
         sio->state_buffer->bufsize = sio->tile_size(0, 0);
         //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check4 ";
-        sio->inter_machine_barrier();
+        sio->inter_machine_barrier(2);
         //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check5 ";
 
         // setting the use stream_out_variable. Not sure to understand...
@@ -1784,7 +1842,7 @@ namespace x_lib {
         do_stream_internal<A, IN, OUT>(sio, 0, 0, stream_in, use_stream_out,
                                        NULL, false);
         //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check8 ";
-        sio->inter_machine_barrier();
+        sio->inter_machine_barrier(2);
 
         //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check9 ";
 
@@ -1812,7 +1870,7 @@ namespace x_lib {
                 }
                 input = 1 - input;
             }
-            sio->inter_machine_barrier();
+            sio->inter_machine_barrier(2);
             //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check12 ";
         }
         return false;
