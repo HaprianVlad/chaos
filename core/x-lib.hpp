@@ -638,7 +638,7 @@ namespace x_lib {
         rtc_clock tile_merge_time;
         rtc_clock im_barrier_time;
         rtc_clock scatter_barrier_time;
-        rtc_clock gatter_barrier_time;
+        rtc_clock gather_barrier_time;
         rtc_clock init_barrier_time;
         rtc_clock shut_down_barrier_time;
         rtc_clock processing_stolen_time;
@@ -851,7 +851,7 @@ namespace x_lib {
         void startBarrierTime(unsigned long goal) {
             switch(goal) {
                 case 0:
-                    gatter_barrier_time.start();
+                    gather_barrier_time.start();
                     break;
                 case 1:
                     scatter_barrier_time.start();
@@ -872,7 +872,7 @@ namespace x_lib {
         void stopBarrierTime(unsigned long goal) {
             switch(goal) {
                 case 0:
-                    gatter_barrier_time.stop();
+                    gather_barrier_time.stop();
                     break;
                 case 1:
                     scatter_barrier_time.stop();
@@ -1111,7 +1111,7 @@ namespace x_lib {
             merge_wait_time.print("CORE::TIME_MERGE_WAIT");
             im_barrier_time.print("CORE::OTHER_TIME_ALL_MC_BARRIER");
             scatter_barrier_time.print("CORE::SCATTER_TIME_ALL_MC_BARRIER");
-            gatter_barrier_time.print("CORE::GATHER_TIME_ALL_MC_BARRIER");
+            gather_barrier_time.print("CORE::GATHER_TIME_ALL_MC_BARRIER");
             init_barrier_time.print("CORE::INIT_TIME_ALL_MC_BARRIER");
             shut_down_barrier_time.print("CORE::SHUT_DOWN_TIME_ALL_MC_BARRIER");
         }
