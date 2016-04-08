@@ -1187,6 +1187,8 @@ namespace x_lib {
             metadata_write_complete_barrier_time.print("CORE::METADATA_WRITE_COMPLETE_TIME_ALL_MC_BARRIER");
             stream_eof_before_barrier_time.print("CORE::STREAM_EOF_BEFORE_TIME_ALL_MC_BARRIER");
             stream_eof_after_barrier_time.print("CORE::STREAM_EOF_AFTER_TIME_ALL_MC_BARRIER");
+            state_load_barrier_time.print("CORE::STATE_LOAD_TIME_ALL_MC_BARRIER");
+            state_store_barrier_time.print("CORE::STATE_STORE_TIME_ALL_MC_BARRIER");
         }
 
         void rewind_stream(unsigned long stream) {
