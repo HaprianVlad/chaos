@@ -74,7 +74,7 @@ namespace x_lib {
         static unsigned long total_partitions;
 
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
-        static unsigned long cached_super_partition;
+        static long cached_super_partition;
 
         /* Mapping */
         static unsigned long partition_shift;
