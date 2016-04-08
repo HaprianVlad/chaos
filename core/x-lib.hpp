@@ -1621,6 +1621,7 @@ namespace x_lib {
         const unsigned long m = slipstore::slipstore_client_fill->get_machines();
         order_work order_wk;
 
+        // partitioning done only once at the begenning
         bool reduce_result = true;
         slipstore::slipstore_server->help_handle()->reset();
         if (sio->sorted_order) {
@@ -1701,6 +1702,7 @@ namespace x_lib {
 
             sio->state_load(partition);
             sio->inter_machine_barrier(10);
+
             do_stream_internal<A, IN, OUT>(sio, partition, 0, stream_in,
                                            use_stream_out,
                                            override_input_filter, sync);

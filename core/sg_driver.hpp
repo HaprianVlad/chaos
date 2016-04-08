@@ -395,7 +395,7 @@ namespace algorithm {
                 scatter_cost.start();
             }
 
-
+            graph_storage->get_config()->reset_cache_super_partition();
             x_lib::do_stream_skip<scatter_gather<A, F>,
                     edge_type_wrapper<F>,
                     update_type_wrapper<A> >

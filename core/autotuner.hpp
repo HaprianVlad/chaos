@@ -73,12 +73,17 @@ namespace x_lib {
         static unsigned long partitions_per_super_partition;
         static unsigned long total_partitions;
 
+        // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
+        static unsigned long cached_super_partition;
+
         /* Mapping */
         static unsigned long partition_shift;
         static unsigned long tile_shift;
         static unsigned long super_partition_shift;
         static unsigned long ext_mem_bits;
         static unsigned long ext_fanout_bits;
+
+
 
         void setup_mapping() {
             partition_shift = 0;
@@ -217,7 +222,9 @@ namespace x_lib {
             }
 
         }
-
+        static void reset_cache_super_partition() {
+            cached_super_partition = -1;
+        }
         // returns the vertex offset within a partition (its index in the partition)
         static unsigned long map_offset(unsigned long key) {
             return old_partitioning_mode ? map_offset_old(key) : map_offset_new(key);
@@ -228,19 +235,25 @@ namespace x_lib {
         }
 
         static unsigned long map_offset_new(unsigned long key) {
-            return balanced_partitions ? map_offset_new_balanced(key) : map_offset_new_unbalanced(key);
+            unsigned long superp;
+            if (cached_super_partition == -1) {
+                superp = map_new_super_partition(key);
+                cached_super_partition = superp;
+            } else {
+                superp = cached_super_partition;
+            }
+
+            return balanced_partitions ? map_offset_new_balanced(key, superp) : map_offset_new_unbalanced(key, superp);
         }
 
-        static unsigned long map_offset_new_unbalanced(unsigned long key) {
-            unsigned long superp = map_new_super_partition(key);
+        static unsigned long map_offset_new_unbalanced(unsigned long key, unsigned long superp) {
             unsigned long start = new_super_partition_offsets[superp];
             unsigned long v_id_in_super_partition = key - start;
 
             return v_id_in_super_partition / partitions_per_super_partition;
         }
 
-        static unsigned long map_offset_new_balanced(unsigned long key) {
-            unsigned long superp = map_new_super_partition(key);
+        static unsigned long map_offset_new_balanced(unsigned long key, unsigned long superp) {
             unsigned long partition = map_new_partition_balanced(key, superp);
             return key - new_partition_offsets[get_id(superp, partition)];
         }
