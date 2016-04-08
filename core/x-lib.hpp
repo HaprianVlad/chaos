@@ -647,6 +647,10 @@ namespace x_lib {
         rtc_clock metadata_write_complete_barrier_time;
         rtc_clock stream_eof_before_barrier_time;
         rtc_clock stream_eof_after_barrier_time;
+        rtc_clock state_load_barrier_time;  
+        rtc_clock state_store_barrier_time;
+
+
         rtc_clock processing_stolen_time;
         rtc_clock merge_wait_time;
 
@@ -847,6 +851,8 @@ namespace x_lib {
         //        7 - metadata write complete
         //        8 - stream_eof before
         //        9 - stream eof after
+        //        10 - state_load
+        //        11 - state_store
         void inter_machine_barrier(unsigned long goal) {
             null_barrier_work null_obj;
 
@@ -892,6 +898,13 @@ namespace x_lib {
                 case 9:
                     stream_eof_after_barrier_time.start();
                     break;
+                case 10:
+                    state_load_barrier_time.start();
+                    break;
+                case 11:
+                    state_store_barrier_time.start();
+                    break;
+
                 default:
                     im_barrier_time.start();
                     break;
@@ -930,6 +943,12 @@ namespace x_lib {
                     break;
                 case 9:
                     stream_eof_after_barrier_time.stop();
+                    break;
+                case 10:
+                    state_load_barrier_time.stop();
+                    break;
+                case 11:
+                    state_store_barrier_time.stop();
                     break;
                 default:
                     im_barrier_time.stop();
@@ -1679,6 +1698,7 @@ namespace x_lib {
 
 
             sio->state_load(partition);
+            sio->inter_machine_barrier(10);
             do_stream_internal<A, IN, OUT>(sio, partition, 0, stream_in,
                                            use_stream_out,
                                            override_input_filter, sync);
@@ -1705,6 +1725,7 @@ namespace x_lib {
                     sio->send_semup(mc);
                 }
                 sio->state_store(partition);
+                sio->inter_machine_barrier(11);
             }
             if (log_phases) {
 
