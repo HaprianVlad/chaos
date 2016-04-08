@@ -641,6 +641,12 @@ namespace x_lib {
         rtc_clock gather_barrier_time;
         rtc_clock init_barrier_time;
         rtc_clock shut_down_barrier_time;
+        rtc_clock stream_skip_before_barrier_time;
+        rtc_clock take_checkpoint_before_barrier_time;
+        rtc_clock take_checkpoint_complete_barrier_time;
+        rtc_clock metadata_write_complete_barrier_time;
+        rtc_clock stream_eof_before_barrier_time;
+        rtc_clock stream_eof_after_barrier_time;
         rtc_clock processing_stolen_time;
         rtc_clock merge_wait_time;
 
@@ -835,6 +841,12 @@ namespace x_lib {
         //        1 - mesure scatter time
         //        2 - start-up time
         //        3 - shutdown time
+        //        4 - before stream skip
+        //        5 - before_take_check_point
+        //        6 - checkpoint_complete
+        //        7 - metadata write complete
+        //        8 - stream_eof before
+        //        9 - stream eof after
         void inter_machine_barrier(unsigned long goal) {
             null_barrier_work null_obj;
 
@@ -862,6 +874,24 @@ namespace x_lib {
                 case 3:
                     shut_down_barrier_time.start();
                     break;
+                case 4:
+                    stream_skip_before_barrier_time.start();
+                    break;
+                case 5:
+                    take_checkpoint_before_barrier_time.start();
+                    break;
+                case 6:
+                    take_checkpoint_complete_barrier_time.start();
+                    break;
+                case 7:
+                    metadata_write_complete_barrier_time.start();
+                    break;
+                case 8:
+                    stream_eof_before_barrier_time.start();
+                    break;
+                case 9:
+                    stream_eof_after_barrier_time.start();
+                    break;
                 default:
                     im_barrier_time.start();
                     break;
@@ -882,6 +912,24 @@ namespace x_lib {
                     break;
                 case 3:
                     shut_down_barrier_time.stop();
+                    break;
+                case 4:
+                    stream_skip_before_barrier_time.stop();
+                    break;
+                case 5:
+                    take_checkpoint_before_barrier_time.stop();
+                    break;
+                case 6:
+                    take_checkpoint_complete_barrier_time.stop();
+                    break;
+                case 7:
+                    metadata_write_complete_barrier_time.stop();
+                    break;
+                case 8:
+                    stream_eof_before_barrier_time.stop();
+                    break;
+                case 9:
+                    stream_eof_after_barrier_time.stop();
                     break;
                 default:
                     im_barrier_time.stop();
@@ -1062,13 +1110,13 @@ namespace x_lib {
             bool empty;
             check_empty_work wk(stream, streams);
             wk.in_progress = true;
-            inter_machine_barrier(4);
+            inter_machine_barrier(8);
             slipstore::ioService.post
                     (boost::bind(&check_empty_work::do_it,
                                  &wk));
             while (wk.in_progress);
             empty = wk.empty;
-            inter_machine_barrier(4);
+            inter_machine_barrier(9);
             return empty;
         }
 
@@ -1114,6 +1162,12 @@ namespace x_lib {
             gather_barrier_time.print("CORE::GATHER_TIME_ALL_MC_BARRIER");
             init_barrier_time.print("CORE::INIT_TIME_ALL_MC_BARRIER");
             shut_down_barrier_time.print("CORE::SHUT_DOWN_TIME_ALL_MC_BARRIER");
+            stream_skip_before_barrier_time.print("CORE::STREAM_SKIP_BEFORE_TIME_ALL_MC_BARRIER");
+            take_checkpoint_before_barrier_time.print("CORE::TAKE_CHECKPOINT_BEFORE_TIME_ALL_MC_BARRIER");
+            take_checkpoint_complete_barrier_time.print("CORE::TAKE_CHECKPOINT_COMPLETE_TIME_ALL_MC_BARRIER");
+            metadata_write_complete_barrier_time.print("CORE::METADATA_WRITE_COMPLETE_TIME_ALL_MC_BARRIER");
+            stream_eof_before_barrier_time.print("CORE::STREAM_EOF_BEFORE_TIME_ALL_MC_BARRIER");
+            stream_eof_after_barrier_time.print("CORE::STREAM_EOF_AFTER_TIME_ALL_MC_BARRIER");
         }
 
         void rewind_stream(unsigned long stream) {
@@ -1509,12 +1563,12 @@ namespace x_lib {
     static void take_checkpoint(streamIO<A> *sio, A *app) {
         if (sio->take_checkpoints) { // Take a checkpoint
             // Make sure updates have hit storage server
-            sio->inter_machine_barrier(4);
+            sio->inter_machine_barrier(5);
             unsigned char *app_buffer = new unsigned char[A::checkpoint_size()];
             unsigned char *runtime_buffer;
             unsigned long cno = next_checkpoint();
             runtime_buffer = sio->streams->take_snapshot(cno);
-            sio->inter_machine_barrier(4); // Checkpoint complete
+            sio->inter_machine_barrier(6); // Checkpoint complete
             // Write out checkpoint metadata
             app->take_checkpoint(app_buffer);
             write_checkpoint(cno,
@@ -1523,7 +1577,7 @@ namespace x_lib {
                              runtime_buffer,
                              sio->streams->snap_metadata_size());
             delete app_buffer;
-            sio->inter_machine_barrier(4); // Metadata write complete
+            sio->inter_machine_barrier(7); // Metadata write complete
             // Delete previous checkpoint
             if (cno > 0) {
                 del_checkpoint(cno - 1);
