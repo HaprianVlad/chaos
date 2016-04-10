@@ -21,6 +21,7 @@
 #include "sg_driver.hpp"
 //#include "sg_driver_async.hpp"
 namespace x_lib {
+  unsigned long configuration::machines = 0;
   unsigned long configuration::cached_partitions = 0;
   unsigned long configuration::partition_shift = 0;
   unsigned long configuration::tiles = 0;
@@ -44,6 +45,9 @@ namespace x_lib {
   unsigned long configuration::partitions_per_super_partition = 0;
   unsigned long configuration::total_partitions = 0;
   long configuration::cached_super_partition = -1;
+  bool configuration::first_phase = true;
+  bool configuration::last_phase = false;
+  bool configuration::work_stealing = false;
 
   x_barrier *x_thread::sync;
   volatile bool x_thread::terminate = false;

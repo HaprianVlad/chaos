@@ -410,6 +410,11 @@ namespace algorithm {
             graph_storage->rewind_stream(updates_stream);
             unsigned long no_voter;
             sg_pcpu::bsp_phase++;
+
+            //TODO: hack to dermine the last phase. Should find better solution
+            if (sg_pcpu::bsp_phase == 6) {
+                graph_storage->get_config()->set_last_phase();
+            }
             if (heartbeat) {
                 BOOST_LOG_TRIVIAL(info)
                 << clock::timestamp()

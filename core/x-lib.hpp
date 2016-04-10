@@ -1699,9 +1699,10 @@ namespace x_lib {
                 }
             }
 
-
-            sio->state_load(partition);
-            sio->inter_machine_barrier(10);
+            if (sio->config->should_load_state()) {
+                sio->state_load(partition);
+                sio->inter_machine_barrier(10);
+            }
 
             do_stream_internal<A, IN, OUT>(sio, partition, 0, stream_in,
                                            use_stream_out,
@@ -1728,8 +1729,10 @@ namespace x_lib {
                     // Release mc
                     sio->send_semup(mc);
                 }
-                sio->state_store(partition);
-                sio->inter_machine_barrier(11);
+                if (sio->config->should_store_state()) {
+                    sio->state_store(partition);
+                    sio->inter_machine_barrier(11);
+                }
             }
             if (log_phases) {
 

@@ -33,6 +33,7 @@
 namespace x_lib {
     struct configuration {
         /* Independent variables */
+
         unsigned long processors;
         unsigned long vertices;
         unsigned long edges;
@@ -47,6 +48,7 @@ namespace x_lib {
         unsigned long disk_stream_object_size;
 
         /* Dependent variables */
+        static unsigned long machines;
         static unsigned long cached_partitions;
         static unsigned long tiles;
         unsigned long fanout;
@@ -72,6 +74,11 @@ namespace x_lib {
 
         static unsigned long partitions_per_super_partition;
         static unsigned long total_partitions;
+
+        static bool first_phase;
+        static bool last_phase;
+        static bool work_stealing;
+
 
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
         static long cached_super_partition;
@@ -225,6 +232,21 @@ namespace x_lib {
         static void reset_cache_super_partition() {
             cached_super_partition = -1;
         }
+
+        static void set_last_phase() {
+            last_phase = true;
+        }
+
+        static bool should_load_state() {
+            bool result = work_stealing || first_phase  || super_partitions != machines;
+            first_phase = false;
+            return result;
+        }
+
+        static bool should_store_state() {
+            return work_stealing || last_phase || super_partitions != machines;
+        }
+
         // returns the vertex offset within a partition (its index in the partition)
         static unsigned long map_offset(unsigned long key) {
             return old_partitioning_mode ? map_offset_old(key) : map_offset_new(key);
@@ -316,9 +338,6 @@ namespace x_lib {
 
         // Returns true iff autotuning successful
         bool autotune() {
-            unsigned long machines =
-                    pt_slipstore.get < unsigned
-            long > ("machines.count");
             // Cache <-> MM tuning
             unsigned long partitions;
             unsigned long vertices_per_partition = llc_size / vertex_footprint;
@@ -415,6 +434,11 @@ namespace x_lib {
             long > ();
             available_ram = vm["physical_memory"].as < unsigned
             long > ();
+            machines = pt_slipstore.get < unsigned
+            long > ("machines.count");
+            work_stealing = !(vm.count("policy_help_none") > 0);
+
+
             tiles = 1;
 
             new_super_partitions = pt_partitions.get < unsigned
@@ -433,9 +457,7 @@ namespace x_lib {
 
 
         void init_partitioning_details() {
-            unsigned long machines =
-                    pt_slipstore.get < unsigned
-            long > ("machines.count");
+
 
             super_partitions = new_super_partitions;
             total_partitions = super_partitions * super_partitions * machines;
