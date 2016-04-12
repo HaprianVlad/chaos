@@ -411,10 +411,8 @@ namespace algorithm {
             unsigned long no_voter;
             sg_pcpu::bsp_phase++;
 
-            //TODO: hack to dermine the last phase. Should find better solution
-            if (sg_pcpu::bsp_phase == 7) {
-                graph_storage->get_config()->set_last_phase();
-            }
+
+
             if (heartbeat) {
                 BOOST_LOG_TRIVIAL(info)
                 << clock::timestamp()
@@ -441,6 +439,11 @@ namespace algorithm {
                 }
             }
         }
+
+        if (graph_storage->get_config()->should_do_final_state_store()) {
+            x_lib::do_state_store_end<scatter_gather<A, F> >(graph_storage);
+        }
+
         A::postprocessing();
         sg_pcpu::current_step = phase_terminate;
         x_lib::do_cpu<scatter_gather<A, F> >(graph_storage, ULONG_MAX);

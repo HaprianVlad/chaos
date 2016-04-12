@@ -76,7 +76,6 @@ namespace x_lib {
         static unsigned long total_partitions;
 
         static bool first_phase;
-        static bool last_phase;
         static bool work_stealing;
 
 
@@ -233,8 +232,8 @@ namespace x_lib {
             cached_super_partition = -1;
         }
 
-        static void set_last_phase() {
-            last_phase = true;
+        static bool should_do_final_state_store() {
+            return !(work_stealing  || super_partitions != machines);
         }
 
         static bool should_load_state() {
@@ -244,7 +243,7 @@ namespace x_lib {
         }
 
         static bool should_store_state() {
-            return work_stealing || last_phase || super_partitions != machines;
+            return work_stealing  || super_partitions != machines;
         }
 
         // returns the vertex offset within a partition (its index in the partition)
