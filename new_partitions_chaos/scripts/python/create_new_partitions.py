@@ -18,6 +18,7 @@ def main(argv):
 	start = 0
 	edges = 0
 	max_out_degree = 0
+	max_difference = 0
 	offset = 0
 	degrees = {}
 	toAdd = 0
@@ -45,6 +46,7 @@ def main(argv):
 			partitions[p_id] = [start, end, p_sum]
 			start = v_id + 1 
 			p_id = p_id + 1
+			max_difference = max3(max_difference, p_sum - outDegreeSumPerPartition, p_sum - maxNumberOfEdgesPerPartition)
 			p_sum = 0
 			results.append(start)
 
@@ -58,13 +60,20 @@ def main(argv):
 	print "Total number of vertices: " + str(len(degrees))
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
-	printResults(results, resultFile, 0, 0, partitions, degrees, partitions_per_super_partition)
+	print "Max partition overhead: " + str(max_difference)
+	printResults(results, resultFile, outDegreeSumPerPartition, maxNumberOfEdgesPerPartition, partitions, degrees, partitions_per_super_partition)
 
 
 def max(a, b):
 	if a > b:
 		return a
 	return b
+
+
+def max3(a,b,c):
+	if a > max(b,c):
+	 	return a
+	return max(b,c)
 
 def printPartitionDetails(partitions):
 	for p_id in partitions.keys():
