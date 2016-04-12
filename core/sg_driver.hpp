@@ -440,6 +440,7 @@ namespace algorithm {
             }
         }
 
+        // TODO: fix this
         if (graph_storage->get_config()->should_do_final_state_store()) {
             x_lib::do_state_store_end<scatter_gather<A, F> >(graph_storage);
         }
