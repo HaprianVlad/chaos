@@ -2018,6 +2018,19 @@ namespace x_lib {
         }
     }
 
+    template<typename A>
+    static void do_state_store_end(streamIO<A> *sio) {
+        state_iter_work<A> work;
+        const unsigned long me = slipstore::slipstore_client_fill->get_me();
+        const unsigned long m = slipstore::slipstore_client_fill->get_machines();
+        for (unsigned long superp = me;
+             superp < sio->get_config()->super_partitions;
+             superp += m) {
+            sio->state_store(superp);
+        }
+    }
+
+
     // Returns true on eof
     template<typename A>
     static bool ingest(streamIO<A> *sio,
