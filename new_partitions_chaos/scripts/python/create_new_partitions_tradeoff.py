@@ -54,7 +54,7 @@ def main(argv):
 
 		
 		
-	partitions[p_id] = [start, v_id, p_sum]
+	partitions[p_id] = [start, v_id, edges_in_partition, p_sum]
 
 	
 
