@@ -558,7 +558,6 @@ namespace x_lib {
         }
 
         void update_vertices_per_partition_balanced(unsigned long superp) {
-
             unsigned long partitions = partitions_per_super_partition;
             for (unsigned long i=0; i < partitions; i++) {
                 unsigned long start;

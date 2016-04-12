@@ -1,3 +1,3 @@
 RMAT28 PAGERANK DIRECTED
 for 8 paritions(might overflow the RAM)
-./launchPartitioningTradeoff.sh out_degree_rmat28_directed 12 8 4697620480 rmat28_8_partitions_directed_tradeoff 8 4194304 0 >> rmat28_8_partitions_details_directed_tradeoff
+./launchPartitioningTradeoff.sh out_degree_rmat28_directed 12 8 4697620480 rmat28_8_partitions_directed_tradeoff 8 4194304 >> rmat28_8_partitions_details_directed_tradeoff

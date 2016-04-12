@@ -9,7 +9,7 @@ def main(argv):
 	resultFile = sys.argv[5]
 	p = long(sys.argv[6])
 	vp = long(sys.argv[7])
-	partitions_per_super_partition = long(sys.argv[8])
+	
 
 	partitions = {}
 	results = [0]
@@ -18,6 +18,7 @@ def main(argv):
 	p_sum = 0
 	start = 0
 	edges = 0
+	edges_in_partition = 0
 	max_out_degree = 0
 	offset = 0
 	degrees = {}
@@ -40,13 +41,15 @@ def main(argv):
 		max_out_degree = max(vertex_degree, max_out_degree)
 
 		edges += vertex_degree
+		edges_in_partition += vertex_degree	
 		p_sum = p_sum + vertex_degree * edge_state_size + vertex_state_size
 		if (p_sum >= maxPartitionSize):
 			end = v_id  
-			partitions[p_id] = [start, end, p_sum]
+			partitions[p_id] = [start, end, edges_in_partition, p_sum]
 			start = v_id + 1 
 			p_id = p_id + 1
 			p_sum = 0
+			edges_in_partition = 0
 			results.append(start)
 
 		
@@ -59,7 +62,7 @@ def main(argv):
 	print "Total number of vertices: " + str(len(degrees))
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
-	printResults(results, resultFile, 0, 0, partitions, degrees, partitions_per_super_partition)
+	printResults(results, resultFile, partitions, degrees)
 
 
 def max(a, b):
@@ -75,56 +78,26 @@ def printPartitionDetails(partitions):
 		print "    end vertex: " + str(partitions[p_id][1])
 		print "    vertices: " + str(partitions[p_id][1] - partitions[p_id][0] + 1)
 		print "    edges: " + str(partitions[p_id][2])
+		print "    partition_size: " + str(partitions[p_id][3])
 
 
 
-def printResults(results, fileName, c1, c2, partitions, outDegrees, partitions_per_super_partition):
+def printResults(results, fileName, partitions, outDegrees):
 	with open(fileName, 'w') as f:
 		f.write("[partitions_offsets_file]" + '\n')
-		if (partitions_per_super_partition > 0):
-			f.write("same_size_edge_sets_per_partition=" + str(1) + '\n')
-		else:
-			f.write("same_size_edge_sets_per_partition=" + str(0) + '\n')
-		f.write("sum_out_degrees_for_new_super_partition=" + str(c1) + '\n')
- 		f.write("max_edges_per_new_super_partition=" + str(c2) + '\n')
+		f.write("same_size_edge_sets_per_partition=0" + str(0) + '\n')
+		f.write("sum_out_degrees_for_new_super_partition=0" + str(c1) + '\n')
+ 		f.write("max_edges_per_new_super_partition=0" + str(c2) + '\n')
 		f.write("number_of_new_super_partitions=" + str(len(results)) + '\n')
    		for p_id in range(len(results)):
 			f.write("P" + str(p_id) + "=" + str(results[p_id]) + '\n')
-			if (partitions_per_super_partition > 0):
-				edges = partitions[p_id][2]
-				start_vertex = partitions[p_id][0]
-				end_vertex = partitions[p_id][1]
-				vertices = end_vertex - start_vertex + 1
-				obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, outDegrees)			
+				
 
 
-def obtainBalancedPartitions(f, p_id, partitions_per_super_partition, edges, start_vertex, end_vertex, degrees):
-	constraint = edges/partitions_per_super_partition
-	p_sum = 0
-	start = start_vertex
-	index = 0 
-	f.write("P" + str(p_id) + "pp" + str(index) + "=" + str(start) + '\n')
-	index += 1
-	for i in range(end_vertex-start_vertex + 1):
-		v_id = i + start_vertex
-		vertex_degree = degrees[v_id]
-		p_sum = p_sum + vertex_degree
-		if (p_sum >= constraint):
-			end = v_id  
-			start = v_id + 1 
-			p_sum = 0
-			f.write("P" + str(p_id) + "pp" + str(index) + "=" + str(start) + '\n')
-			index += 1
-	while (index < partitions_per_super_partition):
-		f.write("P" + str(p_id) + "pp" + str(index) + "=" + str(start) + '\n')
-		index += 1
-
-		
-	
 
 if __name__ == "__main__":
-	if len (sys.argv) != 9 :
-		print "Usage: python create_new_partitions_tradeofff.py <vertex out degree file> <vertex_state_size> <edge_state_size> <max_partition_size> <result file> <partitions> <vertices/partition> <partitions per super_partition>"
+	if len (sys.argv) != 8:
+		print "Usage: python create_new_partitions_tradeofff.py <vertex out degree file> <vertex_state_size> <edge_state_size> <max_partition_size> <result file> <partitions> <vertices/partition>"
 	else :
 		main(sys.argv[1:])
 
