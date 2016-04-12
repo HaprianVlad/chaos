@@ -412,7 +412,7 @@ namespace algorithm {
             sg_pcpu::bsp_phase++;
 
             //TODO: hack to dermine the last phase. Should find better solution
-            if (sg_pcpu::bsp_phase == 6) {
+            if (sg_pcpu::bsp_phase == 7) {
                 graph_storage->get_config()->set_last_phase();
             }
             if (heartbeat) {
