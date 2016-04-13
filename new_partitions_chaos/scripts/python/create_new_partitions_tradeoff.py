@@ -35,8 +35,7 @@ def main(argv):
 			degrees[v_id] = long(struct.unpack('Q', chunk[0:8])[0])
 			offset += 1
 
-	for v_id in range(len(degrees)):
-			
+	for v_id in range(len(degrees)):		
 		vertex_degree = degrees[v_id]
 		max_out_degree = max(vertex_degree, max_out_degree)
 
@@ -62,7 +61,7 @@ def main(argv):
 	print "Total number of vertices: " + str(len(degrees))
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
-	printResults(results, resultFile, partitions, degrees)
+	printResults(results, resultFile, partitions)
 
 
 def max(a, b):
@@ -82,7 +81,7 @@ def printPartitionDetails(partitions):
 
 
 
-def printResults(results, fileName, partitions, outDegrees):
+def printResults(results, fileName, partitions):
 	with open(fileName, 'w') as f:
 		f.write("[partitions_offsets_file]" + '\n')
 		f.write("same_size_edge_sets_per_partition=0"  + '\n')
