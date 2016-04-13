@@ -1,0 +1,13 @@
+[partitions_offsets_file]
+same_size_edge_sets_per_partition=0
+sum_out_degrees_for_new_super_partition=0
+max_edges_per_new_super_partition=0
+number_of_new_super_partitions=8
+P0=0
+P1=1409165
+P2=8524843
+P3=21389446
+P4=43126854
+P5=74973350
+P6=134291501
+P7=167286365
