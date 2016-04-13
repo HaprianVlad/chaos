@@ -21,6 +21,8 @@ def main(argv):
 	r = createNewPartitions(degrees, maxPartitionSize, alpha, edge_state_size, vertex_state_size)
 	partitions = r[0]	
 	results = r[1]
+	edges = r[2]
+	max_out_degree = r[3]
 	
 
 	printPartitionDetails(partitions, degrees, edges, max_out_degree)
@@ -55,7 +57,7 @@ def createNewPartitions(degrees, maxPartitionSize, alpha, edge_state_size, verte
 
 	partitions[p_id] = [start, v_id, edges_in_partition]
 	
-	return [partitions, results]
+	return [partitions, results, edges, max_out_degree]
 
 def readDegrees(outDegreeFile, vp, p):
 	offset = 0
