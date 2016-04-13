@@ -5,21 +5,58 @@ def main(argv):
 	outDegreeFile = sys.argv[1]
 	vertex_state_size = long(sys.argv[2])
 	edge_state_size = long(sys.argv[3])
-	maxPartitionSize = long(sys.argv[4])
-	resultFile = sys.argv[5]
-	p = long(sys.argv[6])
-	vp = long(sys.argv[7])
-	
+	scale = long(sys.argv[4])
+	alpha = long(sys.argv[5])
+	undirected = long(sys.argv[6])
+	resultFile = sys.argv[7]
+	p = long(sys.argv[8])
+	vp = long(sys.argv[9])
 
+	maxPartitionSize = getMaxPartitionSize(scale, undirected, alpha)
+
+	degrees = readDegrees(outDegreeFile, vp, p)
+
+	r = createNewPartitions(degrees, maxPartitionSize, alpha, edge_state_size, vertex_state_size)
+	results = r[1]
+	partitions = r[0]
+
+	printPartitionDetails(partitions, degree, edges, max_out_degree)
+	printResults(results, resultFile, partitions)
+
+
+
+def createNewPartitions(degrees, maxPartitionSize, alpha, edge_state_size, vertex_state_size):
 	partitions = {}
 	results = [0]
 	p_id = 0
-
 	p_sum = 0
 	start = 0
 	edges = 0
 	edges_in_partition = 0
 	max_out_degree = 0
+	for v_id in range(len(degrees)):		
+		vertex_degree = degrees[v_id]
+		max_out_degree = max(vertex_degree, max_out_degree)
+
+		edges += vertex_degree
+		edges_in_partition += vertex_degree	
+		p_sum = p_sum + alpha * vertex_degree * edge_state_size + vertex_state_size
+		if (p_sum >= maxPartitionSize):
+			end = v_id  
+			partitions[p_id] = [start, end, edges_in_partition, p_sum]
+			start = v_id + 1 
+			p_id = p_id + 1
+			p_sum = 0
+			edges_in_partition = 0
+			results.append(start)
+
+		
+		
+	partitions[p_id] = [start, v_id, edges_in_partition, p_sum]
+	
+	return [partitions, results]
+
+def readDegrees(outDegreeFile, vp, p):
 	offset = 0
 	degrees = {}
 	toAdd = 0
@@ -34,35 +71,18 @@ def main(argv):
 				 	
 			degrees[v_id] = long(struct.unpack('Q', chunk[0:8])[0])
 			offset += 1
+	return degrees
 
-	for v_id in range(len(degrees)):		
-		vertex_degree = degrees[v_id]
-		max_out_degree = max(vertex_degree, max_out_degree)
-
-		edges += vertex_degree
-		edges_in_partition += vertex_degree	
-		p_sum = p_sum + vertex_degree * edge_state_size + vertex_state_size
-		if (p_sum >= maxPartitionSize):
-			end = v_id  
-			partitions[p_id] = [start, end, edges_in_partition, p_sum]
-			start = v_id + 1 
-			p_id = p_id + 1
-			p_sum = 0
-			edges_in_partition = 0
-			results.append(start)
-
-		
-		
-	partitions[p_id] = [start, v_id, edges_in_partition, p_sum]
-
+def getMaxPartitionSize(scale, undirected, alpha):
+	v = pow(2,scale)
+	if undirected == 0:
+		e = v *16
+	else:
+		e = v * 32
 	
-
-	printPartitionDetails(partitions)
-	print "Total number of vertices: " + str(len(degrees))
-	print "Total number of edges: " + str(edges)
-	print "Max out degree: " + str(max_out_degree)
-	printResults(results, resultFile, partitions)
-
+	NUMBER_OF_MACHINES = 8
+	return (v * vertex_state_size + e * edge_state_size * alpha) / NUMBER_OF_MACHINES
+	
 
 def max(a, b):
 	if a > b:
@@ -70,7 +90,7 @@ def max(a, b):
 	return b
 
 
-def printPartitionDetails(partitions):
+def printPartitionDetails(partitions, degree, edges, max_out_degree):
 	for p_id in partitions.keys():
 		print "Partition " + str(p_id) 
 		print "    start vertex: " + str(partitions[p_id][0])
@@ -78,6 +98,9 @@ def printPartitionDetails(partitions):
 		print "    vertices: " + str(partitions[p_id][1] - partitions[p_id][0] + 1)
 		print "    edges: " + str(partitions[p_id][2])
 		print "    partition_size: " + str(partitions[p_id][3])
+	print "Total number of vertices: " + str(len(degrees))
+	print "Total number of edges: " + str(edges)
+	print "Max out degree: " + str(max_out_degree)
 
 
 
@@ -95,8 +118,8 @@ def printResults(results, fileName, partitions):
 
 
 if __name__ == "__main__":
-	if len (sys.argv) != 8:
-		print "Usage: python create_new_partitions_tradeofff.py <vertex out degree file> <vertex_state_size> <edge_state_size> <max_partition_size> <result file> <partitions> <vertices/partition>"
+	if len (sys.argv) != 10:
+		print "Usage: python create_new_partitions_tradeofff.py <vertex out degree file> <vertex_state_size> <edge_state_size> <scale> <alpha> <undirected> <result file> <partitions> <vertices/partition>"
 	else :
 		main(sys.argv[1:])
 
