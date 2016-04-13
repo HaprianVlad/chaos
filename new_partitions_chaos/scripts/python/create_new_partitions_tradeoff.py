@@ -1,12 +1,14 @@
 import sys
 import struct
 
+#alpha = 1 => partition for edge balancing
+#alpha = 0 => partition for vertex balancing
 def main(argv):
 	outDegreeFile = sys.argv[1]
 	vertex_state_size = long(sys.argv[2])
 	edge_state_size = long(sys.argv[3])
 	scale = long(sys.argv[4])
-	alpha = long(sys.argv[5])
+	alpha = float(sys.argv[5])
 	undirected = long(sys.argv[6])
 	resultFile = sys.argv[7]
 	p = long(sys.argv[8])
@@ -40,19 +42,17 @@ def createNewPartitions(degrees, maxPartitionSize, alpha, edge_state_size, verte
 
 		edges += vertex_degree
 		edges_in_partition += vertex_degree	
-		p_sum = p_sum + alpha * vertex_degree * edge_state_size + vertex_state_size
+		p_sum = p_sum + alpha * vertex_degree * edge_state_size + vertex_state_size * (1 - alpha)
 		if (p_sum >= maxPartitionSize):
 			end = v_id  
-			partitions[p_id] = [start, end, edges_in_partition, p_sum]
+			partitions[p_id] = [start, end, edges_in_partition]
 			start = v_id + 1 
 			p_id = p_id + 1
 			p_sum = 0
 			edges_in_partition = 0
 			results.append(start)
 
-		
-		
-	partitions[p_id] = [start, v_id, edges_in_partition, p_sum]
+	partitions[p_id] = [start, v_id, edges_in_partition]
 	
 	return [partitions, results]
 
@@ -81,7 +81,7 @@ def getMaxPartitionSize(scale, undirected, alpha, vertex_state_size, edge_state_
 		e = v * 32
 	
 	NUMBER_OF_MACHINES = 8
-	return (v * vertex_state_size + e * edge_state_size * alpha) / NUMBER_OF_MACHINES
+	return (v * vertex_state_size  * (1 - alpha) + e * edge_state_size * alpha) / NUMBER_OF_MACHINES
 	
 
 def max(a, b):
@@ -97,7 +97,7 @@ def printPartitionDetails(partitions, degree, edges, max_out_degree):
 		print "    end vertex: " + str(partitions[p_id][1])
 		print "    vertices: " + str(partitions[p_id][1] - partitions[p_id][0] + 1)
 		print "    edges: " + str(partitions[p_id][2])
-		print "    partition_size: " + str(partitions[p_id][3])
+		
 	print "Total number of vertices: " + str(len(degrees))
 	print "Total number of edges: " + str(edges)
 	print "Max out degree: " + str(max_out_degree)
