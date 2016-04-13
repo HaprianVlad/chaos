@@ -12,7 +12,7 @@ def main(argv):
 	p = long(sys.argv[8])
 	vp = long(sys.argv[9])
 
-	maxPartitionSize = getMaxPartitionSize(scale, undirected, alpha)
+	maxPartitionSize = getMaxPartitionSize(scale, undirected, alpha, vertex_state_size, edge_state_size)
 
 	degrees = readDegrees(outDegreeFile, vp, p)
 
@@ -73,7 +73,7 @@ def readDegrees(outDegreeFile, vp, p):
 			offset += 1
 	return degrees
 
-def getMaxPartitionSize(scale, undirected, alpha):
+def getMaxPartitionSize(scale, undirected, alpha, vertex_state_size, edge_state_size):
 	v = pow(2,scale)
 	if undirected == 0:
 		e = v *16
