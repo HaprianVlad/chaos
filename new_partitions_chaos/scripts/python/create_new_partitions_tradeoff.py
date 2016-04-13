@@ -19,10 +19,11 @@ def main(argv):
 	degrees = readDegrees(outDegreeFile, vp, p)
 
 	r = createNewPartitions(degrees, maxPartitionSize, alpha, edge_state_size, vertex_state_size)
+	partitions = r[0]	
 	results = r[1]
-	partitions = r[0]
+	
 
-	printPartitionDetails(partitions, degree, edges, max_out_degree)
+	printPartitionDetails(partitions, degrees, edges, max_out_degree)
 	printResults(results, resultFile, partitions)
 
 
@@ -90,7 +91,7 @@ def max(a, b):
 	return b
 
 
-def printPartitionDetails(partitions, degree, edges, max_out_degree):
+def printPartitionDetails(partitions, degrees, edges, max_out_degree):
 	for p_id in partitions.keys():
 		print "Partition " + str(p_id) 
 		print "    start vertex: " + str(partitions[p_id][0])
