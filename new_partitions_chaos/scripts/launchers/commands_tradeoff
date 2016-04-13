@@ -11,3 +11,5 @@ alpha = 0 => partition for vertex balancing
 ./launchPartitioningTradeoff.sh out_degree_rmat28_directed 12 12 28 0.3 0 rmat28_8_partitions_directed_tradeoff3 8 4194304 >> rmat28_8_partitions_details_directed_tradeoff3
 
 ./launchPartitioningTradeoff.sh out_degree_rmat28_directed 12 12 28 0.2 0 rmat28_8_partitions_directed_tradeoff4 8 4194304 >> rmat28_8_partitions_details_directed_tradeoff4
+
+./launchPartitioningTradeoff.sh out_degree_rmat28_directed 12 12 28 0.1 0 rmat28_8_partitions_directed_tradeoff5 8 4194304 >> rmat28_8_partitions_details_directed_tradeoff5
