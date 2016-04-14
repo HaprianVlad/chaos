@@ -47,6 +47,7 @@ namespace x_lib {
   long configuration::cached_super_partition = -1;
   bool configuration::first_phase = true;
   bool configuration::work_stealing = false;
+  bool configuration::optimized_state_load_store = true;
 
   x_barrier *x_thread::sync;
   volatile bool x_thread::terminate = false;

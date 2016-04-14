@@ -856,6 +856,9 @@ namespace x_lib {
         void inter_machine_barrier(unsigned long goal) {
             null_barrier_work null_obj;
 
+            if (goal == 10 || goal == 11) {
+                return;
+            }
             startBarrierTime(goal);
             slipstore::slipstore_client_barrier->in_progress = true;
             slipstore::ioService.post

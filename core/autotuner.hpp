@@ -77,7 +77,7 @@ namespace x_lib {
 
         static bool first_phase;
         static bool work_stealing;
-
+        static bool optimized_state_load_store;
 
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
         static long cached_super_partition;
@@ -233,16 +233,28 @@ namespace x_lib {
         }
 
         static bool should_do_final_state_store() {
+            if (!optimized_state_load_store) {
+                return false;
+            }
+
             return !(work_stealing  || super_partitions != machines);
         }
 
         static bool should_load_state() {
+            if (!optimized_state_load_store) {
+                return true;
+            }
+
             bool result = work_stealing || first_phase  || super_partitions != machines;
             first_phase = false;
             return result;
         }
 
         static bool should_store_state() {
+            if (!optimized_state_load_store) {
+                return true;
+            }
+
             return work_stealing  || super_partitions != machines;
         }
 
@@ -449,6 +461,9 @@ namespace x_lib {
                 old_partitioning_mode = false;
                 balanced_partitions = pt_partitions.get < unsigned
                 long > ("partitions_offsets_file.same_size_edge_sets_per_partition") == 1;
+                optimized_state_load_store = pt_partitions.get < unsigned
+                long > ("partitions_offsets_file.optimize_state_store_load") == 1;
+
                 init_partitioning_details();
                 readPartitioningFile();
             }
@@ -456,8 +471,6 @@ namespace x_lib {
 
 
         void init_partitioning_details() {
-
-
             super_partitions = new_super_partitions;
             total_partitions = super_partitions * super_partitions * machines;
             cached_partitions = total_partitions / super_partitions;
