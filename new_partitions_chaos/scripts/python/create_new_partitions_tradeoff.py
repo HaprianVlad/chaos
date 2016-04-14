@@ -111,6 +111,7 @@ def printResults(results, fileName, partitions):
 	with open(fileName, 'w') as f:
 		f.write("[partitions_offsets_file]" + '\n')
 		f.write("same_size_edge_sets_per_partition=0"  + '\n')
+		f.write("optimize_state_store_load=0" + '\n')
 		f.write("sum_out_degrees_for_new_super_partition=0"+ '\n')
  		f.write("max_edges_per_new_super_partition=0"  + '\n')
 		f.write("number_of_new_super_partitions=" + str(len(results)) + '\n')
