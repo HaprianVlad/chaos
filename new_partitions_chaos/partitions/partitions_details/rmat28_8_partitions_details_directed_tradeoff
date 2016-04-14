@@ -1,51 +1,43 @@
 Partition 0
     start vertex: 0
-    end vertex: 1409164
-    vertices: 1409165
-    edges: 585089049
-    partition_size: 4697622372
+    end vertex: 1312317
+    vertices: 1312318
+    edges: 569113039
 Partition 1
-    start vertex: 1409165
-    end vertex: 8524842
-    vertices: 7115678
-    edges: 576529231
-    partition_size: 4697621984
+    start vertex: 1312318
+    end vertex: 8424697
+    vertices: 7112380
+    edges: 563312974
 Partition 2
-    start vertex: 8524843
-    end vertex: 21389445
-    vertices: 12864603
-    edges: 567905706
-    partition_size: 4697620884
+    start vertex: 8424698
+    end vertex: 20447621
+    vertices: 12022924
+    edges: 558402596
 Partition 3
-    start vertex: 21389446
-    end vertex: 43126853
-    vertices: 21737408
-    edges: 554596472
-    partition_size: 4697620672
+    start vertex: 20447622
+    end vertex: 41961384
+    vertices: 21513763
+    edges: 548911654
 Partition 4
-    start vertex: 43126854
-    end vertex: 74973349
-    vertices: 31846496
-    edges: 539432872
-    partition_size: 4697620928
+    start vertex: 41961385
+    end vertex: 71832230
+    vertices: 29870846
+    edges: 540554522
 Partition 5
-    start vertex: 74973350
-    end vertex: 134291500
-    vertices: 59318151
-    edges: 498226071
-    partition_size: 4697626380
+    start vertex: 71832231
+    end vertex: 134226222
+    vertices: 62393992
+    edges: 508031475
 Partition 6
-    start vertex: 134291501
-    end vertex: 167286364
-    vertices: 32994864
-    edges: 537710265
-    partition_size: 4697620488
+    start vertex: 134226223
+    end vertex: 159566402
+    vertices: 25340180
+    edges: 545085167
 Partition 7
-    start vertex: 167286365
+    start vertex: 159566403
     end vertex: 268435455
-    vertices: 101149091
-    edges: 435477630
-    partition_size: 4697610132
+    vertices: 108869053
+    edges: 461555869
 Total number of vertices: 268435456
 Total number of edges: 4294967296
 Max out degree: 1977880
