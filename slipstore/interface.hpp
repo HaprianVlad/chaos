@@ -1607,6 +1607,8 @@ namespace slipstore {
                         unsigned long mc = ULONG_MAX) {
         unsigned long trials;
         unsigned long *bytes_read;
+        bool do_edge_stripe = (vm.count("do_edge_stripe") > 0);
+
         rtc_clock *read_time;
         if (req->cmd == CMD_FILL && req->stream == STREAM_MEMBUFFER) {
           bytes_read = &mem_bytes_read;
@@ -1620,8 +1622,12 @@ namespace slipstore {
           trials = machines - 1;
         }
         else {
-          trials = 0; // try all machines
-          mc = request_cycle->cyclic_next();
+          if (do_edge_stripe) {
+            trials = 0; // try all machines
+            mc = request_cycle->cyclic_next();
+          } else {
+            trials = machines - 1;
+          }
         }
         req->source_mc = me;
         have_outstanding_request->start();
@@ -1669,7 +1675,10 @@ namespace slipstore {
             read_time->stop();
             return true;
           }
-          mc = request_cycle->cyclic_next();
+          if (do_edge_stripe) {
+            mc = request_cycle->cyclic_next();
+          }
+
         } while ((++trials) < request_cycle->cycle_size());
         read_time->stop();
         have_outstanding_request->stop();
