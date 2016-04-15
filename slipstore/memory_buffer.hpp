@@ -523,7 +523,7 @@ namespace x_lib {
                       unsigned long partition,
                       unsigned long buf_offset) {
         // Are we striping vertices?
-        bool striping = vm.count("use_vertex_striping") > 0;
+        bool stripping = vm.count("use_vertex_striping") > 0;
 
         // Pointer to head of the buffer we're filling
         unsigned char *bufhead = buffer + buf_offset;
@@ -547,7 +547,7 @@ namespace x_lib {
           req.size = bufsize > slipchunk ? slipchunk : bufsize;
 
           // Access server i's store if striping or else local store
-          if (!client->access_store(&req, bufhead, striping ? i : client->get_me())) {
+          if (!client->access_store(&req, bufhead, stripping ? i : client->get_me())) {
             BOOST_LOG_TRIVIAL(fatal) << "Unable to store tile";
             exit(-1);
           }

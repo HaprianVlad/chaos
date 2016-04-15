@@ -469,8 +469,10 @@ namespace x_lib {
 
 
         void init_partitioning_details() {
+            bool edge_striping = (vm.count("do_edge_stripe") > 0);
+
             super_partitions = new_super_partitions;
-            total_partitions = super_partitions * super_partitions * machines;
+            total_partitions = edge_striping ? super_partitions * super_partitions * machines :  super_partitions * machines ;
             cached_partitions = total_partitions / super_partitions;
             fanout = cached_partitions;
 
