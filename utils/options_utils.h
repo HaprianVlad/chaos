@@ -131,6 +131,7 @@ static void setup_options(int argc, const char *argv[]) {
       ("centralized", "Centralized Server")
       ("log_phases", "Log timestamps for entry/exit of phases")
       ("request_batching", "Batch requests to storage servers")
+      ("do_edge_stripe", "activate edge stripping over machines")
       ("gather_io_drain", "Use gather IO for drains")
       ("batch_size",
        boost::program_options::value < unsigned

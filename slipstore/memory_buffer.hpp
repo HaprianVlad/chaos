@@ -39,6 +39,7 @@ namespace x_lib {
       unsigned long *per_cpu_sizes;
       static bool use_qsort;
       static bool do_batch_io;
+      static bool do_edge_stripe;
       static bool gather_io_drain;
       static unsigned long **aux_index;
       static unsigned char *aux_buffer;
@@ -128,6 +129,7 @@ namespace x_lib {
         if (aux_index == NULL) {
           use_qsort = (vm.count("qsort") > 0);
           do_batch_io = (vm.count("request_batching") > 0);
+          do_edge_stripe = (vm.count("do_edge_stripe") > 0);
           gather_io_drain = (vm.count("gather_io_drain") > 0);
           if (!use_qsort) {
             aux_index = new unsigned long *[config->processors];
@@ -298,7 +300,12 @@ namespace x_lib {
               ret = client->access_store(&req, bufhead, client->get_me());
             }
             else {
-              ret = client->access_store(&req, bufhead);
+              if (do_edge_stripe) {
+                ret = client->access_store(&req, bufhead);
+              } else {
+                ret = client->access_store(&req, bufhead, client->get_me());
+              }
+
             }
             if (!ret) {
               break;
@@ -449,10 +456,18 @@ namespace x_lib {
                   req.partition = i / configuration::tiles;
                   req.tile = i % configuration::tiles;
                   req.size = bytes;
-                  if (!client->access_store(&req, bufhead)) {
-                    BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore";
-                    exit(-1);
+                  if (do_edge_stripe) {
+                    if (!client->access_store(&req, bufhead)) {
+                      BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore";
+                      exit(-1);
+                    }
+                  } else {
+                    if (!client->access_store(&req, bufhead, client->get_me())) {
+                      BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore local";
+                      exit(-1);
+                    }
                   }
+
                   drain_bytes -= req.size;
                   bufhead += req.size;
                 }
