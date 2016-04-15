@@ -448,7 +448,7 @@ namespace x_lib {
             machines = pt_slipstore.get < unsigned
             long > ("machines.count");
             work_stealing = !(vm.count("policy_help_none") > 0);
-
+            optimized_state_load_store =  (vm.count("optimized_state_load_store") > 0);
 
             tiles = 1;
 
@@ -461,8 +461,6 @@ namespace x_lib {
                 old_partitioning_mode = false;
                 balanced_partitions = pt_partitions.get < unsigned
                 long > ("partitions_offsets_file.same_size_edge_sets_per_partition") == 1;
-                optimized_state_load_store = pt_partitions.get < unsigned
-                long > ("partitions_offsets_file.optimize_state_store_load") == 1;
 
                 init_partitioning_details();
                 readPartitioningFile();
