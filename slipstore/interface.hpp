@@ -1968,12 +1968,19 @@ namespace slipstore {
                         unsigned char *buffer,
                         unsigned long mc = ULONG_MAX) {
         unsigned long trials;
+        bool do_edge_stripe = (vm.count("do_edge_stripe") > 0);
+
         if (mc != ULONG_MAX) {
           trials = machines - 1;
         }
         else {
-          trials = 0; // try all machines
-          mc = request_cycle->cyclic_next();
+          if (do_edge_stripe) {
+            trials = 0; // try all machines
+            mc = request_cycle->cyclic_next();
+          } else {
+            trials = machines - 1;
+          }
+
         }
         req->source_mc = me;
         write_time.start();
@@ -2011,7 +2018,9 @@ namespace slipstore {
             have_outstanding_request->stop();
             return true;
           }
-          mc = request_cycle->cyclic_next();
+          if (do_edge_stripe) {
+            mc = request_cycle->cyclic_next();
+          }
         } while ((++trials) < request_cycle->cycle_size());
         write_time.stop();
         have_outstanding_request->stop();
