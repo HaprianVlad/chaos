@@ -464,7 +464,7 @@ namespace x_lib {
                   } else {
                     //edges need to be written on the machine who has the partition
                     if (!client->access_store(&req, bufhead, req.partition)) {
-                      BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore local";
+                      BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore remote local";
                       exit(-1);
                     }
 
