@@ -1619,18 +1619,12 @@ namespace slipstore {
           read_time = &disk_read_time;
         }
         if (mc != ULONG_MAX) {
-          BOOST_LOG_TRIVIAL(info) << "XXX " << mc;
           trials = machines - 1;
         }
         else {
-          if (do_edge_stripe) {
             trials = 0; // try all machines
             mc = request_cycle->cyclic_next();
-          } else {
-            trials = machines - 1;
-            mc = me;
 
-          }
         }
         req->source_mc = me;
         have_outstanding_request->start();
@@ -1653,36 +1647,30 @@ namespace slipstore {
             read_time->stop();
             return true;
           }
-          if (req->cmd == CMD_OFFER_HELP) {
-            have_outstanding_request->stop();
-            read_time->stop();
-            return (rep == RESP_ACK);
-          }
-          BOOST_ASSERT_MSG(req->cmd == CMD_FILL || req->cmd == CMD_SEEK_AND_FILL,
-                           "Non fill cmd to fill client");
-          if (rep == RESP_ACK) {
-            // Great, this machines agrees to serve
-            /*
-            unsigned int dummy = 0xdeadbeef;
-            (void) do_zmq_send(sockets_data_in[mc],
-                   (unsigned char *)&dummy,
-                   sizeof(int),
-                   "dummy");
-            */
-            req->size = do_zmq_recv(sockets_data_in[mc],
-                                    buffer,
-                                    req->size,
-                                    "client data in");
-            (*bytes_read) += req->size;
-            have_outstanding_request->stop();
-            read_time->stop();
-            return true;
-          }
-          if (do_edge_stripe) {
+         if (do_edge_stripe) {
+              if (req->cmd == CMD_OFFER_HELP) {
+                have_outstanding_request->stop();
+                read_time->stop();
+                return (rep == RESP_ACK);
+              }
+              BOOST_ASSERT_MSG(req->cmd == CMD_FILL || req->cmd == CMD_SEEK_AND_FILL,
+                               "Non fill cmd to fill client");
+              if (rep == RESP_ACK) {
+                // Great, this machines agrees to serve
+                req->size = do_zmq_recv(sockets_data_in[mc],
+                                        buffer,
+                                        req->size,
+                                        "client data in");
+                (*bytes_read) += req->size;
+                have_outstanding_request->stop();
+                read_time->stop();
+                return true;
+              }
+
             mc = request_cycle->cyclic_next();
           } else {
-              return  true;
-          }
+             break;
+         }
 
         } while ((++trials) < request_cycle->cycle_size());
         read_time->stop();
@@ -1976,19 +1964,13 @@ namespace slipstore {
         bool do_edge_stripe = (vm.count("do_edge_stripe") > 0);
 
         if (mc != ULONG_MAX) {
-          BOOST_LOG_TRIVIAL(info) << "YYY " << mc;
           trials = machines - 1;
         }
         else {
-          if (do_edge_stripe) {
             trials = 0; // try all machines
             mc = request_cycle->cyclic_next();
-          } else {
-            mc = me;
-            trials = machines - 1;
-          }
-
         }
+
         req->source_mc = me;
         write_time.start();
         have_outstanding_request->start();
@@ -2014,21 +1996,22 @@ namespace slipstore {
           }
           BOOST_ASSERT_MSG(req->cmd == CMD_DRAIN,
                            "Non drain cmd to drain client");
-          if (rep == RESP_ACK) {
-            // Great, this machines agrees to serve
-            bytes_written += req->size;
-            (void) do_zmq_send(sockets_data_out[mc],
-                               buffer,
-                               req->size,
-                               "client data out");
-            write_time.stop();
-            have_outstanding_request->stop();
-            return true;
-          }
           if (do_edge_stripe) {
+              if (rep == RESP_ACK) {
+                // Great, this machines agrees to serve
+                bytes_written += req->size;
+                (void) do_zmq_send(sockets_data_out[mc],
+                                   buffer,
+                                   req->size,
+                                   "client data out");
+                write_time.stop();
+                have_outstanding_request->stop();
+                return true;
+              }
+
               mc = request_cycle->cyclic_next();
           } else {
-              return true;
+              break;
           }
         } while ((++trials) < request_cycle->cycle_size());
         write_time.stop();
