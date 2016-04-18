@@ -1619,6 +1619,7 @@ namespace slipstore {
           read_time = &disk_read_time;
         }
         if (mc != ULONG_MAX) {
+          BOOST_LOG_TRIVIAL(info) << "XXX " << mc;
           trials = machines - 1;
         }
         else {
@@ -1626,7 +1627,6 @@ namespace slipstore {
             trials = 0; // try all machines
             mc = request_cycle->cyclic_next();
           } else {
-            BOOST_LOG_TRIVIAL(info) << "XXX " << mc;
             trials = machines - 1;
             mc = me;
 
@@ -1681,7 +1681,7 @@ namespace slipstore {
           if (do_edge_stripe) {
             mc = request_cycle->cyclic_next();
           } else {
-            break;
+              return  true;
           }
 
         } while ((++trials) < request_cycle->cycle_size());
@@ -1976,6 +1976,7 @@ namespace slipstore {
         bool do_edge_stripe = (vm.count("do_edge_stripe") > 0);
 
         if (mc != ULONG_MAX) {
+          BOOST_LOG_TRIVIAL(info) << "YYY " << mc;
           trials = machines - 1;
         }
         else {
@@ -1983,7 +1984,6 @@ namespace slipstore {
             trials = 0; // try all machines
             mc = request_cycle->cyclic_next();
           } else {
-            BOOST_LOG_TRIVIAL(info) << "YYY " << mc;
             mc = me;
             trials = machines - 1;
           }
@@ -2026,9 +2026,9 @@ namespace slipstore {
             return true;
           }
           if (do_edge_stripe) {
-            mc = request_cycle->cyclic_next();
+              mc = request_cycle->cyclic_next();
           } else {
-            break;
+              return true;
           }
         } while ((++trials) < request_cycle->cycle_size());
         write_time.stop();
