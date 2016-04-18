@@ -1618,14 +1618,15 @@ namespace slipstore {
           bytes_read = &disk_bytes_read;
           read_time = &disk_read_time;
         }
+
         if (mc != ULONG_MAX) {
           trials = machines - 1;
         }
         else {
             trials = 0; // try all machines
             mc = request_cycle->cyclic_next();
-
         }
+
         req->source_mc = me;
         have_outstanding_request->start();
         read_time->start();
@@ -1642,7 +1643,7 @@ namespace slipstore {
                              sizeof(unsigned long),
                              "client rep in");
           // If this was a terminate or nop command we are done
-          if (req->cmd == CMD_TERMINATE || req->cmd == CMD_NOP || !do_edge_stripe) {
+          if (req->cmd == CMD_TERMINATE || req->cmd == CMD_NOP) {
             have_outstanding_request->stop();
             read_time->stop();
             return true;
@@ -1666,8 +1667,12 @@ namespace slipstore {
             read_time->stop();
             return true;
           }
+          if (do_edge_stripe) {
+              mc = request_cycle->cyclic_next();
+          }  else {
+              break;
+          }
 
-          mc = request_cycle->cyclic_next();
 
 
         } while ((++trials) < request_cycle->cycle_size());
@@ -1987,7 +1992,7 @@ namespace slipstore {
           // If this was a terminate or nop command we are done
           if (req->cmd == CMD_TERMINATE ||
               req->cmd == CMD_NOP ||
-              req->cmd == CMD_MEMREAD || !do_edge_stripe) {
+              req->cmd == CMD_MEMREAD) {
             write_time.stop();
             have_outstanding_request->stop();
             return true;
@@ -2006,7 +2011,13 @@ namespace slipstore {
             have_outstanding_request->stop();
             return true;
           }
-          mc = request_cycle->cyclic_next();
+
+          if(do_edge_stripe) {
+              mc = request_cycle->cyclic_next();
+          }  else {
+              break;
+          }
+
 
         } while ((++trials) < request_cycle->cycle_size());
         write_time.stop();
