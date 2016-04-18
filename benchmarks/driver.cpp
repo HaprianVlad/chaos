@@ -105,6 +105,17 @@ int main(int argc, const char *argv[]) {
   } else {
     BOOST_LOG_TRIVIAL(info) << "CORE::VERTEX_STRIPING OFF";
   }
+  if (vm.count("do_edge_stripe") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::EDGE_STRIPING ON";
+  } else {
+    BOOST_LOG_TRIVIAL(info) << "CORE::EDGE_STRIPING OFF";
+  }
+  if (vm.count("request_batching") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::EDGE_STRIPING ON";
+    BOOST_LOG_TRIVIAL(info) << "CORE::BATCH IO ON";
+  } else {
+    BOOST_LOG_TRIVIAL(info) << "CORE::BATCH IO OFF";
+  }
 
   /* Read in key graph information */
   init_graph_desc(vm["graph"].as<std::string>());

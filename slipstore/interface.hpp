@@ -1642,35 +1642,33 @@ namespace slipstore {
                              sizeof(unsigned long),
                              "client rep in");
           // If this was a terminate or nop command we are done
-          if (req->cmd == CMD_TERMINATE || req->cmd == CMD_NOP) {
+          if (req->cmd == CMD_TERMINATE || req->cmd == CMD_NOP || !do_edge_stripe) {
             have_outstanding_request->stop();
             read_time->stop();
             return true;
           }
-         if (do_edge_stripe) {
-              if (req->cmd == CMD_OFFER_HELP) {
-                have_outstanding_request->stop();
-                read_time->stop();
-                return (rep == RESP_ACK);
-              }
-              BOOST_ASSERT_MSG(req->cmd == CMD_FILL || req->cmd == CMD_SEEK_AND_FILL,
-                               "Non fill cmd to fill client");
-              if (rep == RESP_ACK) {
-                // Great, this machines agrees to serve
-                req->size = do_zmq_recv(sockets_data_in[mc],
-                                        buffer,
-                                        req->size,
-                                        "client data in");
-                (*bytes_read) += req->size;
-                have_outstanding_request->stop();
-                read_time->stop();
-                return true;
-              }
 
-            mc = request_cycle->cyclic_next();
-          } else {
-             break;
-         }
+          if (req->cmd == CMD_OFFER_HELP) {
+            have_outstanding_request->stop();
+            read_time->stop();
+            return (rep == RESP_ACK);
+          }
+          BOOST_ASSERT_MSG(req->cmd == CMD_FILL || req->cmd == CMD_SEEK_AND_FILL,
+                           "Non fill cmd to fill client");
+          if (rep == RESP_ACK) {
+            // Great, this machines agrees to serve
+            req->size = do_zmq_recv(sockets_data_in[mc],
+                                    buffer,
+                                    req->size,
+                                    "client data in");
+            (*bytes_read) += req->size;
+            have_outstanding_request->stop();
+            read_time->stop();
+            return true;
+          }
+
+          mc = request_cycle->cyclic_next();
+
 
         } while ((++trials) < request_cycle->cycle_size());
         read_time->stop();
@@ -1989,30 +1987,27 @@ namespace slipstore {
           // If this was a terminate or nop command we are done
           if (req->cmd == CMD_TERMINATE ||
               req->cmd == CMD_NOP ||
-              req->cmd == CMD_MEMREAD) {
+              req->cmd == CMD_MEMREAD || !do_edge_stripe) {
             write_time.stop();
             have_outstanding_request->stop();
             return true;
           }
           BOOST_ASSERT_MSG(req->cmd == CMD_DRAIN,
                            "Non drain cmd to drain client");
-          if (do_edge_stripe) {
-              if (rep == RESP_ACK) {
-                // Great, this machines agrees to serve
-                bytes_written += req->size;
-                (void) do_zmq_send(sockets_data_out[mc],
-                                   buffer,
-                                   req->size,
-                                   "client data out");
-                write_time.stop();
-                have_outstanding_request->stop();
-                return true;
-              }
 
-              mc = request_cycle->cyclic_next();
-          } else {
-              break;
+          if (rep == RESP_ACK) {
+            // Great, this machines agrees to serve
+            bytes_written += req->size;
+            (void) do_zmq_send(sockets_data_out[mc],
+                               buffer,
+                               req->size,
+                               "client data out");
+            write_time.stop();
+            have_outstanding_request->stop();
+            return true;
           }
+          mc = request_cycle->cyclic_next();
+
         } while ((++trials) < request_cycle->cycle_size());
         write_time.stop();
         have_outstanding_request->stop();
