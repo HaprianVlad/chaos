@@ -1626,7 +1626,10 @@ namespace slipstore {
             trials = 0; // try all machines
             mc = request_cycle->cyclic_next();
           } else {
+            BOOST_LOG_TRIVIAL(info) << "XXX " << mc;
             trials = machines - 1;
+            mc = me;
+
           }
         }
         req->source_mc = me;
@@ -1677,6 +1680,8 @@ namespace slipstore {
           }
           if (do_edge_stripe) {
             mc = request_cycle->cyclic_next();
+          } else {
+            break;
           }
 
         } while ((++trials) < request_cycle->cycle_size());
@@ -1978,6 +1983,8 @@ namespace slipstore {
             trials = 0; // try all machines
             mc = request_cycle->cyclic_next();
           } else {
+            BOOST_LOG_TRIVIAL(info) << "YYY " << mc;
+            mc = me;
             trials = machines - 1;
           }
 
@@ -2020,6 +2027,8 @@ namespace slipstore {
           }
           if (do_edge_stripe) {
             mc = request_cycle->cyclic_next();
+          } else {
+            break;
           }
         } while ((++trials) < request_cycle->cycle_size());
         write_time.stop();
