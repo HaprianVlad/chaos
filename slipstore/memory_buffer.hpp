@@ -297,14 +297,12 @@ namespace x_lib {
             req.size = bytes;
             bool ret;
             if (stream == slipstore::STREAM_INPUT) {
-              BOOST_LOG_TRIVIAL(info) << "XXX";
               ret = client->access_store(&req, bufhead, client->get_me());
             }
             else {
               if (do_edge_stripe) {
                 ret = client->access_store(&req, bufhead);
               } else {
-                BOOST_LOG_TRIVIAL(info) << "YYY";
                 ret = client->access_store(&req, bufhead, client->get_me());
               }
 
@@ -464,11 +462,19 @@ namespace x_lib {
                       exit(-1);
                     }
                   } else {
-                    BOOST_LOG_TRIVIAL(info) << "ZZZ";
-                    if (!client->access_store(&req, bufhead, client->get_me())) {
-                      BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore local";
-                      exit(-1);
+                    if (stream == 2) {
+                      //edges need to be written on the machine who has the partition
+                      if (!client->access_store(&req, bufhead, req.partition)) {
+                        BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore local";
+                        exit(-1);
+                      }
+                    } else {
+                      if (!client->access_store(&req, bufhead, client->get_me())) {
+                        BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore local";
+                        exit(-1);
+                      }
                     }
+
                   }
 
                   drain_bytes -= req.size;
