@@ -404,7 +404,7 @@ namespace x_lib {
                  unsigned long stream,
                  unsigned long align,
                  unsigned long total_processors) {
-        boolean need_to_
+        
         bool batch_io_needed = do_updates_stripe && stream == 3;
         if (batch_io_needed || (do_batch_io && gather_io_drain)) {
           subtrack->buffer = buffer;
