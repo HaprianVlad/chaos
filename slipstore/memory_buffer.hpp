@@ -40,6 +40,7 @@ namespace x_lib {
       static bool use_qsort;
       static bool do_batch_io;
       static bool do_edge_stripe;
+      static bool do_updates_stripe;
       static bool gather_io_drain;
       static unsigned long **aux_index;
       static unsigned char *aux_buffer;
@@ -131,6 +132,7 @@ namespace x_lib {
           do_batch_io = (vm.count("request_batching") > 0);
           do_edge_stripe = (vm.count("do_edge_stripe") > 0);
           gather_io_drain = (vm.count("gather_io_drain") > 0);
+          do_updates_stripe = (vm.count("do_updates_stripe") > 0);
           if (!use_qsort) {
             aux_index = new unsigned long *[config->processors];
             for (unsigned long i = 0; i < config->processors; i++) {
@@ -270,7 +272,8 @@ namespace x_lib {
 
         unsigned char *bufhead = buffer;
         slipstore::slipstore_req_t req;
-        if (do_batch_io) {
+        bool batch_io_needed = do_updates_stripe && stream == 3;
+        if (batch_io_needed || do_batch_io) {
           unsigned long csize = client->get_slipchunk();
           csize = (csize / align) * align;
           req.cmd = slipstore::CMD_FILL;
@@ -401,7 +404,9 @@ namespace x_lib {
                  unsigned long stream,
                  unsigned long align,
                  unsigned long total_processors) {
-        if (do_batch_io && gather_io_drain) {
+        boolean need_to_
+        bool batch_io_needed = do_updates_stripe && stream == 3;
+        if (batch_io_needed || (do_batch_io && gather_io_drain)) {
           subtrack->buffer = buffer;
           subtrack->index_entries = index_entries;
           subtrack->skip_index = skip_superp;
@@ -429,7 +434,8 @@ namespace x_lib {
               unsigned long drain_bytes;
               unsigned char *bufhead = get_substream(j, i, &drain_bytes);
               slipstore::slipstore_req_t req;
-              if (do_batch_io) {
+              bool batch_io_needed = do_updates_stripe && stream == 3;
+              if (batch_io_needed || do_batch_io) {
                 req.cmd = slipstore::CMD_DRAIN;
                 req.stream = stream;
                 req.partition = i / configuration::tiles;

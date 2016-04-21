@@ -62,6 +62,7 @@ namespace x_lib {
   bool memory_buffer::use_qsort = false;
   bool memory_buffer::do_batch_io = false;
   bool memory_buffer::do_edge_stripe = false;
+  bool memory_buffer::do_updates_stripe = false;
   bool memory_buffer::gather_io_drain = false;
   unsigned long qsort_keys = 0;
 }
