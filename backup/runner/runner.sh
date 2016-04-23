@@ -18,10 +18,10 @@ for experimentFolder in *; do
 		sh ./gather_partition_details.sh $experimentName
 		if [ ${experimentName:0:1} == "B" ]; then
 			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/bfs.log	
-			sh ./gather_logs $experimentName "bfs"
+			sh ./gather_logs.sh $experimentName "bfs"
 		else 
 			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/pagerank.log	
-			sh ./gather_logs $experimentName "pagerank"
+			sh ./gather_logs.sh $experimentName "pagerank"
 		fi	
 			
 	fi
