@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-GROUP="@dco_rack1"
+GROUP="dco-node[137-144]"
 
 # GraphLab
 
