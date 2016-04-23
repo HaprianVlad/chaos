@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
-#sh ./kill_chaos.sh
 cd experiments_to_run
+
 for experimentFolder in *; do
+	
 	experimentName=$experimentFolder
+	
 	if [ -d "$experimentFolder" ]; then
 		cd ..
 		configFile=experiments_to_run/"$experimentFolder"/configFile
@@ -14,8 +16,8 @@ for experimentFolder in *; do
 		sh ./clear.sh
 		sh $deployPartitionsCommand
 	
-		#sh ./deploy_xs.sh
-		#sh ./run_chaos.sh $configFile	
+		sh ./deploy_xs.sh
+		sh ./run_chaos.sh $configFile	
 		
 		sh ./gather_partition_details.sh $experimentName
 		if [ ${experimentName:0:1} == "B" ]; then
@@ -25,6 +27,7 @@ for experimentFolder in *; do
 		fi	
 			
 	fi
+
 	cd experiments_to_run
 
 done 

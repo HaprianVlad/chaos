@@ -25,14 +25,14 @@ MACHINE[6]="dco-node143"
 MACHINE[7]="dco-node144"
 
 INPUTS="rmat-28"
-ALGS="pagerank"
+ALGS="out_degree_cnt"
 GEN_TYPE="directed"
 
 ITERATIONS="20"
 NUM_MACHINES="8"
 CORES="8"
 MEMORIES="2" #"25 50 100"
-ADDITIONALS="heuristic"
+ADDITIONALS="nohelp"
 
 BLOCKED_MEMORY=$((128 - 16))
 
