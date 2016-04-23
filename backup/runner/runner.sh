@@ -12,12 +12,14 @@ for experimentFolder in *; do
 		cp $helperFile ~/helpers/run.sh
 		sh ./clear.sh
 		sh $deployPartitionsCommand
-		sh ./deploy_xs.sh
-		sh ./run_chaos.sh $configFile	
+		#sh ./deploy_xs.sh
+		#sh ./run_chaos.sh $configFile	
 		sh ./gather_partitions_details.sh $experimentName
-		if [ ${experimentName:0:1} == "B" ]; then	
+		if [ ${experimentName:0:1} == "B" ]; then
+			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/bfs.log	
 			sh ./gather_logs $experimentName "bfs"
 		else 
+			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/pagerank.log	
 			sh ./gather_logs $experimentName "pagerank"
 		fi	
 			
