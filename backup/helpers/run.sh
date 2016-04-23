@@ -27,7 +27,7 @@ blocked_memory=$BLOCKED_MEMORY
 # --request_batching and --batch_size=$bsize (for edge stripping and batch I/O)
 # --do_edge_stripe (for edge striped without batch I/O)
 # --do_updates_stripe and --batch size=$bsize (for stripping and batch I/O the updates)
-
+# --optimized_state_load_store (state load/store is done only once at the begening and at the end if work stealing is off and 1 partition per machine)
 
 additional_args="--partitions $(($partitions * $partitions * $machines)) --super_partitions $(($partitions)) --fanout $(($partitions * $partitions * $machines)) --polling_client --polling_server --gather_io_drain --use_async_server --policy_heuristic_new"
 
