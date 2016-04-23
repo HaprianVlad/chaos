@@ -6,25 +6,29 @@ for experimentFolder in *; do
 	experimentName=$experimentFolder
 	if [ -d "$experimentFolder" ]; then
 		cd ..
-		configFile="$experimentFolder"/configFile
-		helperFile="$experimentFolder"/runFile
-		deployPartitionsCommand="$experimentFolder"/deploy_partitions.sh	
+		configFile=experiments_to_run/"$experimentFolder"/configFile
+		helperFile=experiments_to_run/"$experimentFolder"/runFile
+		deployPartitionsCommand=experiments_to_run/"$experimentFolder"/deploy_partitions.sh	
 		
 		cp $helperFile ~/helpers/run.sh
 		sh ./clear.sh
 		sh $deployPartitionsCommand
+	
 		#sh ./deploy_xs.sh
 		#sh ./run_chaos.sh $configFile	
+		
+		# dummy
+		for i in `seq 137 144`; do scp stream.2.0.0  dco-node$i.dco.ethz.ch:/media/ssd/stream.2.$(($i-137)).0 ; done
+	
 		sh ./gather_partition_details.sh $experimentName
 		if [ ${experimentName:0:1} == "B" ]; then
-			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/bfs.log	
 			sh ./gather_logs.sh $experimentName "bfs"
 		else 
-			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/pagerank.log	
 			sh ./gather_logs.sh $experimentName "pagerank"
 		fi	
 			
 	fi
+	cd experiments_to_run
 
 done 
 
