@@ -127,6 +127,8 @@ static void setup_options(int argc, const char *argv[]) {
       ("polling_server", "Use polling server")
       ("polling_client", "Use polling client")
       ("use_vertex_striping", "Use Vertex Striping")
+      ("linear_search_super_partition", "Search super partition linearly")
+      ("not_cached_super_partition", "don't cache super partition at each scatter gather")
       ("use_memory_scatter", "Perform scatter helping from memory")
       ("centralized", "Centralized Server")
       ("log_phases", "Log timestamps for entry/exit of phases")

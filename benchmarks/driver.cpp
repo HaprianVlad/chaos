@@ -113,8 +113,27 @@ int main(int argc, const char *argv[]) {
 
   if (vm.count("do_updates_stripe") > 0) {
     BOOST_LOG_TRIVIAL(info) << "CORE::UPDATES_STRIPING ON";
+    BOOST_LOG_TRIVIAL(info) << "CORE::UPDATES BATCH IO ON";
   } else {
     BOOST_LOG_TRIVIAL(info) << "CORE::UPDATES_STRIPING OFF";
+  }
+
+  if (vm.count("optimized_state_load_store") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::OPTIMIZED_STATE_LOAD_STORE ON";
+  } else {
+    BOOST_LOG_TRIVIAL(info) << "CORE::OPTIMIZED_STATE_LOAD_STORE OFF";
+  }
+
+  if (vm.count("linear_search_super_partition") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::LINEAR_SEARCH_SUPER_PARTITION ON";
+  } else {
+    BOOST_LOG_TRIVIAL(info) << "CORE::BINARY_SEARCH_SUPER_PARTITION ON";
+  }
+
+  if (vm.count("not_cached_super_partition") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::SUPER_PARTITION_COMPUTED_FOR_EACH_VERTEX";
+  } else {
+    BOOST_LOG_TRIVIAL(info) << "CORE::SUPER_PARTITION_COMPUTED_FOR_EACH_SCATTER_GATHER_PHASE";
   }
 
   if (vm.count("request_batching") > 0) {

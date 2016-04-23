@@ -269,7 +269,7 @@ namespace x_lib {
 
         static unsigned long map_offset_new(unsigned long key) {
             unsigned long superp;
-            if (cached_super_partition == -1) {
+            if (cached_super_partition == -1 || vm.count("not_cached_super_partition") > 0) {
                 superp = map_new_super_partition(key);
                 cached_super_partition = superp;
             } else {
@@ -604,6 +604,10 @@ namespace x_lib {
 
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
         static unsigned  long map_new_super_partition(unsigned long key) {
+            if (vm.count("linear_search_super_partition") > 0) {
+                return linear_search_new_super_partition(key);
+            }
+
             return binary_interval_search(new_super_partition_offsets, key, 0, new_super_partitions-1);
         }
 
