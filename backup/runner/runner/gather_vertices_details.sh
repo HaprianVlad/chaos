@@ -11,6 +11,6 @@ else
 fi
 
 mkdir ~/chaos_sanbox/$folder_name/
-for i in `seq 137 144`; do scp  dco-node$i.dco.ethz.ch:/media/ssd/stream.0.$((i-137))* ~/chaos_sandbox/$folder_name/ ; done
+for i in `seq 137 144`; do scp  dco-node$i.dco.ethz.ch:/media/ssd/stream.0.$((i-137))* ~/$folder_name/$folder_name/ ; done
 
 

@@ -5,9 +5,9 @@
 
 TARGET="dco-node[137-144]"
 
-mkdir ~/results/$1Logs/
+mkdir ~/runner/results/$1Logs/
 #copy logs
-for i in `seq 137 144`; do scp  dco-node$i.dco.ethz.ch:/media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/$2*.log ~/results/$1Logs/ ; done
+for i in `seq 137 144`; do scp  dco-node$i.dco.ethz.ch:/media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/$2*.log ~/runner/results/$1Logs/ ; done
 
 
 
