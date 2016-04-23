@@ -78,6 +78,8 @@ namespace x_lib {
         static bool first_phase;
         static bool work_stealing;
         static bool optimized_state_load_store;
+        static bool not_cached_super_partitions;
+        static bool linear_search_super_partition;
 
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
         static long cached_super_partition;
@@ -269,7 +271,7 @@ namespace x_lib {
 
         static unsigned long map_offset_new(unsigned long key) {
             unsigned long superp;
-            if (cached_super_partition == -1 || vm.count("not_cached_super_partition") > 0) {
+            if (cached_super_partition == -1 || not_cached_super_partitions) {
                 superp = map_new_super_partition(key);
                 cached_super_partition = superp;
             } else {
@@ -449,7 +451,8 @@ namespace x_lib {
             long > ("machines.count");
             work_stealing = !(vm.count("policy_help_none") > 0);
             optimized_state_load_store =  (vm.count("optimized_state_load_store") > 0);
-
+            not_cached_super_partitions = vm.count("not_cached_super_partition") > 0;
+            linear_search_super_partition = vm.count("linear_search_super_partition") > 0
             tiles = 1;
 
             new_super_partitions = pt_partitions.get < unsigned
@@ -604,7 +607,7 @@ namespace x_lib {
 
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
         static unsigned  long map_new_super_partition(unsigned long key) {
-            if (vm.count("linear_search_super_partition") > 0) {
+            if (linear_search_super_partition) {
                 return linear_search_new_super_partition(key);
             }
 
