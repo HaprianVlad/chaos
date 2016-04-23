@@ -19,3 +19,6 @@ for i in `seq 137 144`; do scp ~/runner/helpers.zip dco-node$i:/media/${device}/
 clush -w dco-node[137-144] "cd /media/${device} && unzip helpers.zip"
 
 done
+
+rm -f chaos.zip
+rm -f helpers.zip
