@@ -452,7 +452,7 @@ namespace x_lib {
             work_stealing = !(vm.count("policy_help_none") > 0);
             optimized_state_load_store =  (vm.count("optimized_state_load_store") > 0);
             not_cached_super_partitions = vm.count("not_cached_super_partition") > 0;
-            linear_search_super_partition = vm.count("linear_search_super_partition") > 0
+            linear_search_super_partition = vm.count("linear_search_super_partition") > 0;
             tiles = 1;
 
             new_super_partitions = pt_partitions.get < unsigned
