@@ -16,10 +16,12 @@ for experimentFolder in *; do
 		#sh ./deploy_xs.sh
 		#sh ./run_chaos.sh $configFile	
 		sh ./gather_partition_details.sh $experimentName
-		if [ ${experimentName:0:1} == "B" ]; then	
-			sh ./gather_logs.sh $experimentName "bfs"
+		if [ ${experimentName:0:1} == "B" ]; then
+			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/bfs.log	
+			sh ./gather_logs $experimentName "bfs"
 		else 
-			sh ./gather_logs.sh $experimentName "pagerank"
+			echo "DUMMY LOG" >> /media/ssd/hpgp-results/slipstream/_$(date +"%Y-%m-%d")/logs/pagerank.log	
+			sh ./gather_logs $experimentName "pagerank"
 		fi	
 			
 	fi
