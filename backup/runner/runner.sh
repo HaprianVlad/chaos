@@ -2,7 +2,7 @@
 
 cd experiments_to_run
 
-sh ./deploy_code.sh
+sh ~/deploy_code.sh
 
 for experimentFolder in *; do
 	
@@ -18,7 +18,7 @@ for experimentFolder in *; do
 		sh ./clear.sh
 		sh $deployPartitionsCommand
 	
-		sh ./deploy_helpers.sh
+		sh ~/deploy_helpers.sh
 		sh ./run_chaos.sh $configFile	
 		
 		sh ./gather_partition_details.sh $experimentName
