@@ -16,4 +16,3 @@ clush -w dco-node[137-144] "cd /media/${device}/hpgp/branches/ && unzip chaos &&
 
 done
 
-rm -f chaos.zip
