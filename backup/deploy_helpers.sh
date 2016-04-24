@@ -14,4 +14,3 @@ clush -w dco-node[137-144] "cd /media/${device} && unzip helpers.zip"
 
 done
 
-rm -f helpers.zip
