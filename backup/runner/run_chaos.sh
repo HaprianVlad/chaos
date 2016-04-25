@@ -83,7 +83,7 @@ sleep 30
 e "Running $alg on $name with n=$i, ncpus=$j, mem=$m"
 clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/run.sh $ROOT_DIR $alg $name $i $j $m $k $additional"
 
-clush -w ${GROUP[$i]} -l $USER "$SUDO rm -f $ROOT_DIR/stream*"
+#clush -w ${GROUP[$i]} -l $USER "$SUDO rm -f $ROOT_DIR/stream*"
 clush -w ${GROUP[$i]} -l $USER "$SUDO rm -f $ROOT_DIR/chkp* && $SUDO rm -f $ROOT_DIR/snap*"
 done
 done
