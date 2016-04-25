@@ -22,8 +22,8 @@ MACHINE[6]="dco-node143"
 MACHINE[7]="dco-node144"
 
 INPUTS="rmat-28"
-ALGS="pagerank"
-GEN_TYPE="directed"
+ALGS="bfs"
+GEN_TYPE="undirected"
 
 ITERATIONS="20"
 NUM_MACHINES="8"
@@ -32,6 +32,6 @@ MEMORIES="2" #"25 50 100"
 ADDITIONALS="nohelp"
 
 BLOCKED_MEMORY=$((128 - 16))
-KS="10"
+
 AUTO_PUSH=1
 

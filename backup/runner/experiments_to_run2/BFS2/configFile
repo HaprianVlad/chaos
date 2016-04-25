@@ -33,5 +33,7 @@ ADDITIONALS="nohelp"
 
 BLOCKED_MEMORY=$((128 - 16))
 
+KS="10"
+
 AUTO_PUSH=1
 
