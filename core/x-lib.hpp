@@ -856,7 +856,7 @@ namespace x_lib {
         void inter_machine_barrier(unsigned long goal) {
             null_barrier_work null_obj;
 
-            if (goal == 10 || goal == 11 || goal == 1) {
+            if (goal == 10 || goal == 11) {
                 return;
             }
             startBarrierTime(goal);
