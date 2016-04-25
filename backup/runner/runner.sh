@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-cd experiments_to_run
-
 cd ~
 sh ./deploy_code.sh
 cd ~/runner/experiments_to_run
