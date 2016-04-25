@@ -114,7 +114,7 @@ int main(int argc, const char *argv[]) {
   if (vm.count("do_updates_stripe") > 0) {
     BOOST_LOG_TRIVIAL(info) << "CORE::UPDATES_STRIPING ON";
     BOOST_LOG_TRIVIAL(info) << "CORE::UPDATES BATCH IO ON";
-  } 
+  }
 
   if (vm.count("optimized_state_load_store") > 0) {
     BOOST_LOG_TRIVIAL(info) << "CORE::OPTIMIZED_STATE_LOAD_STORE ON";
