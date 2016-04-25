@@ -6,7 +6,7 @@ fi
 
 TARGET="dco-node[137-144]"
 if [ $3 == 0 ]; then
-	name=rmat-$1-und-s$2.part
+	name=rmat-$1-und_s$2.part
 else
 	name=rmat-$1_s$2.part 
 fi
