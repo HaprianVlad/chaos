@@ -5,7 +5,9 @@ GROUP="dco-node[137-144]"
 for device in ssd; do
 
 clush -w dco-node[137-144] "rm -rf /media/${device}/hpgp" 
+
 clush -w dco-node[137-144] "mkdir -p /media/${device}/hpgp/branches"
+
 clush -w dco-node[137-144] "rm -rf /media/${device}/hpgp/branches/slipstream*"
 
 rm -f chaos.zip 
