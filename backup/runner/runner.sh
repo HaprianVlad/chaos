@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 cd ~
-sh ./deploy_code.sh
+#sh ./deploy_code.sh
 cd ~/runner/experiments_to_run
 
 for experimentFolder in *; do
