@@ -45,7 +45,7 @@ else
 fi
 
 # write here for undirected algorithms
-if [ $algorithm == "out_degree_cnt"] ||  [ $algorithm == "bfs" ] || [ $algorithm == "bfs_filter" ] || [ $algorithm == "cc" ] || [ $algorithm == "bfs_forest" ] || [ $algorithm == "mcst" ] || [ $algorithm == "mis" ] || [ $algorithm == "sssp_forest" ]; then
+if [ $algorithm == "out_degree_cnt" ] ||  [ $algorithm == "bfs" ] || [ $algorithm == "bfs_filter" ] || [ $algorithm == "cc" ] || [ $algorithm == "bfs_forest" ] || [ $algorithm == "mcst" ] || [ $algorithm == "mis" ] || [ $algorithm == "sssp_forest" ]; then
   name=$(echo $name | sed -E "s/(.*)_s([0-9]+)/\1-und_s\2/")
   if [[ $name == twitter* ]] || [[ $name == fixed-twitter* ]]; then 
     additional_args="${additional_args} --bfs::root 10201"
