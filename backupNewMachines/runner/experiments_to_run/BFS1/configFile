@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Global configuration
+# Do not change unless you know what you're doing
+
+ROOT_DIR="/media/ssd"
+
+RESULTS_FOLDER="$ROOT_DIR/hpgp-results/slipstream"
+
+USER="root"
+SUDO=""
+
+GROUP[8]="dco-node[129-136]"
+
+MACHINE[0]="dco-node129"
+MACHINE[1]="dco-node130"
+MACHINE[2]="dco-node131"
+MACHINE[3]="dco-node132"
+MACHINE[4]="dco-node133"
+MACHINE[5]="dco-node134"
+MACHINE[6]="dco-node135"
+MACHINE[7]="dco-node136"
+
+INPUTS="rmat-28"
+ALGS="bfs"
+GEN_TYPE="undirected"
+
+ITERATIONS="20"
+NUM_MACHINES="8"
+CORES="8"
+MEMORIES="2" #"25 50 100"
+ADDITIONALS="heuristic"
+
+BLOCKED_MEMORY=$((128 - 10))
+
+KS="10"
+
+AUTO_PUSH=1
+

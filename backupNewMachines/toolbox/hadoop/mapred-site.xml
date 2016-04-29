@@ -1,0 +1,16 @@
+<configuration>
+<property>
+<name>mapred.job.tracker</name> 
+<value>dco-node002:54311</value>
+</property>
+
+<property>
+<name>mapred.tasktracker.map.tasks.maximum</name>
+<value>4</value>
+</property>
+
+<property>
+<name>mapred.map.tasks</name>
+<value>4</value>
+</property>
+</configuration>
