@@ -17,9 +17,10 @@ def main(argv):
 			
 				new_src = struct.pack('I', permutation[src])[0]
 				new_tgt = struct.pack('I', permutation[tgt])[0]
-				
+								
 				outfile.write(new_src)
 				outfile.write(new_tgt)
+				outfile.write( chunk[9:12])
 
 			
 
