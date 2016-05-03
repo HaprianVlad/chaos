@@ -22,10 +22,10 @@ for experimentFolder in *; do
 		sh ./deploy_helpers.sh
 		cd ~/runner
 
-		bash ./run_chaos.sh $configFile	
+		#bash ./run_chaos.sh $configFile	
 		
 		bash ./gather_partition_details.sh $experimentName
-		if [ "$(echo $experimentName | head -c 1)" == "B" ]; then
+		if [ "$(echo '$experimentName' | head -c 1)" == "B" ]; then
 			bash ./gather_logs.sh $experimentName "bfs"
 		else 
 			bash ./gather_logs.sh $experimentName "pagerank"
