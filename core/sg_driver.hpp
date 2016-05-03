@@ -343,6 +343,8 @@ namespace algorithm {
 
         // Supersteps
         // Apply scatter-gather phase until done
+
+        graph_storage->get_config()->reset_init_phase();
         bool global_stop;
         while (true) {
 

@@ -85,6 +85,7 @@ namespace x_lib {
         static long cached_super_partition;
         static unsigned long first_key_in_cached_super_partition;
         static unsigned long last_key_in_cached_super_partition;
+        static bool init_phase;
 
 
         /* Mapping */
@@ -236,12 +237,16 @@ namespace x_lib {
 
         static bool should_recompute_super_partition(unsigned long key) {
             // if no super partition is available or we want to compute it for every vertex then compute it
-            if (not_cached_super_partitions || cached_super_partition == -1) {
+            if (init_phase || not_cached_super_partitions || cached_super_partition == -1) {
                 return true;
             }
             //TODO: make it really fast !!!
             // otherwise compute a new super partition when the old one is not any more valid
             return key < first_key_in_cached_super_partition || key > last_key_in_cached_super_partition;
+        }
+
+        static void reset_init_phase() {
+            init_phase = false;
         }
 
         static bool should_do_final_state_store() {
@@ -700,9 +705,7 @@ namespace x_lib {
         }
 
         static unsigned long map_internal_new(unsigned long key) {
-            configuration::not_cached_super_partitions = true;
             unsigned long superp = configuration::map_new_super_partition(key);
-            configuration::not_cached_super_partitions = false;
             unsigned long partition = configuration::map_new_partition(key, superp);
 
             return partition;
