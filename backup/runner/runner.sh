@@ -1,7 +1,7 @@
 #! /bin/bash
 
 cd ~
-#sh ./deploy_code.sh
+#bash ./deploy_code.sh
 cd ~/runner/experiments_to_run
 
 for experimentFolder in *; do
@@ -15,20 +15,20 @@ for experimentFolder in *; do
 		deployPartitionsCommand=experiments_to_run/"$experimentFolder"/deploy_partitions.sh	
 		
 		cp $helperFile ~/helpers/run.sh
-		sh ./clear.sh
-		sh $deployPartitionsCommand
+		bash ./clear.sh
+		bash $deployPartitionsCommand
 	
 		cd ~
 		sh ./deploy_helpers.sh
 		cd ~/runner
 
-		sh ./run_chaos.sh $configFile	
+		bash ./run_chaos.sh $configFile	
 		
-		sh ./gather_partition_details.sh $experimentName
+		bash ./gather_partition_details.sh $experimentName
 		if [ "$(echo $experimentName | head -c 1)" == "B" ]; then
-			sh ./gather_logs.sh $experimentName "bfs"
+			bash ./gather_logs.sh $experimentName "bfs"
 		else 
-			sh ./gather_logs.sh $experimentName "pagerank"
+			bash ./gather_logs.sh $experimentName "pagerank"
 		fi	
 			
 	fi
