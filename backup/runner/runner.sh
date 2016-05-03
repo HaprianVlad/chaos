@@ -25,7 +25,6 @@ for experimentFolder in *; do
 		#bash ./run_chaos.sh $configFile	
 		
 		bash ./gather_partition_details.sh $experimentName
-		echo $experimentName
 		if [ "$(echo $experimentName | head -c 1)" == "B" ]; then
 			bash ./gather_logs.sh $experimentName "bfs"
 		else 

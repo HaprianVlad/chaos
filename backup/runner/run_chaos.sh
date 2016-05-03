@@ -38,7 +38,7 @@ names="${names}name$j=${MACHINE[$j]}-10g
 "
 ports="${ports}base_port$j=5555
 "
-ifaces="${ifaces}iface$j=ens1f0
+ifaces="${ifaces}iface$j=p1p1
 "
 done
 for (( j=0; j<$i; j++ )); do
