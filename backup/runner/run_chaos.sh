@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH"
 
@@ -18,7 +18,7 @@ echo "Please specify a configuration file!"
 fail
 fi
 
-source ./$1
+. ./$1
 
 if [ -z $ROOT_DIR ]; then
 echo "Missing configuration!"
