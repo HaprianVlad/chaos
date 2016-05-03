@@ -331,20 +331,11 @@ namespace algorithm {
                 graph_storage->reset_stream(init_stream, 0);
             }
         }
+
         BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Completed init ";
-        /*if (!graph_storage->get_config()->old_partitioning_mode) {
-            BOOST_LOG_TRIVIAL(info) << "New super partitions were generated";
-            graph_storage->terminate();
-            wall_clock.stop();
-            wall_clock.print("CORE::TIME::WALL");
-            exit(1);
-        }*/
-
-
-        // Supersteps
-        // Apply scatter-gather phase until done
-
         graph_storage->get_config()->reset_init_phase();
+
+        // Apply scatter-gather phase until done
         bool global_stop;
         while (true) {
 
