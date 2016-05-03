@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#! /bin/bash
 
 cd ~
 #sh ./deploy_code.sh
