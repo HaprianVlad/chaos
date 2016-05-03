@@ -700,7 +700,9 @@ namespace x_lib {
         }
 
         static unsigned long map_internal_new(unsigned long key) {
+            configuration::not_cached_super_partitions = true;
             unsigned long superp = configuration::map_new_super_partition(key);
+            configuration::not_cached_super_partitions = false;
             unsigned long partition = configuration::map_new_partition(key, superp);
 
             return partition;
