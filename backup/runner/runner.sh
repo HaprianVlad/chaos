@@ -19,7 +19,7 @@ for experimentFolder in *; do
 		bash $deployPartitionsCommand
 	
 		cd ~
-		sh ./deploy_helpers.sh
+		bash ./deploy_helpers.sh
 		cd ~/runner
 
 		bash ./run_chaos.sh $configFile	
