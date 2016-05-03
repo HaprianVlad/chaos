@@ -50,8 +50,8 @@ namespace x_lib {
   bool configuration::optimized_state_load_store = true;
   bool configuration::not_cached_super_partitions = false;
   bool configuration::linear_search_super_partition = false;
-  bool configuration::init_phase = true;
-  bool configuration::write_phase = true;
+  unsigned long configuration::first_key_in_cached_super_partition = 0;
+  unsigned long configuration::last_key_in_cached_super_partition = 0;
 
   x_barrier *x_thread::sync;
   volatile bool x_thread::terminate = false;

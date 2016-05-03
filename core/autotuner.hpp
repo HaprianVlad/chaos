@@ -83,8 +83,9 @@ namespace x_lib {
 
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
         static long cached_super_partition;
-        static bool init_phase;
-        static bool write_phase;
+        static unsigned long first_key_in_cached_super_partition;
+        static unsigned long last_key_in_cached_super_partition;
+
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -232,21 +233,20 @@ namespace x_lib {
             }
 
         }
-        static void reset_cache_super_partition() {
-            cached_super_partition = -1;
-        }
-        static void reset_init_phase() {
-            init_phase = false;
-        }
-        static bool should_recompute_super_partition() {
-            return cached_super_partition == -1 || not_cached_super_partitions || init_phase || write_phase;
+
+        static bool should_recompute_super_partition(unsigned long key) {
+            // if no super partition is available or we want to compute it for every vertex then compute it
+            if (not_cached_super_partitions || cached_super_partition == -1) {
+                return true;
+            }
+            // otherwise compute a new super partition when the old one is not any more valid
+            return key < first_key_in_cached_super_partition || key > last_key_in_cached_super_partition;
         }
 
         static bool should_do_final_state_store() {
             if (!optimized_state_load_store) {
                 return false;
             }
-
             return !(work_stealing  || super_partitions != machines);
         }
 
@@ -611,15 +611,21 @@ namespace x_lib {
 
         static unsigned long map_new_super_partition(unsigned long key) {
             unsigned long superp;
-            if (should_recompute_super_partition()) {
+            if (should_recompute_super_partition(key)) {
                 superp = compute_new_super_partition(key);
-                cached_super_partition = superp;
+                update_super_partition_cache(superp);
+
             } else {
                 superp = cached_super_partition;
             }
             return superp;
         }
 
+        static void update_super_partition_cache(unsigned long superp) {
+            cached_super_partition = superp;
+            first_key_in_cached_super_partition = new_partition_offsets[superp];
+            last_key_in_cached_super_partition = first_key_in_cached_super_partition + vertices_per_new_super_partition[superp] - 1;
+        }
 
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
         static unsigned  long compute_new_super_partition(unsigned long key) {
@@ -692,7 +698,7 @@ namespace x_lib {
             return configuration::map_cached_partition(key);
         }
 
-
+        //TODO: pay attention the superpartition caching is in read mode!!
         static unsigned long map_internal_new(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
@@ -727,34 +733,6 @@ namespace x_lib {
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
     };
-
-
-
-    // when we have a write we can not cache the super partition. This is what we try to optimize with grid partitioning.
-    struct map_spshift_wrap_write {
-        static unsigned long map_spshift;
-
-        static unsigned long map_internal_old(unsigned long key) {
-            unsigned long superp = configuration::map_super_partition(key);
-            unsigned long p =  configuration::map_cached_partition(key);
-            unsigned long tile = p >> configuration::tile_shift;
-            return (superp * configuration::tiles + tile)>> map_spshift;
-        }
-
-
-        static unsigned long map_internal_new(unsigned long key) {
-            configuration::write_phase = true;
-            unsigned long superp = configuration::map_new_super_partition(key);
-            configuration::write_phase = false;
-            return superp;
-        }
-
-        // should the super_partition where the vertex key is
-        static unsigned long map(unsigned long key) {
-            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
-        }
-    };
-
 
 }
 #endif
