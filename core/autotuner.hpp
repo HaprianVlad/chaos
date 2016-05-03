@@ -239,6 +239,7 @@ namespace x_lib {
             if (not_cached_super_partitions || cached_super_partition == -1) {
                 return true;
             }
+            //TODO: make it really fast !!!
             // otherwise compute a new super partition when the old one is not any more valid
             return key < first_key_in_cached_super_partition || key > last_key_in_cached_super_partition;
         }
@@ -698,7 +699,6 @@ namespace x_lib {
             return configuration::map_cached_partition(key);
         }
 
-        //TODO: pay attention the superpartition caching is in read mode!!
         static unsigned long map_internal_new(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
@@ -728,7 +728,7 @@ namespace x_lib {
             return superp;
         }
 
-        // should the super_partition where the vertex key is
+        // should return the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
