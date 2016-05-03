@@ -6,5 +6,5 @@ cd ..
 cp -r chaos/backup/runner .
 cd runner
 mkdir results
-sh ./runner.sh
+bash ./runner.sh
 
