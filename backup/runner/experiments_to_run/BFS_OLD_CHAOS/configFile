@@ -1,7 +1,4 @@
-#!/usr/bin/env bash
-
-# Global configuration
-# Do not change unless you know what you're doing
+#! /bin/bash
 
 ROOT_DIR="/media/ssd"
 
