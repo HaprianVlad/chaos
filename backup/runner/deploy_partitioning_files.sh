@@ -5,7 +5,7 @@ if [ $# != 4 ]; then
 fi
 
 TARGET="dco-node[137-144]"
-if [ $3 == 0 ]; then
+if [ $3 -eq 0 ]; then
 	name=rmat-$1-und_s$2.part
 else
 	name=rmat-$1_s$2.part 
