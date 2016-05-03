@@ -25,7 +25,7 @@ for experimentFolder in *; do
 		sh ./run_chaos.sh $configFile	
 		
 		sh ./gather_partition_details.sh $experimentName
-		if [ "$(echo $experimentName | head -c 1)" == "B" ]; then
+		if [ "$(echo $experimentName | head -c 1)" -eq "B" ]; then
 			sh ./gather_logs.sh $experimentName "bfs"
 		else 
 			sh ./gather_logs.sh $experimentName "pagerank"

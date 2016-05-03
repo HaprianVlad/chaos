@@ -1,7 +1,7 @@
 
-#!/usr/bin/env sh
+#! /bin/bash
 
-((!$#)) && echo No arguments supplied! Expect: result name, files pattern to copy && exit 1
+(( $# -ne 2 )) && echo No arguments supplied! Expect: result name, files pattern to copy && exit 1
 
 TARGET="dco-node[137-144]"
 
