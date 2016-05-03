@@ -345,7 +345,12 @@ namespace algorithm {
         // Apply scatter-gather phase until done
         bool global_stop;
         while (true) {
+            graph_storage->get_config()->reset_init_phase();
+            // START GATHER
+
             graph_storage->rewind_stream(edge_stream);
+            graph_storage->get_config()->reset_cache_super_partition();
+
             if (!restored) {
                 sg_pcpu::current_step = superphase_begin;
                 x_lib::do_cpu<scatter_gather<A, F> >(graph_storage, ULONG_MAX);
@@ -358,6 +363,7 @@ namespace algorithm {
                         state_iter_cost.stop();
                     }
                 }
+                graph_storage->get_config()->reset_cache_super_partition();
                 sg_pcpu::current_step = phase_gather;
                 if (measure_scatter_gather) {
                     gather_cost.start();
@@ -390,12 +396,14 @@ namespace algorithm {
             if (restored) {
                 restored = false;
             }
+
+            // START SCATTER
+            graph_storage->get_config()->reset_cache_super_partition();
             sg_pcpu::current_step = phase_scatter;
             if (measure_scatter_gather) {
                 scatter_cost.start();
             }
 
-            graph_storage->get_config()->reset_cache_super_partition();
             x_lib::do_stream_skip<scatter_gather<A, F>,
                     edge_type_wrapper<F>,
                     update_type_wrapper<A> >

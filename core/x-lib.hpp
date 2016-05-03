@@ -148,7 +148,7 @@ namespace x_lib {
             sync->wait();
             if (stream_out->bufsize > 0) {
 
-                make_index<OUT, map_spshift_wrap>(stream_out, processor_id,
+                make_index<OUT, map_spshift_wrap_write>(stream_out, processor_id,
                                                       config->super_partitions * config->tiles,
                                                       sync);
 

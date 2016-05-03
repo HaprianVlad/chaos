@@ -83,6 +83,8 @@ namespace x_lib {
 
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
         static long cached_super_partition;
+        static bool init_phase;
+        static bool write_phase;
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -233,6 +235,12 @@ namespace x_lib {
         static void reset_cache_super_partition() {
             cached_super_partition = -1;
         }
+        static void reset_init_phase() {
+            init_phase = false;
+        }
+        static bool should_recompute_super_partition() {
+            return cached_super_partition == -1 || not_cached_super_partitions || init_phase || write_phase;
+        }
 
         static bool should_do_final_state_store() {
             if (!optimized_state_load_store) {
@@ -269,14 +277,10 @@ namespace x_lib {
             return key >> (super_partition_shift + partition_shift);
         }
 
+
+        // problem. this function is also called for updates. For updates during scatter we don't need to cache the super_partition, but it seems that we don't use this function
         static unsigned long map_offset_new(unsigned long key) {
-            unsigned long superp;
-            if (cached_super_partition == -1 || not_cached_super_partitions) {
-                superp = map_new_super_partition(key);
-                cached_super_partition = superp;
-            } else {
-                superp = cached_super_partition;
-            }
+            unsigned long superp = map_new_super_partition(key);
 
             return balanced_partitions ? map_offset_new_balanced(key, superp) : map_offset_new_unbalanced(key, superp);
         }
@@ -605,8 +609,20 @@ namespace x_lib {
             return ss.str();
         }
 
+        static unsigned long map_new_super_partition(unsigned long key) {
+            unsigned long superp;
+            if (should_recompute_super_partition()) {
+                superp = compute_new_super_partition(key);
+                cached_super_partition = superp;
+            } else {
+                superp = cached_super_partition;
+            }
+            return superp;
+        }
+
+
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
-        static unsigned  long map_new_super_partition(unsigned long key) {
+        static unsigned  long compute_new_super_partition(unsigned long key) {
             if (linear_search_super_partition) {
                 return linear_search_new_super_partition(key);
             }
@@ -703,6 +719,33 @@ namespace x_lib {
 
         static unsigned long map_internal_new(unsigned long key) {
             unsigned long superp = configuration::map_new_super_partition(key);
+            return superp;
+        }
+
+        // should the super_partition where the vertex key is
+        static unsigned long map(unsigned long key) {
+            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
+        }
+    };
+
+
+
+    // when we have a write we can not cache the super partition. This is what we try to optimize with grid partitioning.
+    struct map_spshift_wrap_write {
+        static unsigned long map_spshift;
+
+        static unsigned long map_internal_old(unsigned long key) {
+            unsigned long superp = configuration::map_super_partition(key);
+            unsigned long p =  configuration::map_cached_partition(key);
+            unsigned long tile = p >> configuration::tile_shift;
+            return (superp * configuration::tiles + tile)>> map_spshift;
+        }
+
+
+        static unsigned long map_internal_new(unsigned long key) {
+            configuration::write_phase = true;
+            unsigned long superp = configuration::map_new_super_partition(key);
+            configuration::write_phase = false;
             return superp;
         }
 
