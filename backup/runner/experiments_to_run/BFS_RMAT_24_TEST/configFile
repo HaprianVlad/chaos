@@ -18,7 +18,7 @@ MACHINE[5]="dco-node142"
 MACHINE[6]="dco-node143"
 MACHINE[7]="dco-node144"
 
-INPUTS="rmat-28"
+INPUTS="rmat-24"
 ALGS="bfs"
 GEN_TYPE="undirected"
 
