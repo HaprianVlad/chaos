@@ -3,12 +3,12 @@
 export LD_LIBRARY_PATH="/usr/local/lib/:$LD_LIBRARY_PATH"
 
 # Utility functions
-function fail {
+fail () {
 	echo "Failure encountered! Exiting!"
 	exit -1
 }
 
-function e {
+e () {
 	echo -e '\E[37;44m'"\033[1m$1\033[0m" 
 }
 
