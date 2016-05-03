@@ -1,7 +1,10 @@
 
 #! /bin/bash
 
-(( $# -ne 2 )) && echo No arguments supplied! Expect: result name, files pattern to copy && exit 1
+if [ $# -ne 2 ]; then
+	echo "No arguments supplied! Expect: result name, files pattern to copy"
+	exit 1
+fi
 
 TARGET="dco-node[137-144]"
 
