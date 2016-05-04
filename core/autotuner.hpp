@@ -719,6 +719,14 @@ namespace x_lib {
         static unsigned long map(unsigned long key) {
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
+
+        static unsigned long get_start_id(unsigned long superp) {
+            return configuration::new_super_partition_offsets[superp] ;
+        }
+
+        static unsigned long get_number_of_vertices(unsigned long superp) {
+            return configuration::vertices_per_new_super_partition[superp];
+        }
     };
 
     struct map_spshift_wrap {
@@ -740,6 +748,14 @@ namespace x_lib {
         // should return the super_partition where the vertex key is
         static unsigned long map(unsigned long key) {
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
+        }
+
+        static unsigned long get_start_id(unsigned long superp) {
+            return configuration::new_super_partition_offsets[superp] ;
+        }
+
+        static unsigned long get_number_of_vertices(unsigned long superp) {
+            return configuration::vertices_per_new_super_partition[superp];
         }
     };
 

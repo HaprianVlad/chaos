@@ -118,6 +118,11 @@ namespace x_lib {
     unsigned long input, num_in = 1, num_out;
     unsigned char *buffers[2];
     unsigned long output_id;
+
+    unsigned long cached_super_partition = -1;
+    unsigned long first_id = -1;
+    unsigned long last_id = -1;
+
     indices[0] = index_in;
     indices[1] = index_aux;
     buffers[0] = buffer_in;
@@ -185,7 +190,20 @@ namespace x_lib {
         bool sorted = true;
         unsigned long old_key = 0;
         for (unsigned long j = 0; j < input_size; j += split_size_bytes) {
-          unsigned long key = M::map(T::key(input_stream + j));
+
+          //# CACHE_SUPER_PARTITION_LOGIC
+          unsigned long v_id_to_map = T::key(input_stream + j);
+          unsigned long key;
+
+          if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
+            key = cached_super_partition;
+          } else {
+            key = M::map(v_id_to_map);
+            cached_super_partition = key;
+            first_id = M::get_start_id(cached_super_partition);
+            last_id = first_id + M::get_number_of_vertices(cached_super_partition) - 1;
+          }
+
           sorted = sorted && (key >= old_key);
           old_key = key;
           output_id = key >> shift; //sorted does not change !
@@ -217,7 +235,21 @@ namespace x_lib {
         else {
           unsigned long saved_start_index = indices[1 - input][output_start];
           for (unsigned long j = 0; j < input_size; j += split_size_bytes) {
-            output_id = M::map(T::key(input_stream + j)) >> shift;
+
+              //# CACHE_SUPER_PARTITION_LOGIC
+              unsigned long v_id_to_map = T::key(input_stream + j);
+              unsigned long output_id;
+
+              if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
+                  output_id = cached_super_partition;
+              } else {
+                  output_id = M::map(v_id_to_map);
+                  cached_super_partition = output_id;
+                  first_id = M::get_start_id(cached_super_partition);
+                  last_id = first_id + M::get_number_of_vertices(cached_super_partition) - 1;
+              }
+
+              output_id = output_id >> shift;
             output_id = output_id & (num_out - 1);
             memcpy(output_stream + indices[1 - input][output_id],
                    input_stream + j, split_size_bytes);
