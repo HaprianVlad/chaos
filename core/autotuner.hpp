@@ -620,8 +620,10 @@ namespace x_lib {
             unsigned long superp;
             if (should_recompute_super_partition(key)) {
                 superp = compute_new_super_partition(key);
-                update_super_partition_cache(superp);
-
+                // we should use the cache
+                if (!not_cached_super_partitions) {
+                    update_super_partition_cache(superp);
+                }
             } else {
                 superp = cached_super_partition;
             }
