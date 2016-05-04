@@ -5,3 +5,7 @@
 -> BFS4 should be computational balanced but not I/O balanced while BFS5 is I/O balanced but not computational balanced , thus the slightly consistent scatter barrier time.
 
 Overall, for the first 5 experiments we cleary see our load balance improved, but there is still work to do.
+
+2. Locality
+
+-> when edges are locall updates need to be written remotely so, without batch I/O this creates big scatter time. Notice that in BFS6 the scatter unbalance is smaller. This might be due to different unbalanced patterns when writting updates.
