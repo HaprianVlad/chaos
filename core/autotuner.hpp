@@ -721,11 +721,11 @@ namespace x_lib {
         }
 
         static unsigned long get_start_id(unsigned long superp) {
-            return configuration::old_partitioning_mode ? -1 :configuration::new_super_partition_offsets[superp] ;
+            return configuration::old_partitioning_mode ? 1 :configuration::new_super_partition_offsets[superp] ;
         }
 
         static unsigned long get_number_of_vertices(unsigned long superp) {
-            return configuration::old_partitioning_mode ? -1 :configuration::vertices_per_new_super_partition[superp];
+            return configuration::old_partitioning_mode ? 0 :configuration::vertices_per_new_super_partition[superp];
         }
     };
 
@@ -751,11 +751,11 @@ namespace x_lib {
         }
 
         static unsigned long get_start_id(unsigned long superp) {
-            return configuration::old_partitioning_mode ? -1 : configuration::new_super_partition_offsets[superp] ;
+            return configuration::old_partitioning_mode ? 1 : configuration::new_super_partition_offsets[superp] ;
         }
 
         static unsigned long get_number_of_vertices(unsigned long superp) {
-            return configuration::old_partitioning_mode ? -1 :configuration::vertices_per_new_super_partition[superp];
+            return configuration::old_partitioning_mode ? 0 :configuration::vertices_per_new_super_partition[superp];
         }
     };
 
