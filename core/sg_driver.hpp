@@ -333,6 +333,7 @@ namespace algorithm {
         }
 
         BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Completed init ";
+        //#CACHE_SUPER_PARTITION_LOGIC
         graph_storage->get_config()->reset_init_phase();
 
         // Apply scatter-gather phase until done
@@ -340,8 +341,9 @@ namespace algorithm {
         while (true) {
 
             // START GATHER
+            //#CACHE_SUPER_PARTITION_LOGIC
+            graph_storage->get_config()->reset_cache_super_partititon();
             graph_storage->rewind_stream(edge_stream);
-
             if (!restored) {
                 sg_pcpu::current_step = superphase_begin;
                 x_lib::do_cpu<scatter_gather<A, F> >(graph_storage, ULONG_MAX);
@@ -389,6 +391,8 @@ namespace algorithm {
             }
 
             // START SCATTER
+            //#CACHE_SUPER_PARTITION_LOGIC
+            graph_storage->get_config()->reset_cache_super_partititon();
             sg_pcpu::current_step = phase_scatter;
             if (measure_scatter_gather) {
                 scatter_cost.start();

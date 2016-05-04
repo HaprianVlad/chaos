@@ -83,8 +83,6 @@ namespace x_lib {
 
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
         static long cached_super_partition;
-        static unsigned long first_key_in_cached_super_partition;
-        static unsigned long last_key_in_cached_super_partition;
         static bool init_phase;
 
 
@@ -236,17 +234,19 @@ namespace x_lib {
         }
 
         static bool should_recompute_super_partition(unsigned long key) {
-            // if no super partition is available or we want to compute it for every vertex then compute it
-            if (init_phase || not_cached_super_partitions || cached_super_partition == -1) {
-                return true;
-            }
-            //TODO: make it really fast !!!
-            // otherwise compute a new super partition when the old one is not any more valid
-            return key < first_key_in_cached_super_partition || key > last_key_in_cached_super_partition;
+            return (init_phase || not_cached_super_partitions || cached_super_partition == -1);
         }
 
         static void reset_init_phase() {
             init_phase = false;
+        }
+
+        static void reset_cache_super_partititon() {
+            cached_super_partition = -1;
+        }
+
+        static void set_cache_super_partititon(unsigned long superp) {
+            cached_super_partition = superp;
         }
 
         static bool should_do_final_state_store() {
@@ -287,7 +287,7 @@ namespace x_lib {
         // problem. this function is also called for updates. For updates during scatter we don't need to cache the super_partition, but it seems that we don't use this function
         static unsigned long map_offset_new(unsigned long key) {
             unsigned long superp = map_new_super_partition(key);
-            
+
             return balanced_partitions ? map_offset_new_balanced(key, superp) : map_offset_new_unbalanced(key, superp);
         }
 
@@ -619,20 +619,11 @@ namespace x_lib {
             unsigned long superp;
             if (should_recompute_super_partition(key)) {
                 superp = compute_new_super_partition(key);
-                // we should use the cache
-                if (!not_cached_super_partitions) {
-                    update_super_partition_cache(superp);
-                }
+                cached_super_partition = superp;
             } else {
                 superp = cached_super_partition;
             }
             return superp;
-        }
-
-        static void update_super_partition_cache(unsigned long superp) {
-            cached_super_partition = superp;
-            first_key_in_cached_super_partition = new_partition_offsets[superp];
-            last_key_in_cached_super_partition = first_key_in_cached_super_partition + vertices_per_new_super_partition[superp] - 1;
         }
 
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file

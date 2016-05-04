@@ -147,7 +147,8 @@ namespace x_lib {
             bool empty = false;
             sync->wait();
             if (stream_out->bufsize > 0) {
-
+                //#CACHE_SUPER_PARTITION_LOGIC
+                config->reset_cache_super_partititon();
                 make_index<OUT, map_spshift_wrap>(stream_out, processor_id,
                                                       config->super_partitions * config->tiles,
                                                       sync);
@@ -1689,6 +1690,9 @@ namespace x_lib {
             if (partition % m != me) {
                 continue;
             }
+
+            //#CACHE_SUPER_PARTITION_LOGIC
+            sio->get_config()->set_cache_super_partititon(partition);
 
             if (log_phases) {
                 if (sync) {
