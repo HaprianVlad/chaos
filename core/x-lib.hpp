@@ -147,15 +147,11 @@ namespace x_lib {
             bool empty = false;
             sync->wait();
             if (stream_out->bufsize > 0) {
-                //#CACHE_SUPER_PARTITION_LOGIC
-                config->enter_write_mode();
-                sync->wait();
+
                 make_index<OUT, map_spshift_wrap>(stream_out, processor_id,
                                                       config->super_partitions * config->tiles,
                                                       sync);
-                //#CACHE_SUPER_PARTITION_LOGIC
-                sync->wait();
-                config->exit_write_mode();
+
 
                 if (processor_id == 0) {
                     slipstore::ioService.post(boost::bind(&memory_buffer::drain,
