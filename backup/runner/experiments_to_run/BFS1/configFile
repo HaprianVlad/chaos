@@ -1,4 +1,7 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
+# Global configuration
+# Do not change unless you know what you're doing
 
 ROOT_DIR="/media/ssd"
 
@@ -18,7 +21,7 @@ MACHINE[5]="dco-node142"
 MACHINE[6]="dco-node143"
 MACHINE[7]="dco-node144"
 
-INPUTS="rmat-24"
+INPUTS="rmat-28"
 ALGS="bfs"
 GEN_TYPE="undirected"
 
@@ -26,7 +29,7 @@ ITERATIONS="20"
 NUM_MACHINES="8"
 CORES="8"
 MEMORIES="2" #"25 50 100"
-ADDITIONALS="nohelp"
+ADDITIONALS="heuristic"
 
 BLOCKED_MEMORY=$((128 - 10))
 

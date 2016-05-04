@@ -29,8 +29,7 @@ blocked_memory=$BLOCKED_MEMORY
 # --do_updates_stripe and --batch size=$bsize (for stripping and batch I/O the updates)
 # --optimized_state_load_store (state load/store is done only once at the begening and at the end if work stealing is off and 1 partition per machine)
 
-
-additional_args="--request_batching --batch_size=10  --partitions $(($partitions * $partitions * $machines)) --super_partitions $(($partitions)) --fanout $(($partitions * $partitions * $machines)) --polling_client --polling_server --gather_io_drain --use_async_server --policy_heuristic_new --log_phases --measure_scatter_gather"
+additional_args="--not_cached_super_partition --request_batching --batch_size=$bsize --partitions $(($partitions * $partitions * $machines)) --super_partitions $(($partitions)) --fanout $(($partitions * $partitions * $machines)) --polling_client --polling_server --gather_io_drain --use_async_server --policy_heuristic_new --log_phases --measure_scatter_gather"
 
 
 if [ -z $additional ] || [ $additional == "heuristic" ]; then

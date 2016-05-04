@@ -84,7 +84,6 @@ namespace x_lib {
         // used to cache the super partition id while scatter phase in order to do not compute it at each map_offset call
         static long cached_super_partition;
         static bool init_phase;
-        static bool write_mode;
 
 
         /* Mapping */
@@ -235,21 +234,11 @@ namespace x_lib {
         }
 
         static bool should_recompute_super_partition(unsigned long key) {
-            return (write_mode || init_phase || not_cached_super_partitions || cached_super_partition == -1);
+            return (init_phase || not_cached_super_partitions || cached_super_partition == -1);
         }
 
         static void reset_init_phase() {
             init_phase = false;
-        }
-
-        static void enter_write_mode() {
-            write_mode = true;
-            cached_super_partition = -1;
-        }
-
-        static void exit_write_mode() {
-            write_mode = false;
-            cached_super_partition = -1;
         }
 
         static void reset_cache_super_partititon() {
@@ -751,11 +740,19 @@ namespace x_lib {
         }
 
         static unsigned long get_start_id(unsigned long superp) {
-            return configuration::old_partitioning_mode ? 1 : configuration::new_super_partition_offsets[superp] ;
+            if (configuration::old_partitioning_mode || configuration::not_cached_super_partitions) {
+                return 1;
+            }
+
+            return configuration::new_super_partition_offsets[superp] ;
         }
 
         static unsigned long get_number_of_vertices(unsigned long superp) {
-            return configuration::old_partitioning_mode ? 0 :configuration::vertices_per_new_super_partition[superp];
+            if (configuration::old_partitioning_mode || configuration::not_cached_super_partitions) {
+                return 0;
+            }
+
+            return configuration::vertices_per_new_super_partition[superp];
         }
     };
 
