@@ -51,6 +51,7 @@ namespace x_lib {
   bool configuration::not_cached_super_partitions = false;
   bool configuration::linear_search_super_partition = false;
   bool configuration::init_phase = true;
+  bool configuration::write_mode = false;
 
   x_barrier *x_thread::sync;
   volatile bool x_thread::terminate = false;
