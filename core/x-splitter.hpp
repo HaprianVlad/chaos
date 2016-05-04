@@ -119,9 +119,9 @@ namespace x_lib {
     unsigned char *buffers[2];
     unsigned long output_id;
 
-    unsigned long cached_super_partition = -1;
-    unsigned long first_id = -1;
-    unsigned long last_id = -1;
+    unsigned long cached_super_partition = 0;
+    unsigned long first_id = 2;
+    unsigned long last_id = 1;
 
     indices[0] = index_in;
     indices[1] = index_aux;
