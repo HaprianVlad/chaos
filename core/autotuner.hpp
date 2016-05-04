@@ -286,8 +286,9 @@ namespace x_lib {
 
         // problem. this function is also called for updates. For updates during scatter we don't need to cache the super_partition, but it seems that we don't use this function
         static unsigned long map_offset_new(unsigned long key) {
+            not_cached_super_partitions = false;
             unsigned long superp = map_new_super_partition(key);
-
+            not_cached_super_partitions = true;
             return balanced_partitions ? map_offset_new_balanced(key, superp) : map_offset_new_unbalanced(key, superp);
         }
 
