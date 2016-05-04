@@ -1,0 +1,7 @@
+1. Balancing in BFS:
+
+-> BFS1 has more I/O time than BFS2 because we need work stealling
+-> BFS3 has clear much more work to do durring scatter than BFS4 due to linear partition search and not use of caching.
+-> BFS4 should be computational balanced but not I/O balanced while BFS5 is I/O balanced but not computational balanced , thus the slightly consistent scatter barrier time.
+
+Overall, for the first 5 experiments we cleary see our load balance improved, but there is still work to do.
