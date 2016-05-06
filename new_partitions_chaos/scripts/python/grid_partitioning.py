@@ -7,13 +7,14 @@ def main(argv):
 
 	graph = sys.argv[1]
 	partition_file = sys.argv[2]
-	# read partitioning file	
+	graph_name = sys.argv[3]
+	out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "/"
 	partitions = get_partitions_offsets(partition_file)
 	
 	files = {}
 	for i in range(0, len(partitions)):
 		for j in range(0, len(partitions)):
-			outfile = "/media/ssd/grid/stream.2." + str(i) + "." + str(j)
+			outfile = out_path + "stream.2." + str(i) + "." + str(j)
 			files[outfile] = open(outfile,'ab')
 
 	with open(graph,'rb') as infile:	    
@@ -23,7 +24,7 @@ def main(argv):
 
 			[src_part, dst_part]= get_grid_partition(src, dst, partitions)
 
-			outfile = "/media/ssd/grid/stream.2." + str(src_part) + "." + str(dst_part)
+			outfile = out_path + "stream.2." + str(src_part) + "." + str(dst_part)
 			
 			new_src = struct.pack('I', src)[0]
 			new_dst = struct.pack('I', dst)[0]
@@ -33,7 +34,7 @@ def main(argv):
 
 	for i in range(0, len(partitions)):
 		for j in range(0, len(partitions)):
-			outfile = "/media/ssd/grid/stream.2." + str(i) + "." + str(j)
+			outfile = out_path + "stream.2." + str(i) + "." + str(j)
 			files[outfile].close()
 	
 
@@ -70,8 +71,8 @@ def get_partition(key, array, start, end):
 
 
 if __name__ == "__main__":
-	if len (sys.argv) != 3:
-		print "Usage: python grid_partitioning.py <graph file> <partition file>"
+	if len (sys.argv) != 4:
+		print "Usage: python grid_partitioning.py <graph file> <partition file> <graph name>"
 	else :
 		main(sys.argv[1:])
 
