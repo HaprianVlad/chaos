@@ -468,7 +468,7 @@ namespace x_lib {
             not_cached_super_partitions = vm.count("not_cached_super_partition") > 0;
             linear_search_super_partition = vm.count("linear_search_super_partition") > 0;
             grid_partitioning = vm.count("grid_partitioning") > 0;
-            
+
             tiles = 1;
 
             new_super_partitions = pt_partitions.get < unsigned

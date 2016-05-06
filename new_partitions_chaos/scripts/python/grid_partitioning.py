@@ -9,6 +9,12 @@ def main(argv):
 	partition_file = sys.argv[2]
 	# read partitioning file	
 	partitions = get_partitions_offsets(partition_file)
+	
+	files = {}
+	for i in range(0, len(partitions)):
+		for j in range(0, len(partitions)):
+			outfile = "stream.2." + str(i) + "." + str(j)
+			files[outfile] = open(outfile,'ab')
 
 	with open(graph,'rb') as infile:	    
 		for chunk in iter((lambda:infile.read(12)),''):
@@ -18,13 +24,17 @@ def main(argv):
 			[src_part, dst_part]= get_grid_partition(src, dst, partitions)
 
 			outfile = "stream.2." + str(src_part) + "." + str(dst_part)
-			with open(outfile,'wb') as output: 
-				new_src = struct.pack('I', src)[0]
-				new_dst = struct.pack('I', dst)[0]
-				output.write(new_src)
-				output.write(new_dst)
-				output.write(chunk[9:12])
-					
+			
+			new_src = struct.pack('I', src)[0]
+			new_dst = struct.pack('I', dst)[0]
+			files[outfile].write(new_src)
+			files[outfile].write(new_dst)
+			files[outfile].write(chunk[9:12])
+
+	for i in range(0, len(partitions)):
+		for j in range(0, len(partitions)):
+			outfile = "stream.2." + str(i) + "." + str(j)
+			files[outfile].close()
 	
 
 	print partitions
