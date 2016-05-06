@@ -21,9 +21,9 @@ def main(argv):
 			with open(outfile,'wb') as output: 
 				new_src = struct.pack('I', src)[0]
 				new_dst = struct.pack('I', dst)[0]
-				outfile.write(new_src)
-				outfile.write(new_dst)
-				outfile.write(chunk[9:12])
+				output.write(new_src)
+				output.write(new_dst)
+				output.write(chunk[9:12])
 					
 	
 
