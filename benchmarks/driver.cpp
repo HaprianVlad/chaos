@@ -139,6 +139,12 @@ int main(int argc, const char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "CORE::BATCH IO OFF";
   }
 
+  if (vm.count("grid_partitioning") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::GRID_PARTITIONING ON";
+  } else {
+    BOOST_LOG_TRIVIAL(info) << "CORE::GRID_PARTITIONING OFF";
+  }
+
   /* Read in key graph information */
   init_graph_desc(vm["graph"].as<std::string>());
   /* Read in slipstore information */
