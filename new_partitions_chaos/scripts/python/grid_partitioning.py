@@ -13,7 +13,7 @@ def main(argv):
 	files = {}
 	for i in range(0, len(partitions)):
 		for j in range(0, len(partitions)):
-			outfile = "stream.2." + str(i) + "." + str(j)
+			outfile = "/media/ssd/grid/stream.2." + str(i) + "." + str(j)
 			files[outfile] = open(outfile,'ab')
 
 	with open(graph,'rb') as infile:	    
@@ -23,7 +23,7 @@ def main(argv):
 
 			[src_part, dst_part]= get_grid_partition(src, dst, partitions)
 
-			outfile = "stream.2." + str(src_part) + "." + str(dst_part)
+			outfile = "/media/ssd/grid/stream.2." + str(src_part) + "." + str(dst_part)
 			
 			new_src = struct.pack('I', src)[0]
 			new_dst = struct.pack('I', dst)[0]
@@ -33,7 +33,7 @@ def main(argv):
 
 	for i in range(0, len(partitions)):
 		for j in range(0, len(partitions)):
-			outfile = "stream.2." + str(i) + "." + str(j)
+			outfile = "/media/ssd/grid/stream.2." + str(i) + "." + str(j)
 			files[outfile].close()
 	
 
