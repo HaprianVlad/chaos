@@ -34,3 +34,10 @@ On 8 machines
 On 1 machine
 ./launchReadDegree.sh out_degree_rmat24 256 65536
 
+
+
+GRID PARTITIONING
+
+RMAT 24 undirected
+
+./launchGridPartitioning.sh rmat24 rmat24_8_partitions_tradeoff res
