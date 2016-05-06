@@ -135,6 +135,7 @@ static void setup_options(int argc, const char *argv[]) {
       ("request_batching", "Batch requests to storage servers")
       ("do_edge_stripe", "activate edge stripping over machines")
       ("do_updates_stripe", "activate updates stripping over machines")
+      ("grid_partitioning", "use grid_partitioning")
       ("optimized_state_load_store", "state load/store once at start/end")
       ("gather_io_drain", "Use gather IO for drains")
       ("batch_size",

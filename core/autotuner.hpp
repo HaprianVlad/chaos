@@ -85,6 +85,10 @@ namespace x_lib {
         static long cached_super_partition;
         static bool init_phase;
 
+        /* GRID PARTITIONING */
+
+        static bool grid_partitioning;
+
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -463,6 +467,8 @@ namespace x_lib {
             optimized_state_load_store =  (vm.count("optimized_state_load_store") > 0);
             not_cached_super_partitions = vm.count("not_cached_super_partition") > 0;
             linear_search_super_partition = vm.count("linear_search_super_partition") > 0;
+            grid_partitioning = vm.count("grid_partitioning") > 0;
+            
             tiles = 1;
 
             new_super_partitions = pt_partitions.get < unsigned

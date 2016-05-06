@@ -20,9 +20,9 @@ def main(argv):
 			outfile = "stream.2." + str(src_part) + "." + str(dst_part)
 			with open(outfile,'wb') as output: 
 				new_src = struct.pack('I', src)[0]
-				new_tgt = struct.pack('I', tgt)[0]
+				new_dst = struct.pack('I', dst)[0]
 				outfile.write(new_src)
-				outfile.write(new_tgt)
+				outfile.write(new_dst)
 				outfile.write(chunk[9:12])
 					
 	
