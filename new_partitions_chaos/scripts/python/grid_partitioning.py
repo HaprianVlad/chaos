@@ -12,7 +12,7 @@ def main(argv):
 	
 	if row_partitioning == 1:
 		out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "_row/"
-	else 
+	else: 
 		out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "_column/"
 	partitions = get_partitions_offsets(partition_file)
 	
