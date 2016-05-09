@@ -207,7 +207,8 @@ namespace algorithm {
         }
 
         static unsigned long min_super_phases() {
-          return 2;
+          //return 2;
+            return 7;
         }
 
         static void postprocessing() { }
