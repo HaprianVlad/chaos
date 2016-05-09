@@ -9,18 +9,21 @@ def main(argv):
 
 	permutation = getRandomPermutation(scale)
 
+	outfile = open(out_graph,'ab')
+
 	with open(in_graph,'rb') as infile:
-		with open(out_graph,'wb') as outfile:	    
-			for chunk in iter((lambda:infile.read(12)),''):
-				src = struct.unpack('I', chunk[0:4])[0]
-       		        	tgt = struct.unpack('I', chunk[4:8])[0]
-			
-				new_src = struct.pack('I', permutation[src])[0]
-				new_tgt = struct.pack('I', permutation[tgt])[0]
-								
-				outfile.write(new_src)
-				outfile.write(new_tgt)
-				outfile.write( chunk[9:12])
+		for chunk in iter((lambda:infile.read(12)),''):
+			src = struct.unpack('I', chunk[0:4])[0]
+	        	tgt = struct.unpack('I', chunk[4:8])[0]
+		
+			new_src = struct.pack('I', permutation[src])[0]
+			new_tgt = struct.pack('I', permutation[tgt])[0]
+							
+			outfile.write(new_src)
+			outfile.write(new_tgt)
+			outfile.write(chunk[9:12])
+
+	outfile.close()
 
 			
 
