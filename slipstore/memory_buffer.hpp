@@ -269,7 +269,7 @@ namespace x_lib {
                 unsigned long partition,
                 unsigned long tile,
                 unsigned long align) {
-        
+
         unsigned char *bufhead = buffer;
         slipstore::slipstore_req_t req;
         bool batch_io_needed = do_updates_stripe && stream == 3;
