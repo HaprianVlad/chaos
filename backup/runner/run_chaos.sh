@@ -77,8 +77,8 @@ for alg in $ALGS; do
 for k in $KS; do
 
 e "Killing all processes..."
-clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/killall.sh $i"
-sleep 30
+#clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/killall.sh $i"
+#sleep 30
 
 e "Running $alg on $name with n=$i, ncpus=$j, mem=$m"
 clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/run.sh $ROOT_DIR $alg $name $i $j $m $k $additional"

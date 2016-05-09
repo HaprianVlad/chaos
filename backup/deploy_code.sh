@@ -2,6 +2,10 @@
 
 GROUP="dco-node[137-144]"
 
+cd chaos/
+git pull origin trials
+cd ..
+
 for device in ssd; do
 
 clush -w dco-node[137-144] "rm -rf /media/${device}/hpgp" 
