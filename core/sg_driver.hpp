@@ -429,6 +429,17 @@ namespace algorithm {
                 << " Bytes written "
                 << stat_bytes_written;
             }
+            if (sg_pcpu::bsp_phase == 8) {
+                sg_sync_stop sync_obj
+                        ((no_voter == graph_storage->get_config()->processors) || global_stop);
+                // Synchronize sync_stop across machines
+                slipstore::sync_barrier<sg_sync_stop>
+                        (slipstore::slipstore_client_barrier, &sync_obj);
+                if (sync_obj.get_state()) {
+                    break;
+                }
+            }
+            /*
             if (sg_pcpu::bsp_phase > A::min_super_phases()) {
                 for (no_voter = 0; no_voter < graph_storage->get_config()->processors; no_voter++) {
                     if (!pcpu_array[no_voter]->i_vote_to_stop) {
@@ -443,7 +454,7 @@ namespace algorithm {
                 if (sync_obj.get_state()) {
                     break;
                 }
-            }
+            }*/
         }
 
         // TODO: fix this
