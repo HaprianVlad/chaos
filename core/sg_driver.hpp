@@ -431,7 +431,7 @@ namespace algorithm {
             }
             if (sg_pcpu::bsp_phase == 8) {
                 sg_sync_stop sync_obj
-                        ((no_voter == graph_storage->get_config()->processors) || global_stop);
+                        (global_stop);
                 // Synchronize sync_stop across machines
                 slipstore::sync_barrier<sg_sync_stop>
                         (slipstore::slipstore_client_barrier, &sync_obj);
