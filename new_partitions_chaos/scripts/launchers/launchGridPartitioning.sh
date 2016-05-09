@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-(($# != 2)) && echo "No arguments supplied! Expect: <graph> <partition file> <row partitioning>" && exit 1
+(($# != 3)) && echo "No arguments supplied! Expect: <graph> <partition file> <row partitioning>" && exit 1
 
 if [ $3 -eq 1 ]; then
   name="row"
