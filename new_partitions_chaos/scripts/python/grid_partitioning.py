@@ -9,8 +9,11 @@ def main(argv):
 	partition_file = sys.argv[2]
 	graph_name = sys.argv[3]
 	row_partitioning = int(sys.argv[4])
-
-	out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "/"
+	
+	if row_partitioning == 1:
+		out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "_row/"
+	else 
+		out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "_column/"
 	partitions = get_partitions_offsets(partition_file)
 	
 	files = {}
