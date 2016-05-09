@@ -15,7 +15,7 @@ for experimentFolder in *; do
 		deployPartitionsCommand=experiments_to_run/"$experimentFolder"/deploy_partitions.sh	
 		
 		cp $helperFile ~/helpers/run.sh
-		bash ./clear.sh
+		#bash ./clear.sh
 		bash $deployPartitionsCommand
 	
 		cd ~

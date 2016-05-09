@@ -270,6 +270,10 @@ namespace x_lib {
                 unsigned long tile,
                 unsigned long align) {
 
+        if (vm.count("no_updates") > 0 && stream == 3) {
+          return;
+        }
+
         unsigned char *bufhead = buffer;
         slipstore::slipstore_req_t req;
         bool batch_io_needed = do_updates_stripe && stream == 3;
@@ -404,6 +408,9 @@ namespace x_lib {
                  unsigned long stream,
                  unsigned long align,
                  unsigned long total_processors) {
+        if (vm.count("no_updates") > 0 && stream == 3) {
+          return;
+        }
 
         bool batch_io_needed = do_updates_stripe && stream == 3;
         if (batch_io_needed || (do_batch_io && gather_io_drain)) {

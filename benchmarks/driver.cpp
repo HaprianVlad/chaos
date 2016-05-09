@@ -145,6 +145,14 @@ int main(int argc, const char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "CORE::GRID_PARTITIONING OFF";
   }
 
+  if (vm.count("no_gather") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::NO_GATHER_PHASE";
+  }
+
+  if (vm.count("no_updates") > 0) {
+    BOOST_LOG_TRIVIAL(info) << "CORE::UPDATES_ARE_NOT_WRITTEN";
+  }
+
   /* Read in key graph information */
   init_graph_desc(vm["graph"].as<std::string>());
   /* Read in slipstore information */

@@ -356,17 +356,21 @@ namespace algorithm {
                     }
                 }
 
-                sg_pcpu::current_step = phase_gather;
-                if (measure_scatter_gather) {
-                    gather_cost.start();
-                }
+                if (vm.count("no_gather") == 0) {
+                    sg_pcpu::current_step = phase_gather;
+                    
+                    if (measure_scatter_gather) {
+                        gather_cost.start();
+                    }
 
-                x_lib::do_stream_skip<scatter_gather<A, F>,
-                        update_type_wrapper<A>,
-                        update_type_wrapper<A> >
-                        (graph_storage, updates_stream, ULONG_MAX, NULL, true, true);
-                if (measure_scatter_gather) {
-                    gather_cost.stop();
+                    x_lib::do_stream_skip<scatter_gather<A, F>,
+                            update_type_wrapper<A>,
+                            update_type_wrapper<A> >
+                            (graph_storage, updates_stream, ULONG_MAX, NULL, true, true);
+                    if (measure_scatter_gather) {
+                        gather_cost.stop();
+                    }
+
                 }
 
                 if (A::need_data_barrier()) {
