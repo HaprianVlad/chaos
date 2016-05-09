@@ -8,6 +8,8 @@ def main(argv):
 	graph = sys.argv[1]
 	partition_file = sys.argv[2]
 	graph_name = sys.argv[3]
+	row_partitioning = int(sys.argv[4])
+
 	out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "/"
 	partitions = get_partitions_offsets(partition_file)
 	
@@ -28,8 +30,13 @@ def main(argv):
 			
 			new_src = struct.pack('I', src)[0]
 			new_dst = struct.pack('I', dst)[0]
-			files[outfile].write(new_src)
-			files[outfile].write(new_dst)
+			if row_partitioning == 0:			
+				files[outfile].write(new_src)
+				files[outfile].write(new_dst)
+			else:
+				files[outfile].write(new_dst)
+				files[outfile].write(new_src)
+
 			files[outfile].write(chunk[9:12])
 
 	for i in range(0, len(partitions)):
@@ -71,8 +78,8 @@ def get_partition(key, array, start, end):
 
 
 if __name__ == "__main__":
-	if len (sys.argv) != 4:
-		print "Usage: python grid_partitioning.py <graph file> <partition file> <graph name>"
+	if len (sys.argv) != 5:
+		print "Usage: python grid_partitioning.py <graph file> <partition file> <graph name> <row partitioning>"
 	else :
 		main(sys.argv[1:])
 

@@ -468,10 +468,19 @@ namespace x_lib {
                       exit(-1);
                     }
                   } else {
-                    //edges need to be written on the machine who has the partition
-                    if (!client->access_store(&req, bufhead, req.partition)) {
-                      BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore remote local";
-                      exit(-1);
+                    if (vm.count("grid_partitioning") > 0) {
+                      // partitions within one row/column in the grid are local to the machine
+                      if (!client->access_store(&req, bufhead, client->get_me())) {
+                        BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore. grid partitioning";
+                        exit(-1);
+                      }
+
+                    } else {
+                      //edges need to be written on the machine who has the partition
+                      if (!client->access_store(&req, bufhead, req.partition)) {
+                        BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore remote local";
+                        exit(-1);
+                      }
                     }
 
                   }

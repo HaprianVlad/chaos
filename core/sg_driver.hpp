@@ -339,7 +339,6 @@ namespace algorithm {
         // Apply scatter-gather phase until done
         bool global_stop;
         while (true) {
-
             // START GATHER
             //#CACHE_SUPER_PARTITION_LOGIC
             graph_storage->get_config()->reset_cache_super_partititon();
