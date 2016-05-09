@@ -10,7 +10,7 @@ else
 fi 
 rm -rf /media/ssd/grid/grid_partitions_$1_$name
 mkdir /media/ssd/grid/grid_partitions_$1_$name
-pypy ../python/grid_partitioning.py ~/chaos_sandbox/graph/$1 $2 $1 $3
+pypy ../python/grid_partitioning.py /media/ssd/generated_graphs/$1 $2 $1 $3
 
 
 

@@ -10,7 +10,7 @@ else
 	name=rmat$1_directed	
 	/media/ssd/hpgp/branches/slipstream/generators/rmat --scale $(($scale)) --edges $edges --xscale_interval 1 --xscale_node 0 --name $name
 fi
-mv $name ~/chaos_sandbox/graph/
+mv $name /media/ssd/generated_graphs/
 rm -f *.ini
 
 
