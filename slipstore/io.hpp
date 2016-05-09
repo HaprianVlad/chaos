@@ -106,11 +106,10 @@ namespace slipstore {
         FOR_EACH_TILE
               // Exactly one input stream
               if (i == (index) STREAM_INPUT && j == 0 && k == (index) (me % tiles)) {
-                if (vm.count("grid_partitioning") > 0) {
-                    std::string efile = "stream.2.grid";
-                } else {
-                    std::string efile = pt.get<std::string>("graph.name");
-                }
+                std::string efile = pt.get<std::string>("graph.name");
+                 if (vm.count("grid_partitioning") > 0) {
+                      std::string efile = "stream.2.grid";
+                 }
                 if (vm.count("use_direct_io") > 0) {
                   buffers[i][j][k] =
                       new async_direct_io(STREAM_INPUT,
