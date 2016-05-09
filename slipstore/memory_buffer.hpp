@@ -269,11 +269,7 @@ namespace x_lib {
                 unsigned long partition,
                 unsigned long tile,
                 unsigned long align) {
-
-        if (vm.count("no_updates") > 0 && stream == 3) {
-          return;
-        }
-
+        
         unsigned char *bufhead = buffer;
         slipstore::slipstore_req_t req;
         bool batch_io_needed = do_updates_stripe && stream == 3;
