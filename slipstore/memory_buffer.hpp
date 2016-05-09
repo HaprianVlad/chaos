@@ -404,9 +404,6 @@ namespace x_lib {
                  unsigned long stream,
                  unsigned long align,
                  unsigned long total_processors) {
-        if (vm.count("no_updates") > 0 && stream == 3) {
-          return;
-        }
 
         bool batch_io_needed = do_updates_stripe && stream == 3;
         if (batch_io_needed || (do_batch_io && gather_io_drain)) {

@@ -856,10 +856,10 @@ namespace x_lib {
         //        11 - state_store
         void inter_machine_barrier(unsigned long goal) {
             null_barrier_work null_obj;
-
+            /*
             if (goal == 10 || goal == 11) {
                 return;
-            }
+            }*/
             startBarrierTime(goal);
             slipstore::slipstore_client_barrier->in_progress = true;
             slipstore::ioService.post
@@ -1619,9 +1619,6 @@ namespace x_lib {
                                filter *override_input_filter,
                                bool sync,
                                bool reset) {
-        if (sync && (vm.count("no_gather") == 0)) {
-            return true;
-        }
         const bool log_phases = vm.count("log_phases") > 0;
 
         const unsigned long me = slipstore::slipstore_client_fill->get_me();
