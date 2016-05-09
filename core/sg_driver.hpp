@@ -356,39 +356,39 @@ namespace algorithm {
                     }
                 }
 
-                if (vm.count("no_gather") == 0) {
-                    sg_pcpu::current_step = phase_gather;
 
-                    if (measure_scatter_gather) {
-                        gather_cost.start();
-                    }
+                sg_pcpu::current_step = phase_gather;
 
-                    x_lib::do_stream_skip<scatter_gather<A, F>,
-                            update_type_wrapper<A>,
-                            update_type_wrapper<A> >
-                            (graph_storage, updates_stream, ULONG_MAX, NULL, true, true);
-                    if (measure_scatter_gather) {
-                        gather_cost.stop();
-                    }
+                if (measure_scatter_gather) {
+                    gather_cost.start();
+                }
+
+                x_lib::do_stream_skip<scatter_gather<A, F>,
+                        update_type_wrapper<A>,
+                        update_type_wrapper<A> >
+                        (graph_storage, updates_stream, ULONG_MAX, NULL, true, true);
+                if (measure_scatter_gather) {
+                    gather_cost.stop();
+                }
 
 
 
-                    if (A::need_data_barrier()) {
-                        typename A::db_sync *alg_sync_object = A::get_db_sync();
-                        alg_sync_object->prep_db_data(sg_pcpu::algo_pcpu_array,
+                if (A::need_data_barrier()) {
+                    typename A::db_sync *alg_sync_object = A::get_db_sync();
+                    alg_sync_object->prep_db_data(sg_pcpu::algo_pcpu_array,
+                                                  slipstore::slipstore_client_barrier->get_me(),
+                                                  graph_storage->get_config()->processors);
+                    slipstore::sync_barrier<typename A::db_sync>(slipstore::slipstore_client_barrier,
+                                                                 alg_sync_object);
+                    alg_sync_object->finalize_db_data(sg_pcpu::algo_pcpu_array,
                                                       slipstore::slipstore_client_barrier->get_me(),
                                                       graph_storage->get_config()->processors);
-                        slipstore::sync_barrier<typename A::db_sync>(slipstore::slipstore_client_barrier,
-                                                                     alg_sync_object);
-                        alg_sync_object->finalize_db_data(sg_pcpu::algo_pcpu_array,
-                                                          slipstore::slipstore_client_barrier->get_me(),
-                                                          graph_storage->get_config()->processors);
-                        delete alg_sync_object;
-                    }
-                    // Take a checkpoint here before proceeding to the next iteration
-                    // This ensures the checkpoints are smaller as update stream is empty
-                    x_lib::take_checkpoint<scatter_gather<A, F> >(graph_storage, this);
+                    delete alg_sync_object;
                 }
+                // Take a checkpoint here before proceeding to the next iteration
+                // This ensures the checkpoints are smaller as update stream is empty
+                x_lib::take_checkpoint<scatter_gather<A, F> >(graph_storage, this);
+
             }
             if (restored) {
                 restored = false;
