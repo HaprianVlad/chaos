@@ -108,7 +108,7 @@ namespace slipstore {
               if (i == (index) STREAM_INPUT && j == 0 && k == (index) (me % tiles)) {
                 std::string efile = pt.get<std::string>("graph.name");
                  if (vm.count("grid_partitioning") > 0) {
-                      std::string efile = "stream.2.grid";
+                      efile = "stream.2.grid";
                  }
                 if (vm.count("use_direct_io") > 0) {
                   buffers[i][j][k] =
