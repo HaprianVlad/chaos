@@ -88,6 +88,7 @@ namespace x_lib {
         /* GRID PARTITIONING */
 
         static bool grid_partitioning;
+        static unsigned long machine_id;
 
 
         /* Mapping */
@@ -468,6 +469,8 @@ namespace x_lib {
             not_cached_super_partitions = vm.count("not_cached_super_partition") > 0;
             linear_search_super_partition = vm.count("linear_search_super_partition") > 0;
             grid_partitioning = vm.count("grid_partitioning") > 0;
+            machine_id = pt_slipstore.get < unsigned
+            long > ("machines.me");
 
             tiles = 1;
 
@@ -492,6 +495,10 @@ namespace x_lib {
             total_partitions = super_partitions * super_partitions * machines;
             cached_partitions = total_partitions / super_partitions;
             fanout = cached_partitions;
+
+            if (grid_partitioning) {
+                super_partitions = super_partitions * super_partitions;
+            }
 
             partitions_per_super_partition = cached_partitions;
 
@@ -629,16 +636,28 @@ namespace x_lib {
             } else {
                 superp = cached_super_partition;
             }
+
+            return superp;
+        }
+
+        static unsigned long get_correct_superp(unsigned long superp) {
+            if (grid_partitioning) {
+                return machine_id * new_super_partitions + superp;
+            }
             return superp;
         }
 
         // returns the new partitions on which the key (vertex_id) will be based on the partition offset file
         static unsigned  long compute_new_super_partition(unsigned long key) {
+            unsigned long superp;
             if (linear_search_super_partition) {
-                return linear_search_new_super_partition(key);
+                superp = linear_search_new_super_partition(key);
+            } else {
+                superp = binary_interval_search(new_super_partition_offsets, key, 0, new_super_partitions-1);
             }
 
-            return binary_interval_search(new_super_partition_offsets, key, 0, new_super_partitions-1);
+            return get_correct_superp(superp);
+
         }
 
         static unsigned long linear_search_new_super_partition(unsigned long key) {

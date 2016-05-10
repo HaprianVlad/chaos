@@ -470,7 +470,7 @@ namespace x_lib {
                   } else {
                     if (vm.count("grid_partitioning") > 0) {
                       // partitions within one row/column in the grid are local to the machine
-                      if (!client->access_store(&req, bufhead, client->get_me())) {
+                      if (!client->access_store(&req, bufhead, req.partition / config->machines)) {
                         BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore. grid partitioning";
                         exit(-1);
                       }
@@ -481,8 +481,8 @@ namespace x_lib {
                         BOOST_LOG_TRIVIAL(fatal) << "Unable to write to slipstore remote local";
                         exit(-1);
                       }
-                    }
 
+                    }
                   }
 
                   drain_bytes -= req.size;
