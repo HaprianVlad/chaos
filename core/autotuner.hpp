@@ -215,6 +215,8 @@ namespace x_lib {
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::FANOUT " << fanout;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::SUPER_PARTITIONS " <<
             super_partitions;
+            BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::MACHINE_ID " <<
+            machine_id;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::TILES " <<
             tiles;
             BOOST_LOG_TRIVIAL(info) << "CORE::CONFIG::BUFFER_SIZE " <<
@@ -642,7 +644,7 @@ namespace x_lib {
 
         static unsigned long get_correct_superp(unsigned long superp) {
             if (grid_partitioning) {
-                return machine_id * new_super_partitions + superp;
+                return machine_id + new_super_partitions * superp;
             }
             return superp;
         }

@@ -106,9 +106,11 @@ namespace slipstore {
         FOR_EACH_TILE
               // Exactly one input stream
               if (i == (index) STREAM_INPUT && j == 0 && k == (index) (me % tiles)) {
-                std::string efile = pt.get<std::string>("graph.name");
+                std::string efile;
                  if (vm.count("grid_partitioning") > 0) {
                       efile = "stream.2.grid";
+                 } else {
+                     efile = pt.get<std::string>("graph.name");
                  }
                 if (vm.count("use_direct_io") > 0) {
                   buffers[i][j][k] =
