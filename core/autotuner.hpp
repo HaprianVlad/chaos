@@ -258,7 +258,7 @@ namespace x_lib {
             if (!optimized_state_load_store) {
                 return false;
             }
-            return !(work_stealing  || super_partitions != machines);
+            return !(work_stealing  || new_super_partitions != machines);
         }
 
         static bool should_load_state() {
@@ -266,7 +266,7 @@ namespace x_lib {
                 return true;
             }
 
-            bool result = work_stealing || first_phase  || super_partitions != machines;
+            bool result = work_stealing || first_phase  || new_super_partitions != machines;
             first_phase = false;
             return result;
         }
@@ -276,7 +276,7 @@ namespace x_lib {
                 return true;
             }
 
-            return work_stealing  || super_partitions != machines;
+            return work_stealing  || new_super_partitions != machines;
         }
 
         // returns the vertex offset within a partition (its index in the partition)
