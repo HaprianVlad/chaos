@@ -60,7 +60,7 @@ if [[ "$input" == rmat* ]]; then
 scale=$(echo "$input" | sed -E "s/[^0-9]+([0-9]+)/\1/")
 name=rmat-${scale}_s${i}
 e "Generating graph $name..."
-#clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/gen.sh $ROOT_DIR $name $scale $i $GEN_TYPE"
+clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/gen.sh $ROOT_DIR $name $scale $i $GEN_TYPE"
 elif [[ "$input" == fixed* ]]; then
 name=$input
 else

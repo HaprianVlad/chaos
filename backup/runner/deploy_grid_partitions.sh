@@ -21,7 +21,7 @@ index=$(($i-137))
 		rm -f /media/ssd/grid/grid_partitions_$1_row/s.2.$index.0 
 
 	fi
-	scp /media/ssd/grid/*.ini dco-node$i.dco.ethz.ch:/media/ssd/;
+	#scp /media/ssd/grid/*.ini dco-node$i.dco.ethz.ch:/media/ssd/;
 done
 
 
