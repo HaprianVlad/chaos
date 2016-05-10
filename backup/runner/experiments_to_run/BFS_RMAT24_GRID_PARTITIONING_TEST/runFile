@@ -102,7 +102,7 @@ iotop -bkPqqq -d 1 | grep "% benchmark_driver" | grep -v grep > ${results_dir}/i
 bwm-ng -t 100 -o csv -F ${results_dir}/net/$filename &
 top -b -d 1 | ${ROOT_DIR}/helpers/predate.sh | grep --line-buffered "benchmark_driver" | grep --line-buffered -v grep > ${results_dir}/cpu/$filename &
 
-numactl --interleave=all $ROOT_DIR/hpgp/branches/slipstream/bin/benchmark_driver --physical_memory $(($memory * 1024 * 1024 * 1024)) --blocked_memory $(($blocked_memory * 1024 * 1024 * 1024)) --heartbeat -b $algorithm -g $name --partitions_offsets_file $name.part -p $cores $additional_args 2>&1 | $ROOT_DIR/helpers/predate.sh | tee ${results_dir}/logs/$filename
+numactl --interleave=all $ROOT_DIR/hpgp/branches/slipstream/bin/benchmark_driver --physical_memory $(($memory * 1024 * 1024 * 1024)) --blocked_memory $(($blocked_memory * 1024 * 1024 * 1024)) --heartbeat -b $algorithm -g "stream.2.grid" --partitions_offsets_file $name.part -p $cores $additional_args 2>&1 | $ROOT_DIR/helpers/predate.sh | tee ${results_dir}/logs/$filename
 
 killall iotop
 killall bwm-ng
