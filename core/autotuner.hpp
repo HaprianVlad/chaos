@@ -496,16 +496,14 @@ namespace x_lib {
             super_partitions = new_super_partitions;
             total_partitions = super_partitions * super_partitions * machines;
             cached_partitions = total_partitions / super_partitions;
-            fanout = cached_partitions;
             partitions_per_super_partition = cached_partitions;
 
             if (grid_partitioning) {
                 super_partitions = super_partitions * super_partitions;
                 cached_partitions = super_partitions * machines;
+
             }
-
-
-
+            fanout = cached_partitions;
             BOOST_ASSERT_MSG(partitions_per_super_partition > 0, "Partitions per super partition is 0");
 
             vertices_per_new_partition = new unsigned long [total_partitions];
