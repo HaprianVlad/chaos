@@ -501,6 +501,7 @@ namespace x_lib {
             if (grid_partitioning) {
                 super_partitions = super_partitions * super_partitions;
                 cached_partitions = super_partitions * machines;
+                not_cached_super_partitions = true;
 
             }
             fanout = cached_partitions;
