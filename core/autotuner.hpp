@@ -755,10 +755,10 @@ namespace x_lib {
         }
 
         static unsigned long map_internal_new(unsigned long key) {
-            unsigned long superp = configuration::cached_super_partition;
-            if (configuration::additional_computation_needed()) {
-                superp = configuration::compute_new_super_partition(key);
-            }
+           // unsigned long superp = configuration::cached_super_partition;
+            //if (configuration::additional_computation_needed()) {
+            unsigned long  superp = configuration::compute_new_super_partition(key);
+            //}
             unsigned long partition = configuration::map_new_partition(key, superp);
 
             return partition;
