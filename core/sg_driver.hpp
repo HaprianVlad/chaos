@@ -111,6 +111,7 @@ namespace algorithm {
         unsigned long updates_stream;
         unsigned long init_stream;
         rtc_clock wall_clock;
+        rtc_clock init_clock;
         rtc_clock setup_time;
         rtc_clock state_iter_cost;
         rtc_clock scatter_cost;
@@ -313,7 +314,7 @@ namespace algorithm {
         // check if we need to restore from a check point
         bool restored = x_lib::load_checkpoint<scatter_gather<A, F> >
                 (graph_storage, this);
-
+        init_clock.start();
         if (!restored) {
             BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Start edge split ";
 
@@ -331,6 +332,7 @@ namespace algorithm {
                 graph_storage->reset_stream(init_stream, 0);
             }
         }
+        init_clock.stop();
 
         BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Completed init ";
         //#CACHE_SUPER_PARTITION_LOGIC
@@ -461,6 +463,7 @@ namespace algorithm {
         wall_clock.stop();
         BOOST_LOG_TRIVIAL(info) << "CORE::PHASES " << sg_pcpu::bsp_phase;
         setup_time.print("CORE::TIME::SETUP");
+        init_clock.print("CORE::TIME::INIT_PARTITIONS_TIME")
         if (measure_scatter_gather) {
             state_iter_cost.print("CORE::TIME::STATE_ITER");
             gather_cost.print("CORE::TIME::GATHER");
