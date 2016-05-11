@@ -113,10 +113,7 @@ namespace x_lib {
                unsigned long input_bytes,
                unsigned long fanout,
                unsigned long final_split_cnt,
-               filter *workq,
-               bool init_phase,
-               bool grid_partitioning,
-               unsigned long superp) {
+               filter *workq) {
     unsigned long *indices[2];
     unsigned long input, num_in = 1, num_out;
     unsigned char *buffers[2];
@@ -197,11 +194,9 @@ namespace x_lib {
           //# CACHE_SUPER_PARTITION_LOGIC
           unsigned long v_id_to_map = T::key(input_stream + j);
           unsigned long key;
-          if (grid_partitioning) {
-              key = superp;
-              if (init_phase || superp == configuration::undefined_super_partition) {
-                  key = M::map(v_id_to_map);
-              }
+          if (configuration::grid_partitioning) {
+             key = M::map(v_id_to_map);
+
           }  else {
               if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
                   key = cached_super_partition;
@@ -249,11 +244,10 @@ namespace x_lib {
               //# CACHE_SUPER_PARTITION_LOGIC
               unsigned long v_id_to_map = T::key(input_stream + j);
               unsigned long output_id;
-              if (grid_partitioning) {
-                  output_id = superp;
-                  if (init_phase || superp == configuration::undefined_super_partition) {
-                      output_id = M::map(v_id_to_map);
-                  }
+              if (configuration::grid_partitioning) {
+
+                 output_id = M::map(v_id_to_map);
+
 
               }  else {
 
@@ -269,7 +263,7 @@ namespace x_lib {
 
               output_id = output_id >> shift;
             output_id = output_id & (num_out - 1);
-            if (init_phase && grid_partitioning) {
+            if (configuration::init_phase && configuration::grid_partitioning) {
               unsigned long size;
               if (split_size_bytes % 3 == 0) {
                 size = split_size_bytes / 3;

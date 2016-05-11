@@ -261,10 +261,7 @@ namespace x_lib {
           make_index(memory_buffer *stream,
                      unsigned long processor_id,
                      unsigned long partitions,
-                     x_barrier *thread_sync,
-                     bool init_phase,
-                     bool grid_partitioning,
-                     unsigned long superp);
+                     x_barrier *thread_sync);
 
       // Slipstore functionality
       void fill(slipstore::client_fill *client,
@@ -585,10 +582,7 @@ namespace x_lib {
   static void make_index(memory_buffer *stream,
                          unsigned long processor_id,
                          unsigned long partitions,
-                         x_barrier *thread_sync,
-                         bool init_phase,
-                         bool  grid_partitioning,
-                         unsigned long superp) {
+                         x_barrier *thread_sync) {
     if (stream->indexed) {
       thread_sync->wait();
       return;
@@ -615,10 +609,7 @@ namespace x_lib {
                               stream->per_cpu_sizes[processor_id],
                               stream->config->fanout,
                               partitions,
-                              stream->work_queues,
-                              init_phase,
-                              grid_partitioning,
-                              superp);
+                              stream->work_queues);
     }
     else {
 

@@ -299,9 +299,9 @@ namespace x_lib {
             unsigned long superp;
             if (!init_phase && grid_partitioning && cached_super_partition != -1) {
                 superp = cached_super_partition;
-            } //else {
+            } else {
                 superp = map_new_super_partition(key);
-         //   }
+            }
 
             if (grid_partitioning) {
                 superp = superp / new_super_partitions;
@@ -737,6 +737,13 @@ namespace x_lib {
             return superp * partitions_per_super_partition + p;
         }
 
+        static bool additional_computation_needed() {
+            if (grid_partitioning && !init_phase) {
+                BOOST_ASSERT_MSG(cached_super_partition != -1, "Super_partition lost");
+            }
+            return !grid_partitioning || init_phase || cached_super_partition == -1;
+        }
+
 
     };
 
@@ -748,7 +755,10 @@ namespace x_lib {
         }
 
         static unsigned long map_internal_new(unsigned long key) {
-            unsigned long superp = configuration::compute_new_super_partition(key);
+            unsigned long superp = configuration::cached_super_partition;
+            if (configuration::additional_computation_needed()) {
+                superp = configuration::compute_new_super_partition(key);
+            }
             unsigned long partition = configuration::map_new_partition(key, superp);
 
             return partition;
@@ -780,7 +790,10 @@ namespace x_lib {
 
 
         static unsigned long map_internal_new(unsigned long key) {
-            unsigned long superp = configuration::compute_new_super_partition(key);
+            unsigned long superp = configuration::cached_super_partition;
+            if (configuration::additional_computation_needed()) {
+                superp = configuration::compute_new_super_partition(key);
+            }
 
             return superp;
         }
