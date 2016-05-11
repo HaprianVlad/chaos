@@ -732,9 +732,6 @@ namespace x_lib {
             return superp * partitions_per_super_partition + p;
         }
 
-        static bool additional_computation_needed(unsigned long current_superp){
-            return !grid_partitioning || init_phase || current_superp == undefined_super_partition;
-        }
 
     };
 
@@ -745,20 +742,16 @@ namespace x_lib {
             return configuration::map_cached_partition(key);
         }
 
-        static unsigned long map_internal_new(unsigned long key, unsigned long curent_superp) {
-            unsigned long superp = curent_superp;
-            if (configuration::additional_computation_needed(curent_superp)) {
-               superp = configuration::compute_new_super_partition(key);
-            }
-
+        static unsigned long map_internal_new(unsigned long key) {
+            unsigned long superp = configuration::compute_new_super_partition(key);
             unsigned long partition = configuration::map_new_partition(key, superp);
 
             return partition;
         }
 
         // should return the partition within a super_partition where the vertex key is
-        static unsigned long map(unsigned long key, unsigned long curent_superp) {
-            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key, curent_superp) ;
+        static unsigned long map(unsigned long key) {
+            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
 
         static unsigned long get_start_id(unsigned long superp) {
@@ -781,17 +774,15 @@ namespace x_lib {
         }
 
 
-        static unsigned long map_internal_new(unsigned long key, unsigned long curent_superp) {
-            unsigned long superp = curent_superp;
-            if (configuration::additional_computation_needed(curent_superp)) {
-                superp = configuration::compute_new_super_partition(key);
-            }
+        static unsigned long map_internal_new(unsigned long key) {
+            unsigned long superp = configuration::compute_new_super_partition(key);
+
             return superp;
         }
 
         // should return the super_partition where the vertex key is
-        static unsigned long map(unsigned long key, unsigned long curent_superp) {
-            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key, curent_superp) ;
+        static unsigned long map(unsigned long key) {
+            return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
 
         static unsigned long get_start_id(unsigned long superp) {
