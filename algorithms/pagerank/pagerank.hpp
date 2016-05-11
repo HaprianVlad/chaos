@@ -186,7 +186,7 @@ namespace algorithm {
             return false;
           }
 
-          else {
+         /* else {
             struct update *u = (struct update *) update_stream;
             u->target = dst;
             if (bsp_phase == 1) {
@@ -196,7 +196,8 @@ namespace algorithm {
               u->rank = v->rank / v->degree;
             }
             return true;
-          }
+          } */
+            return false;
         }
 
         static per_processor_data *create_per_processor_data
@@ -206,8 +207,8 @@ namespace algorithm {
         }
 
         static unsigned long min_super_phases() {
-          return 2;
-
+          //return 2;
+            return 7;
         }
 
         static void postprocessing() { }
