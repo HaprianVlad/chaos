@@ -295,6 +295,10 @@ namespace x_lib {
         static unsigned long map_offset_new(unsigned long key) {
             unsigned long superp = map_new_super_partition(key);
 
+            if (grid_partitioning) {
+                superp = superp / new_super_partitions;
+            }
+
             return balanced_partitions ? map_offset_new_balanced(key, superp) : map_offset_new_unbalanced(key, superp);
         }
 
@@ -693,7 +697,11 @@ namespace x_lib {
 
         // returns the partition within a super partition in which we map a vertex
         static unsigned long map_new_partition(unsigned long v_id, unsigned long superp) {
-            return balanced_partitions ? map_new_partition_balanced(v_id, superp) : map_new_partition_unbalanced(v_id, superp);
+            unsigned long sp = superp;
+            if (grid_partitioning) {
+                sp = superp / new_super_partitions;
+            }
+            return balanced_partitions ? map_new_partition_balanced(v_id, sp) : map_new_partition_unbalanced(v_id, sp);
         }
 
         static unsigned long map_new_partition_unbalanced(unsigned long v_id, unsigned long superp) {
