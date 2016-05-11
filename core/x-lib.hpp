@@ -150,7 +150,7 @@ namespace x_lib {
 
                 make_index<OUT, map_spshift_wrap>(stream_out, processor_id,
                                                       config->super_partitions * config->tiles,
-                                                      sync, false,  config->grid_partitioning);
+                                                      sync, false,  config->grid_partitioning, superp,true);
 
 
                 if (processor_id == 0) {
@@ -261,7 +261,7 @@ namespace x_lib {
 
                 make_index<IN, map_spshift_wrap>(ingest, processor_id,
                                                  config->super_partitions,
-                                                 sync, false, config->grid_partitioning);
+                                                 sync, false, config->grid_partitioning, superp, false);
 
 
                 unsigned long ingest_bytes;
@@ -291,7 +291,7 @@ namespace x_lib {
             if (stream_in != NULL) {
 
                 make_index<IN, map_cached_partition_wrap>
-                        (stream_in, processor_id, config->cached_partitions, sync, true,  config->grid_partitioning);
+                        (stream_in, processor_id, config->cached_partitions, sync, true,  config->grid_partitioning, superp, false);
 
 
             }
@@ -346,10 +346,11 @@ namespace x_lib {
                         unsigned char *outbuf) {
             sync->wait();
 
+            // TODO: think about it
             make_index<OBJ, map_spshift_wrap>(stream_out,
                                               processor_id,
                                               config->super_partitions * config->tiles,
-                                              sync, false,  config->grid_partitioning);
+                                              sync, false,  config->grid_partitioning, config->undefined_super_partition ,false);
 
 
             if (processor_id == 0) {

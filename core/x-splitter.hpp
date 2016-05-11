@@ -115,7 +115,9 @@ namespace x_lib {
                unsigned long final_split_cnt,
                filter *workq,
                bool init_phase,
-               bool grid_partitioning) {
+               bool grid_partitioning,
+               unsigned long superp,
+               bool write) {
     unsigned long *indices[2];
     unsigned long input, num_in = 1, num_out;
     unsigned char *buffers[2];
@@ -196,15 +198,19 @@ namespace x_lib {
           //# CACHE_SUPER_PARTITION_LOGIC
           unsigned long v_id_to_map = T::key(input_stream + j);
           unsigned long key;
-
-          if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
-            key = cached_super_partition;
-          } else {
-            key = M::map(v_id_to_map);
-            cached_super_partition = key;
-            first_id = M::get_start_id(cached_super_partition);
-            last_id = first_id + M::get_number_of_vertices(cached_super_partition) - 1;
+          if (grid_partitioning) {
+              key = M::map(v_id_to_map, superp, write);
+          }  else {
+              if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
+                  key = cached_super_partition;
+              } else {
+                  key = M::map(v_id_to_map, superp, write);
+                  cached_super_partition = key;
+                  first_id = M::get_start_id(cached_super_partition);
+                  last_id = first_id + M::get_number_of_vertices(cached_super_partition) - 1;
+              }
           }
+
 
           sorted = sorted && (key >= old_key);
           old_key = key;
@@ -241,16 +247,20 @@ namespace x_lib {
               //# CACHE_SUPER_PARTITION_LOGIC
               unsigned long v_id_to_map = T::key(input_stream + j);
               unsigned long output_id;
+              if (grid_partitioning) {
+                  output_id = M::map(v_id_to_map, superp, write);
+              }  else {
 
-              if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
-                  output_id = cached_super_partition;
-              } else {
-                  output_id = M::map(v_id_to_map);
-                  cached_super_partition = output_id;
-                  first_id = M::get_start_id(cached_super_partition);
-                  last_id = first_id + M::get_number_of_vertices(cached_super_partition) - 1;
+                  if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
+                      output_id = cached_super_partition;
+                  } else {
+                      output_id = M::map(v_id_to_map, superp, write);
+                      cached_super_partition = output_id;
+                      first_id = M::get_start_id(cached_super_partition);
+                      last_id = first_id + M::get_number_of_vertices(cached_super_partition) - 1;
+                  }
               }
-
+              
               output_id = output_id >> shift;
             output_id = output_id & (num_out - 1);
             if (init_phase && grid_partitioning) {
@@ -297,8 +307,10 @@ namespace x_lib {
 
   template<typename T, typename M>
   int qsort_compare(const void *left, const void *right) {
-    unsigned long key_left = M::map(T::key((unsigned char *) left));
-    unsigned long key_right = M::map(T::key((unsigned char *) right));
+      // TODO: this code will not work
+      BOOST_ASSERT_MSG(false, "BUG: this code should not be used");
+    unsigned long key_left = M::map(T::key((unsigned char *) left), 0, false);
+    unsigned long key_right = M::map(T::key((unsigned char *) right), 0, false);
     key_left = key_left & (qsort_keys - 1);
     key_right = key_right & (qsort_keys - 1);
     if (key_left < key_right) {
@@ -333,7 +345,9 @@ namespace x_lib {
     unsigned long output_base = index[0];
     index[0] = 0;
     for (unsigned long i = 0; i < input_bytes; i += split_size_bytes) {
-      unsigned long output_id = M::map(T::key(input_stream + i));
+        // TODO: this code will not work
+        BOOST_ASSERT_MSG(false, "BUG: this code should not be used");
+      unsigned long output_id = M::map(T::key(input_stream + i), 0, false);
       output_id = output_id & (qsort_keys - 1);
       index[output_id] += split_size_bytes;
     }

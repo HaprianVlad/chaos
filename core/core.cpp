@@ -53,6 +53,7 @@ namespace x_lib {
   bool configuration::init_phase = true;
   bool configuration::grid_partitioning = false;
   unsigned long configuration::machine_id = 0;
+  unsigned long configuration::undefined_super_partition = 99999;
 
   x_barrier *x_thread::sync;
   volatile bool x_thread::terminate = false;

@@ -263,7 +263,9 @@ namespace x_lib {
                      unsigned long partitions,
                      x_barrier *thread_sync,
                      bool init_phase,
-                     bool grid_partitioning);
+                     bool grid_partitioning,
+                     unsigned long superp,
+                     bool write);
 
       // Slipstore functionality
       void fill(slipstore::client_fill *client,
@@ -586,7 +588,9 @@ namespace x_lib {
                          unsigned long partitions,
                          x_barrier *thread_sync,
                          bool init_phase,
-                         bool  grid_partitioning) {
+                         bool  grid_partitioning,
+                         unsigned long superp,
+                         bool write) {
     if (stream->indexed) {
       thread_sync->wait();
       return;
@@ -613,9 +617,15 @@ namespace x_lib {
                               stream->per_cpu_sizes[processor_id],
                               stream->config->fanout,
                               partitions,
-                              stream->work_queues, init_phase, grid_partitioning);
+                              stream->work_queues,
+                              init_phase,
+                              grid_partitioning,
+                              superp,
+                              write);
     }
     else {
+
+      BOOST_ASSERT_MSG(false, "BUG: this code should not be used");
       if (processor_id == 0) {
         qsort_keys = partitions;
       }
@@ -626,7 +636,9 @@ namespace x_lib {
                           stream->work_queues);
       twizzle = false;
     }
+
     thread_sync->wait();
+
     if (processor_id == 0) {
       if (twizzle) {
         stream->switch_with_aux();

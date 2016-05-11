@@ -89,7 +89,7 @@ namespace x_lib {
 
         static bool grid_partitioning;
         static unsigned long machine_id;
-
+        static unsigned long undefined_super_partition;
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -749,7 +749,7 @@ namespace x_lib {
         }
 
         // should return the partition within a super_partition where the vertex key is
-        static unsigned long map(unsigned long key) {
+        static unsigned long map(unsigned long key, unsigned long curent_superp, bool write) {
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
 
@@ -779,7 +779,7 @@ namespace x_lib {
         }
 
         // should return the super_partition where the vertex key is
-        static unsigned long map(unsigned long key) {
+        static unsigned long map(unsigned long key, unsigned long curent_superp, bool write) {
             return configuration::old_partitioning_mode ? map_internal_old(key) : map_internal_new(key) ;
         }
 
