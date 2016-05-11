@@ -254,8 +254,23 @@ namespace x_lib {
               output_id = output_id >> shift;
             output_id = output_id & (num_out - 1);
             if (init_phase && grid_partitioning) {
+              unsigned long size;
+              if (split_size_bytes % 3 == 0) {
+                size = split_size_bytes / 3;
+                memcpy(output_stream + indices[1 - input][output_id] + 2*size,
+                       input_stream + j + 2*size, size);
+              } else {
+                size = split_size_bytes / 2;
+              }
+
+
+              memcpy(output_stream + indices[1 - input][output_id] + size,
+                     input_stream + j, size);
+
               memcpy(output_stream + indices[1 - input][output_id],
-                     input_stream + j, split_size_bytes);
+                     input_stream + j + size, size);
+
+
             } else {
               memcpy(output_stream + indices[1 - input][output_id],
                      input_stream + j, split_size_bytes);
