@@ -330,7 +330,7 @@ namespace x_lib {
         static unsigned long map_inverse(unsigned long super_partition,
                                              unsigned long partition,
                                              unsigned long offset) {
-            unsigned  long superp = super_partition
+            unsigned  long superp = super_partition;
             if (grid_partitioning) {
                 superp = superp / new_super_partitions;
             }

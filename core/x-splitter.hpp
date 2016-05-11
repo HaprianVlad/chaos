@@ -113,7 +113,9 @@ namespace x_lib {
                unsigned long input_bytes,
                unsigned long fanout,
                unsigned long final_split_cnt,
-               filter *workq) {
+               filter *workq,
+               bool init_phase,
+               bool grid_partitioning) {
     unsigned long *indices[2];
     unsigned long input, num_in = 1, num_out;
     unsigned char *buffers[2];
