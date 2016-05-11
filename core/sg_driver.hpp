@@ -463,7 +463,7 @@ namespace algorithm {
         wall_clock.stop();
         BOOST_LOG_TRIVIAL(info) << "CORE::PHASES " << sg_pcpu::bsp_phase;
         setup_time.print("CORE::TIME::SETUP");
-        init_clock.print("CORE::TIME::INIT_PARTITIONS_TIME")
+        init_clock.print("CORE::TIME::INIT_PARTITIONS_TIME");
         if (measure_scatter_gather) {
             state_iter_cost.print("CORE::TIME::STATE_ITER");
             gather_cost.print("CORE::TIME::GATHER");
