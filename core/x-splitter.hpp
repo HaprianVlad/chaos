@@ -253,8 +253,13 @@ namespace x_lib {
 
               output_id = output_id >> shift;
             output_id = output_id & (num_out - 1);
-            memcpy(output_stream + indices[1 - input][output_id],
-                   input_stream + j, split_size_bytes);
+            if (init_phase && grid_partitioning) {
+
+            } else {
+              memcpy(output_stream + indices[1 - input][output_id],
+                     input_stream + j, split_size_bytes);
+            }
+
             indices[1 - input][output_id] += split_size_bytes;
           }
           /* Re-adjust offsets */
