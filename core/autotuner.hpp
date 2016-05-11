@@ -149,6 +149,9 @@ namespace x_lib {
 
         unsigned long state_count(unsigned long superp,
                                   unsigned long partition) {
+            if (grid_partitioning) {
+                superp = superp / new_super_partitions;
+            }
 
             return old_partitioning_mode ? old_state_count(superp, partition) : new_state_count(superp, partition);
         }
