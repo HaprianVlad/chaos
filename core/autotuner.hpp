@@ -296,7 +296,12 @@ namespace x_lib {
 
         // problem. this function is also called for updates. For updates during scatter we don't need to cache the super_partition, but it seems that we don't use this function
         static unsigned long map_offset_new(unsigned long key) {
-            unsigned long superp = map_new_super_partition(key);
+            unsigned long superp;
+            if (!init_phase && grid_partitioning && cached_super_partition != -1) {
+                superp = cached_super_partition;
+            } else {
+                superp = map_new_super_partition(key);
+            }
 
             if (grid_partitioning) {
                 superp = superp / new_super_partitions;
