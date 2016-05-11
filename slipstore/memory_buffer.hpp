@@ -264,8 +264,7 @@ namespace x_lib {
                      x_barrier *thread_sync,
                      bool init_phase,
                      bool grid_partitioning,
-                     unsigned long superp,
-                     bool write);
+                     unsigned long superp);
 
       // Slipstore functionality
       void fill(slipstore::client_fill *client,
@@ -589,8 +588,7 @@ namespace x_lib {
                          x_barrier *thread_sync,
                          bool init_phase,
                          bool  grid_partitioning,
-                         unsigned long superp,
-                         bool write) {
+                         unsigned long superp) {
     if (stream->indexed) {
       thread_sync->wait();
       return;
@@ -620,8 +618,7 @@ namespace x_lib {
                               stream->work_queues,
                               init_phase,
                               grid_partitioning,
-                              superp,
-                              write);
+                              superp);
     }
     else {
 
