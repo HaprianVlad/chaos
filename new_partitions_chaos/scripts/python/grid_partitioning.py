@@ -32,8 +32,8 @@ def main(argv):
 
 			outfile = out_path + "stream.2." + str(src_part) + "." + str(dst_part)
 			
-			new_src = struct.pack('I', src)[0]
-			new_dst = struct.pack('I', dst)[0]
+			new_src = struct.pack('I', src)
+			new_dst = struct.pack('I', dst)
 			if row_partitioning == 0:			
 				files[outfile].write(new_src)
 				files[outfile].write(new_dst)
