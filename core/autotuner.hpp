@@ -517,7 +517,6 @@ namespace x_lib {
 
             if (grid_partitioning) {
                 super_partitions = super_partitions * super_partitions;
-                cached_partitions = super_partitions * machines;
                 not_cached_super_partitions = true;
 
             }
@@ -739,7 +738,7 @@ namespace x_lib {
 
         static bool additional_computation_needed() {
             if (grid_partitioning && !init_phase) {
-                BOOST_ASSERT_MSG(cached_super_partition != -1, "Super_partition lost");
+                BOOST_ASSERT_MSG(cached_super_partition != -1, "Super_partition positioning lost");
             }
             return !grid_partitioning || init_phase || cached_super_partition == -1;
         }
@@ -755,10 +754,10 @@ namespace x_lib {
         }
 
         static unsigned long map_internal_new(unsigned long key) {
-           // unsigned long superp = configuration::cached_super_partition;
-            //if (configuration::additional_computation_needed()) {
-            unsigned long  superp = configuration::compute_new_super_partition(key);
-            //}
+            unsigned long superp = configuration::cached_super_partition;
+            if (configuration::additional_computation_needed()) {
+                superp = configuration::compute_new_super_partition(key);
+            }
             unsigned long partition = configuration::map_new_partition(key, superp);
 
             return partition;
@@ -790,10 +789,10 @@ namespace x_lib {
 
 
         static unsigned long map_internal_new(unsigned long key) {
-            //unsigned long superp = configuration::cached_super_partition;
-            //if (configuration::additional_computation_needed()) {
-            unsigned long  superp = configuration::compute_new_super_partition(key);
-            //}
+            unsigned long superp = configuration::cached_super_partition;
+            if (configuration::additional_computation_needed()) {
+                superp = configuration::compute_new_super_partition(key);
+            }
 
             return superp;
         }
