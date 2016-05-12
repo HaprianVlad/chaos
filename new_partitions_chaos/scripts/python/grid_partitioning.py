@@ -21,9 +21,10 @@ def main(argv):
 		for j in range(0, len(partitions)):
 			outfile = out_path + "stream.2." + str(i) + "." + str(j)
 			files[outfile] = open(outfile,'ab')
-
+	chunks = 0
 	with open(graph,'rb') as infile:	    
 		for chunk in iter((lambda:infile.read(12)),''):
+			chunks = chunks + 1
 			src = struct.unpack('I', chunk[0:4])[0]
 	       	        dst = struct.unpack('I', chunk[4:8])[0]
 
@@ -49,6 +50,7 @@ def main(argv):
 	
 
 	print partitions
+	print chunks
 
 def get_partitions_offsets(partition_file):
 	partitions = {}
