@@ -49,7 +49,7 @@ def main(argv):
 			print "dst_part : " + str(dst_part)
 			
 
-			if chuncks > 10:
+			if chunks > 10:
 				break
 
 	for i in range(0, len(partitions)):
