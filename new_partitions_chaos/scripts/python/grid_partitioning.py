@@ -41,7 +41,7 @@ def main(argv):
 				files[outfile].write(new_dst)
 				files[outfile].write(new_src)
 
-			files[outfile].write(chunk[9:12])
+			files[outfile].write(chunk[8:12])
 
 	for i in range(0, len(partitions)):
 		for j in range(0, len(partitions)):
