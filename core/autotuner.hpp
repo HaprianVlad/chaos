@@ -737,9 +737,10 @@ namespace x_lib {
         }
 
         static bool additional_computation_needed() {
-            if (grid_partitioning && !init_phase) {
-                BOOST_ASSERT_MSG(cached_super_partition != -1, "Super_partition positioning lost");
-            }
+            //if (grid_partitioning && !init_phase) {
+                //TODO:Think about this
+                //BOOST_ASSERT_MSG(cached_super_partition != -1, "Super_partition positioning lost");
+            //}
             return !grid_partitioning || init_phase || cached_super_partition == -1;
         }
 
