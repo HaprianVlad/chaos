@@ -42,11 +42,6 @@ def main(argv):
 				files[outfile].write(new_src)
 
 			files[outfile].write(chunk[8:12])
-			print "Edge " + str(chunks)
-			print "src: " + str(src)
-			print "dst: " + str (dst)
-			print "src_part :" + str(src_part)
-			print "dst_part : " + str(dst_part)
 			
 
 	for i in range(0, len(partitions)):
