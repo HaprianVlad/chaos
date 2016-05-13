@@ -558,8 +558,6 @@ namespace x_lib {
                 condition = vertices_per_machine == sum;
             }
             BOOST_ASSERT_MSG(condition, "Vertices where lost while putting them in partitions");
-
-
         }
 
         void read_new_partitioning_constraints() {
@@ -613,11 +611,18 @@ namespace x_lib {
 
 
         void update_vertices_per_partition(unsigned long superp) {
+          if (grid_partitioning) {
+              update_vertices_per_partition_grid(superp);
+              return;
+          }
           if (balanced_partitions) {
               update_vertices_per_partition_balanced(superp);
           } else {
               update_vertices_per_partition_unbalanced(superp);
           }
+        }
+        void update_vertices_per_partition_grid(unsigned long superp) {
+            update_vertices_per_partition_unbalanced(super);
         }
 
         // computes the number of vertices in each partition of a super partition
