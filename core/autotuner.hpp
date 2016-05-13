@@ -595,7 +595,7 @@ namespace x_lib {
         void update_vertices_per_super_partition_grid(unsigned long superp) {
             update_vertices_per_machine_grid();
             vertices_per_new_super_partition[superp] = pt_partitions.get < unsigned
-            long > ("stream.2." +  to_string(machine_id) + "." + to_string(superp));
+            long > ("stream_2_" +  to_string(machine_id) + "_" + to_string(superp));
 
         }
 
