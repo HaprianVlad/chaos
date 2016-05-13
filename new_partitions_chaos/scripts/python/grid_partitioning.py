@@ -61,7 +61,7 @@ def printGridDetails(vertices):
 	with open("gridDetails", 'w') as f:
 		f.write("[gridDetails]" + '\n')
 		for key in vertices.keys():
-			f.write(str(key) + "=" + str(vertices[key]))
+			f.write(str(key) + "=" + str(vertices[key]) + '\n')
 
 def get_partitions_offsets(partition_file):
 	partitions = {}
