@@ -622,7 +622,7 @@ namespace x_lib {
           }
         }
         void update_vertices_per_partition_grid(unsigned long superp) {
-            update_vertices_per_partition_unbalanced(super);
+            update_vertices_per_partition_unbalanced(superp);
         }
 
         // computes the number of vertices in each partition of a super partition
