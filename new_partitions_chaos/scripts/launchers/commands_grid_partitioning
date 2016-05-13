@@ -4,3 +4,6 @@ GRID PARTITIONING
 RMAT 24 undirected
 
 ./launchGridPartitioning.sh rmat24 rmat24_8_partitions_tradeoff 1 
+
+details
+./launchGridDetails.sh rmat24 rmat24_8_partitions_tradeoff  

@@ -7,21 +7,13 @@ def main(argv):
 
 	graph = sys.argv[1]
 	partition_file = sys.argv[2]
-	graph_name = sys.argv[3]
-	row_partitioning = int(sys.argv[4])
-	
-	if row_partitioning == 1:
-		out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "_row/"
-	else: 
-		out_path = "/media/ssd/grid/grid_partitions_" + graph_name + "_column/"
+
+
 	partitions = get_partitions_offsets(partition_file)
-	
-	files = {}
 	vertices = {}
 	for i in range(0, len(partitions)):
 		for j in range(0, len(partitions)):
-			outfile = out_path + "stream.2." + str(i) + "." + str(j)
-			files[outfile] = open(outfile,'ab')
+			outfile = "stream.2." + str(i) + "." + str(j)
 			vertices[outfile] = 0
 	chunks = 0
 	with open(graph,'rb') as infile:	    
@@ -32,34 +24,16 @@ def main(argv):
 
 			[src_part, dst_part]= get_grid_partition(src, dst, partitions)
 
-			outfile = out_path + "stream.2." + str(src_part) + "." + str(dst_part)
+			outfile = "stream.2." + str(src_part) + "." + str(dst_part)
 			vertices[outfile] += 1
 
-			new_src = struct.pack('I', src)
-			new_dst = struct.pack('I', dst)
-			if row_partitioning == 0:			
-				files[outfile].write(new_src)
-				files[outfile].write(new_dst)
-			else:
-				files[outfile].write(new_dst)
-				files[outfile].write(new_src)
+		
 
-			files[outfile].write(chunk[8:12])
-			
-
-	for i in range(0, len(partitions)):
-		for j in range(0, len(partitions)):
-			outfile = out_path + "stream.2." + str(i) + "." + str(j)
-			files[outfile].close()
-	
-
-	print partitions
 	print vertices
 	printGridDetails(vertices)
 
 def printGridDetails(vertices):
 	with open("gridDetails", 'w') as f:
-		f.write("[gridDetails]" + '\n')
 		for key in vertices.keys():
 			f.write(str(key) + "=" + str(vertices[key]))
 
@@ -94,8 +68,8 @@ def get_partition(key, array, start, end):
 
 
 if __name__ == "__main__":
-	if len (sys.argv) != 5:
-		print "Usage: python grid_partitioning.py <graph file> <partition file> <graph name> <row partitioning>"
+	if len (sys.argv) != 3:
+		print "Usage: python grid_partitioning.py <graph file> <partition file>"
 	else :
 		main(sys.argv[1:])
 

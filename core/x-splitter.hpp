@@ -196,7 +196,6 @@ namespace x_lib {
           unsigned long key;
           if (configuration::grid_partitioning) {
              key = M::map(v_id_to_map);
-
           }  else {
               if (v_id_to_map >= first_id && v_id_to_map <= last_id) {
                   key = cached_super_partition;
@@ -245,10 +244,7 @@ namespace x_lib {
               unsigned long v_id_to_map = T::key(input_stream + j);
               unsigned long output_id;
               if (configuration::grid_partitioning) {
-
                  output_id = M::map(v_id_to_map);
-
-
               }  else {
 
                   if (v_id_to_map >= first_id && v_id_to_map <= last_id) {

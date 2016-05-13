@@ -89,7 +89,8 @@ namespace x_lib {
 
         static bool grid_partitioning;
         static unsigned long machine_id;
-        static unsigned long undefined_super_partition;
+        static unsigned long vertices_per_machine;
+
 
         /* Mapping */
         static unsigned long partition_shift;
@@ -552,7 +553,12 @@ namespace x_lib {
                 sum += vertices_per_new_partition[i];
             }
 
-            BOOST_ASSERT_MSG(vertices == sum, "Vertices where lost while putting them in partitions");
+            bool condition = vertices == sum;
+            if (grid_partitioning) {
+                condition = vertices_per_machine == sum;
+            }
+            BOOST_ASSERT_MSG(condition, "Vertices where lost while putting them in partitions");
+
 
         }
 
@@ -576,10 +582,27 @@ namespace x_lib {
 
         // computes the number of vertices in a super partition
         void update_vertices_per_super_partition(unsigned long superp) {
+            if (grid_partitioning) {
+                update_vertices_per_super_partition_grid(superp);
+                return;
+            }
+
             if ((superp+1) < new_super_partitions) {
                 vertices_per_new_super_partition[superp] = new_super_partition_offsets[superp+1] - new_super_partition_offsets[superp];
             } else {
                 vertices_per_new_super_partition[superp] = vertices - new_super_partition_offsets[superp];
+            }
+        }
+
+        void update_vertices_per_super_partition_grid(unsigned long superp) {
+
+        }
+
+        void update_vertices_per_machine_grid() {
+            if ((machine_id+1) < new_super_partitions) {
+                vertices_per_machine = new_super_partition_offsets[machine_id+1] - new_super_partition_offsets[machine_id];
+            } else {
+                vertices_per_machine = vertices - new_super_partition_offsets[machine_id];
             }
         }
 
@@ -651,7 +674,9 @@ namespace x_lib {
             unsigned long superp;
             if (should_recompute_super_partition(key)) {
                 superp = compute_new_super_partition(key);
-                cached_super_partition = superp;
+                if (!grid_partitioning) {
+                    cached_super_partition = superp;
+                }
             } else {
                 superp = cached_super_partition;
             }
@@ -742,7 +767,7 @@ namespace x_lib {
             }
             return !grid_partitioning || init_phase || cached_super_partition == -1;
         }
-        
+
     };
 
 
