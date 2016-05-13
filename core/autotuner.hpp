@@ -553,11 +553,12 @@ namespace x_lib {
                 sum += vertices_per_new_partition[i];
             }
 
-            bool condition = vertices == sum;
             if (grid_partitioning) {
-                condition = vertices_per_machine == sum;
+                BOOST_ASSERT_MSG(vertices_per_machine == sum, "Vertices where lost while putting them in grid partitions");
+            } else {
+                BOOST_ASSERT_MSG(vertices == sum, "Vertices where lost while putting them in partitions");
             }
-            BOOST_ASSERT_MSG(condition, "Vertices where lost while putting them in partitions");
+
         }
 
         void read_new_partitioning_constraints() {
@@ -595,7 +596,7 @@ namespace x_lib {
         void update_vertices_per_super_partition_grid(unsigned long superp) {
             update_vertices_per_machine_grid();
             vertices_per_new_super_partition[superp] = pt_partitions.get < unsigned
-            long > ("stream_2_" +  to_string(machine_id) + "_" + to_string(superp));
+            long > ("stream2" +  to_string(machine_id)  + to_string(superp));
 
         }
 
