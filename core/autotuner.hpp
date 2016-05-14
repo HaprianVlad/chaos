@@ -773,11 +773,11 @@ namespace x_lib {
         }
 
         static bool additional_computation_needed() {
-            return true;
-            /*if (grid_partitioning && !init_phase) {
+
+            if (grid_partitioning && !init_phase) {
                 BOOST_ASSERT_MSG(cached_super_partition != -1, "Super_partition positioning lost");
             }
-            return !grid_partitioning || init_phase || cached_super_partition == -1;*/
+            return !grid_partitioning || init_phase || cached_super_partition == -1;
         }
 
     };
@@ -829,9 +829,6 @@ namespace x_lib {
             if (configuration::additional_computation_needed()) {
                 superp = configuration::compute_new_super_partition(key);
             }
-            //if (configuration::machine_id == 0 && key >= 73795) {
-              //  BOOST_LOG_TRIVIAL(info) << key << " XXX " << superp;
-            //}
 
             return superp;
         }
