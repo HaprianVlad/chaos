@@ -7,3 +7,9 @@ RMAT 24 undirected
 
 details
 ./launchGridDetails.sh rmat24 rmat24_8_partitions_tradeoff  
+
+
+RMAT28 undirected
+
+./launchGridPartitioning.sh rmat28 rmat28_8_partitions_tradeoff 1 
+
