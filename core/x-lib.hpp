@@ -1310,18 +1310,18 @@ namespace x_lib {
                                    filter *override_input_filter,
                                    bool sync) {
         struct work<A, IN, OUT> work_item;
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckA ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckA ";
         work_item.superp = superp;
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckB ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckB ";
         work_item.state = sio->state_buffer;
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckC ";
+        // BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckC ";
         work_item.ingest = NULL;
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckD ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckD ";
         work_item.local_tile = (
                 (superp % slipstore::slipstore_client_fill->get_machines()) ==
                 slipstore::slipstore_client_fill->get_me()
         );
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckE ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckE ";
         if (stream_in != ULONG_MAX) {
             if (sio->ingest_buffers[stream_in] != NULL) {
                 work_item.ingest = sio->ingest_buffers[stream_in];
@@ -1333,10 +1333,10 @@ namespace x_lib {
                 memory_buffer::release_buffer(work_item.stream_in);
             }
 
-            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckF ";
+            //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckF ";
             // post some request to the ioService
             memory_buffer *outstanding = memory_buffer::get_free_buffer(sio->io_wait_time);
-            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckG ";
+            //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckG ";
             outstanding->uptodate = false;
             // read things from disk. This is done by an ioService that will fill
             // the memory buffers and call us back
@@ -1348,11 +1348,11 @@ namespace x_lib {
                                                   tile,
                                                   IN::item_size()));
 
-            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckH ";
+            //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckH ";
             // wait for the callback from disk
             while (true) {
                 sio->io_wait_time.start();
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckI ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckI ";
                 // wait for IO to be done.
                 outstanding->wait_uptodate();
                 sio->io_wait_time.stop();
@@ -1361,12 +1361,12 @@ namespace x_lib {
                     memory_buffer::release_buffer(outstanding);
                     break;
                 }
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckJ ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckJ ";
                 // once disk IO is done transform the result in a input stream for the workers (threads)
                 work_item.stream_in = outstanding;
                 outstanding = memory_buffer::get_free_buffer(sio->io_wait_time);
                 outstanding->uptodate = false;
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckK ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckK ";
                 // Launch another IO request if there are still things to be read on the disk
                 slipstore::ioService.post(boost::bind(&memory_buffer::fill,
                                                       outstanding,
@@ -1376,7 +1376,7 @@ namespace x_lib {
                                                       tile,
                                                       IN::item_size()));
 
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckL ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckL ";
 
                 if (override_input_filter != NULL) {
                     work_item.input_filter = override_input_filter;
@@ -1384,26 +1384,26 @@ namespace x_lib {
                 else {
                     work_item.input_filter = work_item.stream_in->work_queues;
                 }
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckM ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckM ";
 
                 SETUP_STREAMOUT();
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckN ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckN ";
                 // do the partitioning job
                 // in this case the worker 0 is the current thread.
                 (*sio->workers[0])();
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckO ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckO ";
 
                 work_item.stream_in->cleanup();
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckP ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckP ";
 
                 memory_buffer::release_buffer(work_item.stream_in);
-                BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckQ ";
+                //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckQ ";
 
             }
         }
         else {
 
-            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckR ";
+            //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckR ";
             BOOST_ASSERT_MSG(override_input_filter != NULL,
                              "Must have input stream or input filter !");
             work_item.input_filter = override_input_filter;
@@ -1411,7 +1411,7 @@ namespace x_lib {
             BOOST_ASSERT_MSG(stream_out != ULONG_MAX,
                              "Must have input stream or output stream !");
             work_item.stream_out = memory_buffer::get_free_buffer(sio->io_wait_time);
-            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckS ";
+            //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " CheckS ";
             work_item.disk_stream_out = stream_out;
             work_item.io_clock = &sio->io_wait_time;
             sio->workers[0]->work_to_do = &work_item;
@@ -1887,17 +1887,17 @@ namespace x_lib {
                                unsigned long stream_in,
                                unsigned long stream_out) {
 
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check1 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check1 ";
         // Make sure everyone is ready
         slipstore::slipstore_server->help_handle()->reset();
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check2 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check2 ";
         // setup the partition map
         sio->setup_pmap(0);
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check3 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check3 ";
         sio->state_buffer->bufsize = sio->tile_size(0, 0);
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check4 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check4 ";
         sio->inter_machine_barrier(2);
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check5 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check5 ";
 
         // setting the use stream_out_variable. Not sure to understand...
         unsigned long use_stream_out;
@@ -1927,14 +1927,14 @@ namespace x_lib {
         else {
             use_stream_out = ULONG_MAX;
         }
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check7 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check7 ";
         // seems to be the thing that does the partitioning
         do_stream_internal<A, IN, OUT>(sio, 0, 0, stream_in, use_stream_out,
                                        NULL, false);
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check8 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check8 ";
         sio->inter_machine_barrier(2);
 
-        BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check9 ";
+        //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check9 ";
 
         if (stream_out != ULONG_MAX && sio->ext_mem_shuffle) {
             unsigned long input = 0;
@@ -1954,14 +1954,14 @@ namespace x_lib {
                                           visible_bits == configuration::ext_mem_bits ?
                                           stream_out : sio->ext_tmps[1 - input]);
                     }
-                    BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check10 ";
+                    //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check10 ";
                     sio->reset_stream(sio->ext_tmps[input], i);
-                    BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check11 ";
+                    // BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check11 ";
                 }
                 input = 1 - input;
             }
             sio->inter_machine_barrier(2);
-            BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check12 ";
+            //BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Check12 ";
         }
         return false;
     }
