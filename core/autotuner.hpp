@@ -581,10 +581,10 @@ namespace x_lib {
 
         // computes the number of vertices in a super partition
         void update_vertices_per_super_partition(unsigned long superp) {
-            if (grid_partitioning) {
+            /*if (grid_partitioning) {
                 update_vertices_per_super_partition_grid(superp);
                 return;
-            }
+            }*/
 
             if ((superp+1) < new_super_partitions) {
                 vertices_per_new_super_partition[superp] = new_super_partition_offsets[superp+1] - new_super_partition_offsets[superp];
@@ -794,7 +794,7 @@ namespace x_lib {
                 superp = configuration::compute_new_super_partition(key);
             }
             unsigned long partition = configuration::map_new_partition(key, superp);
-
+            BOOST_LOG_TRIVIAL(info) << "YYY " << partition;
             return partition;
         }
 
@@ -828,7 +828,7 @@ namespace x_lib {
             if (configuration::additional_computation_needed()) {
                 superp = configuration::compute_new_super_partition(key);
             }
-
+            BOOST_LOG_TRIVIAL(info) << "XXX " << superp;
             return superp;
         }
 
