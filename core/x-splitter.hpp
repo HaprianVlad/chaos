@@ -278,7 +278,7 @@ namespace x_lib {
               } else {
                 memcpy(output_stream + indices[1 - input][output_id],
                        input_stream + j, split_size_bytes);
-              //}
+              }
 
               indices[1 - input][output_id] += split_size_bytes;
           }
