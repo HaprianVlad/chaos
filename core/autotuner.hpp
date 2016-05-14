@@ -794,7 +794,9 @@ namespace x_lib {
                 superp = configuration::compute_new_super_partition(key);
             }
             unsigned long partition = configuration::map_new_partition(key, superp);
-            BOOST_LOG_TRIVIAL(info) << key <<" YYY " << partition;
+            BOOST_LOG_TRIVIAL(info) << key <<" YYY " << superp;
+            BOOST_LOG_TRIVIAL(info) << key <<" ZZZ " << partition;
+
             return partition;
         }
 
