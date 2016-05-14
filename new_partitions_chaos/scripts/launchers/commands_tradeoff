@@ -27,3 +27,10 @@ RMAT24 BFS UNDIRECTED
 vertex_set_size = 8
 edge_set_size = 12
 ./launchPartitioningTradeoff.sh out_degree_rmat24 8 12 24 0.5 1 8 rmat24_8_partitions_tradeoff 8 524288 >> rmat24_8_partitions_details_tradeoff
+
+
+EXPERIMENT TO RUN:
+
+./launchPartitioningTradeoff.sh out_degree_rmat28_directed 12 12 28 0.2 0 8 rmat28_8_partitions_directed_tradeoff4 8 4194304 >> rmat28_8_partitions_details_directed_tradeoff_new
+
+./launchPartitioningTradeoff.sh out_degree_rmat28 8 12 28 0.5 1 8 rmat28_8_partitions_tradeoff 8 4194304 >> rmat28_8_partitions_details_tradeoff_new
