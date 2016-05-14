@@ -581,10 +581,10 @@ namespace x_lib {
 
         // computes the number of vertices in a super partition
         void update_vertices_per_super_partition(unsigned long superp) {
-            if (grid_partitioning) {
+            /*if (grid_partitioning) {
                 update_vertices_per_super_partition_grid(superp);
                 return;
-            }
+            }*/
 
             if ((superp+1) < new_super_partitions) {
                 vertices_per_new_super_partition[superp] = new_super_partition_offsets[superp+1] - new_super_partition_offsets[superp];

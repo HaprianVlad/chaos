@@ -336,7 +336,7 @@ namespace algorithm {
 
         BOOST_LOG_TRIVIAL(info) << clock::timestamp() << " Completed init ";
         //#CACHE_SUPER_PARTITION_LOGIC
-        graph_storage->get_config()->reset_init_phase();
+        //graph_storage->get_config()->reset_init_phase();
 
         // Apply scatter-gather phase until done
         bool global_stop;
@@ -358,7 +358,8 @@ namespace algorithm {
                     }
                 }
 
-
+                //#CACHE_SUPER_PARTITION_LOGIC
+                graph_storage->get_config()->reset_init_phase();
                 sg_pcpu::current_step = phase_gather;
 
                 if (measure_scatter_gather) {
