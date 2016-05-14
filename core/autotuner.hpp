@@ -828,7 +828,10 @@ namespace x_lib {
             if (configuration::additional_computation_needed()) {
                 superp = configuration::compute_new_super_partition(key);
             }
-            BOOST_LOG_TRIVIAL(info) << key << " XXX " << superp;
+            if (configuration::machine_id == 0 && key >= 73795) {
+                BOOST_LOG_TRIVIAL(info) << key << " XXX " << superp;
+            }
+
             return superp;
         }
 
