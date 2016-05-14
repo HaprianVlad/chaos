@@ -1,0 +1,51 @@
+Partition 0
+    start vertex: 0
+    end vertex: 1586496
+    vertices: 1586497
+    edges: 601775893
+    constraint size: 2395787972.12
+Partition 1
+    start vertex: 1586497
+    end vertex: 8716308
+    vertices: 7129812
+    edges: 590525528
+    constraint size: 2395804779.19
+Partition 2
+    start vertex: 8716309
+    end vertex: 23404676
+    vertices: 14688368
+    edges: 575174814
+    constraint size: 2395786741.82
+Partition 3
+    start vertex: 23404677
+    end vertex: 46737536
+    vertices: 23332860
+    edges: 557623881
+    constraint size: 2395786762.92
+Partition 4
+    start vertex: 46737537
+    end vertex: 76287952
+    vertices: 29550416
+    edges: 545000280
+    constraint size: 2395786452.95
+Partition 5
+    start vertex: 76287953
+    end vertex: 134484015
+    vertices: 58196063
+    edges: 486840983
+    constraint size: 2395786637.69
+Partition 6
+    start vertex: 134484016
+    end vertex: 168144736
+    vertices: 33660721
+    edges: 536655114
+    constraint size: 2395786447.4
+Partition 7
+    start vertex: 168144737
+    end vertex: 268435455
+    vertices: 100290719
+    edges: 401370803
+    constraint size: 2395765758.11
+Total number of vertices: 268435456
+Total number of edges: 4294967296
+Max out degree: 1977880
