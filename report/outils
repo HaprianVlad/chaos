@@ -1,0 +1,40 @@
+This section describes in detail the implementation of the new functionality. 
+
+\subsection{Author Extraction}
+The author extraction is implemented as a pipeline having three main phases: parsing the web page, filtering the results and insertion in the database. The input of our module is an article URL, the output is a the list of authors for the corespondent article. 
+\subsubsection{Parsing the web page}
+This is the main component of our extraction. We have notice that within a web page the author might appear in different places such as: in the text of the article (usually at the beginning), in the HTML tags of the page, in the page scripts, or in the article title.  Based on this assumptions we constructed three types of specialized parsers for author finding: text, HTML and JavaScript parsers.\\ 
+Each parser takes the web page converted in a specific form as input and they all give as result a list of authors.\\\\
+\textbf{a) The web page tool}\\
+ The conversion is done by a module called webPageTool which starting from an URL it creates and stores the web page text, HTML, scripts and the "soup"(a special format of the web page used by BeautifulSoup library in order to easily reflect on HTML tags). After this step the webPageTool acts as a server for the parsers, serving the corespondent input for each one. \\\\
+\textbf{b) The parsers} \\\\
+The parsing reflection is serialized. Results of each parser are filtered by the name filter described in section 3.1.2. Remaining names have strong chance to be the real author of the page.\\ The parsing techniques are described in detail as follows: \\
+ - \textbf{text parsing}: takes as input the text of the page and consists in looking at keywords that might precede an author name such as: "by", "written by", "authored by". The words following after will be taken as possible author names.\\
+ - \textbf{HTML and JavaScript parsing}: both techniques are quite similar and consists in finding author keywords in the tags and taking the corespondent value for that keyword. For example if a HTML tag has an attribute 'content'='author' then the 'value' attribute and the text of the tag will get examined. The same holds in the case of JavaScript. The only difference between the two is their inputs. HTML reflection is done on a HTML "soup" while JavaScript parser is feed with the scripts of the page.\\
+ - \textbf{paragraph parsing}: this parser is very similar with the first one we described. The difference is that reflection is done on the page paragraphs. The first name that is found is returned. At this level we use it to check if the author name might be in the title of the article.
+At each step if the result has a strong evidence to be the right author it is returned and the extraction stops.\\\\
+\textbf{c) The link scanner for outgoing links :} \\\\
+Many of articles don't have the author on the article page. They might be part of an blog or the author is listed on some upper page. The need of a more global vision made us to explore the pertinent outgoing links from the article page such as: blog page , contact page or about page links. This links are determined using the HTML parser but, of course, with another set of keywords. Because this search could give us to many results in the case of some web pages, we restrict the number of links to explore at four. The selection criterion is the URL length. Shorter it is more it gives us a global vision.\\ Once the set of links to explore is determined the exploration can start. Here we use an heuristic approach. We start parsing the page paragraphs including its title until a name is found. If no name is found than the other types of parsing stated at point b) are used.
+\subsubsection{Filtering the results}
+While parsing extraction a lot of false positives may appear. In order to reduce them we use a name filter that has a dictionary of English words. \\
+The name filter takes as input a list of words and outputs the name, if such one is present. First it reflects on the word format, some of the check examples would be: words that don't have a matching length, that do not start with an upper case or that contain numerals are discarded. Multiple words form a name if they all respect the name format and have the right part of speech.\\ The part of speech of a word is determined using the wordnet dictionary for python. Words that are not nouns or that are real English words will be discarded. This approach is quite difficult to implement because of the huge number of exceptions. For example the foreign author names are treated as interjections, "Smith" is in the same time a English word and a name. A search on a set of one thousand articles along with heuristically inferences, allowed us to reveal and treat most part of this exception.
+
+\subsubsection{Insertion in the database}
+Once the author extraction is done for an article we store a pair (author id, article id) in the database. Our database connector implements a functionality that given an author name outputs the corespondent author id if the author is in the database or a new fresh author id if not. \\The simplicity of database insertion hides a serious problem: how to determine if an author exists in the database taking in account that he can have multiple names or signatures. The solution comes from a name generator module. This module takes as input an author name and generates all its possible signatures. For example if input is "Haprian Vlad" one of the possible signatures is "Vlad H.". Checking if the signature set of the name in the database and the signature set of the name we want to insert intersect allows us to tell if the author is already present in our database.
+
+\subsubsection{Speed up and optimizations}
+The main speed up techniques we use are:\\
+- compute only until we get a result\\
+- caching results
+\\- parallelization\\
+\textbf{a) compute only until we get a result:} This idea is applied in two places. The first one is while page parsing. If author is found after the text parsing we will return it directly and outgoing links are explored only if the author is not found in the page. The second one is while paragraphs parsing. Once a name is found the parsing stops. We noticed that are some cases where we can not be sure if the author we found while text parsing is the real one: for example text parsing might output more than one authors. In this case further parsing is need and results of different parsing techniques have to be merged at the end. While merging the results the parsing technique that gives only one author name will win. If all give more than one name then we will output the result of their intersections. The case when the first condition is not satisfied and no intersection is possible is very rare, the heuristic we use here is to take their union.\\
+\textbf{b) caching results:} We used it to speed up our name filter. If we decided that a set of words can be an author name than we will cache this result and used for further checks.\\
+\textbf{c) parallelization:} our module is able to launch multiple processes that will extract authors from urls that we put in a shared memory region. The synchronization between processes is done by locks while accessing the list of urls or while commuting the results in the database. The total workload is spitted in a dynamic way between the workers. Each worker asks for a job (a number of articles to reflect on). Once it has finishes and if work is still available it gets a new job. The job size is set at starting time. Good values are less than ten. A job size of one might cause the processes to spend most of their time waiting to get a job or to commit.
+
+\subsection{Profiling for Balanced News Reading}
+
+-config file
+
+- better dictionary
+- detection of pages that really don't have an author 
+
