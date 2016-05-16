@@ -1,8 +1,0 @@
--rwx------ 1 root root 829M Mai 14 22:37 /media/ssd/stream.2.0.0
--rwx------ 1 root root 870M Mai 14 22:37 /media/ssd/stream.2.1.0
--rwx------ 1 root root 880M Mai 14 22:37 /media/ssd/stream.2.2.0
--rwx------ 1 root root 766M Mai 14 22:37 /media/ssd/stream.2.3.0
--rwx------ 1 root root 790M Mai 14 22:37 /media/ssd/stream.2.4.0
--rwx------ 1 root root 591M Mai 14 22:37 /media/ssd/stream.2.5.0
--rwx------ 1 root root 762M Mai 14 22:37 /media/ssd/stream.2.6.0
--rwx------ 1 root root 605M Mai 14 22:37 /media/ssd/stream.2.7.0
