@@ -69,10 +69,16 @@ fi;
 sleep 10
 
 if [ $VR -eq 1 ]; then
-	e "Rellabeling graph $name..."
-	pypy ./vertex_relabeling.py $name ${scale} $name_relabelled
-	rm $name
-	mv $name_relabelled $name
+	relabled="relabelled"
+	if [ $GEN_TYPE == "directed" ]; then
+		n=rmat-${scale}-und_s${i}
+	else
+		n=rmat-${scale}_s${i}
+	fi
+	e "Rellabeling graph $n..."
+	pypy ./vertex_relabeling.py $n ${scale} $relabled
+	rm $n
+	mv $relabled $n
 	sleep 10
 fi
 
