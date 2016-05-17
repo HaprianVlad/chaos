@@ -66,8 +66,16 @@ name=$input
 else
 name="${input}_s${i}"
 fi;
-
 sleep 10
+
+if [ $VR -eq 1 ]; then
+	e "Rellabeling graph $name..."
+	pypy ./vertex_rellabelling.py $name ${scale} $name_relabelled
+	rm $name
+	mv $name_relabelled $name
+	sleep 10
+fi
+
 
 e "Running on ${GROUP[$i]}"
 

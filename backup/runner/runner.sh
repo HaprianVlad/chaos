@@ -1,5 +1,12 @@
 #! /bin/bash
 
+
+if [ $# -eq 1 ]; then
+	vr=$1
+else 
+	vr=0
+fi
+
 cd ~
 #bash ./deploy_code.sh
 cd ~/runner/experiments_to_run
@@ -17,6 +24,10 @@ for experimentFolder in *; do
 		cp $helperFile ~/helpers/run.sh
 		bash ./clear.sh
 		bash $deployPartitionsCommand
+
+		if [ $vr -eq 1 ]; then
+			bash ./deploy_vertex_rellabeling.sh
+		fi
 	
 		cd ~
 		bash ./deploy_helpers.sh
