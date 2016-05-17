@@ -76,10 +76,10 @@ if [ $VR -eq 1 ]; then
 		n=rmat-${scale}-und_s${i}
 	fi
 	e "Rellabeling graph $n..."
-	pypy ./vertex_relabeling.py $n ${scale} $relabled
-	rm $n
-	mv $relabled $n
-	sleep 10
+	clush -w ${GROUP[$i]} "pypy /media/ssd/vertex_relabeling.py /media/ssd/$n ${scale} /media/ssd/$relabled"
+	clush -w ${GROUP[$i]} "rm /media/ssd/$n"
+	clush -w ${GROUP[$i]} "mv /media/ssd/$relabled /media/ssd/$n "
+	sleep 10 
 fi
 
 
