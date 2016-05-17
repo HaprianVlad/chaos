@@ -19,7 +19,9 @@ def main(argv):
 
 def getRandomPermutation(scale):
 	array = range(1,scale)
+	print array
 	random.shuffle(array)
+	print array
 	permutation = {}
 	for i in range(1,scale):
 		print i
