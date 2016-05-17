@@ -1,13 +1,13 @@
 import sys
 import struct
-from numpy import np
+
 
 def main(argv):
 	in_graph = sys.argv[1]
 	scale = sys.argv[2]
 	out_graph = sys.argv[3]
 
-	permutation = getRandomPermutation(scale)
+	permutation = readRandomPermutation(scale)
 
 	outfile = open(out_graph,'ab')
 
@@ -27,8 +27,13 @@ def main(argv):
 
 			
 
-def getRandomPermutation(scale):
-	return np.random.permutation(scale)
+def readRandomPermutation(scale):
+	permutation = {}
+	with open("permutation"+str(scale)) as myfile:
+   		for line in myfile:
+			v_id, v_id_new = line.partition("=")[::2]
+			permutation[int(v_id)] = int(v_id_new)
+	return permutation
 
 
 
