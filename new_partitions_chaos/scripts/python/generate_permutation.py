@@ -9,7 +9,7 @@ def main(argv):
 
 	outfile = open("permutation"+str(scale),'a')
 
-	for key in perumtation.keys():
+	for key in permutation.keys():
 		outfile.write(str(key) + "=" + str(permutation[key]))
 		
 
@@ -18,10 +18,8 @@ def main(argv):
 			
 
 def getRandomPermutation(scale):
-	array = range(1,scale)
-	print array
+	array = range(1,scale)	
 	random.shuffle(array)
-	print array
 	permutation = {}
 	for i in range(1,scale):
 		print i
