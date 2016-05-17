@@ -71,9 +71,9 @@ sleep 10
 if [ $VR -eq 1 ]; then
 	relabled="relabelled"
 	if [ $GEN_TYPE == "directed" ]; then
-		n=rmat-${scale}-und_s${i}
+		n=rmat-${scale}_s${i}ls 	
 	else
-		n=rmat-${scale}_s${i}
+		n=rmat-${scale}-und_s${i}
 	fi
 	e "Rellabeling graph $n..."
 	pypy ./vertex_relabeling.py $n ${scale} $relabled
