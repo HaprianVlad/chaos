@@ -10,27 +10,27 @@ def main(argv):
 	permutation = readRandomPermutation(scale)
 
 	print permutation
-	#outfile = open(out_graph,'ab')
+	outfile = open(out_graph,'ab')
 
-	#with open(in_graph,'rb') as infile:
-	#	for chunk in iter((lambda:infile.read(12)),''):
-	#		src = struct.unpack('I', chunk[0:4])[0]
-	 #       	tgt = struct.unpack('I', chunk[4:8])[0]
-	#	
-	#		new_src = struct.pack('I', permutation[src])
-	#		new_tgt = struct.pack('I', permutation[tgt])
+	with open(in_graph,'rb') as infile:
+		for chunk in iter((lambda:infile.read(12)),''):
+			src = struct.unpack('I', chunk[0:4])[0]
+		       	tgt = struct.unpack('I', chunk[4:8])[0]
+		
+			new_src = struct.pack('I', permutation[src])
+			new_tgt = struct.pack('I', permutation[tgt])
 							
-	#		outfile.write(new_src)
-	#		outfile.write(new_tgt)
-	#		outfile.write(chunk[8:12])
+			outfile.write(new_src)
+			outfile.write(new_tgt)
+			outfile.write(chunk[8:12])
 
-	#outfile.close()
+	outfile.close()
 
 			
 
 def readRandomPermutation(scale):
 	permutation = {}
-	with open("permutation"+str(scale)) as myfile:
+	with open("permutation_rmat"+str(scale)) as myfile:
    		for line in myfile:
 			v_id, v_id_new = line.partition("=")[::2]
 			permutation[int(v_id)] = int(v_id_new)

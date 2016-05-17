@@ -3,11 +3,11 @@ import struct
 import random
 
 def main(argv):
-	scale = int(sys.argv[1])
+	scale =  pow(2,int(sys.argv[1]))
 	
 	permutation = getRandomPermutation(scale)
 
-	outfile = open("permutation"+str(scale),'a')
+	outfile = open("permutation_rmat"+sys.argv[1],'a')
 
 	for key in permutation.keys():
 		outfile.write(str(key) + "=" + str(permutation[key]) + "\n")
@@ -22,7 +22,6 @@ def getRandomPermutation(scale):
 	random.shuffle(array)
 	permutation = {}
 	for i in range(1,scale):
-		print i
 		permutation[i] = array[i-1]
 	permutation[0] = 0
 	return permutation
