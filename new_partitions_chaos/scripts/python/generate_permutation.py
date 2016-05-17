@@ -10,7 +10,7 @@ def main(argv):
 	outfile = open("permutation"+str(scale),'a')
 
 	for key in permutation.keys():
-		outfile.write(str(key) + "=" + str(permutation[key]))
+		outfile.write(str(key) + "=" + str(permutation[key]) + "\n")
 		
 
 	outfile.close()
