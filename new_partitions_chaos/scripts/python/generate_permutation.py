@@ -3,7 +3,7 @@ import struct
 import random
 
 def main(argv):
-	scale = sys.argv[1]
+	scale = int(sys.argv[1])
 	
 
 	permutation = getRandomPermutation(scale)
