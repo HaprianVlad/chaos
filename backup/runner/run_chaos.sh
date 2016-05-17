@@ -60,7 +60,7 @@ if [[ "$input" == rmat* ]]; then
 scale=$(echo "$input" | sed -E "s/[^0-9]+([0-9]+)/\1/")
 name=rmat-${scale}_s${i}
 e "Generating graph $name..."
-clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/gen.sh $ROOT_DIR $name $scale $i $GEN_TYPE"
+#clush -w ${GROUP[$i]} -l $USER "$SUDO $ROOT_DIR/helpers/gen.sh $ROOT_DIR $name $scale $i $GEN_TYPE"
 elif [[ "$input" == fixed* ]]; then
 name=$input
 else
@@ -69,16 +69,16 @@ fi;
 sleep 10
 
 if [ $VR -eq 1 ]; then
-	relabled="relabelled"
+	relabeled="relabelled"
 	if [ $GEN_TYPE == "directed" ]; then
 		n=rmat-${scale}_s${i}ls 	
 	else
 		n=rmat-${scale}-und_s${i}
 	fi
 	e "Rellabeling graph $n..."
-	clush -w ${GROUP[$i]} "pypy /media/ssd/vertex_relabeling.py /media/ssd/$n ${scale} /media/ssd/$relabled"
+	clush -w ${GROUP[$i]} "pypy /media/ssd/vertex_relabeling.py /media/ssd/$n ${scale} /media/ssd/$relabeled"
 	clush -w ${GROUP[$i]} "rm /media/ssd/$n"
-	clush -w ${GROUP[$i]} "mv /media/ssd/$relabled /media/ssd/$n "
+	clush -w ${GROUP[$i]} "mv /media/ssd/$relabeled /media/ssd/$n "
 	sleep 10 
 fi
 
