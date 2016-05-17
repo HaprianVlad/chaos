@@ -25,9 +25,9 @@ for experimentFolder in *; do
 		bash ./clear.sh
 		bash $deployPartitionsCommand
 
-		if [ $vr -eq 1 ]; then
-			#bash ./deploy_vertex_relabelling.sh
-		fi
+		#if [ $vr -eq 1 ]; then
+		#	bash ./deploy_vertex_rellabeling.sh
+		#fi
 	
 		cd ~
 		bash ./deploy_helpers.sh
