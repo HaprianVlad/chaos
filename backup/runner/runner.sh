@@ -26,7 +26,7 @@ for experimentFolder in *; do
 		bash $deployPartitionsCommand
 
 		if [ $vr -eq 1 ]; then
-			bash ./deploy_vertex_rellabeling.sh
+			bash ./deploy_vertex_relabelling.sh
 		fi
 	
 		cd ~
