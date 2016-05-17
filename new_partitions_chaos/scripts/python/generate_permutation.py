@@ -5,7 +5,6 @@ import random
 def main(argv):
 	scale = int(sys.argv[1])
 	
-
 	permutation = getRandomPermutation(scale)
 
 	outfile = open("permutation"+str(scale),'a')
@@ -23,7 +22,7 @@ def getRandomPermutation(scale):
 	random.shuffle(array)
 	permutation = {}
 	for i in range(1,scale):
-		permuation[i] = array[i]	
+		permutation[i] = array[i]	
 	return permutation
 
 
