@@ -30,7 +30,7 @@ def main(argv):
 
 def readRandomPermutation(scale):
 	permutation = {}
-	with open("permutation_rmat"+str(scale)) as myfile:
+	with open("/media/ssd/permutation_rmat"+str(scale)) as myfile:
    		for line in myfile:
 			v_id, v_id_new = line.partition("=")[::2]
 			permutation[int(v_id)] = int(v_id_new)
