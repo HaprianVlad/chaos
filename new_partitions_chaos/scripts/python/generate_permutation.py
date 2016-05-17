@@ -25,7 +25,7 @@ def getRandomPermutation(scale):
 	permutation = {}
 	for i in range(1,scale):
 		print i
-		permutation[i] = array[i]
+		permutation[i] = array[i-1]
 	permutation[0] = 0
 	return permutation
 
