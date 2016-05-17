@@ -70,7 +70,7 @@ sleep 10
 
 if [ $VR -eq 1 ]; then
 	e "Rellabeling graph $name..."
-	pypy ./vertex_relabelling.py $name ${scale} $name_relabelled
+	pypy ./vertex_relabeling.py $name ${scale} $name_relabelled
 	rm $name
 	mv $name_relabelled $name
 	sleep 10
