@@ -69,7 +69,7 @@ fi;
 sleep 10
 
 if [ $VR -eq 1 ]; then
-	relabeled="relabelled"
+	relabeled="relabeled"
 	if [ $GEN_TYPE == "directed" ]; then
 		n=rmat-${scale}_s${i}ls 	
 	else
