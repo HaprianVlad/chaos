@@ -36,9 +36,11 @@ def readRandomPermutation(scale):
    		while data:
 			data = f.readline()
 			v_id, v_id_new = data.partition("=")[::2]
-			print v_id
-			print v_id_new
-			permutation[long(v_id)] = long(v_id_new)
+			try:
+				permutation[long(v_id)] = long(v_id_new)
+			except ValueError:
+				print v_id
+				print v_id_new 
 	return permutation
 
 
