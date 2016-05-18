@@ -30,17 +30,19 @@ def main(argv):
 
 def readRandomPermutation(scale):
 	permutation = {}
-	with open("/media/ssd/permutation_rmat"+str(scale)) as f:
-		f =  mmap.mmap(f.fileno(), 0, prot=mmap.PROT_READ) 
-                data = 1   
-   		while data:
-			data = f.readline()
-			v_id, v_id_new = data.partition("=")[::2]
-			try:
+	v_id = 0
+	v_id_new = 0
+	try:
+		with open("/media/ssd/permutation_rmat"+str(scale)) as f:
+			f =  mmap.mmap(f.fileno(), 0, prot=mmap.PROT_READ) 
+		        data = 1   
+	   		while data:
+				data = f.readline()
+				v_id, v_id_new = data.partition("=")[::2]
 				permutation[long(v_id)] = long(v_id_new)
-			except ValueError:
-				print v_id
-				print v_id_new 
+	except ValueError:
+		print v_id
+		print v_id_new 
 	return permutation
 
 
