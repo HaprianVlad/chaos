@@ -17,8 +17,8 @@ def main(argv):
 			src = struct.unpack('I', chunk[0:4])[0]
 		       	tgt = struct.unpack('I', chunk[4:8])[0]
 		
-			new_src = struct.pack('I', permutation[src])
-			new_tgt = struct.pack('I', permutation[tgt])
+			new_src = struct.pack('I', bit_permutation(src, permutation))
+			new_tgt = struct.pack('I', bit_permutation(tgt, permutation))
 							
 			outfile.write(new_src)
 			outfile.write(new_tgt)
@@ -32,19 +32,20 @@ def readRandomPermutation(scale):
 	permutation = {}
 	v_id = 0
 	v_id_new = 0
-	try:
-		with open("/media/ssd/permutation_rmat"+str(scale)) as f:
-			f =  mmap.mmap(f.fileno(), 0, prot=mmap.PROT_READ) 
-		        data = 1   
-	   		while data:
-				data = f.readline()
-				v_id, v_id_new = data.partition("=")[::2]
-				permutation[long(v_id)] = long(v_id_new)
-	except ValueError:
-		print v_id
-		print v_id_new 
+	
+	with open("/media/ssd/permutation_rmat"+str(scale)) as f:
+		f =  mmap.mmap(f.fileno(), 0, prot=mmap.PROT_READ) 
+		data = 1   
+	   	while data:
+			data = f.readline()
+			v_id, v_id_new = data.partition("=")[::2]
+			permutation[long(v_id)] = long(v_id_new)
+	
 	return permutation
 
+def bit_permutation(value, permutation):
+
+	return value
 
 
 if __name__ == "__main__":

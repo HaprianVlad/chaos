@@ -22,7 +22,7 @@ def getRandomPermutation(scale):
 	random.shuffle(array)
 	permutation = {}
 	for i in range(scale):
-		permutation[i] = array[i-1]
+		permutation[i] = array[i]
 	
 	return permutation
 
