@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.20)  15 MAY 2016 12:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.20)  18 MAY 2016 18:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -319,14 +319,13 @@ e
 
 LaTeX Warning: No \author given.
 
-(./introduction.tex
-Underfull \hbox (badness 10000) in paragraph at lines 1--3
+(./introduction.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 1--29
 
  []
 
-)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 30.
- [1
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 30.
@@ -340,18 +339,18 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 30.
 Here is how much of TeX's memory you used:
  6823 strings out of 494985
  99174 string characters out of 6180356
- 181931 words of memory out of 5000000
+ 182931 words of memory out of 5000000
  9996 multiletter control sequences out of 15000+600000
  9742 words of font info for 35 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 29i,6n,32p,536b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,6n,32p,852b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on report.pdf (1 page, 69757 bytes).
+Output written on report.pdf (1 page, 70551 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  32 compressed objects within 1 object stream
