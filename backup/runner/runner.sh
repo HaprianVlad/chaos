@@ -25,9 +25,10 @@ for experimentFolder in *; do
 		bash ./clear.sh
 		bash $deployPartitionsCommand
 
-		#if [ $vr -eq 1 ]; then
-		#	bash ./deploy_vertex_relabeling.sh
-		#fi
+		if [ $vr -eq 1 ]; then
+			for i in `seq 137 144`; do scp vertex_relabeling.py dco-node$i.dco.ethz.ch:/media/ssd/ ; done
+			#for i in `seq 137 144`; do scp /media/ssd/permutations/permutation_rmat28 dco-node$i.dco.ethz.ch:/media/ssd/ ; done
+		fi
 	
 		cd ~
 		bash ./deploy_helpers.sh
