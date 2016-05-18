@@ -1,6 +1,6 @@
 import sys
 import struct
-
+import mmap
 
 def main(argv):
 	in_graph = sys.argv[1]
@@ -30,9 +30,12 @@ def main(argv):
 
 def readRandomPermutation(scale):
 	permutation = {}
-	with open("/media/ssd/permutation_rmat"+str(scale)) as myfile:
-   		for line in myfile:
-			v_id, v_id_new = line.partition("=")[::2]
+	with open("/media/ssd/permutation_rmat"+str(scale)) as f:
+		f =  mmap.mmap(f.fileno(), 0, prot=mmap.PROT_READ) 
+                data = 1   
+   		while data:
+			data = f.readline()
+			v_id, v_id_new = data.partition("=")[::2]
 			permutation[int(v_id)] = int(v_id_new)
 	return permutation
 
