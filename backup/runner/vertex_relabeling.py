@@ -4,12 +4,11 @@ import mmap
 
 def main(argv):
 	in_graph = sys.argv[1]
-	scale = sys.argv[2]
+	scale = int(sys.argv[2])
 	out_graph = sys.argv[3]
 
 	permutation = readRandomPermutation(scale)
 
-	print permutation
 	outfile = open(out_graph,'ab')
 
 	with open(in_graph,'rb') as infile:
