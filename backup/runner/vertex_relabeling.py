@@ -42,7 +42,7 @@ def bit_permutation(x, permutation, scale):
 		bitToInsert = get_bit(x, permutation[i]) 
 		result = result | (bitToInsert << i)
 	
-	return value
+	return result
 
 def get_bit(x, i):
 	return (x >> i) & 0x01
