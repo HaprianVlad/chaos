@@ -78,7 +78,7 @@ if [ $VR -eq 1 ]; then
 	e "Rellabeling graph $n..."
 	clush -w ${GROUP[$i]} "pypy /media/ssd/vertex_relabeling.py /media/ssd/$n ${scale} /media/ssd/$relabeled"
 	clush -w ${GROUP[$i]} "rm /media/ssd/$n"
-	clush -w ${GROUP[$i]} "mv /media/ssd/$relabeled /media/ssd/$n "
+	clush -w ${GROUP[$i]} "cp /media/ssd/$relabeled /media/ssd/$n "
 	sleep 10 
 fi
 
