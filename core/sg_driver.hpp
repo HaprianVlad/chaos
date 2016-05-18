@@ -117,6 +117,7 @@ namespace algorithm {
         rtc_clock scatter_cost;
         rtc_clock gather_cost;
 
+
     public:
         static unsigned long checkpoint_size() {
             return sizeof(unsigned long) + sizeof(bool) + A::checkpoint_size();

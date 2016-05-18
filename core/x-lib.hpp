@@ -652,6 +652,9 @@ namespace x_lib {
         rtc_clock state_load_barrier_time;  
         rtc_clock state_store_barrier_time;
 
+        rtc_clock gather_work_stealing_cost;
+        rtc_clock scatter_work_stealing_cost;
+
 
         rtc_clock processing_stolen_time;
         rtc_clock merge_wait_time;
@@ -855,6 +858,25 @@ namespace x_lib {
         //        9 - stream eof after
         //        10 - state_load
         //        11 - state_store
+        void mesure_work_stealing(unsigned long gather, int end) {
+            if (end) {
+                if (gather) {
+                    gather_work_stealing_cost.stop();
+                } else {
+                    scatter_work_stealing_cost.stop();
+                }
+            } else {
+                if (gather) {
+                    gather_work_stealing_cost.start();
+                } else {
+                    scatter_work_stealing_cost.start();
+                }
+
+            }
+
+
+
+        }
         void inter_machine_barrier(unsigned long goal) {
             null_barrier_work null_obj;
 
@@ -1194,6 +1216,8 @@ namespace x_lib {
             stream_eof_after_barrier_time.print("CORE::STREAM_EOF_AFTER_TIME_ALL_MC_BARRIER");
             state_load_barrier_time.print("CORE::STATE_LOAD_TIME_ALL_MC_BARRIER");
             state_store_barrier_time.print("CORE::STATE_STORE_TIME_ALL_MC_BARRIER");
+            gather_work_stealing_cost.print("CORE::WORK_STEALING_COST_GATHER");
+            scatter_work_stealing_cost.print("CORE::WORK_STEALING_COST_SCATTER");
         }
 
         void rewind_stream(unsigned long stream) {
@@ -1791,6 +1815,8 @@ namespace x_lib {
                 sio->io_wait_time.stop();
                 if (offer.accepted) {
                     if (log_phases) {
+                        sio->mesure_work_stealing(sync, 0);
+
                         BOOST_LOG_TRIVIAL(info)
                         << clock::timestamp()
                         << " Started helping " << beneficiary << " ";
@@ -1833,6 +1859,7 @@ namespace x_lib {
                         BOOST_LOG_TRIVIAL(info)
                         << clock::timestamp()
                         << " Completed helping " << beneficiary << " ";
+                        sio->mesure_work_stealing(sync, 1);
                     }
                 }
             }
