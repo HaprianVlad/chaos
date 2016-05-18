@@ -17,8 +17,8 @@ def main(argv):
 			src = struct.unpack('I', chunk[0:4])[0]
 		       	tgt = struct.unpack('I', chunk[4:8])[0]
 		
-			new_src = struct.pack('I', bit_permutation(src, permutation))
-			new_tgt = struct.pack('I', bit_permutation(tgt, permutation))
+			new_src = struct.pack('I', bit_permutation(src, permutation,scale))
+			new_tgt = struct.pack('I', bit_permutation(tgt, permutation,scale))
 							
 			outfile.write(new_src)
 			outfile.write(new_tgt)
@@ -43,10 +43,16 @@ def readRandomPermutation(scale):
 	
 	return permutation
 
-def bit_permutation(value, permutation):
-
+def bit_permutation(x, permutation, scale):
+	result=0
+	for i in range(scale):
+		bitToInsert = get_bit(x, permutation[i]) 
+		result = result | (bitToInsert << i)
+	
 	return value
 
+def get_bit(x, i):
+	return (x >> i) & 0x01
 
 if __name__ == "__main__":
 	if len (sys.argv) != 4:
