@@ -1,6 +1,7 @@
 import sys
 import struct
 import mmap
+from array import array
 
 def main(argv):
 	in_graph = sys.argv[1]
@@ -28,11 +29,11 @@ def main(argv):
 			
 
 def readRandomPermutation(scale):
-	permutation = {}
+	permutation = array('L')
 	with open("/media/ssd/permutation_rmat"+str(scale)) as f:
 		for line in f:
 			v_id, v_id_new = line.partition("=")[::2]
-			permutation[long(v_id)] = long(v_id_new)
+			permutation.insert(long(v_id), long(v_id_new))
 	
 	return permutation
 
