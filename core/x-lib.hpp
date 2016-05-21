@@ -655,6 +655,14 @@ namespace x_lib {
         rtc_clock gather_work_stealing_cost;
         rtc_clock scatter_work_stealing_cost;
 
+        rtc_clock gather_work_stealing_copy_vertex_state_cost;
+        rtc_clock scatter_work_stealing_copy_vertex_state_cost;
+
+        rtc_clock gather_work_stealing_processing_cost;
+        rtc_clock scatter_work_stealing_processing_cost;
+
+        rtc_clock gather_work_stealing_merge_cost;
+
 
         rtc_clock processing_stolen_time;
         rtc_clock merge_wait_time;
@@ -1216,8 +1224,18 @@ namespace x_lib {
             stream_eof_after_barrier_time.print("CORE::STREAM_EOF_AFTER_TIME_ALL_MC_BARRIER");
             state_load_barrier_time.print("CORE::STATE_LOAD_TIME_ALL_MC_BARRIER");
             state_store_barrier_time.print("CORE::STATE_STORE_TIME_ALL_MC_BARRIER");
+
             gather_work_stealing_cost.print("CORE::WORK_STEALING_COST_GATHER");
             scatter_work_stealing_cost.print("CORE::WORK_STEALING_COST_SCATTER");
+
+            gather_work_stealing_copy_vertex_state_cost.print("CORE::WORK_STEALING_COST_GATHER_COPY_VERTEX_STATE");
+            scatter_work_stealing_copy_vertex_state_cost.print("CORE::WORK_STEALING_COST_SCATTER_COPY_VERTEX_STATE");
+
+            gather_work_stealing_processing_cost.print("CORE::WORK_STEALING_COST_GATHER_PROCESSING");
+            scatter_work_stealing_processing_cost.print("CORE::WORK_STEALING_COST_SCATTER_PROCESSING");
+
+            gather_work_stealing_merge_cost.print("CORE::WORK_STEALING_COST_GATHER_MERGE");
+
         }
 
         void rewind_stream(unsigned long stream) {
@@ -1823,6 +1841,12 @@ namespace x_lib {
                     }
                     // Offer of help accepted
                     // fill the sp
+                    if (sync) {
+                        sio->gather_work_stealing_copy_vertex_state_cost.start();
+                    } else {
+                        sio->scatter_work_stealing_copy_vertex_state_cost.start();
+                    }
+
                     sio->tile_copy_time.start();
                     sio->tile_copy_done = false;
 
@@ -1839,8 +1863,19 @@ namespace x_lib {
                     sio->io_wait_time.stop();
                     sio->tile_copy_time.stop();
 
+                    if (sync) {
+                        sio->gather_work_stealing_copy_vertex_state_cost.stop();
+                    } else {
+                        sio->scatter_work_stealing_copy_vertex_state_cost.stop();
+                    }
+
                     // Now do the stream
 
+                    if (sync) {
+                        sio->gather_work_stealing_processing_cost.start();
+                    } else {
+                        sio->scatter_work_stealing_processing_cost.start();
+                    }
                     sio->processing_stolen_time.start();
                     do_stream_internal<A, IN, OUT>(sio, partition,
                                                    0, stream_in,
@@ -1848,12 +1883,20 @@ namespace x_lib {
                                                    override_input_filter, sync);
                     sio->processing_stolen_time.stop();
                     if (sync) {
+                        sio->gather_work_stealing_processing_cost.stop();
+                    } else {
+                        sio->scatter_work_stealing_processing_cost.stop();
+                    }
+
+                    if (sync) {
                         // Signal completion
                         sio->send_semup(beneficiary);
                         // Wait for the merge to happen
+                        sio->gather_work_stealing_merge_cost.start();
                         sio->merge_wait_time.start();
                         slipstore::slipstore_server->help_handle()->sem_down(beneficiary);
                         sio->merge_wait_time.stop();
+                        sio->gather_work_stealing_merge_cost.stop();
                     }
                     if (log_phases) {
                         BOOST_LOG_TRIVIAL(info)
