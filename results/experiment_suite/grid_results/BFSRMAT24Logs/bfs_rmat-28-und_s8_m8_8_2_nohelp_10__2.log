@@ -1,0 +1,490 @@
+1464008629537	<INFO 7f6e7d878780> 2016-05-23 15:03:49 STARTUP
+1464008629539	<INFO 7f6e7d878780> CORE::GRAPH rmat-28-und_s8
+1464008629541	<INFO 7f6e7d878780> CORE::ALGORITHM bfs
+1464008629544	<INFO 7f6e7d878780> CORE::VERTEX_STRIPING OFF
+1464008629546	<INFO 7f6e7d878780> CORE::OPTIMIZED_STATE_LOAD_STORE OFF
+1464008629549	<INFO 7f6e7d878780> CORE::BINARY_SEARCH_SUPER_PARTITION ON
+1464008629551	<INFO 7f6e7d878780> CORE::SUPER_PARTITION_COMPUTED_FOR_EACH_SCATTER_GATHER_PHASE
+1464008629554	<INFO 7f6e7d878780> CORE::BATCH IO OFF
+1464008629556	<INFO 7f6e7d878780> CORE::GRID_PARTITIONING ON
+1464008629558	<INFO 7f6e7d878780> 2016-05-23 15:03:49 Blocking memory amount 126701535232
+1464008736801	<INFO 7f6e7d878780> 2016-05-23 15:05:36 Done blocking memory
+1464008736805	<INFO 7f6e7d878780> SG-DRIVER-ORIGINAL
+1464008736807	<INFO 7f6e7d878780> 2016-05-23 15:05:36 START read config parameters
+1464008736809	<INFO 7f6e7d878780> PARTITIONING::OLD 0
+1464008736811	<INFO 7f6e7d878780> PARTITIONING::BALANCED_PARTITIONS 0
+1464008736814	<INFO 7f6e7d878780> CORE::CONFIG::PROCESSORS 8
+1464008736816	<INFO 7f6e7d878780> CORE::CONFIG::PHYSICAL_MEMORY 2147483648
+1464008736818	<INFO 7f6e7d878780> CORE::CONFIG::VERTICES 268435456
+1464008736820	<INFO 7f6e7d878780> CORE::CONFIG::VERTEX_SIZE 8
+1464008736822	<INFO 7f6e7d878780> CORE::CONFIG::VERTEX_BUFFER 922066808
+1464008736824	<INFO 7f6e7d878780> CORE::CONFIG::EDGES 1073741824
+1464008736826	<INFO 7f6e7d878780> CORE::CONFIG::PARTITIONS 64
+1464008736828	<INFO 7f6e7d878780> CORE::CONFIG::FANOUT 64
+1464008736830	<INFO 7f6e7d878780> CORE::CONFIG::SUPER_PARTITIONS 64
+1464008736833	<INFO 7f6e7d878780> CORE::CONFIG::MACHINE_ID 2
+1464008736835	<INFO 7f6e7d878780> CORE::CONFIG::TILES 1
+1464008736838	<INFO 7f6e7d878780> CORE::CONFIG::BUFFER_SIZE 245082241
+1464008736840	<INFO 7f6e7d878780> CORE::CONFIG::MAX_BUFFERS 4
+1464008736842	<INFO 7f6e7d878780> CORE::CONFIG::MAX_STREAMS 4
+1464008736844	<INFO 7f6e7d878780> CORE::CONFIG::SUM_OF_OUT_DEGREES_FOR_NEW_PARTITIONS::FIRST_CONSTRAINT 0
+1464008736846	<INFO 7f6e7d878780> CORE::CONFIG::MAX_EDGES_PER_NEW_PARTITION::SECOND_CONSTRAINT 0
+1464008736849	<INFO 7f6e7d878780> SLIPSTREAM::EXT_MEM_SHUFFLE OFF
+1464008736851	<INFO 7f6e7d878780> 2016-05-23 15:05:36 END read config parameters
+1464008738732	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.0.0):No such file or directory
+1464008738734	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.1.0):No such file or directory
+1464008738737	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.2.0):No such file or directory
+1464008738739	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.3.0):No such file or directory
+1464008738742	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.4.0):No such file or directory
+1464008738744	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.5.0):No such file or directory
+1464008738746	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.6.0):No such file or directory
+1464008738748	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.7.0):No such file or directory
+1464008738750	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.8.0):No such file or directory
+1464008738753	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.9.0):No such file or directory
+1464008738755	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.10.0):No such file or directory
+1464008738757	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.11.0):No such file or directory
+1464008738759	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.12.0):No such file or directory
+1464008738761	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.13.0):No such file or directory
+1464008738763	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.14.0):No such file or directory
+1464008738765	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.15.0):No such file or directory
+1464008738767	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.16.0):No such file or directory
+1464008738769	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.17.0):No such file or directory
+1464008738772	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.18.0):No such file or directory
+1464008738774	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.19.0):No such file or directory
+1464008738776	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.20.0):No such file or directory
+1464008738778	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.21.0):No such file or directory
+1464008738783	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.22.0):No such file or directory
+1464008738804	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.23.0):No such file or directory
+1464008738848	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.24.0):No such file or directory
+1464008738884	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.25.0):No such file or directory
+1464008738905	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.26.0):No such file or directory
+1464008738929	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.27.0):No such file or directory
+1464008738965	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.28.0):No such file or directory
+1464008738996	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.29.0):No such file or directory
+1464008739017	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.30.0):No such file or directory
+1464008739048	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.31.0):No such file or directory
+1464008739069	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.32.0):No such file or directory
+1464008739112	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.33.0):No such file or directory
+1464008739129	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.34.0):No such file or directory
+1464008739158	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.35.0):No such file or directory
+1464008739192	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.36.0):No such file or directory
+1464008739209	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.37.0):No such file or directory
+1464008739252	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.38.0):No such file or directory
+1464008739296	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.39.0):No such file or directory
+1464008739328	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.40.0):No such file or directory
+1464008739364	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.41.0):No such file or directory
+1464008739392	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.42.0):No such file or directory
+1464008739448	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.43.0):No such file or directory
+1464008739474	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.44.0):No such file or directory
+1464008739512	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.45.0):No such file or directory
+1464008739552	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.46.0):No such file or directory
+1464008739578	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.47.0):No such file or directory
+1464008739608	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.48.0):No such file or directory
+1464008739650	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.49.0):No such file or directory
+1464008739676	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.50.0):No such file or directory
+1464008739720	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.51.0):No such file or directory
+1464008739763	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.52.0):No such file or directory
+1464008739805	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.53.0):No such file or directory
+1464008739844	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.54.0):No such file or directory
+1464008739872	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.55.0):No such file or directory
+1464008739912	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.56.0):No such file or directory
+1464008739932	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.57.0):No such file or directory
+1464008739943	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.58.0):No such file or directory
+1464008739969	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.59.0):No such file or directory
+1464008739980	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.60.0):No such file or directory
+1464008740004	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.61.0):No such file or directory
+1464008740052	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.62.0):No such file or directory
+1464008740092	<WARNING 7f6e7d878780> Unable to unlink file (stream.0.63.0):No such file or directory
+1464008740128	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.1.0):No such file or directory
+1464008740160	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.2.0):No such file or directory
+1464008740204	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.3.0):No such file or directory
+1464008740232	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.4.0):No such file or directory
+1464008740284	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.5.0):No such file or directory
+1464008740324	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.6.0):No such file or directory
+1464008740356	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.7.0):No such file or directory
+1464008740404	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.8.0):No such file or directory
+1464008740437	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.9.0):No such file or directory
+1464008740456	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.10.0):No such file or directory
+1464008740498	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.11.0):No such file or directory
+1464008740524	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.12.0):No such file or directory
+1464008740568	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.13.0):No such file or directory
+1464008740593	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.14.0):No such file or directory
+1464008740624	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.15.0):No such file or directory
+1464008740664	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.16.0):No such file or directory
+1464008740696	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.17.0):No such file or directory
+1464008740728	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.18.0):No such file or directory
+1464008740749	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.19.0):No such file or directory
+1464008740763	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.20.0):No such file or directory
+1464008740804	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.21.0):No such file or directory
+1464008740837	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.22.0):No such file or directory
+1464008740851	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.23.0):No such file or directory
+1464008740853	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.24.0):No such file or directory
+1464008740861	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.25.0):No such file or directory
+1464008740864	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.26.0):No such file or directory
+1464008740867	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.27.0):No such file or directory
+1464008740903	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.28.0):No such file or directory
+1464008740940	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.29.0):No such file or directory
+1464008740972	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.30.0):No such file or directory
+1464008741004	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.31.0):No such file or directory
+1464008741022	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.32.0):No such file or directory
+1464008741060	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.33.0):No such file or directory
+1464008741073	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.34.0):No such file or directory
+1464008741122	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.35.0):No such file or directory
+1464008741164	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.36.0):No such file or directory
+1464008741208	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.37.0):No such file or directory
+1464008741244	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.38.0):No such file or directory
+1464008741296	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.39.0):No such file or directory
+1464008741328	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.40.0):No such file or directory
+1464008741380	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.41.0):No such file or directory
+1464008741456	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.42.0):No such file or directory
+1464008741500	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.43.0):No such file or directory
+1464008741533	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.44.0):No such file or directory
+1464008741557	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.45.0):No such file or directory
+1464008741588	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.46.0):No such file or directory
+1464008741625	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.47.0):No such file or directory
+1464008741640	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.48.0):No such file or directory
+1464008741677	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.49.0):No such file or directory
+1464008741696	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.50.0):No such file or directory
+1464008741728	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.51.0):No such file or directory
+1464008741786	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.52.0):No such file or directory
+1464008741853	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.53.0):No such file or directory
+1464008741976	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.54.0):No such file or directory
+1464008742044	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.55.0):No such file or directory
+1464008742076	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.56.0):No such file or directory
+1464008742108	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.57.0):No such file or directory
+1464008742189	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.58.0):No such file or directory
+1464008742322	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.59.0):No such file or directory
+1464008742352	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.60.0):No such file or directory
+1464008742397	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.61.0):No such file or directory
+1464008742440	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.62.0):No such file or directory
+1464008742472	<WARNING 7f6e7d878780> Unable to unlink file (stream.1.63.0):No such file or directory
+1464008742496	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.0.0):No such file or directory
+1464008742516	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.1.0):No such file or directory
+1464008742554	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.2.0):No such file or directory
+1464008742596	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.3.0):No such file or directory
+1464008742632	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.4.0):No such file or directory
+1464008742680	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.5.0):No such file or directory
+1464008742698	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.6.0):No such file or directory
+1464008742728	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.7.0):No such file or directory
+1464008742768	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.8.0):No such file or directory
+1464008742808	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.9.0):No such file or directory
+1464008742840	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.10.0):No such file or directory
+1464008742868	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.11.0):No such file or directory
+1464008742885	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.12.0):No such file or directory
+1464008742891	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.13.0):No such file or directory
+1464008742927	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.14.0):No such file or directory
+1464008742998	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.15.0):No such file or directory
+1464008743076	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.16.0):No such file or directory
+1464008743116	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.17.0):No such file or directory
+1464008743143	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.18.0):No such file or directory
+1464008743179	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.19.0):No such file or directory
+1464008743222	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.20.0):No such file or directory
+1464008743256	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.21.0):No such file or directory
+1464008743292	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.22.0):No such file or directory
+1464008743349	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.23.0):No such file or directory
+1464008743392	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.24.0):No such file or directory
+1464008743457	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.25.0):No such file or directory
+1464008743512	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.26.0):No such file or directory
+1464008743562	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.27.0):No such file or directory
+1464008743604	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.28.0):No such file or directory
+1464008743661	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.29.0):No such file or directory
+1464008743744	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.30.0):No such file or directory
+1464008743776	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.31.0):No such file or directory
+1464008743819	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.32.0):No such file or directory
+1464008743859	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.33.0):No such file or directory
+1464008743893	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.34.0):No such file or directory
+1464008743976	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.35.0):No such file or directory
+1464008744048	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.36.0):No such file or directory
+1464008744104	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.37.0):No such file or directory
+1464008744165	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.38.0):No such file or directory
+1464008744220	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.39.0):No such file or directory
+1464008744308	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.40.0):No such file or directory
+1464008744356	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.41.0):No such file or directory
+1464008744461	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.42.0):No such file or directory
+1464008744532	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.43.0):No such file or directory
+1464008744588	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.44.0):No such file or directory
+1464008744644	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.45.0):No such file or directory
+1464008744672	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.46.0):No such file or directory
+1464008744748	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.47.0):No such file or directory
+1464008744816	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.48.0):No such file or directory
+1464008744917	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.49.0):No such file or directory
+1464008745004	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.50.0):No such file or directory
+1464008745069	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.51.0):No such file or directory
+1464008745112	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.52.0):No such file or directory
+1464008745184	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.53.0):No such file or directory
+1464008745233	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.54.0):No such file or directory
+1464008745262	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.55.0):No such file or directory
+1464008745302	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.56.0):No such file or directory
+1464008745324	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.57.0):No such file or directory
+1464008745364	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.58.0):No such file or directory
+1464008745385	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.59.0):No such file or directory
+1464008745424	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.60.0):No such file or directory
+1464008745459	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.61.0):No such file or directory
+1464008745504	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.62.0):No such file or directory
+1464008745524	<WARNING 7f6e7d878780> Unable to unlink file (stream.2.63.0):No such file or directory
+1464008745580	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.0.0):No such file or directory
+1464008745616	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.1.0):No such file or directory
+1464008745664	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.2.0):No such file or directory
+1464008745704	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.3.0):No such file or directory
+1464008745764	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.4.0):No such file or directory
+1464008745789	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.5.0):No such file or directory
+1464008745841	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.6.0):No such file or directory
+1464008745894	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.7.0):No such file or directory
+1464008745940	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.8.0):No such file or directory
+1464008745993	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.9.0):No such file or directory
+1464008746028	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.10.0):No such file or directory
+1464008746061	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.11.0):No such file or directory
+1464008746101	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.12.0):No such file or directory
+1464008746148	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.13.0):No such file or directory
+1464008746188	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.14.0):No such file or directory
+1464008746229	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.15.0):No such file or directory
+1464008746272	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.16.0):No such file or directory
+1464008746316	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.17.0):No such file or directory
+1464008746392	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.18.0):No such file or directory
+1464008746428	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.19.0):No such file or directory
+1464008746476	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.20.0):No such file or directory
+1464008746517	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.21.0):No such file or directory
+1464008746549	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.22.0):No such file or directory
+1464008746593	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.23.0):No such file or directory
+1464008746624	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.24.0):No such file or directory
+1464008746652	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.25.0):No such file or directory
+1464008746688	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.26.0):No such file or directory
+1464008746706	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.27.0):No such file or directory
+1464008746756	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.28.0):No such file or directory
+1464008746784	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.29.0):No such file or directory
+1464008746829	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.30.0):No such file or directory
+1464008746876	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.31.0):No such file or directory
+1464008746908	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.32.0):No such file or directory
+1464008746964	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.33.0):No such file or directory
+1464008746981	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.34.0):No such file or directory
+1464008747024	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.35.0):No such file or directory
+1464008747047	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.36.0):No such file or directory
+1464008747088	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.37.0):No such file or directory
+1464008747130	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.38.0):No such file or directory
+1464008747168	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.39.0):No such file or directory
+1464008747196	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.40.0):No such file or directory
+1464008747280	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.41.0):No such file or directory
+1464008747332	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.42.0):No such file or directory
+1464008747358	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.43.0):No such file or directory
+1464008747421	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.44.0):No such file or directory
+1464008747453	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.45.0):No such file or directory
+1464008747484	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.46.0):No such file or directory
+1464008747529	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.47.0):No such file or directory
+1464008747569	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.48.0):No such file or directory
+1464008747613	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.49.0):No such file or directory
+1464008747661	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.50.0):No such file or directory
+1464008747692	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.51.0):No such file or directory
+1464008747741	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.52.0):No such file or directory
+1464008747784	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.53.0):No such file or directory
+1464008747820	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.54.0):No such file or directory
+1464008747857	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.55.0):No such file or directory
+1464008747908	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.56.0):No such file or directory
+1464008747912	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.57.0):No such file or directory
+1464008747914	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.58.0):No such file or directory
+1464008747918	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.59.0):No such file or directory
+1464008747941	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.60.0):No such file or directory
+1464008747968	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.61.0):No such file or directory
+1464008748013	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.62.0):No such file or directory
+1464008748056	<WARNING 7f6e7d878780> Unable to unlink file (stream.3.63.0):No such file or directory
+1464008748093	<INFO 7f6e7d878780> SLIPSTORE::ZMQ_THREADS 2
+1464008748132	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1464008748168	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1464008748192	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1464008748225	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1464008748244	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1464008748284	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1464008748316	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1464008748352	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1464008748376	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5044
+1464008748416	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5045
+1464008748460	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at ipc://client
+1464008748504	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5047
+1464008748540	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5048
+1464008748576	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5049
+1464008748612	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5050
+1464008748648	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5051
+1464008748688	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5016
+1464008748732	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5034
+1464008748764	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1464008748793	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5070
+1464008748807	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5088
+1464008748811	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5106
+1464008748838	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5124
+1464008748872	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5142
+1464008748900	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5002
+1464008748926	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5020
+1464008748960	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to ipc://server
+1464008748992	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5056
+1464008749025	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5074
+1464008749056	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5092
+1464008749096	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5110
+1464008749124	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5128
+1464008749184	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5071
+1464008749206	<INFO 7f6e7d878780> SLIPSTORE::COMM Listening at tcp://p1p1:5053
+1464008749244	<INFO 7f6e7d878780> SLIPSTORE::COMM Connecting to tcp://dco-node139-10g:5052
+1464008749289	<INFO 7f6e7d878780> SLIPSTORE::HELP_POLICY NONE
+1464008749321	<INFO 7f6e7d878780> SLIPSTORE::SERVER ASYNC
+1464008749349	<INFO 7f6e7d878780> SLIPSTORE::MACHINES 8
+1464008749404	<INFO 7f6e7d878780> SLIPSTORE::ME 2
+1464008749434	<INFO 7f6e7d878780> SLIPSTORE::SLIPCHUNK 4194304
+1464008749481	<INFO 7f6e7d878780> SLIPSTORE::QUOTA 18446744073709551615
+1464008749506	<INFO 7f6e7d878780> SLIPSTORE::IO PAGECACHE
+1464008749544	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5052
+1464008749572	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5036
+1464008749592	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node137-10g:5010
+1464008749620	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5037
+1464008749645	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node138-10g:5028
+1464008749665	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at ipc://server
+1464008749708	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to ipc://client
+1464008749732	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5039
+1464008749761	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node140-10g:5064
+1464008749785	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5040
+1464008749836	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node141-10g:5082
+1464008749872	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5041
+1464008749896	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node142-10g:5100
+1464008749932	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5042
+1464008749964	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node143-10g:5118
+1464008750016	<INFO 7f506a7fc700> SLIPSTORE::COMM Listening at tcp://p1p1:5043
+1464008750052	<INFO 7f506a7fc700> SLIPSTORE::COMM Connecting to tcp://dco-node144-10g:5136
+1464008750070	<INFO 7f6e7d878780> SLIPSTORE::CHECKPOINTS NONE FOUND
+1464008750116	<INFO 7f6e7d878780> 2016-05-23 15:05:40 Start edge split
+1464008917969	<INFO 7f6e7d878780> 2016-05-23 15:08:37 Completed init
+1464008938408	<INFO 7f6e7d878780> 2016-05-23 15:08:58 Started gather
+1464008938480	<INFO 7f6e7d878780> 2016-05-23 15:08:58 Completed gather
+1464008938520	<INFO 7f6e7d878780> 2016-05-23 15:08:58 Started gather
+1464008938845	<INFO 7f6e7d878780> 2016-05-23 15:08:58 Completed gather
+1464008938872	<INFO 7f6e7d878780> 2016-05-23 15:08:58 Started gather
+1464008939892	<INFO 7f6e7d878780> 2016-05-23 15:08:59 Completed gather
+1464008939941	<INFO 7f6e7d878780> 2016-05-23 15:08:59 Started gather
+1464008941140	<INFO 7f6e7d878780> 2016-05-23 15:09:01 Completed gather
+1464008941181	<INFO 7f6e7d878780> 2016-05-23 15:09:01 Started gather
+1464008943192	<INFO 7f6e7d878780> 2016-05-23 15:09:03 Completed gather
+1464008943230	<INFO 7f6e7d878780> 2016-05-23 15:09:03 Started gather
+1464008946872	<INFO 7f6e7d878780> 2016-05-23 15:09:06 Completed gather
+1464008946904	<INFO 7f6e7d878780> 2016-05-23 15:09:06 Started gather
+1464008949320	<INFO 7f6e7d878780> 2016-05-23 15:09:09 Completed gather
+1464008949352	<INFO 7f6e7d878780> 2016-05-23 15:09:09 Started gather
+1464008957625	<INFO 7f6e7d878780> 2016-05-23 15:09:17 Completed gather
+1464008967100	<INFO 7f6e7d878780> 2016-05-23 15:09:27 Started scatter
+1464008976420	<INFO 7f6e7d878780> 2016-05-23 15:09:36 Completed scatter
+1464008976464	<INFO 7f6e7d878780> 2016-05-23 15:09:36 Started scatter
+1464008994159	<INFO 7f6e7d878780> 2016-05-23 15:09:54 Completed scatter
+1464008994162	<INFO 7f6e7d878780> 2016-05-23 15:09:54 Started scatter
+1464009007932	<INFO 7f6e7d878780> 2016-05-23 15:10:07 Completed scatter
+1464009007960	<INFO 7f6e7d878780> 2016-05-23 15:10:07 Started scatter
+1464009019560	<INFO 7f6e7d878780> 2016-05-23 15:10:19 Completed scatter
+1464009019593	<INFO 7f6e7d878780> 2016-05-23 15:10:19 Started scatter
+1464009032784	<INFO 7f6e7d878780> 2016-05-23 15:10:32 Completed scatter
+1464009032824	<INFO 7f6e7d878780> 2016-05-23 15:10:32 Started scatter
+1464009048052	<INFO 7f6e7d878780> 2016-05-23 15:10:48 Completed scatter
+1464009048085	<INFO 7f6e7d878780> 2016-05-23 15:10:48 Started scatter
+1464009063792	<INFO 7f6e7d878780> 2016-05-23 15:11:03 Completed scatter
+1464009063794	<INFO 7f6e7d878780> 2016-05-23 15:11:03 Started scatter
+1464009080980	<INFO 7f6e7d878780> 2016-05-23 15:11:20 Completed scatter
+1464009135168	<INFO 7f6e7d878780> 2016-05-23 15:12:15 Completed phase 1 Bytes read 30434483728 Bytes written 17368658880
+1464009135753	<INFO 7f6e7d878780> 2016-05-23 15:12:15 Started gather
+1464009136220	<INFO 7f6e7d878780> 2016-05-23 15:12:16 Completed gather
+1464009136272	<INFO 7f6e7d878780> 2016-05-23 15:12:16 Started gather
+1464009136968	<INFO 7f6e7d878780> 2016-05-23 15:12:16 Completed gather
+1464009137009	<INFO 7f6e7d878780> 2016-05-23 15:12:16 Started gather
+1464009138536	<INFO 7f6e7d878780> 2016-05-23 15:12:18 Completed gather
+1464009138561	<INFO 7f6e7d878780> 2016-05-23 15:12:18 Started gather
+1464009140672	<INFO 7f6e7d878780> 2016-05-23 15:12:20 Completed gather
+1464009140708	<INFO 7f6e7d878780> 2016-05-23 15:12:20 Started gather
+1464009151020	<INFO 7f6e7d878780> 2016-05-23 15:12:30 Completed gather
+1464009151064	<INFO 7f6e7d878780> 2016-05-23 15:12:30 Started gather
+1464009158048	<INFO 7f6e7d878780> 2016-05-23 15:12:38 Completed gather
+1464009158055	<INFO 7f6e7d878780> 2016-05-23 15:12:38 Started gather
+1464009161916	<INFO 7f6e7d878780> 2016-05-23 15:12:41 Completed gather
+1464009161948	<INFO 7f6e7d878780> 2016-05-23 15:12:41 Started gather
+1464009175376	<INFO 7f6e7d878780> 2016-05-23 15:12:55 Completed gather
+1464009202380	<INFO 7f6e7d878780> 2016-05-23 15:13:22 Started scatter
+1464009214297	<INFO 7f6e7d878780> 2016-05-23 15:13:34 Completed scatter
+1464009214332	<INFO 7f6e7d878780> 2016-05-23 15:13:34 Started scatter
+1464009224908	<INFO 7f6e7d878780> 2016-05-23 15:13:44 Completed scatter
+1464009224945	<INFO 7f6e7d878780> 2016-05-23 15:13:44 Started scatter
+1464009237324	<INFO 7f6e7d878780> 2016-05-23 15:13:57 Completed scatter
+1464009237358	<INFO 7f6e7d878780> 2016-05-23 15:13:57 Started scatter
+1464009250037	<INFO 7f6e7d878780> 2016-05-23 15:14:10 Completed scatter
+1464009250062	<INFO 7f6e7d878780> 2016-05-23 15:14:10 Started scatter
+1464009264640	<INFO 7f6e7d878780> 2016-05-23 15:14:24 Completed scatter
+1464009264649	<INFO 7f6e7d878780> 2016-05-23 15:14:24 Started scatter
+1464009282520	<INFO 7f6e7d878780> 2016-05-23 15:14:42 Completed scatter
+1464009282548	<INFO 7f6e7d878780> 2016-05-23 15:14:42 Started scatter
+1464009298344	<INFO 7f6e7d878780> 2016-05-23 15:14:58 Completed scatter
+1464009298412	<INFO 7f6e7d878780> 2016-05-23 15:14:58 Started scatter
+1464009322501	<INFO 7f6e7d878780> 2016-05-23 15:15:22 Completed scatter
+1464009393096	<INFO 7f6e7d878780> 2016-05-23 15:16:33 Completed phase 2 Bytes read 47803142608 Bytes written 19762744096
+1464009393455	<INFO 7f6e7d878780> 2016-05-23 15:16:33 Started gather
+1464009396769	<INFO 7f6e7d878780> 2016-05-23 15:16:36 Completed gather
+1464009396804	<INFO 7f6e7d878780> 2016-05-23 15:16:36 Started gather
+1464009401572	<INFO 7f6e7d878780> 2016-05-23 15:16:41 Completed gather
+1464009401628	<INFO 7f6e7d878780> 2016-05-23 15:16:41 Started gather
+1464009406937	<INFO 7f6e7d878780> 2016-05-23 15:16:46 Completed gather
+1464009406943	<INFO 7f6e7d878780> 2016-05-23 15:16:46 Started gather
+1464009408734	<INFO 7f6e7d878780> 2016-05-23 15:16:48 Completed gather
+1464009408745	<INFO 7f6e7d878780> 2016-05-23 15:16:48 Started gather
+1464009424962	<INFO 7f6e7d878780> 2016-05-23 15:17:04 Completed gather
+1464009424965	<INFO 7f6e7d878780> 2016-05-23 15:17:04 Started gather
+1464009433680	<INFO 7f6e7d878780> 2016-05-23 15:17:13 Completed gather
+1464009433720	<INFO 7f6e7d878780> 2016-05-23 15:17:13 Started gather
+1464009437260	<INFO 7f6e7d878780> 2016-05-23 15:17:17 Completed gather
+1464009437280	<INFO 7f6e7d878780> 2016-05-23 15:17:17 Started gather
+1464009449764	<INFO 7f6e7d878780> 2016-05-23 15:17:29 Completed gather
+1464009471219	<INFO 7f6e7d878780> 2016-05-23 15:17:51 Started scatter
+1464009482776	<INFO 7f6e7d878780> 2016-05-23 15:18:02 Completed scatter
+1464009482824	<INFO 7f6e7d878780> 2016-05-23 15:18:02 Started scatter
+1464009498666	<INFO 7f6e7d878780> 2016-05-23 15:18:18 Completed scatter
+1464009498670	<INFO 7f6e7d878780> 2016-05-23 15:18:18 Started scatter
+1464009512445	<INFO 7f6e7d878780> 2016-05-23 15:18:32 Completed scatter
+1464009512504	<INFO 7f6e7d878780> 2016-05-23 15:18:32 Started scatter
+1464009527842	<INFO 7f6e7d878780> 2016-05-23 15:18:47 Completed scatter
+1464009527850	<INFO 7f6e7d878780> 2016-05-23 15:18:47 Started scatter
+1464009540724	<INFO 7f6e7d878780> 2016-05-23 15:19:00 Completed scatter
+1464009540734	<INFO 7f6e7d878780> 2016-05-23 15:19:00 Started scatter
+1464009556500	<INFO 7f6e7d878780> 2016-05-23 15:19:16 Completed scatter
+1464009556544	<INFO 7f6e7d878780> 2016-05-23 15:19:16 Started scatter
+1464009574117	<INFO 7f6e7d878780> 2016-05-23 15:19:34 Completed scatter
+1464009574136	<INFO 7f6e7d878780> 2016-05-23 15:19:34 Started scatter
+1464009593732	<INFO 7f6e7d878780> 2016-05-23 15:19:53 Completed scatter
+1464009685502	<INFO 7f6e7d878780> 2016-05-23 15:21:25 Completed phase 3 Bytes read 65414469688 Bytes written 22266315152
+1464009685776	<INFO 7f6e7d878780> 2016-05-23 15:21:25 Started gather
+1464009690228	<INFO 7f6e7d878780> 2016-05-23 15:21:30 Completed gather
+1464009690237	<INFO 7f6e7d878780> 2016-05-23 15:21:30 Started gather
+1464009691183	<INFO 7f6e7d878780> 2016-05-23 15:21:31 Completed gather
+1464009691192	<INFO 7f6e7d878780> 2016-05-23 15:21:31 Started gather
+1464009692129	<INFO 7f6e7d878780> 2016-05-23 15:21:32 Completed gather
+1464009692139	<INFO 7f6e7d878780> 2016-05-23 15:21:32 Started gather
+1464009693626	<INFO 7f6e7d878780> 2016-05-23 15:21:33 Completed gather
+1464009693652	<INFO 7f6e7d878780> 2016-05-23 15:21:33 Started gather
+1464009696580	<INFO 7f6e7d878780> 2016-05-23 15:21:36 Completed gather
+1464009696612	<INFO 7f6e7d878780> 2016-05-23 15:21:36 Started gather
+1464009702780	<INFO 7f6e7d878780> 2016-05-23 15:21:42 Completed gather
+1464009702804	<INFO 7f6e7d878780> 2016-05-23 15:21:42 Started gather
+1464009709924	<INFO 7f6e7d878780> 2016-05-23 15:21:49 Completed gather
+1464009709928	<INFO 7f6e7d878780> 2016-05-23 15:21:49 Started gather
+1464009719536	<INFO 7f6e7d878780> 2016-05-23 15:21:59 Completed gather
+1464009763354	<INFO 7f6e7d878780> 2016-05-23 15:22:43 Started scatter
+1464009775622	<INFO 7f6e7d878780> 2016-05-23 15:22:55 Completed scatter
+1464009775668	<INFO 7f6e7d878780> 2016-05-23 15:22:55 Started scatter
+1464009786484	<INFO 7f6e7d878780> 2016-05-23 15:23:06 Completed scatter
+1464009786488	<INFO 7f6e7d878780> 2016-05-23 15:23:06 Started scatter
+1464009796776	<INFO 7f6e7d878780> 2016-05-23 15:23:16 Completed scatter
+1464009796808	<INFO 7f6e7d878780> 2016-05-23 15:23:16 Started scatter
+1464009811320	<INFO 7f6e7d878780> 2016-05-23 15:23:31 Completed scatter
+1464009811357	<INFO 7f6e7d878780> 2016-05-23 15:23:31 Started scatter
+1464009825332	<INFO 7f6e7d878780> 2016-05-23 15:23:45 Completed scatter
+1464009825388	<INFO 7f6e7d878780> 2016-05-23 15:23:45 Started scatter
+1464009845784	<INFO 7f6e7d878780> 2016-05-23 15:24:05 Completed scatter
+1464009845812	<INFO 7f6e7d878780> 2016-05-23 15:24:05 Started scatter
+1464009861996	<INFO 7f6e7d878780> 2016-05-23 15:24:21 Completed scatter
+1464009862029	<INFO 7f6e7d878780> 2016-05-23 15:24:21 Started scatter
+1464009881632	<INFO 7f6e7d878780> 2016-05-23 15:24:41 Completed scatter
+1464009901480	<INFO 7f6e7d878780> 2016-05-23 15:25:01 Completed phase 4 Bytes read 83135282608 Bytes written 24422477000
+1464009902434	<INFO 7f6e7d878780> 2016-05-23 15:25:02 Started gather
+1464009903018	<INFO 7f6e7d878780> 2016-05-23 15:25:02 Completed gather
+1464009903048	<INFO 7f6e7d878780> 2016-05-23 15:25:02 Started gather
+1464009903796	<INFO 7f6e7d878780> 2016-05-23 15:25:03 Completed gather
+1464009903833	<INFO 7f6e7d878780> 2016-05-23 15:25:03 Started gather
+1464009904920	<INFO 7f6e7d878780> 2016-05-23 15:25:04 Completed gather
+1464009904956	<INFO 7f6e7d878780> 2016-05-23 15:25:04 Started gather
